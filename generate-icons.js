@@ -35,6 +35,12 @@ const args = [
         path.join('www', 'img', 'splash-icon.png'),
         '200:200'
     ],
+    [
+        iconOrange,
+        path.join('store-assets', 'icon512.png'),
+        '512:512',
+        '75%'
+    ],
     ...Object.keys(wp8LabelSizeMap).map(wp8Icon),
     ...Object.keys(androidLabelSizeMap).map(androidIcon),
 ]
