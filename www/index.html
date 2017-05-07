@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *"
+    />
+    <!-- Good default declaration:
+    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+        * Enable inline JS: add 'unsafe-inline' to default-src
+        * Enable eval(): add 'unsafe-eval' to default-src
+    * Create your own at http://cspisawesome.com
+    -->
+    <!-- <meeta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+
+    <title>Tablice przystankowe</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="modal hidden" id="modal-info">
+        <p>Tablice przystankowe</p>
+        <p>Klient rozkładów jazdy dostępnych na stronie rozklady.lodz.pl</p>
+        <button>Zamknij</button></div>
+
+    <div class="modal hidden" id="modal-error">
+        <p>Coś poszło nie tak ¯\_(ツ)_/¯.</p>
+        <button>Zamknij</button></div>
+
+    <div class="backdrop hidden"></div>
+
+    <div class="menu">
+        <img src="img/refresh.png" alt="" id="menu-refresh" class="hidden" />
+        <img src="img/info.png" alt="" id="menu-info" />
+    </div>
+
+    <div class="splash"></div>
+    <div class="cards"></div>
+
+    <script src="cordova.js"></script>
+
+    <script src="shared/dom.js"></script>
+    <script src="shared/modal.js"></script>
+    <script src="shared/card.js"></script>
+
+    <script src="shared/http.js"></script>
+    <script src="shared/geolocation.js"></script>
+    <script src="shared/timetables.js"></script>
+
+    <script src="js/index.js"></script>
+</body>
+
+</html>
