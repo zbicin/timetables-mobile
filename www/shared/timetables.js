@@ -1,22 +1,6 @@
 const http = Object.create(Http);
 const geolocation = Object.create(Geolocation);
 
-const FETCH_UPDATE_EVENT = 'fetch.update';
-const FETCH_UPDATE_STATUS = {
-    INITIALIZING: 0,
-    LOCATION: 1,
-    NEARBY_STOPS: 2,
-    TIMETABLES: 3,
-    FINISHED: 4
-};
-
-const notifyUpdate = (data = null) => {
-    const event = new CustomEvent(FETCH_UPDATE_EVENT, {
-        detail: data
-    });
-    document.dispatchEvent(event);
-}
-
 const fetchCookie = () => http.head('http://rozklady.lodz.pl');
 
 const getNearbyStopsIds = (latitude, longitude) => {
@@ -64,29 +48,11 @@ const fetchTimetablesByStopsIds = (stopIds) => {
     return Promise.all(promises);
 }
 
-const fetchNearbyTimetables = () => {
-    notifyUpdate(FETCH_UPDATE_STATUS.INITIALIZING);
-    return fetchCookie()
-        .then(() => {
-            notifyUpdate(FETCH_UPDATE_STATUS.LOCATION);
-            return geolocation.getCurrentPosition();
-        })
-        .then((position) => {
-            notifyUpdate(FETCH_UPDATE_STATUS.NEARBY_STOPS);
-            return getNearbyStopsIds(position.coords.latitude, position.coords.longitude)
-        })
-        .then((stopsIds) => {
-            notifyUpdate(FETCH_UPDATE_STATUS.TIMETABLES);
-            return fetchTimetablesByStopsIds(stopsIds);
-        }).then((timetables) => {
-            notifyUpdate(FETCH_UPDATE_STATUS.FINISHED);
-            return Promise.resolve(timetables);
-        });
-
-}
+const fetchNearbyTimetables = () => fetchCookie()
+        .then(() => geolocation.getCurrentPosition())
+        .then((position) => getNearbyStopsIds(position.coords.latitude, position.coords.longitude))
+        .then((stopsIds) => fetchTimetablesByStopsIds(stopsIds));
 
 const Timetables = {
-    FETCH_UPDATE_EVENT,
-    FETCH_UPDATE_STATUS,
     fetchNearbyTimetables
 };

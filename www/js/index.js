@@ -3,9 +3,6 @@ const timetables = Object.create(Timetables);
 const card = Object.create(Card);
 const modal = Object.create(Modal);
 
-const show = (element) => element.classList.remove('hidden');
-const hide = (element) => element.classList.add('hidden');
-
 const renderBoards = (boards) => {
     const container = document.querySelector('.cards');
 
@@ -45,45 +42,29 @@ const animateSplash = () => {
     };
 }
 
-const setupModal = (identifier, actionCallback) => {
-    const backdropElement = dom.$('.backdrop');
-    const modalElement = dom.$(`#modal-${identifier}`);
-    modalElement.lastChild.addEventListener('click', (event) => {
-        event.preventDefault();
-
-        if (actionCallback) {
-            actionCallback();
-        }
-
-        hide(modalElement);
-        hide(backdropElement);
-    });
-};
-
-const showModal = (identifier) => {
-    const backdropElement = dom.$('.backdrop');
-    const modalElement = dom.$(`#modal-${identifier}`);
-    show(modalElement);
-    show(backdropElement);
-}
-
 const errorHandler = (e) => {
-    showModal('error');
+    navigator.notification.alert(e.message || e, null, 'Coś poszło nie tak');
     console.error(e);
 }
 
+const onInfo = (e) => {
+    navigator.notification.alert('Wygodny klient rozkładów jazdy dostępnych na stronie rozklady.lodz.pl.', null, 'Tablice Przystankowe');
+}
+
 const onDeviceReady = () => {
+    if (cordova.platformId == 'android') {
+        StatusBar.backgroundColorByHexString('ee8801');
+    }
+
     const stopAnimateSplash = animateSplash();
 
-    setupModal('info');
-    setupModal('error');
-    dom.$('#menu-info').addEventListener('click', () => showModal('info'));
+    dom.$('#menu-info').addEventListener('click', onInfo);
     dom.$('#menu-refresh').addEventListener('click', () => location.reload());
 
     timetables.fetchNearbyTimetables()
         .then((boards) => {
             renderBoards(boards);
-            stopAnimateSplash(() => show(dom.$('#menu-refresh')));
+            stopAnimateSplash(() => dom.$('#menu-refresh').classList.remove('hidden'));
         }).catch(errorHandler);
 };
 
