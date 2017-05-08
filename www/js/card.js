@@ -1,4 +1,6 @@
-const Card = ((function () {
+import { DOMHelper } from './dom';
+
+export const Card = ((function () {
     const dom = Object.create(DOMHelper);
 
     const createCardHeader = (board) => dom.create('h2', board.stopName);

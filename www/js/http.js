@@ -4,7 +4,6 @@ const METHODS = {
     HEAD: 'HEAD'
 };
 
-
 const doRequest = (url, method = METHODS.GET, headers = {}, data = null) => new Promise((resolve, reject) => {
     const isAsync = true;
     const isLocalBrowser = location.protocol.indexOf('http') > -1;
@@ -35,7 +34,7 @@ const doRequest = (url, method = METHODS.GET, headers = {}, data = null) => new 
 });
 
 
-const Http = {
+export const Http = {
     get: (url, headers) => doRequest(url, METHODS.GET, headers, null),
     head: (url, headers) => doRequest(url, METHODS.HEAD, headers, null),
     post: (url, headers, data) => doRequest(url, METHODS.POST, headers, data)

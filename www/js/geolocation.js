@@ -3,6 +3,6 @@ const getCurrentPosition = () => new Promise((resolve, reject) => {
     navigator.geolocation.getCurrentPosition(resolve, reject, { timeout });
 });
 
-const Geolocation = {
+export const Geolocation = {
     getCurrentPosition
 };

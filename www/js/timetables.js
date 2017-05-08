@@ -1,3 +1,6 @@
+import { Http } from './http';
+import { Geolocation } from './geolocation';
+
 const http = Object.create(Http);
 const geolocation = Object.create(Geolocation);
 
@@ -53,6 +56,6 @@ const fetchNearbyTimetables = () => fetchCookie()
         .then((position) => getNearbyStopsIds(position.coords.latitude, position.coords.longitude))
         .then((stopsIds) => fetchTimetablesByStopsIds(stopsIds));
 
-const Timetables = {
+export const Timetables = {
     fetchNearbyTimetables
 };

@@ -8,6 +8,6 @@ const create = (tagName, text) => {
     return element;
 }
 
-const DOMHelper = {
+export const DOMHelper = {
     $, $all, create
 };

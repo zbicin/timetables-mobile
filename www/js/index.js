@@ -1,7 +1,11 @@
+import 'core-js';
+import { DOMHelper } from './dom';
+import { Timetables } from './timetables';
+import { Card } from './card';
+
 const dom = Object.create(DOMHelper);
 const timetables = Object.create(Timetables);
 const card = Object.create(Card);
-const modal = Object.create(Modal);
 
 const renderBoards = (boards) => {
     const container = document.querySelector('.cards');
