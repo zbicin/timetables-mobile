@@ -1,3 +1,6 @@
+import reset from '../css/reset.css';
+import style from '../css/style.css'
+
 import 'core-js';
 import { DOMHelper } from './dom';
 import { Timetables } from './timetables';
