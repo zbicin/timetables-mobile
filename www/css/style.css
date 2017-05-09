@@ -69,12 +69,14 @@ body {
 }
 
 .cards {
-    background: #fff;
+    background: #fafafa;
     width: 100%;
 }
 
 .card {
-    border: 1px solid #ccc;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-bottom-width: 2px;
     margin: 10px;
     padding: 8px 10px;
 }
