@@ -42,6 +42,12 @@ const args = [
         '512:512',
         '75%'
     ],
+    [
+        path.join(projectRoot, 'assets', 'chevron.svg'),
+        path.join(projectRoot, 'www', 'img', 'chevron.png'),
+        '128:128',
+        '75%'
+    ],
     ...Object.keys(wp8LabelSizeMap).map(wp8Icon),
     ...Object.keys(androidLabelSizeMap).map(androidIcon),
 ]
