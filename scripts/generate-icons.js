@@ -2,6 +2,7 @@ const path = require('path');
 const svg = require('svgexport');
 const iconOrange = 'icon-orange.svg';
 const iconWhite = 'icon-white.svg';
+const projectRoot = path.join(__dirname, '..');
 
 const androidLabelSizeMap = {
     xxxhdpi: 192,
@@ -13,8 +14,8 @@ const androidLabelSizeMap = {
 };
 
 const androidIcon = (label) => [
-    iconOrange,
-    path.join('www', 'res', 'icon', 'android', `drawable-${label}-icon.png`),
+    path.join(projectRoot, 'assets', iconOrange),
+    path.join(projectRoot, 'www', 'res', 'icon', 'android', `drawable-${label}-icon.png`),
     `${androidLabelSizeMap[label]}:${androidLabelSizeMap[label]}`
 ];
 
@@ -24,20 +25,20 @@ const wp8LabelSizeMap = {
 };
 
 const wp8Icon = (label) => [
-    iconOrange,
-    path.join('www', 'res', 'icon', 'wp8', `${label}.png`),
+    path.join(projectRoot, 'assets', iconOrange),
+    path.join(projectRoot, 'www', 'res', 'icon', 'wp8', `${label}.png`),
     `${wp8LabelSizeMap[label]}:${wp8LabelSizeMap[label]}`
 ]
 
 const args = [
     [
-        iconWhite,
-        path.join('www', 'img', 'splash-icon.png'),
+        path.join(projectRoot, 'assets', iconWhite),
+        path.join(projectRoot, 'www', 'img', 'splash-icon.png'),
         '200:200'
     ],
     [
-        iconOrange,
-        path.join('store-assets', 'icon512.png'),
+        path.join(projectRoot, 'assets', iconOrange),
+        path.join(projectRoot, 'assets', 'icon512.png'),
         '512:512',
         '75%'
     ],

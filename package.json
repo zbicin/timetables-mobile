@@ -6,7 +6,7 @@
   "scripts": {
     "start": "concurrently \"webpack\" \"corsproxy\" \"phonegap serve\"",
     "android": "phonegap run android",
-    "generateIcons": "node generate-icons.js",
+    "generateIcons": "node scripts/generate-icons.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
