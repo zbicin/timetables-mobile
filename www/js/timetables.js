@@ -1,19 +1,12 @@
 import { Http } from './http';
 import { Geolocation } from './geolocation';
+import { Stop } from './stop';
 
 const http = Object.create(Http);
 const geolocation = Object.create(Geolocation);
+const stop = Object.create(Stop);
 
 const fetchCookie = () => http.head('http://rozklady.lodz.pl');
-
-const getNearbyStopsIds = (latitude, longitude) => {
-    const url = `http://tablice-zbicin.rhcloud.com/api/getNearestStops?latitude=${latitude}&longitude=${longitude}`;
-    return http.get(url).then((response) => {
-        const stops = JSON.parse(response.responseText);
-        const stopsIds = stops.map((stop) => stop.id);
-        return Promise.resolve(stopsIds);
-    });
-};
 
 const parseXmlDepartures = (rawXml) => {
     const parser = new DOMParser();
@@ -51,10 +44,13 @@ const fetchTimetablesByStopsIds = (stopIds) => {
     return Promise.all(promises);
 }
 
-const fetchNearbyTimetables = () => fetchCookie()
-        .then(() => geolocation.getCurrentPosition())
-        .then((position) => getNearbyStopsIds(position.coords.latitude, position.coords.longitude))
-        .then((stopsIds) => fetchTimetablesByStopsIds(stopsIds));
+const fetchNearbyTimetables = (limit = 10) => fetchCookie()
+    .then(() => geolocation.getCurrentPosition())
+    .then((position) => stop.getNearest(position.coords.latitude, position.coords.longitude, limit))
+    .then((nearestStopsDistances) => {
+        const extractId = (nearestStopDistance) => nearestStopDistance.id;
+        return Promise.resolve(nearestStopsDistances.map(extractId));
+    }).then((stopsIds) => fetchTimetablesByStopsIds(stopsIds));
 
 export const Timetables = {
     fetchNearbyTimetables
