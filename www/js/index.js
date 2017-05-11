@@ -50,12 +50,18 @@ const animateSplash = () => {
 }
 
 const errorHandler = (e) => {
-    navigator.notification.alert(e.message || e, null, 'Coś poszło nie tak');
+    const errorMessage = e.message || e.code || e;
+    const information = `Nie udało się pobrać danych przystanków w okolicy. Upewnij się, że masz włączone usługi lokalizacji oraz dostęp do Internetu, a następnie uruchom ponownie aplikację. (${errorMessage})`;
+    navigator.notification.alert(information, null, '¯\_(ツ)_/¯');
     console.error(e);
 }
 
 const onInfo = (e) => {
-    navigator.notification.alert('Wygodny klient rozkładów jazdy dostępnych na stronie rozklady.lodz.pl.', null, 'Tablice Przystankowe');
+    const information = 
+`Wygodny klient rozkładów jazdy dostępnych na stronie rozklady.lodz.pl. Aplikacja wyświetla tablice rozkładowe przystanków znajdujących się w okolicy.
+
+Kontakt: tabliceprzystankowe@gmail.com`;
+    navigator.notification.alert(information, null, 'Tablice Przystankowe');
 }
 
 const onDeviceReady = () => {
