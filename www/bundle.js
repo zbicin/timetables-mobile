@@ -96,7 +96,13 @@ var timetables = Object.create(_timetables.Timetables);
 var card = Object.create(_card.Card);
 var refreshHandle = void 0;
 
-/* ui */
+var onError = function onError(e) {
+    var errorMessage = e.message || e.code || e;
+    var information = 'Nie uda\u0142o si\u0119 pobra\u0107 danych przystank\xF3w w okolicy. Upewnij si\u0119, \u017Ce masz w\u0142\u0105czone us\u0142ugi lokalizacji oraz dost\u0119p do Internetu, a nast\u0119pnie uruchom ponownie aplikacj\u0119. (' + errorMessage + ')';
+    navigator.notification.alert(information, null, '¯\\_(ツ)_/¯');
+    console.error(e);
+};
+
 var animateSplash = function animateSplash() {
     var direction = 'up';
     var splash = dom.$('.splash');
@@ -147,16 +153,8 @@ var setupRefresh = function setupRefresh(cardsHandles) {
             boardsData.forEach(function (boardData, index) {
                 return card.update(cardsHandles[index], boardData);
             });
-        });
+        }).catch(onError);
     }, refreshInterval);
-};
-
-/* handlers */
-var onError = function onError(e) {
-    var errorMessage = e.message || e.code || e;
-    var information = 'Nie uda\u0142o si\u0119 pobra\u0107 danych przystank\xF3w w okolicy. Upewnij si\u0119, \u017Ce masz w\u0142\u0105czone us\u0142ugi lokalizacji oraz dost\u0119p do Internetu, a nast\u0119pnie uruchom ponownie aplikacj\u0119. (' + errorMessage + ')';
-    navigator.notification.alert(information, null, '¯\\_(ツ)_/¯');
-    console.error(e);
 };
 
 var onInfo = function onInfo(e) {

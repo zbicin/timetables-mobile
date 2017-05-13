@@ -11,7 +11,13 @@ const timetables = Object.create(Timetables);
 const card = Object.create(Card);
 let refreshHandle;
 
-/* ui */
+const onError = (e) => {
+    const errorMessage = e.message || e.code || e;
+    const information = `Nie udało się pobrać danych przystanków w okolicy. Upewnij się, że masz włączone usługi lokalizacji oraz dostęp do Internetu, a następnie uruchom ponownie aplikację. (${errorMessage})`;
+    navigator.notification.alert(information, null, '¯\\_(ツ)_/¯');
+    console.error(e);
+};
+
 const animateSplash = () => {
     let direction = 'up';
     const splash = dom.$('.splash');
@@ -57,18 +63,9 @@ const setupRefresh = (cardsHandles) => {
         timetables.fetchNearbyTimetables()
             .then((boardsData) => {
                 boardsData.forEach((boardData, index) => card.update(cardsHandles[index], boardData));
-            });
+            }).catch(onError);
     }, refreshInterval);
 };
-
-/* handlers */
-const onError = (e) => {
-    const errorMessage = e.message || e.code || e;
-    const information = `Nie udało się pobrać danych przystanków w okolicy. Upewnij się, że masz włączone usługi lokalizacji oraz dostęp do Internetu, a następnie uruchom ponownie aplikację. (${errorMessage})`;
-    navigator.notification.alert(information, null, '¯\\_(ツ)_/¯');
-    console.error(e);
-};
-
 
 const onInfo = (e) => {
     const information =
