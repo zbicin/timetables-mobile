@@ -96,31 +96,10 @@ var timetables = Object.create(_timetables.Timetables);
 var card = Object.create(_card.Card);
 var refreshHandle = void 0;
 
-var renderBoards = function renderBoards(boards) {
-    var container = document.querySelector('.cards');
-    var fragment = document.createDocumentFragment();
-    var cards = boards.map(card.buildFullCard);
-
-    while (container.firstChild) {
-        container.removeChild(container.firstChild);
-    }
-
-    cards.forEach(function (card) {
-        return fragment.appendChild(card);
-    });
-    container.appendChild(fragment);
-
-    return cards;
-};
-
+/* ui */
 var animateSplash = function animateSplash() {
     var direction = 'up';
     var splash = dom.$('.splash');
-    var transforms = {
-        up: 'translateY(-20px)',
-        down: 'translateY(0px)',
-        out: 'translateY(calc(-100% + 60px))'
-    };
 
     var changeDirection = function changeDirection() {
         if (direction === 'out') {
@@ -143,16 +122,21 @@ var animateSplash = function animateSplash() {
     };
 };
 
-var errorHandler = function errorHandler(e) {
-    var errorMessage = e.message || e.code || e;
-    var information = 'Nie uda\u0142o si\u0119 pobra\u0107 danych przystank\xF3w w okolicy. Upewnij si\u0119, \u017Ce masz w\u0142\u0105czone us\u0142ugi lokalizacji oraz dost\u0119p do Internetu, a nast\u0119pnie uruchom ponownie aplikacj\u0119. (' + errorMessage + ')';
-    navigator.notification.alert(information, null, '¯\\_(ツ)_/¯');
-    console.error(e);
-};
+var renderBoards = function renderBoards(boards) {
+    var container = document.querySelector('.cards');
+    var fragment = document.createDocumentFragment();
+    var cards = boards.map(card.buildFullCard);
 
-var onInfo = function onInfo(e) {
-    var information = 'Wygodny klient rozk\u0142ad\xF3w jazdy dost\u0119pnych na stronie rozklady.lodz.pl. Aplikacja wy\u015Bwietla na \u017Cywo tablice rozk\u0142adowe przystank\xF3w znajduj\u0105cych si\u0119 w okolicy.\n\nKontakt: tabliceprzystankowe@gmail.com';
-    navigator.notification.alert(information, null, 'Tablice Przystankowe');
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
+
+    cards.forEach(function (card) {
+        return fragment.appendChild(card);
+    });
+    container.appendChild(fragment);
+
+    return cards;
 };
 
 var setupRefresh = function setupRefresh(cardsHandles) {
@@ -165,6 +149,19 @@ var setupRefresh = function setupRefresh(cardsHandles) {
             });
         });
     }, refreshInterval);
+};
+
+/* handlers */
+var onError = function onError(e) {
+    var errorMessage = e.message || e.code || e;
+    var information = 'Nie uda\u0142o si\u0119 pobra\u0107 danych przystank\xF3w w okolicy. Upewnij si\u0119, \u017Ce masz w\u0142\u0105czone us\u0142ugi lokalizacji oraz dost\u0119p do Internetu, a nast\u0119pnie uruchom ponownie aplikacj\u0119. (' + errorMessage + ')';
+    navigator.notification.alert(information, null, '¯\\_(ツ)_/¯');
+    console.error(e);
+};
+
+var onInfo = function onInfo(e) {
+    var information = 'Wygodny klient rozk\u0142ad\xF3w jazdy dost\u0119pnych na stronie rozklady.lodz.pl. Aplikacja wy\u015Bwietla na \u017Cywo tablice rozk\u0142adowe przystank\xF3w znajduj\u0105cych si\u0119 w okolicy.\n\nKontakt: tabliceprzystankowe@gmail.com';
+    navigator.notification.alert(information, null, 'Tablice Przystankowe');
 };
 
 var onPause = function onPause() {
@@ -192,7 +189,7 @@ var onDeviceReady = function onDeviceReady() {
         var cardsHandles = renderBoards(boardsData);
         refreshHandle = setupRefresh(cardsHandles);
         stopAnimateSplash();
-    }).catch(errorHandler);
+    }).catch(onError);
 };
 
 document.addEventListener('deviceready', onDeviceReady);

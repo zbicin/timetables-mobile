@@ -11,29 +11,10 @@ const timetables = Object.create(Timetables);
 const card = Object.create(Card);
 let refreshHandle;
 
-const renderBoards = (boards) => {
-    const container = document.querySelector('.cards');
-    const fragment = document.createDocumentFragment();
-    const cards = boards.map(card.buildFullCard);
-
-    while (container.firstChild) {
-        container.removeChild(container.firstChild);
-    }
-
-    cards.forEach((card) => fragment.appendChild(card));
-    container.appendChild(fragment);
-
-    return cards;
-};
-
+/* ui */
 const animateSplash = () => {
     let direction = 'up';
     const splash = dom.$('.splash');
-    const transforms = {
-        up: 'translateY(-20px)',
-        down: 'translateY(0px)',
-        out: 'translateY(calc(-100% + 60px))'
-    }
 
     const changeDirection = () => {
         if (direction === 'out') {
@@ -52,22 +33,22 @@ const animateSplash = () => {
         direction = 'out';
         splash.addEventListener('transitionend', outCallback);
     };
-}
+};
 
-const errorHandler = (e) => {
-    const errorMessage = e.message || e.code || e;
-    const information = `Nie udało się pobrać danych przystanków w okolicy. Upewnij się, że masz włączone usługi lokalizacji oraz dostęp do Internetu, a następnie uruchom ponownie aplikację. (${errorMessage})`;
-    navigator.notification.alert(information, null, '¯\\_(ツ)_/¯');
-    console.error(e);
-}
+const renderBoards = (boards) => {
+    const container = document.querySelector('.cards');
+    const fragment = document.createDocumentFragment();
+    const cards = boards.map(card.buildFullCard);
 
-const onInfo = (e) => {
-    const information =
-        `Wygodny klient rozkładów jazdy dostępnych na stronie rozklady.lodz.pl. Aplikacja wyświetla na żywo tablice rozkładowe przystanków znajdujących się w okolicy.
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
 
-Kontakt: tabliceprzystankowe@gmail.com`;
-    navigator.notification.alert(information, null, 'Tablice Przystankowe');
-}
+    cards.forEach((card) => fragment.appendChild(card));
+    container.appendChild(fragment);
+
+    return cards;
+};
 
 const setupRefresh = (cardsHandles) => {
     const refreshInterval = 30 * 1000;
@@ -78,6 +59,23 @@ const setupRefresh = (cardsHandles) => {
                 boardsData.forEach((boardData, index) => card.update(cardsHandles[index], boardData));
             });
     }, refreshInterval);
+};
+
+/* handlers */
+const onError = (e) => {
+    const errorMessage = e.message || e.code || e;
+    const information = `Nie udało się pobrać danych przystanków w okolicy. Upewnij się, że masz włączone usługi lokalizacji oraz dostęp do Internetu, a następnie uruchom ponownie aplikację. (${errorMessage})`;
+    navigator.notification.alert(information, null, '¯\\_(ツ)_/¯');
+    console.error(e);
+};
+
+
+const onInfo = (e) => {
+    const information =
+        `Wygodny klient rozkładów jazdy dostępnych na stronie rozklady.lodz.pl. Aplikacja wyświetla na żywo tablice rozkładowe przystanków znajdujących się w okolicy.
+
+Kontakt: tabliceprzystankowe@gmail.com`;
+    navigator.notification.alert(information, null, 'Tablice Przystankowe');
 }
 
 const onPause = () => clearInterval(refreshHandle);
@@ -104,7 +102,7 @@ const onDeviceReady = () => {
             const cardsHandles = renderBoards(boardsData);
             refreshHandle = setupRefresh(cardsHandles);
             stopAnimateSplash();
-        }).catch(errorHandler);
+        }).catch(onError);
 };
 
 document.addEventListener('deviceready', onDeviceReady);
