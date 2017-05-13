@@ -52,7 +52,7 @@ const animateSplash = () => {
 const errorHandler = (e) => {
     const errorMessage = e.message || e.code || e;
     const information = `Nie udało się pobrać danych przystanków w okolicy. Upewnij się, że masz włączone usługi lokalizacji oraz dostęp do Internetu, a następnie uruchom ponownie aplikację. (${errorMessage})`;
-    navigator.notification.alert(information, null, '¯\_(ツ)_/¯');
+    navigator.notification.alert(information, null, '¯\\_(ツ)_/¯');
     console.error(e);
 }
 
