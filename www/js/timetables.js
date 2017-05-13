@@ -11,10 +11,12 @@ const fetchCookie = () => http.head('http://rozklady.lodz.pl');
 const parseXmlDepartures = (rawXml) => {
     const parser = new DOMParser();
     const doc = parser.parseFromString(rawXml, 'application/xml');
+    const stop = doc.getElementsByTagName('Stop')[0];
     const result = {
         currentTime: doc.firstElementChild.attributes.time.value,
         departures: [],
-        stopName: doc.getElementsByTagName('Stop')[0].attributes['name'].value
+        stopId: stop.attributes['id'].value,
+        stopName: stop.attributes['name'].value
     };
 
     const rows = doc.getElementsByTagName('R');

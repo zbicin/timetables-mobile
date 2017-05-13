@@ -1,60 +1,83 @@
 import { DOMHelper } from './dom';
 
-export const Card = ((function () {
-    const dom = Object.create(DOMHelper);
+const expandedClassName = 'expanded';
+const dom = Object.create(DOMHelper);
 
-    const createCardHeader = (board) => dom.create('h2', board.stopName);
+const createCardHeader = (board) => dom.create('h2', board.stopName);
 
-    const createCardBody = (board) => {
-        const table = dom.create('table');
-        table.classList.add('timetable');
-        const body = dom.create('tbody');
+const createCardBody = (board) => {
+    const table = dom.create('table');
+    table.classList.add('timetable');
+    const body = dom.create('tbody');
 
-        board.departures.map((departure) => {
-            const row = dom.create('tr');
-            const numberCell = dom.create('td', departure.number);
-            const directionCell = dom.create('td', departure.direction);
-            const timeCell = dom.create('td', departure.time);
+    board.departures.map((departure) => {
+        const row = dom.create('tr');
+        const numberCell = dom.create('td', departure.number);
+        const directionCell = dom.create('td', departure.direction);
+        const timeCell = dom.create('td', departure.time);
 
-            row.appendChild(numberCell);
-            row.appendChild(directionCell);
-            row.appendChild(timeCell);
+        row.appendChild(numberCell);
+        row.appendChild(directionCell);
+        row.appendChild(timeCell);
 
-            return row;
-        }).forEach((row) => {
-            body.appendChild(row);
-        });
+        return row;
+    }).forEach((row) => {
+        body.appendChild(row);
+    });
 
-        table.appendChild(body);
-        return table;
+    table.appendChild(body);
+    return table;
+}
+
+const toggleExpand = (event) => {
+    const target = event.currentTarget;
+
+    if (target.classList.contains(expandedClassName)) {
+        target.classList.remove(expandedClassName);
+    }
+    else {
+        target.classList.add(expandedClassName);
+    }
+};
+
+const buildContents = (boardData) => {
+    const contents = document.createDocumentFragment();
+
+    contents.appendChild(createCardHeader(boardData));
+    contents.appendChild(createCardBody(boardData));
+
+    return contents;
+};
+
+const buildFullCard = (boardData) => {
+    const card = dom.create('div');
+    const contents = buildContents(boardData);
+
+    card.dataset.stopId = boardData.stopId;
+    card.classList.add('card');
+    card.addEventListener('click', toggleExpand);
+    card.appendChild(contents);
+
+    return card;
+};
+
+const update = (card, boardData) => {
+    if (card.dataset.stopId !== boardData.stopId) {
+        card.dataset.stopId = boardData.stopId;
+        card.classList.remove(expandedClassName);
+    }
+    const contents = buildContents(boardData);
+
+    while (card.firstChild) {
+        card.removeChild(card.firstChild);
     }
 
-    const toggleExpand = (event) => {
-        const expandedClassName = 'expanded';
-        const target = event.currentTarget;
+    card.appendChild(contents);
+};
 
-        if(target.classList.contains(expandedClassName)) {
-            target.classList.remove(expandedClassName);
-        }
-        else {
-            target.classList.add(expandedClassName);
-        }
-    }
 
-    const build = (boardData) => {
-        const card = dom.create('div');
-        card.classList.add('card');
-
-        card.appendChild(createCardHeader(boardData));
-        card.appendChild(createCardBody(boardData));
-
-        card.addEventListener('click', toggleExpand);
-
-        return card;
-    }
-
-    return {
-        build
-    };
-})());
-
+export const Card = {
+    buildFullCard,
+    buildContents,
+    update
+};

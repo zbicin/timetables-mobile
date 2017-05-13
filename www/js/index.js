@@ -9,18 +9,22 @@ import { Card } from './card';
 const dom = Object.create(DOMHelper);
 const timetables = Object.create(Timetables);
 const card = Object.create(Card);
+let refreshHandle;
 
 const renderBoards = (boards) => {
     const container = document.querySelector('.cards');
+    const fragment = document.createDocumentFragment();
+    const cards = boards.map(card.buildFullCard);
 
     while (container.firstChild) {
         container.removeChild(container.firstChild);
     }
 
-    boards.map(card.build).forEach((card) => {
-        container.appendChild(card);
-    });
-}
+    cards.forEach((card) => fragment.appendChild(card));
+    container.appendChild(fragment);
+
+    return cards;
+};
 
 const animateSplash = () => {
     let direction = 'up';
@@ -57,12 +61,31 @@ const errorHandler = (e) => {
 }
 
 const onInfo = (e) => {
-    const information = 
-`Wygodny klient rozkładów jazdy dostępnych na stronie rozklady.lodz.pl. Aplikacja wyświetla tablice rozkładowe przystanków znajdujących się w okolicy.
+    const information =
+        `Wygodny klient rozkładów jazdy dostępnych na stronie rozklady.lodz.pl. Aplikacja wyświetla tablice rozkładowe przystanków znajdujących się w okolicy.
 
 Kontakt: tabliceprzystankowe@gmail.com`;
     navigator.notification.alert(information, null, 'Tablice Przystankowe');
 }
+
+const setupRefresh = (cardsHandles) => {
+    const refreshInterval = 30 * 1000;
+
+    return setInterval(() => {
+        timetables.fetchNearbyTimetables()
+            .then((boardsData) => {
+                boardsData.forEach((boardData, index) => card.update(cardsHandles[index], boardData));
+            });
+    }, refreshInterval);
+}
+
+const onPause = () => clearInterval(refreshHandle);
+const onResume = () => {
+    if(!refreshHandle) {
+        const cardsHandles = dom.$all('.card');
+        refreshHandle = setupRefresh(cardsHandles);
+    }
+};
 
 const onDeviceReady = () => {
     if (cordova.platformId == 'android') {
@@ -73,10 +96,13 @@ const onDeviceReady = () => {
 
     dom.$('#menu-info').addEventListener('click', onInfo);
     dom.$('#menu-refresh').addEventListener('click', () => location.reload());
+    document.addEventListener('pause', onPause);
+    document.addEventListener('resume', onResume);
 
     timetables.fetchNearbyTimetables()
-        .then((boards) => {
-            renderBoards(boards);
+        .then((boardsData) => {
+            const cardsHandles = renderBoards(boardsData);
+            refreshHandle = setupRefresh(cardsHandles);
             stopAnimateSplash(() => dom.$('#menu-refresh').classList.remove('hidden'));
         }).catch(errorHandler);
 };
