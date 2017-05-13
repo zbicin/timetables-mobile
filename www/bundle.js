@@ -182,18 +182,13 @@ var onDeviceReady = function onDeviceReady() {
     var stopAnimateSplash = animateSplash();
 
     dom.$('#menu-info').addEventListener('click', onInfo);
-    dom.$('#menu-refresh').addEventListener('click', function () {
-        return location.reload();
-    });
     document.addEventListener('pause', onPause);
     document.addEventListener('resume', onResume);
 
     timetables.fetchNearbyTimetables().then(function (boardsData) {
         var cardsHandles = renderBoards(boardsData);
         refreshHandle = setupRefresh(cardsHandles);
-        stopAnimateSplash(function () {
-            return dom.$('#menu-refresh').classList.remove('hidden');
-        });
+        stopAnimateSplash();
     }).catch(errorHandler);
 };
 

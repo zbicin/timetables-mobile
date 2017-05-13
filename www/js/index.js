@@ -95,7 +95,6 @@ const onDeviceReady = () => {
     const stopAnimateSplash = animateSplash();
 
     dom.$('#menu-info').addEventListener('click', onInfo);
-    dom.$('#menu-refresh').addEventListener('click', () => location.reload());
     document.addEventListener('pause', onPause);
     document.addEventListener('resume', onResume);
 
@@ -103,7 +102,7 @@ const onDeviceReady = () => {
         .then((boardsData) => {
             const cardsHandles = renderBoards(boardsData);
             refreshHandle = setupRefresh(cardsHandles);
-            stopAnimateSplash(() => dom.$('#menu-refresh').classList.remove('hidden'));
+            stopAnimateSplash();
         }).catch(errorHandler);
 };
 
