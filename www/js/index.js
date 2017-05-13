@@ -41,7 +41,8 @@ const animateSplash = () => {
         } else {
             direction = direction === 'down' ? 'up' : 'down';
         }
-        splash.style.transform = transforms[direction];
+        ['down', 'up'].forEach((c) => splash.classList.remove(c));
+        splash.classList.add(direction);
     }
 
     splash.addEventListener('transitionend', changeDirection);

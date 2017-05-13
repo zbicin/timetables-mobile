@@ -62,11 +62,17 @@ body {
     justify-content: center;
     position: fixed;
     top: 0;
-    transform: translateY(-20px);
-    transition: transform 1s;
+    transition: transform 1s ease;
     width: 100%;
     will-change: transform;
     z-index: 2;
+}
+
+.splash.up {transform: translateY(-20px);}
+.splash.down {transform: translateY(0px);}
+.splash.out {
+    transform: translateY(calc(-100% + 60px));
+    transition-timing-function: ease-in;
 }
 
 .cards {
