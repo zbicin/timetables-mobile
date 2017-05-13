@@ -151,7 +151,7 @@ var errorHandler = function errorHandler(e) {
 };
 
 var onInfo = function onInfo(e) {
-    var information = 'Wygodny klient rozk\u0142ad\xF3w jazdy dost\u0119pnych na stronie rozklady.lodz.pl. Aplikacja wy\u015Bwietla tablice rozk\u0142adowe przystank\xF3w znajduj\u0105cych si\u0119 w okolicy.\n\nKontakt: tabliceprzystankowe@gmail.com';
+    var information = 'Wygodny klient rozk\u0142ad\xF3w jazdy dost\u0119pnych na stronie rozklady.lodz.pl. Aplikacja wy\u015Bwietla na \u017Cywo tablice rozk\u0142adowe przystank\xF3w znajduj\u0105cych si\u0119 w okolicy.\n\nKontakt: tabliceprzystankowe@gmail.com';
     navigator.notification.alert(information, null, 'Tablice Przystankowe');
 };
 

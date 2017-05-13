@@ -63,7 +63,7 @@ const errorHandler = (e) => {
 
 const onInfo = (e) => {
     const information =
-        `Wygodny klient rozkładów jazdy dostępnych na stronie rozklady.lodz.pl. Aplikacja wyświetla tablice rozkładowe przystanków znajdujących się w okolicy.
+        `Wygodny klient rozkładów jazdy dostępnych na stronie rozklady.lodz.pl. Aplikacja wyświetla na żywo tablice rozkładowe przystanków znajdujących się w okolicy.
 
 Kontakt: tabliceprzystankowe@gmail.com`;
     navigator.notification.alert(information, null, 'Tablice Przystankowe');
