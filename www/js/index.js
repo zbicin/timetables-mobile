@@ -56,14 +56,17 @@ const renderBoards = (boards) => {
     return cards;
 };
 
+const updateBoards = (boardsData, cardsHandles) => {
+    boardsData.forEach((boardData, index) => card.update(cardsHandles[index], boardData));
+}
+
 const setupRefresh = (cardsHandles) => {
     const refreshInterval = 30 * 1000;
 
     return setInterval(() => {
         timetables.fetchNearbyTimetables()
-            .then((boardsData) => {
-                boardsData.forEach((boardData, index) => card.update(cardsHandles[index], boardData));
-            }).catch(onError);
+            .then((boardsData) => updateBoards(boardsData, cardsHandles))
+            .catch(onError);
     }, refreshInterval);
 };
 
@@ -77,10 +80,12 @@ Kontakt: tabliceprzystankowe@gmail.com`;
 
 const onPause = () => clearInterval(refreshHandle);
 const onResume = () => {
-    if(!refreshHandle) {
+    if (!refreshHandle) {
         const cardsHandles = dom.$all('.card');
         refreshHandle = setupRefresh(cardsHandles);
     }
+    timetables.fetchNearbyTimetables()
+
 };
 
 const onDeviceReady = () => {
