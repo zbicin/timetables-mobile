@@ -61,7 +61,7 @@ const updateBoards = (boardsData, cardsHandles) => {
 }
 
 const setupRefresh = (cardsHandles) => {
-    const refreshInterval = 30 * 1000;
+    const refreshInterval = 15 * 1000;
 
     return setInterval(() => {
         timetables.fetchNearbyTimetables()
