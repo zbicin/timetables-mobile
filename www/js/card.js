@@ -1,6 +1,7 @@
 import { DOMHelper } from './dom';
 
 const expandedClassName = 'expanded';
+const expendableClassName = 'expendable';
 const dom = Object.create(DOMHelper);
 
 const createCardHeader = (board) => dom.create('h2', board.stopName);
@@ -53,6 +54,10 @@ const buildFullCard = (boardData) => {
     const card = dom.create('div');
     const contents = buildContents(boardData);
 
+    if(boardData.departures.length > 4) {
+        card.classList.add(expendableClassName);
+    }
+
     card.dataset.stopId = boardData.stopId;
     card.classList.add('card');
     card.addEventListener('click', toggleExpand);
@@ -62,11 +67,16 @@ const buildFullCard = (boardData) => {
 };
 
 const update = (card, boardData) => {
+    const contents = buildContents(boardData);
+
     if (card.dataset.stopId !== boardData.stopId) {
         card.dataset.stopId = boardData.stopId;
         card.classList.remove(expandedClassName);
     }
-    const contents = buildContents(boardData);
+
+    boardData.departures.length > 4
+        ? card.classList.add(expendableClassName)
+        : card.classList.remove(expendableClassName);
 
     while (card.firstChild) {
         card.removeChild(card.firstChild);
