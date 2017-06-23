@@ -10225,6 +10225,10 @@ var _api = __webpack_require__(92);
 
 var api = Object.create(_api.Api);
 
+var cacheLifespanMs = 7 * 24 * 60 * 60 * 1000;
+var stopsFetchTimestampKey = 'stopsFetchTimestamp';
+var stopsRawDataKey = 'stopsRawData';
+
 var deg2rad = function deg2rad(deg) {
     return deg * (Math.PI / 180);
 };
@@ -10254,8 +10258,25 @@ var parseStops = function parseStops(vectorStop, latitude, longitude) {
     };
 };
 
+var fetchOrRestoreStopsData = function fetchOrRestoreStopsData() {
+    var lastFetchTimestamp = parseInt(localStorage.getItem(stopsFetchTimestampKey), 10);
+    var now = +new Date();
+    var fetchPromise = void 0;
+    if (lastFetchTimestamp && now - lastFetchTimestamp < cacheLifespanMs) {
+        var rawStopsData = localStorage.getItem(stopsRawDataKey);
+        fetchPromise = Promise.resolve(rawStopsData);
+    } else {
+        fetchPromise = api.fetchStopsData().tap(function (rawStopsData) {
+            localStorage.setItem(stopsFetchTimestampKey, now);
+            localStorage.setItem(stopsRawDataKey, rawStopsData);
+        });
+    }
+
+    return fetchPromise;
+};
+
 var getNearest = function getNearest(latitude, longitude, limit) {
-    return api.fetchStopsData().then(function (rawStopsData) {
+    return fetchOrRestoreStopsData().then(function (rawStopsData) {
         var vectorStopsData = JSON.parse(rawStopsData);
         var stopsDistance = vectorStopsData.map(function (v) {
             return parseStops(v, latitude, longitude);

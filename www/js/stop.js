@@ -2,6 +2,10 @@ import { Api } from './api';
 
 const api = Object.create(Api);
 
+const cacheLifespanMs =  7 * 24 * 60 * 60 * 1000;
+const stopsFetchTimestampKey = 'stopsFetchTimestamp';
+const stopsRawDataKey = 'stopsRawData';
+
 const deg2rad = (deg) => {
     return deg * (Math.PI / 180)
 };
@@ -32,21 +36,37 @@ const parseStops = (vectorStop, latitude, longitude) => {
         id: stop.id,
         name: stop.name,
         distance: getDistanceInMeters(latitude, longitude, stop.latitude, stop.longitude).toFixed(2)
+    };
+};
+
+const fetchOrRestoreStopsData = () => {
+    const lastFetchTimestamp = parseInt(localStorage.getItem(stopsFetchTimestampKey), 10);
+    const now = +new Date();
+    let fetchPromise;
+    if (lastFetchTimestamp && now - lastFetchTimestamp < cacheLifespanMs) {
+        const rawStopsData = localStorage.getItem(stopsRawDataKey);
+        fetchPromise = Promise.resolve(rawStopsData);
+    } else {
+        fetchPromise = api.fetchStopsData()
+            .tap((rawStopsData) => {
+                localStorage.setItem(stopsFetchTimestampKey, now);
+                localStorage.setItem(stopsRawDataKey, rawStopsData);
+            });
     }
+
+    return fetchPromise;
 };
 
-const getNearest = (latitude, longitude, limit) => {
-    return api.fetchStopsData()
-        .then((rawStopsData) => {
-            const vectorStopsData = JSON.parse(rawStopsData);
-            const stopsDistance = vectorStopsData
-                .map((v) => parseStops(v, latitude, longitude))
-                .sort((a, b) => a.distance - b.distance);
+const getNearest = (latitude, longitude, limit) => fetchOrRestoreStopsData()
+    .then((rawStopsData) => {
+        const vectorStopsData = JSON.parse(rawStopsData);
+        const stopsDistance = vectorStopsData
+            .map((v) => parseStops(v, latitude, longitude))
+            .sort((a, b) => a.distance - b.distance);
 
-            return stopsDistance.slice(0, limit);
-        });
-};
+        return stopsDistance.slice(0, limit);
+    });
 
 export const Stop = {
     getNearest
-}
+};
