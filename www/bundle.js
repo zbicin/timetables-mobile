@@ -9964,13 +9964,7 @@ var _bluebird = __webpack_require__(46);
 var getCurrentPosition = function getCurrentPosition() {
     return new _bluebird.Promise(function (resolve, reject) {
         var timeout = 10000;
-        //navigator.geolocation.getCurrentPosition(resolve, reject, { timeout });
-        resolve({
-            coords: {
-                latitude: 0,
-                longitude: 0
-            }
-        });
+        navigator.geolocation.getCurrentPosition(resolve, reject, { timeout: timeout });
     });
 };
 
