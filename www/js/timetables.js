@@ -2,6 +2,8 @@ import { Http } from './http';
 import { Geolocation } from './geolocation';
 import { Stop } from './stop';
 
+import { Promise } from 'bluebird';
+
 const http = Object.create(Http);
 const geolocation = Object.create(Geolocation);
 const stop = Object.create(Stop);

@@ -1,3 +1,5 @@
+import { Promise } from 'bluebird';
+
 const METHODS = {
     GET: 'GET',
     POST: 'POST',
@@ -11,7 +13,7 @@ const doRequest = (url, method = METHODS.GET, headers = {}, data = null) => new 
     const request = new XMLHttpRequest();
     request.withCredentials = true;
 
-    if(isLocalBrowser) {
+    if (isLocalBrowser) {
         url = url.replace('https://', '').replace('http://', '');
         url = localProxyAddress + url;
     }
@@ -30,6 +32,7 @@ const doRequest = (url, method = METHODS.GET, headers = {}, data = null) => new 
     };
 
     request.open(method, url, isAsync);
+    Object.keys(headers).forEach((key) => request.setRequestHeader(key, headers[key]));
     request.send(data);
 });
 

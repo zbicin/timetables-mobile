@@ -36,9 +36,12 @@ body {
 }
 
 .menu {
+    background: #ff9912;
     height: 60px;
+    left: 0;
     position: fixed;
     right: 0;
+    text-align: right;
     top: 0;
     z-index: 3;
 }
@@ -46,8 +49,14 @@ body {
 .menu img {
     cursor: pointer;
     height: 32px;
-    margin: 14px 14px 14px 0;
+    margin: 14px;
     transition: opacity 0.1s ease-out;
+}
+
+.menu span {
+    color: #fff;
+    line-height: 60px;
+    vertical-align: top;
 }
 
 .menu img:active {

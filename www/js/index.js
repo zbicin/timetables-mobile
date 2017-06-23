@@ -6,9 +6,15 @@ import { DOMHelper } from './dom';
 import { Timetables } from './timetables';
 import { Card } from './card';
 
+import { Promise } from 'bluebird';
+Promise.config({
+    cancellation: true
+});
+
 const dom = Object.create(DOMHelper);
 const timetables = Object.create(Timetables);
 const card = Object.create(Card);
+const pendingPromises = new Set();
 let refreshHandle;
 
 const onError = (e) => {
@@ -41,6 +47,39 @@ const animateSplash = () => {
     };
 };
 
+const formatTime = (date) => {
+    const twoDigits = (input) => input < 10 ? '0' + input : '' + input;
+    return [date.getHours(), date.getMinutes(), date.getSeconds()]
+        .map((segment) => segment < 10 ? '0' + segment : '' + segment)
+        .join(':');
+}
+
+const refreshView = (onRefresh) => {
+    const promise = timetables.fetchNearbyTimetables()
+        .then((boardsData) => {
+            pendingPromises.delete(promise);
+
+            let cardsHandles = dom.$all('.card');
+            if (cardsHandles.length === 0) {
+                cardsHandles = renderBoards(boardsData);
+            }
+            else {
+                updateBoards(boardsData, cardsHandles);
+            }
+            if (!refreshHandle) {
+                refreshHandle = setupRefresh(cardsHandles);
+            }
+            dom.$('.menu span').innerText = `Ostatnia aktualizacja danych: ${formatTime(new Date())}.`;
+            if (onRefresh) {
+                onRefresh();
+            }
+        }).catch((error) => {
+            pendingPromises.delete(promise);
+            onError(error);
+        });
+    pendingPromises.add(promise);
+}
+
 const renderBoards = (boards) => {
     const container = document.querySelector('.cards');
     const fragment = document.createDocumentFragment();
@@ -63,11 +102,7 @@ const updateBoards = (boardsData, cardsHandles) => {
 const setupRefresh = (cardsHandles) => {
     const refreshInterval = 15 * 1000;
 
-    return setInterval(() => {
-        timetables.fetchNearbyTimetables()
-            .then((boardsData) => updateBoards(boardsData, cardsHandles))
-            .catch(onError);
-    }, refreshInterval);
+    return setInterval(refreshView, refreshInterval);
 };
 
 const onInfo = (e) => {
@@ -78,14 +113,13 @@ Kontakt: tabliceprzystankowe@gmail.com`;
     navigator.notification.alert(information, null, 'Tablice Przystankowe');
 }
 
-const onPause = () => clearInterval(refreshHandle);
+const onPause = () => {
+    clearInterval(refreshHandle);
+    pendingPromises.forEach((p) => p.cancel());
+    pendingPromises.clear();
+};
 const onResume = () => {
-    if (!refreshHandle) {
-        const cardsHandles = dom.$all('.card');
-        refreshHandle = setupRefresh(cardsHandles);
-    }
-    timetables.fetchNearbyTimetables()
-
+    refreshView();
 };
 
 const onDeviceReady = () => {
@@ -99,12 +133,7 @@ const onDeviceReady = () => {
     document.addEventListener('pause', onPause);
     document.addEventListener('resume', onResume);
 
-    timetables.fetchNearbyTimetables()
-        .then((boardsData) => {
-            const cardsHandles = renderBoards(boardsData);
-            refreshHandle = setupRefresh(cardsHandles);
-            stopAnimateSplash();
-        }).catch(onError);
+    refreshView(stopAnimateSplash);
 };
 
 document.addEventListener('deviceready', onDeviceReady);
