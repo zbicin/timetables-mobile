@@ -1,14 +1,12 @@
-import { Http } from './http';
+import { Api } from './api';
 import { Geolocation } from './geolocation';
 import { Stop } from './stop';
 
 import { Promise } from 'bluebird';
 
-const http = Object.create(Http);
+const api = Object.create(Api);
 const geolocation = Object.create(Geolocation);
 const stop = Object.create(Stop);
-
-const fetchCookie = () => http.head('http://rozklady.lodz.pl');
 
 const parseXmlDepartures = (rawXml) => {
     const parser = new DOMParser();
@@ -34,27 +32,13 @@ const parseXmlDepartures = (rawXml) => {
     }
 
     return result;
-}
+};
 
-const fetchTimetablesByStopsIds = (stopIds) => {
-    const promises = stopIds.map((stopId) => {
-        return http.get(`http://rozklady.lodz.pl/Home/GetTimetableReal?busStopId=${stopId}`)
-            .then((response) => {
-                const parsed = parseXmlDepartures(response.responseText);
-                return Promise.resolve(parsed);
-            });
-    });
-
-    return Promise.all(promises);
-}
-
-const fetchNearbyTimetables = (limit = 10) => fetchCookie()
-    .then(() => geolocation.getCurrentPosition())
+const fetchNearbyTimetables = (limit = 10) => geolocation.getCurrentPosition()
     .then((position) => stop.getNearest(position.coords.latitude, position.coords.longitude, limit))
-    .then((nearestStopsDistances) => {
-        const extractId = (nearestStopDistance) => nearestStopDistance.id;
-        return Promise.resolve(nearestStopsDistances.map(extractId));
-    }).then((stopsIds) => fetchTimetablesByStopsIds(stopsIds));
+    .then((nearestStopsDistances) => nearestStopsDistances.map((s) => s.id))
+    .then((stopsIds) => api.fetchTimetablesByStopsIds(stopsIds))
+    .then((responses) => responses.map(parseXmlDepartures));
 
 export const Timetables = {
     fetchNearbyTimetables

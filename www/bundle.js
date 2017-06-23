@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 132);
+/******/ 	return __webpack_require__(__webpack_require__.s = 133);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -174,7 +174,7 @@ $exports.store = store;
 /***/ (function(module, exports, __webpack_require__) {
 
 var anObject       = __webpack_require__(1)
-  , IE8_DOM_DEFINE = __webpack_require__(100)
+  , IE8_DOM_DEFINE = __webpack_require__(101)
   , toPrimitive    = __webpack_require__(25)
   , dP             = Object.defineProperty;
 
@@ -234,7 +234,7 @@ module.exports = function(it, key){
 /***/ (function(module, exports, __webpack_require__) {
 
 // to indexed object, toObject with fallback for non-array-like ES3 strings
-var IObject = __webpack_require__(46)
+var IObject = __webpack_require__(47)
   , defined = __webpack_require__(20);
 module.exports = function(it){
   return IObject(defined(it));
@@ -273,12 +273,12 @@ module.exports = __webpack_require__(7) ? function(object, key, value){
 /* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var pIE            = __webpack_require__(47)
+var pIE            = __webpack_require__(48)
   , createDesc     = __webpack_require__(28)
   , toIObject      = __webpack_require__(11)
   , toPrimitive    = __webpack_require__(25)
   , has            = __webpack_require__(10)
-  , IE8_DOM_DEFINE = __webpack_require__(100)
+  , IE8_DOM_DEFINE = __webpack_require__(101)
   , gOPD           = Object.getOwnPropertyDescriptor;
 
 exports.f = __webpack_require__(7) ? gOPD : function getOwnPropertyDescriptor(O, P){
@@ -413,10 +413,10 @@ module.exports = function(method, arg){
 // 5 -> Array#find
 // 6 -> Array#findIndex
 var ctx      = __webpack_require__(23)
-  , IObject  = __webpack_require__(46)
+  , IObject  = __webpack_require__(47)
   , toObject = __webpack_require__(9)
   , toLength = __webpack_require__(8)
-  , asc      = __webpack_require__(135);
+  , asc      = __webpack_require__(136);
 module.exports = function(TYPE, $create){
   var IS_MAP        = TYPE == 1
     , IS_FILTER     = TYPE == 2
@@ -511,10 +511,10 @@ module.exports = function(it, S){
 /* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Map     = __webpack_require__(117)
+var Map     = __webpack_require__(118)
   , $export = __webpack_require__(0)
   , shared  = __webpack_require__(61)('metadata')
-  , store   = shared.store || (shared.store = new (__webpack_require__(120)));
+  , store   = shared.store || (shared.store = new (__webpack_require__(121)));
 
 var getOrCreateMetadataMap = function(target, targetKey, create){
   var targetMetadata = store.get(target);
@@ -569,7 +569,7 @@ module.exports = {
 
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 var anObject    = __webpack_require__(1)
-  , dPs         = __webpack_require__(106)
+  , dPs         = __webpack_require__(107)
   , enumBugKeys = __webpack_require__(66)
   , IE_PROTO    = __webpack_require__(81)('IE_PROTO')
   , Empty       = function(){ /* empty */ }
@@ -646,7 +646,7 @@ if(__webpack_require__(7)){
     , toIndex             = __webpack_require__(41)
     , toPrimitive         = __webpack_require__(25)
     , has                 = __webpack_require__(10)
-    , same                = __webpack_require__(113)
+    , same                = __webpack_require__(114)
     , classof             = __webpack_require__(34)
     , isObject            = __webpack_require__(4)
     , toObject            = __webpack_require__(9)
@@ -654,7 +654,7 @@ if(__webpack_require__(7)){
     , create              = __webpack_require__(27)
     , getPrototypeOf      = __webpack_require__(16)
     , gOPN                = __webpack_require__(38).f
-    , getIterFn           = __webpack_require__(48)
+    , getIterFn           = __webpack_require__(49)
     , uid                 = __webpack_require__(42)
     , wks                 = __webpack_require__(5)
     , createArrayMethod   = __webpack_require__(22)
@@ -665,7 +665,7 @@ if(__webpack_require__(7)){
     , $iterDetect         = __webpack_require__(58)
     , setSpecies          = __webpack_require__(40)
     , arrayFill           = __webpack_require__(63)
-    , arrayCopyWithin     = __webpack_require__(93)
+    , arrayCopyWithin     = __webpack_require__(94)
     , $DP                 = __webpack_require__(6)
     , $GOPD               = __webpack_require__(15)
     , dP                  = $DP.f
@@ -1171,7 +1171,7 @@ var meta = module.exports = {
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.14 / 15.2.3.14 Object.keys(O)
-var $keys       = __webpack_require__(108)
+var $keys       = __webpack_require__(109)
   , enumBugKeys = __webpack_require__(66);
 
 module.exports = Object.keys || function keys(O){
@@ -1232,11 +1232,11 @@ module.exports = function(it){
 /***/ (function(module, exports, __webpack_require__) {
 
 var ctx         = __webpack_require__(23)
-  , call        = __webpack_require__(102)
+  , call        = __webpack_require__(103)
   , isArrayIter = __webpack_require__(70)
   , anObject    = __webpack_require__(1)
   , toLength    = __webpack_require__(8)
-  , getIterFn   = __webpack_require__(48)
+  , getIterFn   = __webpack_require__(49)
   , BREAK       = {}
   , RETURN      = {};
 var exports = module.exports = function(iterable, entries, fn, that, ITERATOR){
@@ -1274,7 +1274,7 @@ module.exports = false;
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
-var $keys      = __webpack_require__(108)
+var $keys      = __webpack_require__(109)
   , hiddenKeys = __webpack_require__(66).concat('length', 'prototype');
 
 exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O){
@@ -1393,35 +1393,6 @@ module.exports = exporter;
 
 /***/ }),
 /* 46 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// fallback for non-array-like ES3 and non-enumerable old V8 strings
-var cof = __webpack_require__(19);
-module.exports = Object('z').propertyIsEnumerable(0) ? Object : function(it){
-  return cof(it) == 'String' ? it.split('') : Object(it);
-};
-
-/***/ }),
-/* 47 */
-/***/ (function(module, exports) {
-
-exports.f = {}.propertyIsEnumerable;
-
-/***/ }),
-/* 48 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var classof   = __webpack_require__(34)
-  , ITERATOR  = __webpack_require__(5)('iterator')
-  , Iterators = __webpack_require__(36);
-module.exports = __webpack_require__(13).getIteratorMethod = function(it){
-  if(it != undefined)return it[ITERATOR]
-    || it['@@iterator']
-    || Iterators[classof(it)];
-};
-
-/***/ }),
-/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(process, global, setImmediate) {/* @preserve
@@ -7043,7 +7014,36 @@ module.exports = ret;
 
 },{"./es5":13}]},{},[4])(4)
 });                    ;if (typeof window !== 'undefined' && window !== null) {                               window.P = window.Promise;                                                     } else if (typeof self !== 'undefined' && self !== null) {                             self.P = self.Promise;                                                         }
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(122), __webpack_require__(124), __webpack_require__(325).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(123), __webpack_require__(125), __webpack_require__(326).setImmediate))
+
+/***/ }),
+/* 47 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// fallback for non-array-like ES3 and non-enumerable old V8 strings
+var cof = __webpack_require__(19);
+module.exports = Object('z').propertyIsEnumerable(0) ? Object : function(it){
+  return cof(it) == 'String' ? it.split('') : Object(it);
+};
+
+/***/ }),
+/* 48 */
+/***/ (function(module, exports) {
+
+exports.f = {}.propertyIsEnumerable;
+
+/***/ }),
+/* 49 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var classof   = __webpack_require__(34)
+  , ITERATOR  = __webpack_require__(5)('iterator')
+  , Iterators = __webpack_require__(36);
+module.exports = __webpack_require__(13).getIteratorMethod = function(it){
+  if(it != undefined)return it[ITERATOR]
+    || it['@@iterator']
+    || Iterators[classof(it)];
+};
 
 /***/ }),
 /* 50 */
@@ -7659,9 +7659,9 @@ module.exports = function(){
 // 19.1.2.1 Object.assign(target, source, ...)
 var getKeys  = __webpack_require__(31)
   , gOPS     = __webpack_require__(60)
-  , pIE      = __webpack_require__(47)
+  , pIE      = __webpack_require__(48)
   , toObject = __webpack_require__(9)
-  , IObject  = __webpack_require__(46)
+  , IObject  = __webpack_require__(47)
   , $assign  = Object.assign;
 
 // should work with symbols and should have deterministic property order (V8 bug)
@@ -7710,7 +7710,7 @@ module.exports = Reflect && Reflect.ownKeys || function ownKeys(it){
 
 "use strict";
 
-var path      = __webpack_require__(112)
+var path      = __webpack_require__(113)
   , invoke    = __webpack_require__(54)
   , aFunction = __webpack_require__(12);
 module.exports = function(/* ...pargs */){
@@ -8225,7 +8225,7 @@ exports[DATA_VIEW] = $DataView;
 var global         = __webpack_require__(2)
   , core           = __webpack_require__(13)
   , LIBRARY        = __webpack_require__(37)
-  , wksExt         = __webpack_require__(115)
+  , wksExt         = __webpack_require__(116)
   , defineProperty = __webpack_require__(6).f;
 module.exports = function(name){
   var $Symbol = core.Symbol || (core.Symbol = LIBRARY ? {} : global.Symbol || {});
@@ -8304,6 +8304,64 @@ var DOMHelper = exports.DOMHelper = {
 /* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.Api = undefined;
+
+var _http = __webpack_require__(132);
+
+var _bluebird = __webpack_require__(46);
+
+var apiUrlBase = 'http://rozklady.lodz.pl';
+var http = Object.create(_http.Http);
+
+var hasCookie = false;
+
+var fetchCookie = function fetchCookie() {
+    if (hasCookie) {
+        return _bluebird.Promise.resolve();
+    } else {
+        return http.head(apiUrlBase).tap(function () {
+            return hasCookie = true;
+        });
+    }
+};
+
+var fetchStopsData = function fetchStopsData() {
+    return fetchCookie().then(function () {
+        return http.post(apiUrlBase + '/Home/GetMapBusStopList');
+    }).then(function (response) {
+        return response.responseText;
+    });
+};
+
+var fetchTimetablesByStopsIds = function fetchTimetablesByStopsIds(stopIds) {
+    var promises = stopIds.map(function (stopId) {
+        return http.get(apiUrlBase + '/Home/GetTimetableReal?busStopId=' + stopId);
+    });
+
+    return fetchCookie().then(function () {
+        return _bluebird.Promise.all(promises);
+    }).then(function (responses) {
+        return responses.map(function (r) {
+            return r.responseText;
+        });
+    });
+};
+
+var Api = exports.Api = {
+    fetchStopsData: fetchStopsData,
+    fetchTimetablesByStopsIds: fetchTimetablesByStopsIds
+};
+
+/***/ }),
+/* 93 */
+/***/ (function(module, exports, __webpack_require__) {
+
 var cof = __webpack_require__(19);
 module.exports = function(it, msg){
   if(typeof it != 'number' && cof(it) != 'Number')throw TypeError(msg);
@@ -8311,7 +8369,7 @@ module.exports = function(it, msg){
 };
 
 /***/ }),
-/* 93 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8343,7 +8401,7 @@ module.exports = [].copyWithin || function copyWithin(target/*= 0*/, start/*= 0,
 };
 
 /***/ }),
-/* 94 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var forOf = __webpack_require__(35);
@@ -8356,12 +8414,12 @@ module.exports = function(iter, ITERATOR){
 
 
 /***/ }),
-/* 95 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var aFunction = __webpack_require__(12)
   , toObject  = __webpack_require__(9)
-  , IObject   = __webpack_require__(46)
+  , IObject   = __webpack_require__(47)
   , toLength  = __webpack_require__(8);
 
 module.exports = function(that, callbackfn, aLen, memo, isRight){
@@ -8389,7 +8447,7 @@ module.exports = function(that, callbackfn, aLen, memo, isRight){
 };
 
 /***/ }),
-/* 96 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8419,7 +8477,7 @@ module.exports = Function.bind || function bind(that /*, args... */){
 };
 
 /***/ }),
-/* 97 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8567,12 +8625,12 @@ module.exports = {
 };
 
 /***/ }),
-/* 98 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/DavidBruant/Map-Set.prototype.toJSON
 var classof = __webpack_require__(34)
-  , from    = __webpack_require__(94);
+  , from    = __webpack_require__(95);
 module.exports = function(NAME){
   return function toJSON(){
     if(classof(this) != NAME)throw TypeError(NAME + "#toJSON isn't generic");
@@ -8581,7 +8639,7 @@ module.exports = function(NAME){
 };
 
 /***/ }),
-/* 99 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8670,7 +8728,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 100 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = !__webpack_require__(7) && !__webpack_require__(3)(function(){
@@ -8678,7 +8736,7 @@ module.exports = !__webpack_require__(7) && !__webpack_require__(3)(function(){
 });
 
 /***/ }),
-/* 101 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.1.2.3 Number.isInteger(number)
@@ -8689,7 +8747,7 @@ module.exports = function isInteger(it){
 };
 
 /***/ }),
-/* 102 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // call something on iterator step with safe closing on error
@@ -8706,7 +8764,7 @@ module.exports = function(iterator, fn, value, entries){
 };
 
 /***/ }),
-/* 103 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getKeys   = __webpack_require__(31)
@@ -8721,7 +8779,7 @@ module.exports = function(object, el){
 };
 
 /***/ }),
-/* 104 */
+/* 105 */
 /***/ (function(module, exports) {
 
 // 20.2.2.20 Math.log1p(x)
@@ -8730,7 +8788,7 @@ module.exports = Math.log1p || function log1p(x){
 };
 
 /***/ }),
-/* 105 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var dP        = __webpack_require__(6)
@@ -8747,7 +8805,7 @@ module.exports = function define(target, mixin){
 };
 
 /***/ }),
-/* 106 */
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var dP       = __webpack_require__(6)
@@ -8765,7 +8823,7 @@ module.exports = __webpack_require__(7) ? Object.defineProperties : function def
 };
 
 /***/ }),
-/* 107 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // fallback for IE11 buggy Object.getOwnPropertyNames with iframe and window
@@ -8790,7 +8848,7 @@ module.exports.f = function getOwnPropertyNames(it){
 
 
 /***/ }),
-/* 108 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var has          = __webpack_require__(10)
@@ -8812,12 +8870,12 @@ module.exports = function(object, names){
 };
 
 /***/ }),
-/* 109 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getKeys   = __webpack_require__(31)
   , toIObject = __webpack_require__(11)
-  , isEnum    = __webpack_require__(47).f;
+  , isEnum    = __webpack_require__(48).f;
 module.exports = function(isEntries){
   return function(it){
     var O      = toIObject(it)
@@ -8833,7 +8891,7 @@ module.exports = function(isEntries){
 };
 
 /***/ }),
-/* 110 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $parseFloat = __webpack_require__(2).parseFloat
@@ -8846,7 +8904,7 @@ module.exports = 1 / $parseFloat(__webpack_require__(86) + '-0') !== -Infinity ?
 } : $parseFloat;
 
 /***/ }),
-/* 111 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $parseInt = __webpack_require__(2).parseInt
@@ -8860,13 +8918,13 @@ module.exports = $parseInt(ws + '08') !== 8 || $parseInt(ws + '0x16') !== 22 ? f
 } : $parseInt;
 
 /***/ }),
-/* 112 */
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(2);
 
 /***/ }),
-/* 113 */
+/* 114 */
 /***/ (function(module, exports) {
 
 // 7.2.9 SameValue(x, y)
@@ -8875,7 +8933,7 @@ module.exports = Object.is || function is(x, y){
 };
 
 /***/ }),
-/* 114 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/tc39/proposal-string-pad-start-end
@@ -8897,13 +8955,13 @@ module.exports = function(that, maxLength, fillString, left){
 
 
 /***/ }),
-/* 115 */
+/* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports.f = __webpack_require__(5);
 
 /***/ }),
-/* 116 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var classof   = __webpack_require__(34)
@@ -8917,12 +8975,12 @@ module.exports = __webpack_require__(13).isIterable = function(it){
 };
 
 /***/ }),
-/* 117 */
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var strong = __webpack_require__(97);
+var strong = __webpack_require__(98);
 
 // 23.1 Map Objects
 module.exports = __webpack_require__(51)('Map', function(get){
@@ -8940,7 +8998,7 @@ module.exports = __webpack_require__(51)('Map', function(get){
 }, strong, true);
 
 /***/ }),
-/* 118 */
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 21.2.5.3 get RegExp.prototype.flags()
@@ -8950,12 +9008,12 @@ if(__webpack_require__(7) && /./g.flags != 'g')__webpack_require__(6).f(RegExp.p
 });
 
 /***/ }),
-/* 119 */
+/* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var strong = __webpack_require__(97);
+var strong = __webpack_require__(98);
 
 // 23.2 Set Objects
 module.exports = __webpack_require__(51)('Set', function(get){
@@ -8968,7 +9026,7 @@ module.exports = __webpack_require__(51)('Set', function(get){
 }, strong);
 
 /***/ }),
-/* 120 */
+/* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8977,7 +9035,7 @@ var each         = __webpack_require__(22)(0)
   , redefine     = __webpack_require__(17)
   , meta         = __webpack_require__(30)
   , assign       = __webpack_require__(76)
-  , weak         = __webpack_require__(99)
+  , weak         = __webpack_require__(100)
   , isObject     = __webpack_require__(4)
   , getWeak      = meta.getWeak
   , isExtensible = Object.isExtensible
@@ -9030,7 +9088,7 @@ if(new $WeakMap().set((Object.freeze || Object)(tmp), 7).get(tmp) != 7){
 }
 
 /***/ }),
-/* 121 */
+/* 122 */
 /***/ (function(module, exports) {
 
 /*
@@ -9112,7 +9170,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 122 */
+/* 123 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -9302,7 +9360,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 123 */
+/* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -9339,7 +9397,7 @@ var stylesInDom = {},
 	singletonElement = null,
 	singletonCounter = 0,
 	styleElementsInsertedAtTop = [],
-	fixUrls = __webpack_require__(324);
+	fixUrls = __webpack_require__(325);
 
 module.exports = function(list, options) {
 	if(typeof DEBUG !== "undefined" && DEBUG) {
@@ -9615,7 +9673,7 @@ function updateLink(linkElement, options, obj) {
 
 
 /***/ }),
-/* 124 */
+/* 125 */
 /***/ (function(module, exports) {
 
 var g;
@@ -9642,7 +9700,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 125 */
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9738,7 +9796,7 @@ var Card = exports.Card = {
 };
 
 /***/ }),
-/* 126 */
+/* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9749,21 +9807,17 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Timetables = undefined;
 
-var _http = __webpack_require__(131);
+var _api = __webpack_require__(92);
 
-var _geolocation = __webpack_require__(130);
+var _geolocation = __webpack_require__(131);
 
-var _stop = __webpack_require__(133);
+var _stop = __webpack_require__(134);
 
-var _bluebird = __webpack_require__(49);
+var _bluebird = __webpack_require__(46);
 
-var http = Object.create(_http.Http);
+var api = Object.create(_api.Api);
 var geolocation = Object.create(_geolocation.Geolocation);
 var stop = Object.create(_stop.Stop);
-
-var fetchCookie = function fetchCookie() {
-    return http.head('http://rozklady.lodz.pl');
-};
 
 var parseXmlDepartures = function parseXmlDepartures(rawXml) {
     var parser = new DOMParser();
@@ -9791,30 +9845,18 @@ var parseXmlDepartures = function parseXmlDepartures(rawXml) {
     return result;
 };
 
-var fetchTimetablesByStopsIds = function fetchTimetablesByStopsIds(stopIds) {
-    var promises = stopIds.map(function (stopId) {
-        return http.get('http://rozklady.lodz.pl/Home/GetTimetableReal?busStopId=' + stopId).then(function (response) {
-            var parsed = parseXmlDepartures(response.responseText);
-            return _bluebird.Promise.resolve(parsed);
-        });
-    });
-
-    return _bluebird.Promise.all(promises);
-};
-
 var fetchNearbyTimetables = function fetchNearbyTimetables() {
     var limit = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 10;
-    return fetchCookie().then(function () {
-        return geolocation.getCurrentPosition();
-    }).then(function (position) {
+    return geolocation.getCurrentPosition().then(function (position) {
         return stop.getNearest(position.coords.latitude, position.coords.longitude, limit);
     }).then(function (nearestStopsDistances) {
-        var extractId = function extractId(nearestStopDistance) {
-            return nearestStopDistance.id;
-        };
-        return _bluebird.Promise.resolve(nearestStopsDistances.map(extractId));
+        return nearestStopsDistances.map(function (s) {
+            return s.id;
+        });
     }).then(function (stopsIds) {
-        return fetchTimetablesByStopsIds(stopsIds);
+        return api.fetchTimetablesByStopsIds(stopsIds);
+    }).then(function (responses) {
+        return responses.map(parseXmlDepartures);
     });
 };
 
@@ -9823,56 +9865,25 @@ var Timetables = exports.Timetables = {
 };
 
 /***/ }),
-/* 127 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(320);
-__webpack_require__(139);
-__webpack_require__(48);
-__webpack_require__(141);
-__webpack_require__(116);
-__webpack_require__(138);
-__webpack_require__(140);
-__webpack_require__(145);
-__webpack_require__(143);
-__webpack_require__(144);
-__webpack_require__(146);
-__webpack_require__(142);
-__webpack_require__(147);
-__webpack_require__(148);
-__webpack_require__(149);
-module.exports = __webpack_require__(13);
-
-/***/ }),
 /* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(321);
-if(typeof content === 'string') content = [[module.i, content, '']];
-// Prepare cssTransformation
-var transform;
-
-var options = {}
-options.transform = transform
-// add the styles to the DOM
-var update = __webpack_require__(123)(content, options);
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {
-	// When the styles change, update the <style> tags
-	if(!content.locals) {
-		module.hot.accept("!!../../node_modules/css-loader/index.js!./reset.css", function() {
-			var newContent = require("!!../../node_modules/css-loader/index.js!./reset.css");
-			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-			update(newContent);
-		});
-	}
-	// When the module is disposed, remove the <style> tags
-	module.hot.dispose(function() { update(); });
-}
+__webpack_require__(321);
+__webpack_require__(140);
+__webpack_require__(49);
+__webpack_require__(142);
+__webpack_require__(117);
+__webpack_require__(139);
+__webpack_require__(141);
+__webpack_require__(146);
+__webpack_require__(144);
+__webpack_require__(145);
+__webpack_require__(147);
+__webpack_require__(143);
+__webpack_require__(148);
+__webpack_require__(149);
+__webpack_require__(150);
+module.exports = __webpack_require__(13);
 
 /***/ }),
 /* 129 */
@@ -9889,7 +9900,38 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(123)(content, options);
+var update = __webpack_require__(124)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../node_modules/css-loader/index.js!./reset.css", function() {
+			var newContent = require("!!../../node_modules/css-loader/index.js!./reset.css");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 130 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(323);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(124)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -9906,7 +9948,7 @@ if(false) {
 }
 
 /***/ }),
-/* 130 */
+/* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9917,12 +9959,18 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Geolocation = undefined;
 
-var _bluebird = __webpack_require__(49);
+var _bluebird = __webpack_require__(46);
 
 var getCurrentPosition = function getCurrentPosition() {
     return new _bluebird.Promise(function (resolve, reject) {
         var timeout = 10000;
-        navigator.geolocation.getCurrentPosition(resolve, reject, { timeout: timeout });
+        //navigator.geolocation.getCurrentPosition(resolve, reject, { timeout });
+        resolve({
+            coords: {
+                latitude: 0,
+                longitude: 0
+            }
+        });
     });
 };
 
@@ -9931,7 +9979,7 @@ var Geolocation = exports.Geolocation = {
 };
 
 /***/ }),
-/* 131 */
+/* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9942,7 +9990,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Http = undefined;
 
-var _bluebird = __webpack_require__(49);
+var _bluebird = __webpack_require__(46);
 
 var METHODS = {
     GET: 'GET',
@@ -9999,29 +10047,29 @@ var Http = exports.Http = {
 };
 
 /***/ }),
-/* 132 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _reset = __webpack_require__(128);
+var _reset = __webpack_require__(129);
 
 var _reset2 = _interopRequireDefault(_reset);
 
-var _style = __webpack_require__(129);
+var _style = __webpack_require__(130);
 
 var _style2 = _interopRequireDefault(_style);
 
-__webpack_require__(127);
+__webpack_require__(128);
 
 var _dom = __webpack_require__(91);
 
-var _timetables = __webpack_require__(126);
+var _timetables = __webpack_require__(127);
 
-var _card = __webpack_require__(125);
+var _card = __webpack_require__(126);
 
-var _bluebird = __webpack_require__(49);
+var _bluebird = __webpack_require__(46);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -10162,7 +10210,7 @@ var onDeviceReady = function onDeviceReady() {
 document.addEventListener('deviceready', onDeviceReady);
 
 /***/ }),
-/* 133 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10173,11 +10221,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Stop = undefined;
 
-var _stopsData = __webpack_require__(328);
+var _api = __webpack_require__(92);
 
-var _stopsData2 = _interopRequireDefault(_stopsData);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var api = Object.create(_api.Api);
 
 var deg2rad = function deg2rad(deg) {
     return deg * (Math.PI / 180);
@@ -10193,18 +10239,32 @@ var getDistanceInMeters = function getDistanceInMeters(lat1, lon1, lat2, lon2) {
     return d;
 };
 
-var getNearest = function getNearest(latitude, longitude, limit) {
-    var stopsDistance = _stopsData2.default.map(function (stop) {
-        return {
-            id: stop.id,
-            name: stop.name,
-            distance: getDistanceInMeters(latitude, longitude, stop.latitude, stop.longitude).toFixed(2)
-        };
-    }).sort(function (a, b) {
-        return a.distance - b.distance;
-    });
+var parseStops = function parseStops(vectorStop, latitude, longitude) {
+    var stop = {
+        id: vectorStop[0],
+        name: vectorStop[1],
+        latitude: vectorStop[5],
+        longitude: vectorStop[4]
+    };
 
-    return stopsDistance.slice(0, limit);
+    return {
+        id: stop.id,
+        name: stop.name,
+        distance: getDistanceInMeters(latitude, longitude, stop.latitude, stop.longitude).toFixed(2)
+    };
+};
+
+var getNearest = function getNearest(latitude, longitude, limit) {
+    return api.fetchStopsData().then(function (rawStopsData) {
+        var vectorStopsData = JSON.parse(rawStopsData);
+        var stopsDistance = vectorStopsData.map(function (v) {
+            return parseStops(v, latitude, longitude);
+        }).sort(function (a, b) {
+            return a.distance - b.distance;
+        });
+
+        return stopsDistance.slice(0, limit);
+    });
 };
 
 var Stop = exports.Stop = {
@@ -10212,7 +10272,7 @@ var Stop = exports.Stop = {
 };
 
 /***/ }),
-/* 134 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(4)
@@ -10233,18 +10293,18 @@ module.exports = function(original){
 };
 
 /***/ }),
-/* 135 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 9.4.2.3 ArraySpeciesCreate(originalArray, length)
-var speciesConstructor = __webpack_require__(134);
+var speciesConstructor = __webpack_require__(135);
 
 module.exports = function(original, length){
   return new (speciesConstructor(original))(length);
 };
 
 /***/ }),
-/* 136 */
+/* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10259,13 +10319,13 @@ module.exports = function(hint){
 };
 
 /***/ }),
-/* 137 */
+/* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // all enumerable object keys, includes symbols
 var getKeys = __webpack_require__(31)
   , gOPS    = __webpack_require__(60)
-  , pIE     = __webpack_require__(47);
+  , pIE     = __webpack_require__(48);
 module.exports = function(it){
   var result     = getKeys(it)
     , getSymbols = gOPS.f;
@@ -10279,7 +10339,7 @@ module.exports = function(it){
 };
 
 /***/ }),
-/* 138 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var global  = __webpack_require__(2)
@@ -10296,7 +10356,7 @@ $export($export.G + $export.F, {
 });
 
 /***/ }),
-/* 139 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10309,10 +10369,10 @@ var ctx            = __webpack_require__(23)
   , getPrototypeOf = __webpack_require__(16)
   , getKeys        = __webpack_require__(31)
   , dP             = __webpack_require__(6)
-  , keyOf          = __webpack_require__(103)
+  , keyOf          = __webpack_require__(104)
   , aFunction      = __webpack_require__(12)
   , forOf          = __webpack_require__(35)
-  , isIterable     = __webpack_require__(116)
+  , isIterable     = __webpack_require__(117)
   , $iterCreate    = __webpack_require__(56)
   , step           = __webpack_require__(72)
   , isObject       = __webpack_require__(4)
@@ -10457,10 +10517,10 @@ $export($export.S, 'Dict', {
 });
 
 /***/ }),
-/* 140 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var path    = __webpack_require__(112)
+var path    = __webpack_require__(113)
   , $export = __webpack_require__(0);
 
 // Placeholder
@@ -10469,11 +10529,11 @@ __webpack_require__(13)._ = path._ = path._ || {};
 $export($export.P + $export.F, 'Function', {part: __webpack_require__(78)});
 
 /***/ }),
-/* 141 */
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var anObject = __webpack_require__(1)
-  , get      = __webpack_require__(48);
+  , get      = __webpack_require__(49);
 module.exports = __webpack_require__(13).getIterator = function(it){
   var iterFn = get(it);
   if(typeof iterFn != 'function')throw TypeError(it + ' is not iterable!');
@@ -10481,7 +10541,7 @@ module.exports = __webpack_require__(13).getIterator = function(it){
 };
 
 /***/ }),
-/* 142 */
+/* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10496,7 +10556,7 @@ __webpack_require__(57)(Number, 'Number', function(iterated){
 });
 
 /***/ }),
-/* 143 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(0);
@@ -10504,16 +10564,16 @@ var $export = __webpack_require__(0);
 $export($export.S + $export.F, 'Object', {classof: __webpack_require__(34)});
 
 /***/ }),
-/* 144 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(0)
-  , define  = __webpack_require__(105);
+  , define  = __webpack_require__(106);
 
 $export($export.S + $export.F, 'Object', {define: define});
 
 /***/ }),
-/* 145 */
+/* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(0);
@@ -10521,11 +10581,11 @@ var $export = __webpack_require__(0);
 $export($export.S + $export.F, 'Object', {isObject: __webpack_require__(4)});
 
 /***/ }),
-/* 146 */
+/* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(0)
-  , define  = __webpack_require__(105)
+  , define  = __webpack_require__(106)
   , create  = __webpack_require__(27);
 
 $export($export.S + $export.F, 'Object', {
@@ -10535,7 +10595,7 @@ $export($export.S + $export.F, 'Object', {
 });
 
 /***/ }),
-/* 147 */
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/benjamingr/RexExp.escape
@@ -10546,7 +10606,7 @@ $export($export.S, 'RegExp', {escape: function escape(it){ return $re(it); }});
 
 
 /***/ }),
-/* 148 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10563,7 +10623,7 @@ var $re = __webpack_require__(79)(/[&<>"']/g, {
 $export($export.P + $export.F, 'String', {escapeHTML: function escapeHTML(){ return $re(this); }});
 
 /***/ }),
-/* 149 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10580,18 +10640,18 @@ var $re = __webpack_require__(79)(/&(?:amp|lt|gt|quot|apos);/g, {
 $export($export.P + $export.F, 'String', {unescapeHTML:  function unescapeHTML(){ return $re(this); }});
 
 /***/ }),
-/* 150 */
+/* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 22.1.3.3 Array.prototype.copyWithin(target, start, end = this.length)
 var $export = __webpack_require__(0);
 
-$export($export.P, 'Array', {copyWithin: __webpack_require__(93)});
+$export($export.P, 'Array', {copyWithin: __webpack_require__(94)});
 
 __webpack_require__(43)('copyWithin');
 
 /***/ }),
-/* 151 */
+/* 152 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10607,7 +10667,7 @@ $export($export.P + $export.F * !__webpack_require__(21)([].every, true), 'Array
 });
 
 /***/ }),
-/* 152 */
+/* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 22.1.3.6 Array.prototype.fill(value, start = 0, end = this.length)
@@ -10618,7 +10678,7 @@ $export($export.P, 'Array', {fill: __webpack_require__(63)});
 __webpack_require__(43)('fill');
 
 /***/ }),
-/* 153 */
+/* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10634,7 +10694,7 @@ $export($export.P + $export.F * !__webpack_require__(21)([].filter, true), 'Arra
 });
 
 /***/ }),
-/* 154 */
+/* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10654,7 +10714,7 @@ $export($export.P + $export.F * forced, 'Array', {
 __webpack_require__(43)(KEY);
 
 /***/ }),
-/* 155 */
+/* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10674,7 +10734,7 @@ $export($export.P + $export.F * forced, 'Array', {
 __webpack_require__(43)(KEY);
 
 /***/ }),
-/* 156 */
+/* 157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10691,7 +10751,7 @@ $export($export.P + $export.F * !STRICT, 'Array', {
 });
 
 /***/ }),
-/* 157 */
+/* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10699,11 +10759,11 @@ $export($export.P + $export.F * !STRICT, 'Array', {
 var ctx            = __webpack_require__(23)
   , $export        = __webpack_require__(0)
   , toObject       = __webpack_require__(9)
-  , call           = __webpack_require__(102)
+  , call           = __webpack_require__(103)
   , isArrayIter    = __webpack_require__(70)
   , toLength       = __webpack_require__(8)
   , createProperty = __webpack_require__(64)
-  , getIterFn      = __webpack_require__(48);
+  , getIterFn      = __webpack_require__(49);
 
 $export($export.S + $export.F * !__webpack_require__(58)(function(iter){ Array.from(iter); }), 'Array', {
   // 22.1.2.1 Array.from(arrayLike, mapfn = undefined, thisArg = undefined)
@@ -10735,7 +10795,7 @@ $export($export.S + $export.F * !__webpack_require__(58)(function(iter){ Array.f
 
 
 /***/ }),
-/* 158 */
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10756,7 +10816,7 @@ $export($export.P + $export.F * (NEGATIVE_ZERO || !__webpack_require__(21)($nati
 });
 
 /***/ }),
-/* 159 */
+/* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 22.1.2.2 / 15.4.3.2 Array.isArray(arg)
@@ -10765,7 +10825,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Array', {isArray: __webpack_require__(71)});
 
 /***/ }),
-/* 160 */
+/* 161 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10776,14 +10836,14 @@ var $export   = __webpack_require__(0)
   , arrayJoin = [].join;
 
 // fallback for not array-like strings
-$export($export.P + $export.F * (__webpack_require__(46) != Object || !__webpack_require__(21)(arrayJoin)), 'Array', {
+$export($export.P + $export.F * (__webpack_require__(47) != Object || !__webpack_require__(21)(arrayJoin)), 'Array', {
   join: function join(separator){
     return arrayJoin.call(toIObject(this), separator === undefined ? ',' : separator);
   }
 });
 
 /***/ }),
-/* 161 */
+/* 162 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10811,7 +10871,7 @@ $export($export.P + $export.F * (NEGATIVE_ZERO || !__webpack_require__(21)($nati
 });
 
 /***/ }),
-/* 162 */
+/* 163 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10827,7 +10887,7 @@ $export($export.P + $export.F * !__webpack_require__(21)([].map, true), 'Array',
 });
 
 /***/ }),
-/* 163 */
+/* 164 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10852,13 +10912,13 @@ $export($export.S + $export.F * __webpack_require__(3)(function(){
 });
 
 /***/ }),
-/* 164 */
+/* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 var $export = __webpack_require__(0)
-  , $reduce = __webpack_require__(95);
+  , $reduce = __webpack_require__(96);
 
 $export($export.P + $export.F * !__webpack_require__(21)([].reduceRight, true), 'Array', {
   // 22.1.3.19 / 15.4.4.22 Array.prototype.reduceRight(callbackfn [, initialValue])
@@ -10868,13 +10928,13 @@ $export($export.P + $export.F * !__webpack_require__(21)([].reduceRight, true), 
 });
 
 /***/ }),
-/* 165 */
+/* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 var $export = __webpack_require__(0)
-  , $reduce = __webpack_require__(95);
+  , $reduce = __webpack_require__(96);
 
 $export($export.P + $export.F * !__webpack_require__(21)([].reduce, true), 'Array', {
   // 22.1.3.18 / 15.4.4.21 Array.prototype.reduce(callbackfn [, initialValue])
@@ -10884,7 +10944,7 @@ $export($export.P + $export.F * !__webpack_require__(21)([].reduce, true), 'Arra
 });
 
 /***/ }),
-/* 166 */
+/* 167 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10918,7 +10978,7 @@ $export($export.P + $export.F * __webpack_require__(3)(function(){
 });
 
 /***/ }),
-/* 167 */
+/* 168 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10934,7 +10994,7 @@ $export($export.P + $export.F * !__webpack_require__(21)([].some, true), 'Array'
 });
 
 /***/ }),
-/* 168 */
+/* 169 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10963,13 +11023,13 @@ $export($export.P + $export.F * (fails(function(){
 });
 
 /***/ }),
-/* 169 */
+/* 170 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(40)('Array');
 
 /***/ }),
-/* 170 */
+/* 171 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.3.3.1 / 15.9.4.4 Date.now()
@@ -10978,7 +11038,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Date', {now: function(){ return new Date().getTime(); }});
 
 /***/ }),
-/* 171 */
+/* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11012,7 +11072,7 @@ $export($export.P + $export.F * (fails(function(){
 });
 
 /***/ }),
-/* 172 */
+/* 173 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11032,16 +11092,16 @@ $export($export.P + $export.F * __webpack_require__(3)(function(){
 });
 
 /***/ }),
-/* 173 */
+/* 174 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var TO_PRIMITIVE = __webpack_require__(5)('toPrimitive')
   , proto        = Date.prototype;
 
-if(!(TO_PRIMITIVE in proto))__webpack_require__(14)(proto, TO_PRIMITIVE, __webpack_require__(136));
+if(!(TO_PRIMITIVE in proto))__webpack_require__(14)(proto, TO_PRIMITIVE, __webpack_require__(137));
 
 /***/ }),
-/* 174 */
+/* 175 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var DateProto    = Date.prototype
@@ -11057,16 +11117,16 @@ if(new Date(NaN) + '' != INVALID_DATE){
 }
 
 /***/ }),
-/* 175 */
+/* 176 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.2.3.2 / 15.3.4.5 Function.prototype.bind(thisArg, args...)
 var $export = __webpack_require__(0);
 
-$export($export.P, 'Function', {bind: __webpack_require__(96)});
+$export($export.P, 'Function', {bind: __webpack_require__(97)});
 
 /***/ }),
-/* 176 */
+/* 177 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11085,7 +11145,7 @@ if(!(HAS_INSTANCE in FunctionProto))__webpack_require__(6).f(FunctionProto, HAS_
 }});
 
 /***/ }),
-/* 177 */
+/* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var dP         = __webpack_require__(6).f
@@ -11115,12 +11175,12 @@ NAME in FProto || __webpack_require__(7) && dP(FProto, NAME, {
 });
 
 /***/ }),
-/* 178 */
+/* 179 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.3 Math.acosh(x)
 var $export = __webpack_require__(0)
-  , log1p   = __webpack_require__(104)
+  , log1p   = __webpack_require__(105)
   , sqrt    = Math.sqrt
   , $acosh  = Math.acosh;
 
@@ -11138,7 +11198,7 @@ $export($export.S + $export.F * !($acosh
 });
 
 /***/ }),
-/* 179 */
+/* 180 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.5 Math.asinh(x)
@@ -11153,7 +11213,7 @@ function asinh(x){
 $export($export.S + $export.F * !($asinh && 1 / $asinh(0) > 0), 'Math', {asinh: asinh});
 
 /***/ }),
-/* 180 */
+/* 181 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.7 Math.atanh(x)
@@ -11168,7 +11228,7 @@ $export($export.S + $export.F * !($atanh && 1 / $atanh(-0) < 0), 'Math', {
 });
 
 /***/ }),
-/* 181 */
+/* 182 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.9 Math.cbrt(x)
@@ -11182,7 +11242,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 182 */
+/* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.11 Math.clz32(x)
@@ -11195,7 +11255,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 183 */
+/* 184 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.12 Math.cosh(x)
@@ -11209,7 +11269,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 184 */
+/* 185 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.14 Math.expm1(x)
@@ -11219,7 +11279,7 @@ var $export = __webpack_require__(0)
 $export($export.S + $export.F * ($expm1 != Math.expm1), 'Math', {expm1: $expm1});
 
 /***/ }),
-/* 185 */
+/* 186 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.16 Math.fround(x)
@@ -11250,7 +11310,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 186 */
+/* 187 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.17 Math.hypot([value1[, value2[, … ]]])
@@ -11280,7 +11340,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 187 */
+/* 188 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.18 Math.imul(x, y)
@@ -11302,7 +11362,7 @@ $export($export.S + $export.F * __webpack_require__(3)(function(){
 });
 
 /***/ }),
-/* 188 */
+/* 189 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.21 Math.log10(x)
@@ -11315,16 +11375,16 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 189 */
+/* 190 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.20 Math.log1p(x)
 var $export = __webpack_require__(0);
 
-$export($export.S, 'Math', {log1p: __webpack_require__(104)});
+$export($export.S, 'Math', {log1p: __webpack_require__(105)});
 
 /***/ }),
-/* 190 */
+/* 191 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.22 Math.log2(x)
@@ -11337,7 +11397,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 191 */
+/* 192 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.28 Math.sign(x)
@@ -11346,7 +11406,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Math', {sign: __webpack_require__(74)});
 
 /***/ }),
-/* 192 */
+/* 193 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.30 Math.sinh(x)
@@ -11366,7 +11426,7 @@ $export($export.S + $export.F * __webpack_require__(3)(function(){
 });
 
 /***/ }),
-/* 193 */
+/* 194 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.33 Math.tanh(x)
@@ -11383,7 +11443,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 194 */
+/* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.34 Math.trunc(x)
@@ -11396,7 +11456,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 195 */
+/* 196 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11471,7 +11531,7 @@ if(!$Number(' 0o1') || !$Number('0b1') || $Number('+0x1')){
 }
 
 /***/ }),
-/* 196 */
+/* 197 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.1.2.1 Number.EPSILON
@@ -11480,7 +11540,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Number', {EPSILON: Math.pow(2, -52)});
 
 /***/ }),
-/* 197 */
+/* 198 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.1.2.2 Number.isFinite(number)
@@ -11494,16 +11554,16 @@ $export($export.S, 'Number', {
 });
 
 /***/ }),
-/* 198 */
+/* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.1.2.3 Number.isInteger(number)
 var $export = __webpack_require__(0);
 
-$export($export.S, 'Number', {isInteger: __webpack_require__(101)});
+$export($export.S, 'Number', {isInteger: __webpack_require__(102)});
 
 /***/ }),
-/* 199 */
+/* 200 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.1.2.4 Number.isNaN(number)
@@ -11516,12 +11576,12 @@ $export($export.S, 'Number', {
 });
 
 /***/ }),
-/* 200 */
+/* 201 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.1.2.5 Number.isSafeInteger(number)
 var $export   = __webpack_require__(0)
-  , isInteger = __webpack_require__(101)
+  , isInteger = __webpack_require__(102)
   , abs       = Math.abs;
 
 $export($export.S, 'Number', {
@@ -11531,7 +11591,7 @@ $export($export.S, 'Number', {
 });
 
 /***/ }),
-/* 201 */
+/* 202 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.1.2.6 Number.MAX_SAFE_INTEGER
@@ -11540,7 +11600,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Number', {MAX_SAFE_INTEGER: 0x1fffffffffffff});
 
 /***/ }),
-/* 202 */
+/* 203 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.1.2.10 Number.MIN_SAFE_INTEGER
@@ -11549,32 +11609,32 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Number', {MIN_SAFE_INTEGER: -0x1fffffffffffff});
 
 /***/ }),
-/* 203 */
+/* 204 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export     = __webpack_require__(0)
-  , $parseFloat = __webpack_require__(110);
+  , $parseFloat = __webpack_require__(111);
 // 20.1.2.12 Number.parseFloat(string)
 $export($export.S + $export.F * (Number.parseFloat != $parseFloat), 'Number', {parseFloat: $parseFloat});
 
 /***/ }),
-/* 204 */
+/* 205 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export   = __webpack_require__(0)
-  , $parseInt = __webpack_require__(111);
+  , $parseInt = __webpack_require__(112);
 // 20.1.2.13 Number.parseInt(string, radix)
 $export($export.S + $export.F * (Number.parseInt != $parseInt), 'Number', {parseInt: $parseInt});
 
 /***/ }),
-/* 205 */
+/* 206 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 var $export      = __webpack_require__(0)
   , toInteger    = __webpack_require__(32)
-  , aNumberValue = __webpack_require__(92)
+  , aNumberValue = __webpack_require__(93)
   , repeat       = __webpack_require__(85)
   , $toFixed     = 1..toFixed
   , floor        = Math.floor
@@ -11686,14 +11746,14 @@ $export($export.P + $export.F * (!!$toFixed && (
 });
 
 /***/ }),
-/* 206 */
+/* 207 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 var $export      = __webpack_require__(0)
   , $fails       = __webpack_require__(3)
-  , aNumberValue = __webpack_require__(92)
+  , aNumberValue = __webpack_require__(93)
   , $toPrecision = 1..toPrecision;
 
 $export($export.P + $export.F * ($fails(function(){
@@ -11710,7 +11770,7 @@ $export($export.P + $export.F * ($fails(function(){
 });
 
 /***/ }),
-/* 207 */
+/* 208 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.3.1 Object.assign(target, source)
@@ -11719,7 +11779,7 @@ var $export = __webpack_require__(0);
 $export($export.S + $export.F, 'Object', {assign: __webpack_require__(76)});
 
 /***/ }),
-/* 208 */
+/* 209 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(0)
@@ -11727,15 +11787,15 @@ var $export = __webpack_require__(0)
 $export($export.S, 'Object', {create: __webpack_require__(27)});
 
 /***/ }),
-/* 209 */
+/* 210 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(0);
 // 19.1.2.3 / 15.2.3.7 Object.defineProperties(O, Properties)
-$export($export.S + $export.F * !__webpack_require__(7), 'Object', {defineProperties: __webpack_require__(106)});
+$export($export.S + $export.F * !__webpack_require__(7), 'Object', {defineProperties: __webpack_require__(107)});
 
 /***/ }),
-/* 210 */
+/* 211 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(0);
@@ -11743,7 +11803,7 @@ var $export = __webpack_require__(0);
 $export($export.S + $export.F * !__webpack_require__(7), 'Object', {defineProperty: __webpack_require__(6).f});
 
 /***/ }),
-/* 211 */
+/* 212 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.5 Object.freeze(O)
@@ -11757,7 +11817,7 @@ __webpack_require__(24)('freeze', function($freeze){
 });
 
 /***/ }),
-/* 212 */
+/* 213 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.6 Object.getOwnPropertyDescriptor(O, P)
@@ -11771,16 +11831,16 @@ __webpack_require__(24)('getOwnPropertyDescriptor', function(){
 });
 
 /***/ }),
-/* 213 */
+/* 214 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.7 Object.getOwnPropertyNames(O)
 __webpack_require__(24)('getOwnPropertyNames', function(){
-  return __webpack_require__(107).f;
+  return __webpack_require__(108).f;
 });
 
 /***/ }),
-/* 214 */
+/* 215 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.9 Object.getPrototypeOf(O)
@@ -11794,7 +11854,7 @@ __webpack_require__(24)('getPrototypeOf', function(){
 });
 
 /***/ }),
-/* 215 */
+/* 216 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.11 Object.isExtensible(O)
@@ -11807,7 +11867,7 @@ __webpack_require__(24)('isExtensible', function($isExtensible){
 });
 
 /***/ }),
-/* 216 */
+/* 217 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.12 Object.isFrozen(O)
@@ -11820,7 +11880,7 @@ __webpack_require__(24)('isFrozen', function($isFrozen){
 });
 
 /***/ }),
-/* 217 */
+/* 218 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.13 Object.isSealed(O)
@@ -11833,15 +11893,15 @@ __webpack_require__(24)('isSealed', function($isSealed){
 });
 
 /***/ }),
-/* 218 */
+/* 219 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.3.10 Object.is(value1, value2)
 var $export = __webpack_require__(0);
-$export($export.S, 'Object', {is: __webpack_require__(113)});
+$export($export.S, 'Object', {is: __webpack_require__(114)});
 
 /***/ }),
-/* 219 */
+/* 220 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.14 Object.keys(O)
@@ -11855,7 +11915,7 @@ __webpack_require__(24)('keys', function(){
 });
 
 /***/ }),
-/* 220 */
+/* 221 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.15 Object.preventExtensions(O)
@@ -11869,7 +11929,7 @@ __webpack_require__(24)('preventExtensions', function($preventExtensions){
 });
 
 /***/ }),
-/* 221 */
+/* 222 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.17 Object.seal(O)
@@ -11883,7 +11943,7 @@ __webpack_require__(24)('seal', function($seal){
 });
 
 /***/ }),
-/* 222 */
+/* 223 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.3.19 Object.setPrototypeOf(O, proto)
@@ -11891,7 +11951,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Object', {setPrototypeOf: __webpack_require__(80).set});
 
 /***/ }),
-/* 223 */
+/* 224 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11907,25 +11967,25 @@ if(test + '' != '[object z]'){
 }
 
 /***/ }),
-/* 224 */
+/* 225 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export     = __webpack_require__(0)
-  , $parseFloat = __webpack_require__(110);
+  , $parseFloat = __webpack_require__(111);
 // 18.2.4 parseFloat(string)
 $export($export.G + $export.F * (parseFloat != $parseFloat), {parseFloat: $parseFloat});
 
 /***/ }),
-/* 225 */
+/* 226 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export   = __webpack_require__(0)
-  , $parseInt = __webpack_require__(111);
+  , $parseInt = __webpack_require__(112);
 // 18.2.5 parseInt(string, radix)
 $export($export.G + $export.F * (parseInt != $parseInt), {parseInt: $parseInt});
 
 /***/ }),
-/* 226 */
+/* 227 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12230,7 +12290,7 @@ $export($export.S + $export.F * !(USE_NATIVE && __webpack_require__(58)(function
 });
 
 /***/ }),
-/* 227 */
+/* 228 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.1 Reflect.apply(target, thisArgument, argumentsList)
@@ -12251,7 +12311,7 @@ $export($export.S + $export.F * !__webpack_require__(3)(function(){
 });
 
 /***/ }),
-/* 228 */
+/* 229 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.2 Reflect.construct(target, argumentsList [, newTarget])
@@ -12261,7 +12321,7 @@ var $export    = __webpack_require__(0)
   , anObject   = __webpack_require__(1)
   , isObject   = __webpack_require__(4)
   , fails      = __webpack_require__(3)
-  , bind       = __webpack_require__(96)
+  , bind       = __webpack_require__(97)
   , rConstruct = (__webpack_require__(2).Reflect || {}).construct;
 
 // MS Edge supports only 2 arguments and argumentsList argument is optional
@@ -12303,7 +12363,7 @@ $export($export.S + $export.F * (NEW_TARGET_BUG || ARGS_BUG), 'Reflect', {
 });
 
 /***/ }),
-/* 229 */
+/* 230 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.3 Reflect.defineProperty(target, propertyKey, attributes)
@@ -12330,7 +12390,7 @@ $export($export.S + $export.F * __webpack_require__(3)(function(){
 });
 
 /***/ }),
-/* 230 */
+/* 231 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.4 Reflect.deleteProperty(target, propertyKey)
@@ -12346,7 +12406,7 @@ $export($export.S, 'Reflect', {
 });
 
 /***/ }),
-/* 231 */
+/* 232 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12378,7 +12438,7 @@ $export($export.S, 'Reflect', {
 });
 
 /***/ }),
-/* 232 */
+/* 233 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.7 Reflect.getOwnPropertyDescriptor(target, propertyKey)
@@ -12393,7 +12453,7 @@ $export($export.S, 'Reflect', {
 });
 
 /***/ }),
-/* 233 */
+/* 234 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.8 Reflect.getPrototypeOf(target)
@@ -12408,7 +12468,7 @@ $export($export.S, 'Reflect', {
 });
 
 /***/ }),
-/* 234 */
+/* 235 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.6 Reflect.get(target, propertyKey [, receiver])
@@ -12434,7 +12494,7 @@ function get(target, propertyKey/*, receiver*/){
 $export($export.S, 'Reflect', {get: get});
 
 /***/ }),
-/* 235 */
+/* 236 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.9 Reflect.has(target, propertyKey)
@@ -12447,7 +12507,7 @@ $export($export.S, 'Reflect', {
 });
 
 /***/ }),
-/* 236 */
+/* 237 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.10 Reflect.isExtensible(target)
@@ -12463,7 +12523,7 @@ $export($export.S, 'Reflect', {
 });
 
 /***/ }),
-/* 237 */
+/* 238 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.11 Reflect.ownKeys(target)
@@ -12472,7 +12532,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Reflect', {ownKeys: __webpack_require__(77)});
 
 /***/ }),
-/* 238 */
+/* 239 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.12 Reflect.preventExtensions(target)
@@ -12493,7 +12553,7 @@ $export($export.S, 'Reflect', {
 });
 
 /***/ }),
-/* 239 */
+/* 240 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.14 Reflect.setPrototypeOf(target, proto)
@@ -12513,7 +12573,7 @@ if(setProto)$export($export.S, 'Reflect', {
 });
 
 /***/ }),
-/* 240 */
+/* 241 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.13 Reflect.set(target, propertyKey, V [, receiver])
@@ -12549,7 +12609,7 @@ function set(target, propertyKey, V/*, receiver*/){
 $export($export.S, 'Reflect', {set: set});
 
 /***/ }),
-/* 241 */
+/* 242 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var global            = __webpack_require__(2)
@@ -12597,7 +12657,7 @@ if(__webpack_require__(7) && (!CORRECT_NEW || __webpack_require__(3)(function(){
 __webpack_require__(40)('RegExp');
 
 /***/ }),
-/* 242 */
+/* 243 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // @@match logic
@@ -12612,7 +12672,7 @@ __webpack_require__(52)('match', 1, function(defined, MATCH, $match){
 });
 
 /***/ }),
-/* 243 */
+/* 244 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // @@replace logic
@@ -12629,7 +12689,7 @@ __webpack_require__(52)('replace', 2, function(defined, REPLACE, $replace){
 });
 
 /***/ }),
-/* 244 */
+/* 245 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // @@search logic
@@ -12644,7 +12704,7 @@ __webpack_require__(52)('search', 1, function(defined, SEARCH, $search){
 });
 
 /***/ }),
-/* 245 */
+/* 246 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // @@split logic
@@ -12719,12 +12779,12 @@ __webpack_require__(52)('split', 2, function(defined, SPLIT, $split){
 });
 
 /***/ }),
-/* 246 */
+/* 247 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-__webpack_require__(118);
+__webpack_require__(119);
 var anObject    = __webpack_require__(1)
   , $flags      = __webpack_require__(53)
   , DESCRIPTORS = __webpack_require__(7)
@@ -12750,7 +12810,7 @@ if(__webpack_require__(3)(function(){ return $toString.call({source: 'a', flags:
 }
 
 /***/ }),
-/* 247 */
+/* 248 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12763,7 +12823,7 @@ __webpack_require__(18)('anchor', function(createHTML){
 });
 
 /***/ }),
-/* 248 */
+/* 249 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12776,7 +12836,7 @@ __webpack_require__(18)('big', function(createHTML){
 });
 
 /***/ }),
-/* 249 */
+/* 250 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12789,7 +12849,7 @@ __webpack_require__(18)('blink', function(createHTML){
 });
 
 /***/ }),
-/* 250 */
+/* 251 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12802,7 +12862,7 @@ __webpack_require__(18)('bold', function(createHTML){
 });
 
 /***/ }),
-/* 251 */
+/* 252 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12817,7 +12877,7 @@ $export($export.P, 'String', {
 });
 
 /***/ }),
-/* 252 */
+/* 253 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12843,7 +12903,7 @@ $export($export.P + $export.F * __webpack_require__(67)(ENDS_WITH), 'String', {
 });
 
 /***/ }),
-/* 253 */
+/* 254 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12856,7 +12916,7 @@ __webpack_require__(18)('fixed', function(createHTML){
 });
 
 /***/ }),
-/* 254 */
+/* 255 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12869,7 +12929,7 @@ __webpack_require__(18)('fontcolor', function(createHTML){
 });
 
 /***/ }),
-/* 255 */
+/* 256 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12882,7 +12942,7 @@ __webpack_require__(18)('fontsize', function(createHTML){
 });
 
 /***/ }),
-/* 256 */
+/* 257 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export        = __webpack_require__(0)
@@ -12910,7 +12970,7 @@ $export($export.S + $export.F * (!!$fromCodePoint && $fromCodePoint.length != 1)
 });
 
 /***/ }),
-/* 257 */
+/* 258 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12928,7 +12988,7 @@ $export($export.P + $export.F * __webpack_require__(67)(INCLUDES), 'String', {
 });
 
 /***/ }),
-/* 258 */
+/* 259 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12941,7 +13001,7 @@ __webpack_require__(18)('italics', function(createHTML){
 });
 
 /***/ }),
-/* 259 */
+/* 260 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12964,7 +13024,7 @@ __webpack_require__(57)(String, 'String', function(iterated){
 });
 
 /***/ }),
-/* 260 */
+/* 261 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12977,7 +13037,7 @@ __webpack_require__(18)('link', function(createHTML){
 });
 
 /***/ }),
-/* 261 */
+/* 262 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export   = __webpack_require__(0)
@@ -13000,7 +13060,7 @@ $export($export.S, 'String', {
 });
 
 /***/ }),
-/* 262 */
+/* 263 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(0);
@@ -13011,7 +13071,7 @@ $export($export.P, 'String', {
 });
 
 /***/ }),
-/* 263 */
+/* 264 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13024,7 +13084,7 @@ __webpack_require__(18)('small', function(createHTML){
 });
 
 /***/ }),
-/* 264 */
+/* 265 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13048,7 +13108,7 @@ $export($export.P + $export.F * __webpack_require__(67)(STARTS_WITH), 'String', 
 });
 
 /***/ }),
-/* 265 */
+/* 266 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13061,7 +13121,7 @@ __webpack_require__(18)('strike', function(createHTML){
 });
 
 /***/ }),
-/* 266 */
+/* 267 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13074,7 +13134,7 @@ __webpack_require__(18)('sub', function(createHTML){
 });
 
 /***/ }),
-/* 267 */
+/* 268 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13087,7 +13147,7 @@ __webpack_require__(18)('sup', function(createHTML){
 });
 
 /***/ }),
-/* 268 */
+/* 269 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13100,7 +13160,7 @@ __webpack_require__(45)('trim', function($trim){
 });
 
 /***/ }),
-/* 269 */
+/* 270 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13117,17 +13177,17 @@ var global         = __webpack_require__(2)
   , setToStringTag = __webpack_require__(44)
   , uid            = __webpack_require__(42)
   , wks            = __webpack_require__(5)
-  , wksExt         = __webpack_require__(115)
+  , wksExt         = __webpack_require__(116)
   , wksDefine      = __webpack_require__(89)
-  , keyOf          = __webpack_require__(103)
-  , enumKeys       = __webpack_require__(137)
+  , keyOf          = __webpack_require__(104)
+  , enumKeys       = __webpack_require__(138)
   , isArray        = __webpack_require__(71)
   , anObject       = __webpack_require__(1)
   , toIObject      = __webpack_require__(11)
   , toPrimitive    = __webpack_require__(25)
   , createDesc     = __webpack_require__(28)
   , _create        = __webpack_require__(27)
-  , gOPNExt        = __webpack_require__(107)
+  , gOPNExt        = __webpack_require__(108)
   , $GOPD          = __webpack_require__(15)
   , $DP            = __webpack_require__(6)
   , $keys          = __webpack_require__(31)
@@ -13254,7 +13314,7 @@ if(!USE_NATIVE){
   $GOPD.f = $getOwnPropertyDescriptor;
   $DP.f   = $defineProperty;
   __webpack_require__(38).f = gOPNExt.f = $getOwnPropertyNames;
-  __webpack_require__(47).f  = $propertyIsEnumerable;
+  __webpack_require__(48).f  = $propertyIsEnumerable;
   __webpack_require__(60).f = $getOwnPropertySymbols;
 
   if(DESCRIPTORS && !__webpack_require__(37)){
@@ -13341,7 +13401,7 @@ setToStringTag(Math, 'Math', true);
 setToStringTag(global.JSON, 'JSON', true);
 
 /***/ }),
-/* 270 */
+/* 271 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13393,7 +13453,7 @@ $export($export.P + $export.U + $export.F * __webpack_require__(3)(function(){
 __webpack_require__(40)(ARRAY_BUFFER);
 
 /***/ }),
-/* 271 */
+/* 272 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(0);
@@ -13402,7 +13462,7 @@ $export($export.G + $export.W + $export.F * !__webpack_require__(62).ABV, {
 });
 
 /***/ }),
-/* 272 */
+/* 273 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(29)('Float32', 4, function(init){
@@ -13412,7 +13472,7 @@ __webpack_require__(29)('Float32', 4, function(init){
 });
 
 /***/ }),
-/* 273 */
+/* 274 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(29)('Float64', 8, function(init){
@@ -13422,7 +13482,7 @@ __webpack_require__(29)('Float64', 8, function(init){
 });
 
 /***/ }),
-/* 274 */
+/* 275 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(29)('Int16', 2, function(init){
@@ -13432,7 +13492,7 @@ __webpack_require__(29)('Int16', 2, function(init){
 });
 
 /***/ }),
-/* 275 */
+/* 276 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(29)('Int32', 4, function(init){
@@ -13442,7 +13502,7 @@ __webpack_require__(29)('Int32', 4, function(init){
 });
 
 /***/ }),
-/* 276 */
+/* 277 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(29)('Int8', 1, function(init){
@@ -13452,7 +13512,7 @@ __webpack_require__(29)('Int8', 1, function(init){
 });
 
 /***/ }),
-/* 277 */
+/* 278 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(29)('Uint16', 2, function(init){
@@ -13462,7 +13522,7 @@ __webpack_require__(29)('Uint16', 2, function(init){
 });
 
 /***/ }),
-/* 278 */
+/* 279 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(29)('Uint32', 4, function(init){
@@ -13472,7 +13532,7 @@ __webpack_require__(29)('Uint32', 4, function(init){
 });
 
 /***/ }),
-/* 279 */
+/* 280 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(29)('Uint8', 1, function(init){
@@ -13482,7 +13542,7 @@ __webpack_require__(29)('Uint8', 1, function(init){
 });
 
 /***/ }),
-/* 280 */
+/* 281 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(29)('Uint8', 1, function(init){
@@ -13492,12 +13552,12 @@ __webpack_require__(29)('Uint8', 1, function(init){
 }, true);
 
 /***/ }),
-/* 281 */
+/* 282 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var weak = __webpack_require__(99);
+var weak = __webpack_require__(100);
 
 // 23.4 WeakSet Objects
 __webpack_require__(51)('WeakSet', function(get){
@@ -13510,7 +13570,7 @@ __webpack_require__(51)('WeakSet', function(get){
 }, weak, false, true);
 
 /***/ }),
-/* 282 */
+/* 283 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13528,7 +13588,7 @@ $export($export.P, 'Array', {
 __webpack_require__(43)('includes');
 
 /***/ }),
-/* 283 */
+/* 284 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/rwaldron/tc39-notes/blob/master/es6/2014-09/sept-25.md#510-globalasap-for-enqueuing-a-microtask
@@ -13545,7 +13605,7 @@ $export($export.G, {
 });
 
 /***/ }),
-/* 284 */
+/* 285 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/ljharb/proposal-is-error
@@ -13559,16 +13619,16 @@ $export($export.S, 'Error', {
 });
 
 /***/ }),
-/* 285 */
+/* 286 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/DavidBruant/Map-Set.prototype.toJSON
 var $export  = __webpack_require__(0);
 
-$export($export.P + $export.R, 'Map', {toJSON: __webpack_require__(98)('Map')});
+$export($export.P + $export.R, 'Map', {toJSON: __webpack_require__(99)('Map')});
 
 /***/ }),
-/* 286 */
+/* 287 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://gist.github.com/BrendanEich/4294d5c212a6d2254703
@@ -13584,7 +13644,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 287 */
+/* 288 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://gist.github.com/BrendanEich/4294d5c212a6d2254703
@@ -13605,7 +13665,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 288 */
+/* 289 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://gist.github.com/BrendanEich/4294d5c212a6d2254703
@@ -13621,7 +13681,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 289 */
+/* 290 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://gist.github.com/BrendanEich/4294d5c212a6d2254703
@@ -13642,7 +13702,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 290 */
+/* 291 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13660,7 +13720,7 @@ __webpack_require__(7) && $export($export.P + __webpack_require__(59), 'Object',
 });
 
 /***/ }),
-/* 291 */
+/* 292 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13678,12 +13738,12 @@ __webpack_require__(7) && $export($export.P + __webpack_require__(59), 'Object',
 });
 
 /***/ }),
-/* 292 */
+/* 293 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/tc39/proposal-object-values-entries
 var $export  = __webpack_require__(0)
-  , $entries = __webpack_require__(109)(true);
+  , $entries = __webpack_require__(110)(true);
 
 $export($export.S, 'Object', {
   entries: function entries(it){
@@ -13692,7 +13752,7 @@ $export($export.S, 'Object', {
 });
 
 /***/ }),
-/* 293 */
+/* 294 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/tc39/proposal-object-getownpropertydescriptors
@@ -13716,7 +13776,7 @@ $export($export.S, 'Object', {
 });
 
 /***/ }),
-/* 294 */
+/* 295 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13740,7 +13800,7 @@ __webpack_require__(7) && $export($export.P + __webpack_require__(59), 'Object',
 });
 
 /***/ }),
-/* 295 */
+/* 296 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13764,12 +13824,12 @@ __webpack_require__(7) && $export($export.P + __webpack_require__(59), 'Object',
 });
 
 /***/ }),
-/* 296 */
+/* 297 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/tc39/proposal-object-values-entries
 var $export = __webpack_require__(0)
-  , $values = __webpack_require__(109)(false);
+  , $values = __webpack_require__(110)(false);
 
 $export($export.S, 'Object', {
   values: function values(it){
@@ -13778,7 +13838,7 @@ $export($export.S, 'Object', {
 });
 
 /***/ }),
-/* 297 */
+/* 298 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13983,7 +14043,7 @@ $export($export.G, {Observable: $Observable});
 __webpack_require__(40)('Observable');
 
 /***/ }),
-/* 298 */
+/* 299 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var metadata                  = __webpack_require__(26)
@@ -13996,7 +14056,7 @@ metadata.exp({defineMetadata: function defineMetadata(metadataKey, metadataValue
 }});
 
 /***/ }),
-/* 299 */
+/* 300 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var metadata               = __webpack_require__(26)
@@ -14016,11 +14076,11 @@ metadata.exp({deleteMetadata: function deleteMetadata(metadataKey, target /*, ta
 }});
 
 /***/ }),
-/* 300 */
+/* 301 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Set                     = __webpack_require__(119)
-  , from                    = __webpack_require__(94)
+var Set                     = __webpack_require__(120)
+  , from                    = __webpack_require__(95)
   , metadata                = __webpack_require__(26)
   , anObject                = __webpack_require__(1)
   , getPrototypeOf          = __webpack_require__(16)
@@ -14040,7 +14100,7 @@ metadata.exp({getMetadataKeys: function getMetadataKeys(target /*, targetKey */)
 }});
 
 /***/ }),
-/* 301 */
+/* 302 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var metadata               = __webpack_require__(26)
@@ -14062,7 +14122,7 @@ metadata.exp({getMetadata: function getMetadata(metadataKey, target /*, targetKe
 }});
 
 /***/ }),
-/* 302 */
+/* 303 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var metadata                = __webpack_require__(26)
@@ -14075,7 +14135,7 @@ metadata.exp({getOwnMetadataKeys: function getOwnMetadataKeys(target /*, targetK
 }});
 
 /***/ }),
-/* 303 */
+/* 304 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var metadata               = __webpack_require__(26)
@@ -14089,7 +14149,7 @@ metadata.exp({getOwnMetadata: function getOwnMetadata(metadataKey, target /*, ta
 }});
 
 /***/ }),
-/* 304 */
+/* 305 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var metadata               = __webpack_require__(26)
@@ -14110,7 +14170,7 @@ metadata.exp({hasMetadata: function hasMetadata(metadataKey, target /*, targetKe
 }});
 
 /***/ }),
-/* 305 */
+/* 306 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var metadata               = __webpack_require__(26)
@@ -14124,7 +14184,7 @@ metadata.exp({hasOwnMetadata: function hasOwnMetadata(metadataKey, target /*, ta
 }});
 
 /***/ }),
-/* 306 */
+/* 307 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var metadata                  = __webpack_require__(26)
@@ -14144,16 +14204,16 @@ metadata.exp({metadata: function metadata(metadataKey, metadataValue){
 }});
 
 /***/ }),
-/* 307 */
+/* 308 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/DavidBruant/Map-Set.prototype.toJSON
 var $export  = __webpack_require__(0);
 
-$export($export.P + $export.R, 'Set', {toJSON: __webpack_require__(98)('Set')});
+$export($export.P + $export.R, 'Set', {toJSON: __webpack_require__(99)('Set')});
 
 /***/ }),
-/* 308 */
+/* 309 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14169,7 +14229,7 @@ $export($export.P, 'String', {
 });
 
 /***/ }),
-/* 309 */
+/* 310 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14205,14 +14265,14 @@ $export($export.P, 'String', {
 });
 
 /***/ }),
-/* 310 */
+/* 311 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 // https://github.com/tc39/proposal-string-pad-start-end
 var $export = __webpack_require__(0)
-  , $pad    = __webpack_require__(114);
+  , $pad    = __webpack_require__(115);
 
 $export($export.P, 'String', {
   padEnd: function padEnd(maxLength /*, fillString = ' ' */){
@@ -14221,14 +14281,14 @@ $export($export.P, 'String', {
 });
 
 /***/ }),
-/* 311 */
+/* 312 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 // https://github.com/tc39/proposal-string-pad-start-end
 var $export = __webpack_require__(0)
-  , $pad    = __webpack_require__(114);
+  , $pad    = __webpack_require__(115);
 
 $export($export.P, 'String', {
   padStart: function padStart(maxLength /*, fillString = ' ' */){
@@ -14237,7 +14297,7 @@ $export($export.P, 'String', {
 });
 
 /***/ }),
-/* 312 */
+/* 313 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14250,7 +14310,7 @@ __webpack_require__(45)('trimLeft', function($trim){
 }, 'trimStart');
 
 /***/ }),
-/* 313 */
+/* 314 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14263,19 +14323,19 @@ __webpack_require__(45)('trimRight', function($trim){
 }, 'trimEnd');
 
 /***/ }),
-/* 314 */
+/* 315 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(89)('asyncIterator');
 
 /***/ }),
-/* 315 */
+/* 316 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(89)('observable');
 
 /***/ }),
-/* 316 */
+/* 317 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/ljharb/proposal-global
@@ -14284,7 +14344,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'System', {global: __webpack_require__(2)});
 
 /***/ }),
-/* 317 */
+/* 318 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $iterators    = __webpack_require__(90)
@@ -14311,7 +14371,7 @@ for(var collections = ['NodeList', 'DOMTokenList', 'MediaList', 'StyleSheetList'
 }
 
 /***/ }),
-/* 318 */
+/* 319 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(0)
@@ -14322,7 +14382,7 @@ $export($export.G + $export.B, {
 });
 
 /***/ }),
-/* 319 */
+/* 320 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // ie9- setTimeout & setInterval additional parameters fix
@@ -14347,36 +14407,35 @@ $export($export.G + $export.B + $export.F * MSIE, {
 });
 
 /***/ }),
-/* 320 */
+/* 321 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(269);
-__webpack_require__(208);
-__webpack_require__(210);
+__webpack_require__(270);
 __webpack_require__(209);
-__webpack_require__(212);
-__webpack_require__(214);
-__webpack_require__(219);
-__webpack_require__(213);
 __webpack_require__(211);
-__webpack_require__(221);
-__webpack_require__(220);
-__webpack_require__(216);
-__webpack_require__(217);
+__webpack_require__(210);
+__webpack_require__(213);
 __webpack_require__(215);
-__webpack_require__(207);
-__webpack_require__(218);
+__webpack_require__(220);
+__webpack_require__(214);
+__webpack_require__(212);
 __webpack_require__(222);
+__webpack_require__(221);
+__webpack_require__(217);
+__webpack_require__(218);
+__webpack_require__(216);
+__webpack_require__(208);
+__webpack_require__(219);
 __webpack_require__(223);
-__webpack_require__(175);
-__webpack_require__(177);
-__webpack_require__(176);
-__webpack_require__(225);
 __webpack_require__(224);
-__webpack_require__(195);
-__webpack_require__(205);
-__webpack_require__(206);
+__webpack_require__(176);
+__webpack_require__(178);
+__webpack_require__(177);
+__webpack_require__(226);
+__webpack_require__(225);
 __webpack_require__(196);
+__webpack_require__(206);
+__webpack_require__(207);
 __webpack_require__(197);
 __webpack_require__(198);
 __webpack_require__(199);
@@ -14385,7 +14444,7 @@ __webpack_require__(201);
 __webpack_require__(202);
 __webpack_require__(203);
 __webpack_require__(204);
-__webpack_require__(178);
+__webpack_require__(205);
 __webpack_require__(179);
 __webpack_require__(180);
 __webpack_require__(181);
@@ -14402,136 +14461,137 @@ __webpack_require__(191);
 __webpack_require__(192);
 __webpack_require__(193);
 __webpack_require__(194);
-__webpack_require__(256);
-__webpack_require__(261);
-__webpack_require__(268);
-__webpack_require__(259);
-__webpack_require__(251);
-__webpack_require__(252);
+__webpack_require__(195);
 __webpack_require__(257);
 __webpack_require__(262);
-__webpack_require__(264);
-__webpack_require__(247);
+__webpack_require__(269);
+__webpack_require__(260);
+__webpack_require__(252);
+__webpack_require__(253);
+__webpack_require__(258);
+__webpack_require__(263);
+__webpack_require__(265);
 __webpack_require__(248);
 __webpack_require__(249);
 __webpack_require__(250);
-__webpack_require__(253);
+__webpack_require__(251);
 __webpack_require__(254);
 __webpack_require__(255);
-__webpack_require__(258);
-__webpack_require__(260);
-__webpack_require__(263);
-__webpack_require__(265);
+__webpack_require__(256);
+__webpack_require__(259);
+__webpack_require__(261);
+__webpack_require__(264);
 __webpack_require__(266);
 __webpack_require__(267);
-__webpack_require__(170);
-__webpack_require__(172);
+__webpack_require__(268);
 __webpack_require__(171);
-__webpack_require__(174);
 __webpack_require__(173);
-__webpack_require__(159);
+__webpack_require__(172);
+__webpack_require__(175);
+__webpack_require__(174);
+__webpack_require__(160);
+__webpack_require__(158);
+__webpack_require__(164);
+__webpack_require__(161);
+__webpack_require__(167);
+__webpack_require__(169);
 __webpack_require__(157);
 __webpack_require__(163);
-__webpack_require__(160);
-__webpack_require__(166);
-__webpack_require__(168);
-__webpack_require__(156);
-__webpack_require__(162);
-__webpack_require__(153);
-__webpack_require__(167);
-__webpack_require__(151);
-__webpack_require__(165);
-__webpack_require__(164);
-__webpack_require__(158);
-__webpack_require__(161);
-__webpack_require__(150);
-__webpack_require__(152);
-__webpack_require__(155);
 __webpack_require__(154);
-__webpack_require__(169);
+__webpack_require__(168);
+__webpack_require__(152);
+__webpack_require__(166);
+__webpack_require__(165);
+__webpack_require__(159);
+__webpack_require__(162);
+__webpack_require__(151);
+__webpack_require__(153);
+__webpack_require__(156);
+__webpack_require__(155);
+__webpack_require__(170);
 __webpack_require__(90);
-__webpack_require__(241);
-__webpack_require__(246);
-__webpack_require__(118);
 __webpack_require__(242);
+__webpack_require__(247);
+__webpack_require__(119);
 __webpack_require__(243);
 __webpack_require__(244);
 __webpack_require__(245);
-__webpack_require__(226);
-__webpack_require__(117);
-__webpack_require__(119);
+__webpack_require__(246);
+__webpack_require__(227);
+__webpack_require__(118);
 __webpack_require__(120);
-__webpack_require__(281);
-__webpack_require__(270);
+__webpack_require__(121);
+__webpack_require__(282);
 __webpack_require__(271);
-__webpack_require__(276);
-__webpack_require__(279);
-__webpack_require__(280);
-__webpack_require__(274);
+__webpack_require__(272);
 __webpack_require__(277);
+__webpack_require__(280);
+__webpack_require__(281);
 __webpack_require__(275);
 __webpack_require__(278);
-__webpack_require__(272);
+__webpack_require__(276);
+__webpack_require__(279);
 __webpack_require__(273);
-__webpack_require__(227);
+__webpack_require__(274);
 __webpack_require__(228);
 __webpack_require__(229);
 __webpack_require__(230);
 __webpack_require__(231);
-__webpack_require__(234);
 __webpack_require__(232);
-__webpack_require__(233);
 __webpack_require__(235);
+__webpack_require__(233);
+__webpack_require__(234);
 __webpack_require__(236);
 __webpack_require__(237);
 __webpack_require__(238);
-__webpack_require__(240);
 __webpack_require__(239);
-__webpack_require__(282);
-__webpack_require__(308);
-__webpack_require__(311);
-__webpack_require__(310);
-__webpack_require__(312);
-__webpack_require__(313);
+__webpack_require__(241);
+__webpack_require__(240);
+__webpack_require__(283);
 __webpack_require__(309);
+__webpack_require__(312);
+__webpack_require__(311);
+__webpack_require__(313);
 __webpack_require__(314);
+__webpack_require__(310);
 __webpack_require__(315);
-__webpack_require__(293);
-__webpack_require__(296);
-__webpack_require__(292);
-__webpack_require__(290);
-__webpack_require__(291);
-__webpack_require__(294);
-__webpack_require__(295);
-__webpack_require__(285);
-__webpack_require__(307);
 __webpack_require__(316);
-__webpack_require__(284);
+__webpack_require__(294);
+__webpack_require__(297);
+__webpack_require__(293);
+__webpack_require__(291);
+__webpack_require__(292);
+__webpack_require__(295);
+__webpack_require__(296);
 __webpack_require__(286);
-__webpack_require__(288);
+__webpack_require__(308);
+__webpack_require__(317);
+__webpack_require__(285);
 __webpack_require__(287);
 __webpack_require__(289);
-__webpack_require__(298);
+__webpack_require__(288);
+__webpack_require__(290);
 __webpack_require__(299);
-__webpack_require__(301);
 __webpack_require__(300);
-__webpack_require__(303);
 __webpack_require__(302);
+__webpack_require__(301);
 __webpack_require__(304);
+__webpack_require__(303);
 __webpack_require__(305);
 __webpack_require__(306);
-__webpack_require__(283);
-__webpack_require__(297);
+__webpack_require__(307);
+__webpack_require__(284);
+__webpack_require__(298);
+__webpack_require__(320);
 __webpack_require__(319);
 __webpack_require__(318);
-__webpack_require__(317);
 module.exports = __webpack_require__(13);
 
 /***/ }),
-/* 321 */
+/* 322 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(121)(undefined);
+exports = module.exports = __webpack_require__(122)(undefined);
 // imports
 
 
@@ -14542,21 +14602,21 @@ exports.push([module.i, "/*\n  Ivan Gabriele : http://www.ivangabriele.com/cordo
 
 
 /***/ }),
-/* 322 */
+/* 323 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(121)(undefined);
+exports = module.exports = __webpack_require__(122)(undefined);
 // imports
 
 
 // module
-exports.push([module.i, "* {\n    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */\n}\n\nhtml, body {\n    height: 100%;\n    width: 100%;\n    margin: 0;\n    display: flex;\n    align-content: center;\n    justify-content: center;\n}\n\nbody {\n    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */\n    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */\n    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */\n    box-sizing: border-box;\n    font-family:'Roboto', 'Open Sans', 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;\n    font-size: 0.9em;\n    line-height: 1.333;\n    padding-top: 60px;\n    text-align: center;\n}\n\n/* Portrait layout (default) */\n\n\n/* Landscape layout (with min-width) */\n@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {\n \n}\n\n.hidden {\n    display: none;\n}\n\n.menu {\n    background: #ff9912;\n    height: 60px;\n    left: 0;\n    position: fixed;\n    right: 0;\n    text-align: right;\n    top: 0;\n    z-index: 3;\n}\n\n.menu img {\n    cursor: pointer;\n    height: 32px;\n    margin: 14px;\n    transition: opacity 0.1s ease-out;\n}\n\n.menu span {\n    color: #fff;\n    line-height: 60px;\n    vertical-align: top;\n}\n\n.menu img:active {\n    opacity: 0.5;\n}\n\n.splash {\n    align-content: center;\n    background: #ff9912 url(" + __webpack_require__(327) + ") center no-repeat;\n    background-size: 100px 100px;\n    display: flex;\n    height: calc(100% + 20px);\n    justify-content: center;\n    position: fixed;\n    top: 0;\n    transition: transform 1s ease;\n    width: 100%;\n    will-change: transform;\n    z-index: 2;\n}\n\n.splash.up {transform: translateY(-20px);}\n.splash.down {transform: translateY(0px);}\n.splash.out {\n    transform: translateY(calc(-100% + 60px));\n    transition-timing-function: ease-in;\n}\n\n.cards {\n    background: #fafafa;\n    width: 100%;\n}\n\n.card {\n    background-color: #fff;\n    border: 1px solid #ddd;\n    border-bottom-width: 2px;\n    cursor: pointer;\n    margin: 10px;\n    padding: 8px 10px;\n    position: relative;\n    transition: background-color 0.1s ease-out;\n    z-index: 1;\n}\n\n.card:active {\n    background-color: transparent;\n}\n\n.card::after {\n    background: url(" + __webpack_require__(326) + ") center no-repeat;\n    background-size: 100%;\n    content: '';\n    height: 1em;\n    position: absolute;\n    right: 10px;\n    top: 10px;\n    width: 1em;\n}\n\n.card.expanded::after {\n    transform: rotate(180deg);\n}\n\n.card .timetable tr:nth-child(n+5) {\n    display: none;\n}\n\n.card.expanded .timetable tr:nth-child(n+5) {\n    display: table-row;\n}\n\n.card h2 {\n    font-size: 1.5em;\n    font-weight: 300;\n    margin: 0 0 2px 0;\n    text-align: left;\n}\n\n.timetable {\n    color: #666;\n    text-align: left;\n    width: 100%;\n}\n\n.timetable td {\n    padding: 2px 1px;\n}\n\n.timetable td:first-child {\n    text-align: left;\n    width: 40px;\n}\n\n.timetable td:last-child {\n    text-align: right;\n    width: 50px;\n}\n\n.container {\n    width: 100%;\n    height: 100%;\n    box-sizing: border-box;\n}\n\n.container.boards {\n    padding: 10px;\n}\n\n.home {\n    background: #ff9912;\n    display: flex;\n    flex-direction: column;\n    align-content: center;\n    justify-content: center;\n    color: #fff;\n    padding: 20px;\n    transform: translate3d(0,0,0);\n}\n\n.home h1 {\n    font-weight: normal;\n}\n\nbutton {\n    border: 0;\n    background: #ff9912;\n    color: #fff;\n    margin: 10px;\n    padding: 10px 20px;\n}\n\nbutton:active {\n    background: #583608;\n}\n\nbutton:focus {\n    outline: 0;\n}\n\n", ""]);
+exports.push([module.i, "* {\n    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */\n}\n\nhtml, body {\n    height: 100%;\n    width: 100%;\n    margin: 0;\n    display: flex;\n    align-content: center;\n    justify-content: center;\n}\n\nbody {\n    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */\n    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */\n    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */\n    box-sizing: border-box;\n    font-family:'Roboto', 'Open Sans', 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;\n    font-size: 0.9em;\n    line-height: 1.333;\n    padding-top: 60px;\n    text-align: center;\n}\n\n/* Portrait layout (default) */\n\n\n/* Landscape layout (with min-width) */\n@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {\n \n}\n\n.hidden {\n    display: none;\n}\n\n.menu {\n    background: #ff9912;\n    height: 60px;\n    left: 0;\n    position: fixed;\n    right: 0;\n    text-align: right;\n    top: 0;\n    z-index: 3;\n}\n\n.menu img {\n    cursor: pointer;\n    height: 32px;\n    margin: 14px;\n    transition: opacity 0.1s ease-out;\n}\n\n.menu span {\n    color: #fff;\n    line-height: 60px;\n    vertical-align: top;\n}\n\n.menu img:active {\n    opacity: 0.5;\n}\n\n.splash {\n    align-content: center;\n    background: #ff9912 url(" + __webpack_require__(328) + ") center no-repeat;\n    background-size: 100px 100px;\n    display: flex;\n    height: calc(100% + 20px);\n    justify-content: center;\n    position: fixed;\n    top: 0;\n    transition: transform 1s ease;\n    width: 100%;\n    will-change: transform;\n    z-index: 2;\n}\n\n.splash.up {transform: translateY(-20px);}\n.splash.down {transform: translateY(0px);}\n.splash.out {\n    transform: translateY(calc(-100% + 60px));\n    transition-timing-function: ease-in;\n}\n\n.cards {\n    background: #fafafa;\n    width: 100%;\n}\n\n.card {\n    background-color: #fff;\n    border: 1px solid #ddd;\n    border-bottom-width: 2px;\n    cursor: pointer;\n    margin: 10px;\n    padding: 8px 10px;\n    position: relative;\n    transition: background-color 0.1s ease-out;\n    z-index: 1;\n}\n\n.card:active {\n    background-color: transparent;\n}\n\n.card::after {\n    background: url(" + __webpack_require__(327) + ") center no-repeat;\n    background-size: 100%;\n    content: '';\n    height: 1em;\n    position: absolute;\n    right: 10px;\n    top: 10px;\n    width: 1em;\n}\n\n.card.expanded::after {\n    transform: rotate(180deg);\n}\n\n.card .timetable tr:nth-child(n+5) {\n    display: none;\n}\n\n.card.expanded .timetable tr:nth-child(n+5) {\n    display: table-row;\n}\n\n.card h2 {\n    font-size: 1.5em;\n    font-weight: 300;\n    margin: 0 0 2px 0;\n    text-align: left;\n}\n\n.timetable {\n    color: #666;\n    text-align: left;\n    width: 100%;\n}\n\n.timetable td {\n    padding: 2px 1px;\n}\n\n.timetable td:first-child {\n    text-align: left;\n    width: 40px;\n}\n\n.timetable td:last-child {\n    text-align: right;\n    width: 50px;\n}\n\n.container {\n    width: 100%;\n    height: 100%;\n    box-sizing: border-box;\n}\n\n.container.boards {\n    padding: 10px;\n}\n\n.home {\n    background: #ff9912;\n    display: flex;\n    flex-direction: column;\n    align-content: center;\n    justify-content: center;\n    color: #fff;\n    padding: 20px;\n    transform: translate3d(0,0,0);\n}\n\n.home h1 {\n    font-weight: normal;\n}\n\nbutton {\n    border: 0;\n    background: #ff9912;\n    color: #fff;\n    margin: 10px;\n    padding: 10px 20px;\n}\n\nbutton:active {\n    background: #583608;\n}\n\nbutton:focus {\n    outline: 0;\n}\n\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 323 */
+/* 324 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -14746,10 +14806,10 @@ exports.push([module.i, "* {\n    -webkit-tap-highlight-color: rgba(0,0,0,0); /*
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(124), __webpack_require__(122)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(125), __webpack_require__(123)))
 
 /***/ }),
-/* 324 */
+/* 325 */
 /***/ (function(module, exports) {
 
 
@@ -14844,7 +14904,7 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 325 */
+/* 326 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var apply = Function.prototype.apply;
@@ -14897,14597 +14957,22 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(323);
+__webpack_require__(324);
 exports.setImmediate = setImmediate;
 exports.clearImmediate = clearImmediate;
 
 
 /***/ }),
-/* 326 */
+/* 327 */
 /***/ (function(module, exports) {
 
 module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAEFElEQVR4Xu2YV47VMBRABz6AJYDonS/WQu+9DojF8E/ZAl9shjZDZw/UaynJe/J7IX6OfeNykCKRmSSOzzlORllb4x8EIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAgA+Bk3LSFp8TNc7ZJoOsy7ZVY7AKxzglc/4p21PZkovAyH8l21/ZnslGBGELbeUbvmZLKoJ5+e0NEkG4AE7LpczKb9kmFcEy+UQQTv6ZHvlJRPA/+UQwPoIh+ZNG4CKfCPwjODuw8id9HawinwhWj8DI/7XknW9Lt/dV/jD0kU8E7hGc85Sv8joYI58IhiMYKz9qBCHkE0F/BOdHrvyor4OQ8olgMYILgeUHfRLEkE8EswhiyQ8SQUz57Q0+Fxa1fja+GGnlz78OfsgYuxYfOm4/2S6HvZbNfr+E3q8xAi35J9xU9x+1gwj64Xj+5pKc9zvywvou1x8tv50fEXiaXnJadvKJYIlFzx9dlvOyWvn2PHkS2ETc968oyT/ufkt+RxLB6tw05H+T24ouv506EbhHcFVh5avKJwJ3+ddKlU8EwxFoyT82fCtxj+B1sMjXyP8jW+gPZvPX+yrXn1y+9pPghQyY+mfj67XJJ4LZE+CGkvyjsyHT+p/W6yDFJ8HN2uXX/CTQkP9FACe78u3nUE1PglsKKz8r+TU9CW4ryT9ir7Bc9kt+EiDfscISI7ijsPI/yxjZrny7jZIiQL5t13G/hAjuylxjft0z1zYr/7Aj0+wOyzkC5AfKTSuCl3K/oT4b31NY+Z9KXvl2OzlFcB/5tr4w+zlEoCX/UBik+V0l5QgeKK38auW3uaYYwUMF+R9ljOrlpxjBOvKneZWk8CTQkn9wGsTpjzplBI+UVj7yBzqcIoLHCvI3ZQzkD8hvf60ZwRMl+Qcc585hDQGtCGJ/29+U+SDfM+vcI0C+p/j503KNYIOVH8B+c4ncIkB+OPfdlXKJwMjfH2H+XFIIpB4B8hUyTTWCD6x8BfvNEKlFgHw9991IqUSA/Ankt0NOHYGRv2/C+TO0EJgqAuQnlJ92BO9Z+QnZb25FKwLkp+e+u6PYERj5exOeP7cmBGJFgPyM8godwTtWfkb2m1sNFQHy83Pf3fHYCIz8PRnPn1sXAr4RIL+gfFaN4C0rvyD7zVRcI0B+ee67GQ1FYOTvLnj+TE0I9EWA/IrysCN4w8qvyH4z1TYC5NfnvpuxiWBnxfNn6hCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACJRL4B/e99EDjS7t0AAAAAElFTkSuQmCC"
 
 /***/ }),
-/* 327 */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAgAElEQVR4AQBJgLZ/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///xIAAAAnAAAAJAAAABAAAAANAAAADAAAAA0AAAANAAAADQAAAA0AAAAAAAAA8wAAAPMAAADzAAAA8wAAAPQAAADzAAAA8AAAANwAAADZAQEB7gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///xUAAAA5AAAAKAAAACcAAAAnAAAAJwAAABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA7AAAANkAAADZAAAA2QAAANgAAADHAQEB6wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALwile8AACAASURBVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////DwAAAEAAAABCAAAAQgAAACsAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/AAAA1QAAAL4AAAC+AAAAwAEBAfEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////NAAAAFQAAABDAAAAMQAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/QAAAM8AAAC9AAAArAEBAcwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////HAAAAFwAAABdAAAAKgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANYAAACjAAAApAEBAeQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////DAAAAFMAAABeAAAAQAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/gAAAL8AAACjAAAArQEBAfQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///xYAAABxAAAAagAAAA4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8gAAAJYAAACOAQEB6wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8cAAAAdQAAAGUAAAAJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD3AAAAmwAAAIsBAQHkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////IwAAAHgAAABeAAAABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPoAAACiAAAAiAEBAd0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///w8AAACEAAAAaQAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/QAAAJcAAAB8AQEB8QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////XQAAAIsAAAAXAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADpAAAAdAEBAaQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///ysAAACVAAAAPwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAABrAQEB1gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8J////igAAAM8AAAA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeIXyYgAAIABJREFUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAADQ////iv///wkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///ykAAACqAAAALAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANMAAABWAQEB2AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////XQAAAMsAAAAsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC0AAADM////XQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///woAAACUAAAAYQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPgAAADnAAAA8wAAAPMAAADzAAAA8wAAAPQAAAAAAAAADAAAAA0AAAANAAAADQAAAA0AAAAZAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJ8AAABrAQEB9wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////KQAAAKsAAAArAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPUAAADJAAAA2AAAANkAAADZAAAA2QAAAOIBAQH+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8CAAAAHgAAACcAAAAnAAAAJwAAACgAAAA3AAAACwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADUAAAAVgEBAdcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///9DAAAArwAAAA0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA+QAAAMgAAAC9AAAAvgAAAMoBAQH7AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8FAAAANgAAAEMAAABCAAAAOAAAAAcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8wAAAFABAQG+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///1X////5////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////9////6n///9M////CQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////Cf///0z///+p////9/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////j///9UAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////av////3//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////v///8L///9k////DwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////D////2X////D/////v/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////9////aQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///+B//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////n///+Z////JAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////JP///5n////5/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////4EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////Af///5f////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////1////j////xsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8b////j/////X///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+W////AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////jv//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+P///4j///8VAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///xX///+I////+P/////////////////////////////ZXiUIAAAgAElEQVT/////////////////////////////////////////////////////////////////////////////////////////////////jQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///93//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+4////JAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////JP///7j//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////3YAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///2H/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////4////1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///9U////4/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////9gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////Tf////z///////////////////////////////////////////////////////////////////////////////////////////////////////////////////+R////DAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////DP///5H////////////////////////////////////////////////////////////////////////////////////////////////////////////////////7////TAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///87////9v//////////////////////////////////////////////////////////////////////////////////////////////////////////////7f///00AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///9O////7v//////////////////////////////////////////////////////////////////////////////////////////////////////////////9v///zsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///xr////q///////////////////////////////////////////////////////////////////////////////////////////////////////////////F////HgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////Hv///8b//////////////////////////////////////////////////////////////////////////////////////////////////////////////+n///8ZAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////A////8D//////////////////////////////////////////////////////////////////////////////////////////////////////////////4n///8EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wT///+J//////////////////////////////////////////////////////////////////////////////////////////////////////////////+/////AwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////g//////////////////////////////////////////////////////////////////////////////////////////////////////////8////YgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////Y/////z/////////////////////////////////////////////////////////////////////////////////////////////////////////ggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///9E/////f////////////////////////////////////////////////////////////////////////////////////////////////////f///9PAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///0/////3/////////////////////////////////////////////////////////////////////////////////////////////////////f///0MAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///xn////p////////////////////////////////////////////////////////////////////////////////////////////////////8P///z0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8+////8P///////////////////////////////////////////////////////////////////////////////////////////////////+j///8YAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////Af///73////////////////////////////////////////////////////////////////////////////////////////////////////r////LgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////L////+v///////////////////////////////////////////////////////////////////////////////////////////////////+8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP5KqOIAACAASURBVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALd/SIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///9g////////////////////////////////////////////////////////////////////////////////////////////////////8////zUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////Nf////T///////////////////////////////////////////////////////////////////////////////////////////////////9fAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///xH////q///////////////////////////////////////////////////////////////////////////////////////////////6////RQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///0b////6///////////////////////////////////////////////////////////////////////////////////////////////p////EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///5b///////////////////////////////////////////////////////////////////////////////////////////////7///9ZAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///9a/////v//////////////////////////////////////////////////////////////////////////////////////////////lQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////NP////3//////////////////////////////////////////////////////////////////////////////////////////////3AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////cf///////////////////////////////////////////////////////////////////////////////////////////////f///zMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8C////y///////////////////////////////////////////////////////////////////////////////////////////////pQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///6b//////////////////////////////////////////////////////////////////////////////////////////////8r///8CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///9m///////////////////////////////////////////////////////////////////////////////////////////////Z////DAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///w3////Z//////////////////////////////////////////////////////////////////////////////////////////////9mAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wUAAADdAAAAHQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPgAAAA3AQEB0gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///4AAAABeAAAABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPgAAACYAQEBjAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8vAAAAyAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADjAAAAIwEBAfsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///2T//////////////////////////////////////////////////////////////////////////////////////////////2YAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////R///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////NQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////Z///////////////////////////////////////////////////////////////////////////////////////////////YwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////AwAAAHgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAswEBAZoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEBmQAAALQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeP///wMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWAAAACMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD3AAAAbgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wMAAAANAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC////xAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP8AAADzAQEB/gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAG4AAABDAAAACQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJAAAAFcAAACmAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFNXaWgAAIABJREFUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8B////1f////////////////////////////////////////////////////////////////////////////////////////97AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////c/////P////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////v////ZQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///99/////////////////////////////////////////////////////////////////////////////////////////9T///8BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///9TAAAArAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANkAAAAuAQEB+gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///89AAAAwgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAAC4BAQHUAAAAAAAAAAAAAAAAAAAAAAAAAAD///8HAAAA1AAAACQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABTAQEBrgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABtAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGsBAQH6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA7AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAADkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQH5AAAAbQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABtAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///x8AAAA+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAuwEBAb0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEBuAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/////HgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFwAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAhQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAXAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAF0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADFAQEBwQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANMAAAAxAAAAMQAAADEAAAAxAAAAiAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAewAAADUAAAA1AAAANQAAADUAAADkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAb0AAADIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////NwAAACcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPYBAQHQAAAAAAAAAAAAAAAA////PAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA3gEBAcwAAAAAAAAAAAAAAAD////5AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACFAAAAswAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKP///zYBAQHKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAM4BAQG3AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAsQAAAOcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADfAAAAugAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQG0AAAA0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAF0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8FAAAAWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAxAAAAFoAAAAoAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP0AAADXAAAAfAAAAEYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlAAAAJwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFj///9xAQEB/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA2AAAAEwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA9wAAAKsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAfYAAADOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArAAAAJQAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAAAA2AAAAxgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAsAEBAfMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADD8omyAAAgAElEQVQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEB8QAAALIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAogAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wgAAAA5AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADoAAAAuwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALgAAADrAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA5////BwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADoAAAAHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACsAQEB/QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/AAAAAAAAAAAAAAAAAAAAAAAAAP4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD+AAAAAAAAAAAAAAAAAAAAAAAAAP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAfwAAACtAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAOgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADTAAAAAAAAAAAAAAAAAAAAAAAAANMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADTAAAAAAAAAAAAAAAAAAAAAAAAANQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC9AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP4AAADBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACzAAAAoQAAAAAAAAAAAAAA1AAAAH8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB1AAAA3gAAAAAAAAAAAAAAjwEBAcUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC/AAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAM8BAQHwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQH/AAAAYP///4MAAAAPAAAA0QEBAf0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQHe////KAAAADAAAADrAQEB4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQHt////0QAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////GgAAAA0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAL8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAd0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEB+wAAAMsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAvgAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADf///xkBAQHnAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAL4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAvQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAM4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAzgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8QEBAekAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKttRTgAACAASURBVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEB6AAAAPIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA2gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA2QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA2QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8HAAAABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA2wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAb///8GAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA7QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAO4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA9QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPUAAAAAAAAAAAAA8Wij4AAAIABJREFUAAAAAAAAAAAAAAAAAACA/38AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAfIAAAD5AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAjAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA+AEBAfMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADXAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA1gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA1gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAC+1uRtAAAgAElEQVQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAV////EQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAApAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAqAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8SAAAAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA1gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALwAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABf////1AAAAL8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAEoAAABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAuAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA1gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADYAAAA/gAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAAAAjgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD+AAAA2AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQH3AAAA4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADfAQEB+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAzQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOP///wkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///woAAAA3AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAuwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgAAADsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADsAAAAGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC7AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAugAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD7AAAAkwAAAFsAAACCAAAA8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPMAAACGAAAAWwAAAI8AAAD5AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC5AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///9j//////////////////////////////////////////////////////////////////////////////9oAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///9s/////////////////////////+H///9x////i/////v///////////////////9QAAAAAAAAAAAAAAAA////LP////j/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+v///zQAAAAAAAAAAAAAAAD///9I/////////////////////f///5D///9v////3f////////////////////////9YAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///9v//////////////////////////////////////////////////////////////////////////////9gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///5L///////////////////////////////////////////////////////////////////////////////////84AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///9s/////////////////////////zIAAAAAAAAAAP///4f//////////////9QAAAAAAAAAAAAAAAAAAAAAAAAAAP///6j/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////sgAAAAAAAAAAAAAAAAAAAAAAAAAA////yv//////////////kQAAAAAAAAAA////KP////////////////////////9YAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////Of///////////////////////////////////////////////////////////////////////////////////5EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOEAAAAAAAAAAAAAAOIAAAAAAAAAAAAAAO0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAO8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA7gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA7gAAAAAAAAAAAAAA4QAAAAAAAAAAAAAA4gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wv////5///////////////////////////////////////////////////////////////////////////////t////BgAAAAAAAAAAAAAAAA1LrSYAACAASURBVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///9s/////////////////////////5////8N////J////9r///////////////f///8aAAAAAAAAAAAAAAAA////Bv///97/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////5f///woAAAAAAAAAAAAAAAD///8U////8v//////////////3////yz///8L////l/////////////////////////9YAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8G////7v//////////////////////////////////////////////////////////////////////////////+f///wsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///+1////////////////////////////////////////////////////////////////////////////////////UgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///9s///////////////////////////////////////////////////////////////N////LwAAAAD///8f////sv///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////7n///8iAAAAAP///yv////I//////////////////////////////////////////////////////////////9YAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///9T////////////////////////////////////////////////////////////////////////////////////tQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACfAAAASgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaAAAAK4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyAAAA0P////gAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEYAAADd////+AAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACyAAAA7AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARf///zUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///zcAAABEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADrAAAAsgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQH6AAAApQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACjAQEB+wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE7///8sAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////MAAAAEwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEB0gAAAM0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAB7AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAewAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMkBAQHVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJ0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABW////LwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8yAAAAUgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJ0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wsAAADfAAAAFQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAxgAAADwBAQH/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8TAAAAzwAAAB0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANgAAAA0AQEB9QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wEAAADHAAAANwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA6AAAACIBAQH3AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAfX///+OAAAAhwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOgAAAGEAAACeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQHt////LAAAAEAAAAAGAAAAPQAAAG4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHcAAADeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALQAAAH4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIgAAADNAAAA+AAAAL4BAQH2AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGQAAAA3AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAjAEBAfcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8M////7P///////////////////////////////////////////////////////////////////////////////////+v///8SAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////XP///////////////////////////////////zQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAdZnKWgAAIABJREFUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////RP///////////////////////////////////0wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////E////+z////////////////////////////////////////////////////////////////////////////////////q////CwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQH0AAAAjwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAAACIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAiAAAABMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACOAQEB9QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAkwAAAO8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABk////SQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///9JAAAAYwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAO4AAACVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEB8gAAAJEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAov///xsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA+QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///xwAAACiAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJABAQHzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///w8AAADZAAAAFwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMMAAABBAQEB/QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////CgAAAKYAAAArAAAAAQAAAAAAAAD/AAAAvwAAAGcBAQH/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////BAAAAKAAAAA3AAAAAQAAAAAAAAD/AAAAzQAAAF4BAQH6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////BAAAAL8AAAA8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA6QAAACYBAQHyAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///9d//////////////////////////////////////////////////////////////////////////////////////////////+GAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////h///////////////////////////////////////////////////////////////////////////////////////////////XAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////wf/////////////////////////////////////////////////////////////////////////////////////////+////TQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///9N/////v/////////////////////////////////////////////////////////////////////////////////////////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////K/////v/////////////////////////////////////////////////////////////////////////////////////////9f///zgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///zr////2//////////////////////////////////////////////////////////////////////////////////////////r///8qAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///4v//////////////////////////////////////////////////////////////////////////////////////////////+3///8pAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////K////+7//////////////////////////////////////////////////////////////////////////////////////////////4oAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wv////j///////////////////////////////////////////////////////////////////////////////////////////////i////HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8e////5P//////////////////////////////////////////////////////////////////////////////////////////////4v///wsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///9M////////////////////////////////////////////////////////////////////////////////////////////////////1P///xUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///xctgguYAAAgAElEQVT////X/////////////////wAAgP9///////////////////////////////////////////////////////////////////////////////////9MAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///+W////////////////////////////////////////////////////////////////////////////////////////////////////2v///yEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8j////3P///////////////////////////////////////////////////////////////////////////////////////////////////5UAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8J////1f///////////////////////////////////////////////////////////////////////////////////////////////////+f///8vAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///zH////o////////////////////////////////////////////////////////////////////////////////////////////////////1f///wkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////L/////j////////////////////////////////////////////////////////////////////////////////////////////////////x////QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////Qf////H////////////////////////////////////////////////////////////////////////////////////////////////////4////LgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///3H/////////////////////////////////////////////////////////////////////////////////////////////////////////+P///2EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///9h////+P////////////////////////////////////////////////////////////////////////////////////////////////////////9wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wH///+4//////////////////////////////////////////////////////////////////////////////////////////////////////////////+h////CwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////C////6H//////////////////////////////////////////////////////////////////////////////////////////////////////////////7j///8BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8V////3///////////////////////////////////////////////////////////////////////////////////////////////////////////////1v///ywAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8s////1v//////////////////////////////////////////////////////////////////////////////////////////////////////////////3////xUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////Lf////P///////////////////////////////////////////////////////////////////////////////////////////////////////////////b///9m////AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////Af///2b////2///////////////////////////////////////////////////////////////////////////////////////////////////////////////z////LQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///07////9////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w////y0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8t////xP////////////////////////////////////////////////////////////////////////////////////////////////////////////////////3///9OAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///94//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////v///+N////DQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////Df///47////7/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////3kAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////ov//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////5P///1z///8DAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wP///9d////5f//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////pAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB76ErsAACAASURBVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////B////8T////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////c////ZP///wYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8G////ZP///9z////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////H////CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///xL////X/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+P///9u////CQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////Cf///27////j/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////9n///8TAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8f////5v//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////7v///5f///85AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///zr///+X////7v//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////5////yEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////MAAAAMIAAAANAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA2wAAAKQAAACjAQEB3wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///yEAAABdAAAAXQAAACQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD0AAAAPwEBAc4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///0QAAAC2AAAABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA2AAAAL8AAAC+AAAAwAEBAewAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////FAAAAEAAAABCAAAAQQAAACgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPsAAABNAQEBuQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///9cAAAAogAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAANMAAADFAAAA1wAAANkAAADYAAAA4wEBAf8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////AQAAAB0AAAAoAAAAJwAAACkAAAA7AAAALQAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAF8BAQGiAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////eAAAAIcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA9gAAANoAAADjAAAA9AAAAPMAAADzAAAA8wAAAPMAAAAAAAAADQAAAA0AAAANAAAADQAAAA0AAAAcAAAAJgAAAAoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAewEBAYYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///5QAAABrAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACXAQEBagAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wIAAACsAAAAUQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALAAAABTAQEB/gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8IAAAAvAAAADsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAxgAAAEQBAQH3AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJGerkAAAIABJREFUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////EgAAAMUAAAAoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADZAAAAOgEBAe4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///x8AAADHAAAAGQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOgAAAA5AQEB4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAeEAAABJAAAA8gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8wAAAEoBAQHgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQHRAAAAUwAAAPsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD7AAAAUwEBAc8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEBvAAAAGIAAAD/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABjAQEBuwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAaQAAAB5AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHoBAQGjAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////kwAAAGwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlQEBAWwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////AgAAAKsAAABSAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACvAAAAVAEBAf4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wgAAAC7AAAAPAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMUAAABEAQEB+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8RAAAAxQAAACkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA2AAAADsBAQHuAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////HgAAAMcAAAAaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADsF8mZAAAgAElEQVQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADnAAAAOQEBAeEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEB4gAAAEoAAADyAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPMAAABJAQEB4QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAdEAAABSAAAA+wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA+wAAAFIBAQHRAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQG9AAAAYQAAAP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/AAAAYgEBAbwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEBpQAAAHgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB5AQEBpAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///+SAAAAbQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJQBAQFtAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8CAAAAqgAAAFMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArgAAAFUBAQH+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////CAAAALoAAAA9AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADEAAAARQEBAfgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///xEAAADEAAAAKgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANcAAAA7AQEB7wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8eAAAAxwAAABoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA5gAAADkBAQHiAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQHiAAAASQAAAPIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI82wsgAACAASURBVAAAAAAAAAAAAAAAAADyAAAASgEBAeIByHE3jgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQHSAAAAUQAAAPoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA+gAAAFEBAQHRAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEBvgAAAGEAAAD/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/AAAAYQEBAb4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///91//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////92AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////kf///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////5EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////Av///6v/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////q////wIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wcAAAC6AAAAPgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADDAAAARQEBAfkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8RAAAAxAAAACoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANYAAAA8AQEB7wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////HQAAAMcAAAAbAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA5QAAADkBAQHjAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEB4wAAAEkAAADxAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADxAAAASQEBAeMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAdMAAABRAAAA+gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPoAAABRAQEB0wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAl5nxfgAAIABJREFUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////Wf////7//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////v///1kAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///3T/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////dAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///+Q//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8C////qv///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////6r///8CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////B////8H/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////wf///wcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///xD////U///////////////////////////////////////////////////////////////////////////////////////////////////////////////U////EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8d////5P///////////////////////////////////////////////////////////////////////////////////////////////////+T///8cAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////Lf////D/////////////////////////////////////////////////////////////////////////////////////////8P///y0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///0D////5///////////////////////////////////////////////////////////////////////////////5////QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///9Y/////v////////////////////////////////////////////////////////////////////7///9XAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA2KWxwAAAgAElEQVQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////c////////////////////////////////////////////////////////////////////3IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///4//////////////////////////////////////////////////////////jgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wH///+p//////////////////////////////////////////////+o////AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8H////wP///////////////////////////////////7////8HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////EP///9P/////////////////////////0////w8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///xz////j///////////////j////HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8s////8P///+////8sAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////QP///z8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFYhmyIAABHnSURBVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADrd/f4HTuNXQAAAABJRU5ErkJggg=="
-
-/***/ }),
 /* 328 */
 /***/ (function(module, exports) {
 
-module.exports = [
-	{
-		"id": 1,
-		"name": "Abramowskiego-Sienkiewicza",
-		"latitude": 51.75425,
-		"longitude": 19.46545
-	},
-	{
-		"id": 2,
-		"name": "Brzeźna-Piotrkowska",
-		"latitude": 51.75286,
-		"longitude": 19.46029
-	},
-	{
-		"id": 3,
-		"name": "Chochoła",
-		"latitude": 51.8044,
-		"longitude": 19.35776
-	},
-	{
-		"id": 4,
-		"name": "Aleksandrowska-Lechicka",
-		"latitude": 51.80375,
-		"longitude": 19.36265
-	},
-	{
-		"id": 5,
-		"name": "Aleksandrowska-Szczecińska",
-		"latitude": 51.8028,
-		"longitude": 19.36713
-	},
-	{
-		"id": 6,
-		"name": "Aleksandrowska-Szparagowa",
-		"latitude": 51.80113,
-		"longitude": 19.37542
-	},
-	{
-		"id": 7,
-		"name": "Teofilów",
-		"latitude": 51.80229,
-		"longitude": 19.3681
-	},
-	{
-		"id": 8,
-		"name": "Aleksandrowska-Kaczeńcowa",
-		"latitude": 51.79904,
-		"longitude": 19.38588
-	},
-	{
-		"id": 9,
-		"name": "Aleksandrowska-Traktorowa",
-		"latitude": 51.79751,
-		"longitude": 19.39352
-	},
-	{
-		"id": 10,
-		"name": "Aleksandrowska-Kaczeńcowa",
-		"latitude": 51.79868,
-		"longitude": 19.38818
-	},
-	{
-		"id": 11,
-		"name": "Aleksandrowska-Traktorowa",
-		"latitude": 51.79727,
-		"longitude": 19.39527
-	},
-	{
-		"id": 12,
-		"name": "Aleksandrowska-Bielicowa",
-		"latitude": 51.79582,
-		"longitude": 19.40199
-	},
-	{
-		"id": 13,
-		"name": "Aleksandrowska-Bielicowa",
-		"latitude": 51.79565,
-		"longitude": 19.40354
-	},
-	{
-		"id": 14,
-		"name": "Limanowskiego-Woronicza",
-		"latitude": 51.79416,
-		"longitude": 19.41058
-	},
-	{
-		"id": 16,
-		"name": "Woronicza-Dw. Łódź Żabieniec",
-		"latitude": 51.79304,
-		"longitude": 19.40858
-	},
-	{
-		"id": 17,
-		"name": "Limanowskiego-zajezdnia LIMANOWSKIE",
-		"latitude": 51.79151,
-		"longitude": 19.42553
-	},
-	{
-		"id": 18,
-		"name": "Limanowskiego-Żabieniec",
-		"latitude": 51.79418,
-		"longitude": 19.41088
-	},
-	{
-		"id": 19,
-		"name": "Aleksandrowska-Bielicowa",
-		"latitude": 51.79566,
-		"longitude": 19.40328
-	},
-	{
-		"id": 20,
-		"name": "Aleksandrowska-Traktorowa",
-		"latitude": 51.79731,
-		"longitude": 19.39511
-	},
-	{
-		"id": 21,
-		"name": "Aleksandrowska-Bielicowa",
-		"latitude": 51.79631,
-		"longitude": 19.40144
-	},
-	{
-		"id": 22,
-		"name": "Traktorowa-Grabieniec",
-		"latitude": 51.79576,
-		"longitude": 19.3939
-	},
-	{
-		"id": 23,
-		"name": "Aleksandrowska-Traktorowa",
-		"latitude": 51.79795,
-		"longitude": 19.39334
-	},
-	{
-		"id": 24,
-		"name": "Traktorowa-Sierpowa",
-		"latitude": 51.79899,
-		"longitude": 19.3947
-	},
-	{
-		"id": 25,
-		"name": "Aleksandrowska-Kaczeńcowa",
-		"latitude": 51.79873,
-		"longitude": 19.38795
-	},
-	{
-		"id": 26,
-		"name": "Kaczeńcowa-Aleksandrowska",
-		"latitude": 51.80043,
-		"longitude": 19.38793
-	},
-	{
-		"id": 27,
-		"name": "Aleksandrowska-Kaczeńcowa",
-		"latitude": 51.79946,
-		"longitude": 19.38562
-	},
-	{
-		"id": 28,
-		"name": "Aleksandrowska-Szparagowa",
-		"latitude": 51.80093,
-		"longitude": 19.37694
-	},
-	{
-		"id": 29,
-		"name": "Szparagowa-Aleksandrowska",
-		"latitude": 51.80195,
-		"longitude": 19.37737
-	},
-	{
-		"id": 30,
-		"name": "Aleksandrowska-Szczecińska",
-		"latitude": 51.80255,
-		"longitude": 19.36884
-	},
-	{
-		"id": 31,
-		"name": "Aleksandrowska-Lechicka",
-		"latitude": 51.80378,
-		"longitude": 19.36274
-	},
-	{
-		"id": 32,
-		"name": "Chochoła",
-		"latitude": 51.8046,
-		"longitude": 19.35703
-	},
-	{
-		"id": 33,
-		"name": "Armii Krajowej-Napierskiego",
-		"latitude": 51.74679,
-		"longitude": 19.39797
-	},
-	{
-		"id": 34,
-		"name": "Kusocińskiego-Armii Krajowej",
-		"latitude": 51.74998,
-		"longitude": 19.39136
-	},
-	{
-		"id": 35,
-		"name": "Armii Krajowej-Napierskiego",
-		"latitude": 51.74704,
-		"longitude": 19.39754
-	},
-	{
-		"id": 36,
-		"name": "Retkińska-Wyszyńskiego",
-		"latitude": 51.74902,
-		"longitude": 19.4074
-	},
-	{
-		"id": 38,
-		"name": "Augustów-Przybyszewskiego",
-		"latitude": 51.75044,
-		"longitude": 19.54766
-	},
-	{
-		"id": 39,
-		"name": "Augustów-Wujaka",
-		"latitude": 51.75337,
-		"longitude": 19.55104
-	},
-	{
-		"id": 40,
-		"name": "Augustów-Rokicińska",
-		"latitude": 51.75672,
-		"longitude": 19.55326
-	},
-	{
-		"id": 41,
-		"name": "Rokicińska-Lermontowa",
-		"latitude": 51.75869,
-		"longitude": 19.5498
-	},
-	{
-		"id": 42,
-		"name": "Augustów-Rokicińska",
-		"latitude": 51.75659,
-		"longitude": 19.55314
-	},
-	{
-		"id": 43,
-		"name": "Augustów-Wujaka",
-		"latitude": 51.75319,
-		"longitude": 19.55063
-	},
-	{
-		"id": 44,
-		"name": "Augustów-Przybyszewskiego",
-		"latitude": 51.75173,
-		"longitude": 19.54895
-	},
-	{
-		"id": 46,
-		"name": "Pabianicka-Chocianowicka",
-		"latitude": 51.70602,
-		"longitude": 19.42206
-	},
-	{
-		"id": 47,
-		"name": "Pabianicka-Długa",
-		"latitude": 51.703,
-		"longitude": 19.41801
-	},
-	{
-		"id": 48,
-		"name": "Grabińska-Nowosolna",
-		"latitude": 51.79458,
-		"longitude": 19.58983
-	},
-	{
-		"id": 49,
-		"name": "Grabińska-Grabińska 10",
-		"latitude": 51.8016,
-		"longitude": 19.59068
-	},
-	{
-		"id": 50,
-		"name": "Grabińska-Nowosolna",
-		"latitude": 51.79445,
-		"longitude": 19.58966
-	},
-	{
-		"id": 51,
-		"name": "Wiączyńska-Nowosolna",
-		"latitude": 51.79271,
-		"longitude": 19.59107
-	},
-	{
-		"id": 52,
-		"name": "Bieszczadzka-Kolumny",
-		"latitude": 51.70743,
-		"longitude": 19.51265
-	},
-	{
-		"id": 53,
-		"name": "Józefów-Bieszczadzka",
-		"latitude": 51.70644,
-		"longitude": 19.51092
-	},
-	{
-		"id": 54,
-		"name": "Bieszczadzka-Kolumny",
-		"latitude": 51.70768,
-		"longitude": 19.51276
-	},
-	{
-		"id": 55,
-		"name": "Kolumny-Bronisin",
-		"latitude": 51.70798,
-		"longitude": 19.51746
-	},
-	{
-		"id": 56,
-		"name": "Borowa-Siewna",
-		"latitude": 51.77988,
-		"longitude": 19.40942
-	},
-	{
-		"id": 57,
-		"name": "Siewna-Krakowska",
-		"latitude": 51.77937,
-		"longitude": 19.40052
-	},
-	{
-		"id": 58,
-		"name": "Boya-Żeleńskiego-Sucharskiego",
-		"latitude": 51.79027,
-		"longitude": 19.47564
-	},
-	{
-		"id": 59,
-		"name": "Wojska Polskiego-Sporna",
-		"latitude": 51.78927,
-		"longitude": 19.47999
-	},
-	{
-		"id": 60,
-		"name": "Boya-Żeleńskiego-Sucharskiego",
-		"latitude": 51.79047,
-		"longitude": 19.47449
-	},
-	{
-		"id": 61,
-		"name": "Obr.Westerplatte-Organizacji WiN",
-		"latitude": 51.78927,
-		"longitude": 19.46781
-	},
-	{
-		"id": 62,
-		"name": "Bratysławska-Wróblewskiego",
-		"latitude": 51.74923,
-		"longitude": 19.42288
-	},
-	{
-		"id": 63,
-		"name": "Bratysławska-Wileńska",
-		"latitude": 51.75198,
-		"longitude": 19.42514
-	},
-	{
-		"id": 64,
-		"name": "Grabińska-Podwodna",
-		"latitude": 51.80635,
-		"longitude": 19.59102
-	},
-	{
-		"id": 65,
-		"name": "Bandurskiego-Dw. Łódź Kaliska",
-		"latitude": 51.75563,
-		"longitude": 19.43186
-	},
-	{
-		"id": 66,
-		"name": "Bratysławska-Wróblewskiego",
-		"latitude": 51.74979,
-		"longitude": 19.42329
-	},
-	{
-		"id": 67,
-		"name": "Wyszyńskiego-Waltera-Janke",
-		"latitude": 51.74753,
-		"longitude": 19.4179
-	},
-	{
-		"id": 69,
-		"name": "Grabińska-Grabińska 10",
-		"latitude": 51.8017,
-		"longitude": 19.59041
-	},
-	{
-		"id": 70,
-		"name": "Broniewskiego-Kilińskiego",
-		"latitude": 51.7311,
-		"longitude": 19.47677
-	},
-	{
-		"id": 71,
-		"name": "Broniewskiego-Kraszewskiego",
-		"latitude": 51.73218,
-		"longitude": 19.48202
-	},
-	{
-		"id": 72,
-		"name": "Kilińskiego-Dąbrowskiego",
-		"latitude": 51.73791,
-		"longitude": 19.47883
-	},
-	{
-		"id": 73,
-		"name": "Broniewskiego-Śmigłego-Rydza",
-		"latitude": 51.73248,
-		"longitude": 19.48659
-	},
-	{
-		"id": 74,
-		"name": "Broniewskiego-Tatrzańska",
-		"latitude": 51.73302,
-		"longitude": 19.49264
-	},
-	{
-		"id": 75,
-		"name": "Felińskiego-Kruczkowskiego",
-		"latitude": 51.73235,
-		"longitude": 19.49592
-	},
-	{
-		"id": 76,
-		"name": "Tatrzańska-Dąbrowskiego",
-		"latitude": 51.73823,
-		"longitude": 19.4949
-	},
-	{
-		"id": 77,
-		"name": "Dąbrowskiego-Kossaka",
-		"latitude": 51.73658,
-		"longitude": 19.49803
-	},
-	{
-		"id": 78,
-		"name": "Broniewskiego-Śmigłego-Rydza",
-		"latitude": 51.73293,
-		"longitude": 19.49084
-	},
-	{
-		"id": 79,
-		"name": "Broniewskiego-Kraszewskiego",
-		"latitude": 51.73236,
-		"longitude": 19.48148
-	},
-	{
-		"id": 80,
-		"name": "Broniewskiego-Kilińskiego",
-		"latitude": 51.73097,
-		"longitude": 19.47581
-	},
-	{
-		"id": 81,
-		"name": "Rzgowska-Bankowa",
-		"latitude": 51.72917,
-		"longitude": 19.47643
-	},
-	{
-		"id": 82,
-		"name": "Dąbrowskiego-Kilińskiego",
-		"latitude": 51.73865,
-		"longitude": 19.47834
-	},
-	{
-		"id": 83,
-		"name": "Paderewskiego-Tuszyńska",
-		"latitude": 51.72856,
-		"longitude": 19.46929
-	},
-	{
-		"id": 84,
-		"name": "Rzgowska-Paderewskiego",
-		"latitude": 51.73174,
-		"longitude": 19.47385
-	},
-	{
-		"id": 85,
-		"name": "Paderewskiego-Rzgowska",
-		"latitude": 51.73031,
-		"longitude": 19.47379
-	},
-	{
-		"id": 86,
-		"name": "Brukowa-Limanowskiego",
-		"latitude": 51.79601,
-		"longitude": 19.40948
-	},
-	{
-		"id": 87,
-		"name": "Brukowa-Pojezierska",
-		"latitude": 51.80026,
-		"longitude": 19.41096
-	},
-	{
-		"id": 88,
-		"name": "Pojezierska-Elektrociepłownia EC3",
-		"latitude": 51.79952,
-		"longitude": 19.4201
-	},
-	{
-		"id": 89,
-		"name": "Brukowa-św. Teresy",
-		"latitude": 51.80583,
-		"longitude": 19.41183
-	},
-	{
-		"id": 90,
-		"name": "Św. Teresy-Włókniarzy",
-		"latitude": 51.80439,
-		"longitude": 19.42189
-	},
-	{
-		"id": 91,
-		"name": "Brukowa-Pojezierska",
-		"latitude": 51.80184,
-		"longitude": 19.41121
-	},
-	{
-		"id": 92,
-		"name": "Limanowskiego-Dw. Łódź Żabieniec",
-		"latitude": 51.79514,
-		"longitude": 19.40744
-	},
-	{
-		"id": 93,
-		"name": "Grabińska 40",
-		"latitude": 51.81422,
-		"longitude": 19.5919
-	},
-	{
-		"id": 94,
-		"name": "Grabińska-Podwodna",
-		"latitude": 51.80621,
-		"longitude": 19.59089
-	},
-	{
-		"id": 95,
-		"name": "Grabina-Grabina/Lipowa1",
-		"latitude": 51.8195,
-		"longitude": 19.59675
-	},
-	{
-		"id": 96,
-		"name": "Grabińska 39",
-		"latitude": 51.81374,
-		"longitude": 19.59168
-	},
-	{
-		"id": 97,
-		"name": "Brzezińska-Śnieżna",
-		"latitude": 51.79596,
-		"longitude": 19.50407
-	},
-	{
-		"id": 98,
-		"name": "Brzezińska-CH M1",
-		"latitude": 51.79627,
-		"longitude": 19.51081
-	},
-	{
-		"id": 99,
-		"name": "Brzezińska-Kerna",
-		"latitude": 51.79648,
-		"longitude": 19.51605
-	},
-	{
-		"id": 100,
-		"name": "Brzezińska-Janosika",
-		"latitude": 51.79653,
-		"longitude": 19.52353
-	},
-	{
-		"id": 101,
-		"name": "Brzezińska-Marmurowa",
-		"latitude": 51.7959,
-		"longitude": 19.53405
-	},
-	{
-		"id": 102,
-		"name": "Janosika-Powstańców Śląskich",
-		"latitude": 51.79242,
-		"longitude": 19.52374
-	},
-	{
-		"id": 103,
-		"name": "Zjazdowa-Beskidzka",
-		"latitude": 51.79998,
-		"longitude": 19.5292
-	},
-	{
-		"id": 104,
-		"name": "Brzezińska-Olkuska",
-		"latitude": 51.79589,
-		"longitude": 19.55699
-	},
-	{
-		"id": 106,
-		"name": "Brzezińska-Karkonoska",
-		"latitude": 51.79593,
-		"longitude": 19.54936
-	},
-	{
-		"id": 107,
-		"name": "Brzezińska-Granatowa",
-		"latitude": 51.79528,
-		"longitude": 19.56602
-	},
-	{
-		"id": 108,
-		"name": "Brzezińska-Hiacyntowa",
-		"latitude": 51.79469,
-		"longitude": 19.57526
-	},
-	{
-		"id": 109,
-		"name": "Brzezińska-Nowosolna",
-		"latitude": 51.7937,
-		"longitude": 19.58909
-	},
-	{
-		"id": 110,
-		"name": "Brzezińska-Hiacyntowa",
-		"latitude": 51.79495,
-		"longitude": 19.57339
-	},
-	{
-		"id": 111,
-		"name": "Brzezińska-Granatowa",
-		"latitude": 51.79554,
-		"longitude": 19.56419
-	},
-	{
-		"id": 112,
-		"name": "Brzezińska-Karkonoska",
-		"latitude": 51.79607,
-		"longitude": 19.54842
-	},
-	{
-		"id": 113,
-		"name": "Brzezińska-Olkuska",
-		"latitude": 51.79583,
-		"longitude": 19.5595
-	},
-	{
-		"id": 114,
-		"name": "Brzezińska-Marmurowa",
-		"latitude": 51.79603,
-		"longitude": 19.53562
-	},
-	{
-		"id": 115,
-		"name": "Brzezińska-Janosika",
-		"latitude": 51.7967,
-		"longitude": 19.5231
-	},
-	{
-		"id": 116,
-		"name": "Brzezińska-Kerna",
-		"latitude": 51.7967,
-		"longitude": 19.51311
-	},
-	{
-		"id": 117,
-		"name": "Brzezińska-Śnieżna",
-		"latitude": 51.79585,
-		"longitude": 19.50173
-	},
-	{
-		"id": 118,
-		"name": "Wojska Polskiego-Łomnicka",
-		"latitude": 51.79317,
-		"longitude": 19.49261
-	},
-	{
-		"id": 119,
-		"name": "Brzeźna-Piotrkowska",
-		"latitude": 51.75275,
-		"longitude": 19.46057
-	},
-	{
-		"id": 120,
-		"name": "Sienkiewicza-Tymienieckiego (Ericss",
-		"latitude": 51.75013,
-		"longitude": 19.46383
-	},
-	{
-		"id": 121,
-		"name": "Sienkiewicza-Pogotowie Ratunkowe",
-		"latitude": 51.75451,
-		"longitude": 19.46416
-	},
-	{
-		"id": 122,
-		"name": "Radwańska-Wólczańska",
-		"latitude": 51.7525,
-		"longitude": 19.45629
-	},
-	{
-		"id": 123,
-		"name": "Chocianowicka-Chocianowicka 199",
-		"latitude": 51.70897,
-		"longitude": 19.38187
-	},
-	{
-		"id": 124,
-		"name": "Chocianowicka-Chocianowicka 143",
-		"latitude": 51.70835,
-		"longitude": 19.39175
-	},
-	{
-		"id": 125,
-		"name": "Chocianowicka-Chocianowicka 95",
-		"latitude": 51.70774,
-		"longitude": 19.40187
-	},
-	{
-		"id": 126,
-		"name": "Chocianowicka-Chocianowicka 57",
-		"latitude": 51.70722,
-		"longitude": 19.41036
-	},
-	{
-		"id": 127,
-		"name": "Pabianicka-Chocianowicka",
-		"latitude": 51.70677,
-		"longitude": 19.42367
-	},
-	{
-		"id": 128,
-		"name": "Chocianowicka-Chocianowicka 57",
-		"latitude": 51.70732,
-		"longitude": 19.41018
-	},
-	{
-		"id": 129,
-		"name": "Chocianowicka-Chocianowicka 95",
-		"latitude": 51.70784,
-		"longitude": 19.40156
-	},
-	{
-		"id": 130,
-		"name": "Chocianowicka-Chocianowicka 143",
-		"latitude": 51.70841,
-		"longitude": 19.39218
-	},
-	{
-		"id": 131,
-		"name": "Chocianowicka-Chocianowicka 199",
-		"latitude": 51.70908,
-		"longitude": 19.38148
-	},
-	{
-		"id": 132,
-		"name": "Łaskowice-Nad Dobrzynką",
-		"latitude": 51.7097,
-		"longitude": 19.37142
-	},
-	{
-		"id": 133,
-		"name": "Cmentarna-Legionów",
-		"latitude": 51.77511,
-		"longitude": 19.44298
-	},
-	{
-		"id": 134,
-		"name": "Legionów-Gdańska",
-		"latitude": 51.77606,
-		"longitude": 19.44705
-	},
-	{
-		"id": 135,
-		"name": "Cmentarna-Legionów",
-		"latitude": 51.77528,
-		"longitude": 19.44217
-	},
-	{
-		"id": 136,
-		"name": "Cmentarna-cm. Ogrodowa",
-		"latitude": 51.77572,
-		"longitude": 19.43715
-	},
-	{
-		"id": 137,
-		"name": "Srebrzyńska-Kasprzaka",
-		"latitude": 51.77362,
-		"longitude": 19.42798
-	},
-	{
-		"id": 138,
-		"name": "Czechosłowacka-Mazowiecka",
-		"latitude": 51.77205,
-		"longitude": 19.50943
-	},
-	{
-		"id": 139,
-		"name": "Czechosłowacka-Edwarda",
-		"latitude": 51.77041,
-		"longitude": 19.51536
-	},
-	{
-		"id": 140,
-		"name": "Edwarda-Pomorska",
-		"latitude": 51.77476,
-		"longitude": 19.52129
-	},
-	{
-		"id": 141,
-		"name": "Czechosłowacka-Edwarda",
-		"latitude": 51.77052,
-		"longitude": 19.51538
-	},
-	{
-		"id": 142,
-		"name": "Czechosłowacka-Mazowiecka",
-		"latitude": 51.77219,
-		"longitude": 19.50907
-	},
-	{
-		"id": 143,
-		"name": "Czechosłowacka-Niciarniana",
-		"latitude": 51.77173,
-		"longitude": 19.50592
-	},
-	{
-		"id": 144,
-		"name": "Niciarniana-Dw. Łódź Niciarniana",
-		"latitude": 51.76777,
-		"longitude": 19.50661
-	},
-	{
-		"id": 145,
-		"name": "Czerwona-Piotrkowska",
-		"latitude": 51.74571,
-		"longitude": 19.45886
-	},
-	{
-		"id": 146,
-		"name": "Piotrkowska-pl. Niepodległości",
-		"latitude": 51.74054,
-		"longitude": 19.4626
-	},
-	{
-		"id": 148,
-		"name": "Kilińskiego-Poznańska",
-		"latitude": 51.74247,
-		"longitude": 19.47772
-	},
-	{
-		"id": 150,
-		"name": "Dąbrowskiego-Kilińskiego",
-		"latitude": 51.73848,
-		"longitude": 19.47786
-	},
-	{
-		"id": 151,
-		"name": "Dąbrowskiego-Tatrzańska",
-		"latitude": 51.73695,
-		"longitude": 19.49509
-	},
-	{
-		"id": 152,
-		"name": "Śmigłego-Rydza-Zbaraska",
-		"latitude": 51.74337,
-		"longitude": 19.48938
-	},
-	{
-		"id": 154,
-		"name": "Tatrzańska-Broniewskiego",
-		"latitude": 51.73402,
-		"longitude": 19.49392
-	},
-	{
-		"id": 155,
-		"name": "Dąbrowskiego-Kossaka",
-		"latitude": 51.73657,
-		"longitude": 19.49935
-	},
-	{
-		"id": 156,
-		"name": "Dąbrowskiego-Podhalańska",
-		"latitude": 51.73624,
-		"longitude": 19.50306
-	},
-	{
-		"id": 157,
-		"name": "Dąbrowskiego-Podhalańska",
-		"latitude": 51.7361,
-		"longitude": 19.50362
-	},
-	{
-		"id": 158,
-		"name": "Dąbrowskiego-Dw. Łódź Dąbrowa",
-		"latitude": 51.73557,
-		"longitude": 19.50937
-	},
-	{
-		"id": 159,
-		"name": "Dąbrowskiego-Wedmanowej",
-		"latitude": 51.73544,
-		"longitude": 19.51601
-	},
-	{
-		"id": 160,
-		"name": "Dąbrowskiego-Lodowa",
-		"latitude": 51.73487,
-		"longitude": 19.52219
-	},
-	{
-		"id": 161,
-		"name": "Lodowa-Lodowa 91",
-		"latitude": 51.73654,
-		"longitude": 19.52449
-	},
-	{
-		"id": 162,
-		"name": "Tomaszowska-Bławatna",
-		"latitude": 51.73205,
-		"longitude": 19.52997
-	},
-	{
-		"id": 163,
-		"name": "Dąbrowskiego-Tomaszowska",
-		"latitude": 51.73435,
-		"longitude": 19.52962
-	},
-	{
-		"id": 164,
-		"name": "Dąbrowskiego-Tomaszowska",
-		"latitude": 51.73496,
-		"longitude": 19.52832
-	},
-	{
-		"id": 165,
-		"name": "Dąbrowskiego-Lodowa",
-		"latitude": 51.73515,
-		"longitude": 19.52315
-	},
-	{
-		"id": 166,
-		"name": "Lodowa-Dąbrowskiego",
-		"latitude": 51.73371,
-		"longitude": 19.52396
-	},
-	{
-		"id": 167,
-		"name": "Dąbrowskiego-Wedmanowej",
-		"latitude": 51.73572,
-		"longitude": 19.51583
-	},
-	{
-		"id": 168,
-		"name": "Gojawiczyńskiej-Dąbrowskiego",
-		"latitude": 51.73534,
-		"longitude": 19.50508
-	},
-	{
-		"id": 169,
-		"name": "Dąbrowskiego-Podhalańska",
-		"latitude": 51.7363,
-		"longitude": 19.50454
-	},
-	{
-		"id": 170,
-		"name": "Dw. Łódź Dąbrowa",
-		"latitude": 51.73633,
-		"longitude": 19.50901
-	},
-	{
-		"id": 171,
-		"name": "Dąbrowskiego-Podhalańska",
-		"latitude": 51.73634,
-		"longitude": 19.50307
-	},
-	{
-		"id": 172,
-		"name": "Dąbrowskiego-Kossaka",
-		"latitude": 51.73666,
-		"longitude": 19.49936
-	},
-	{
-		"id": 173,
-		"name": "Dąbrowskiego-Tatrzańska",
-		"latitude": 51.73712,
-		"longitude": 19.49402
-	},
-	{
-		"id": 174,
-		"name": "Dąbrowskiego-Kossaka",
-		"latitude": 51.73678,
-		"longitude": 19.49954
-	},
-	{
-		"id": 175,
-		"name": "Śmigłego-Rydza-Milionowa",
-		"latitude": 51.75223,
-		"longitude": 19.48965
-	},
-	{
-		"id": 176,
-		"name": "Dąbrowskiego-Śmigłego-Rydza",
-		"latitude": 51.73748,
-		"longitude": 19.4899
-	},
-	{
-		"id": 179,
-		"name": "Pl. Niepodległości",
-		"latitude": 51.74041,
-		"longitude": 19.46391
-	},
-	{
-		"id": 180,
-		"name": "Dąbrowskiego-Rzgowska",
-		"latitude": 51.7386,
-		"longitude": 19.46742
-	},
-	{
-		"id": 181,
-		"name": "plac Niepodległości-pl. Niepodległo",
-		"latitude": 51.73987,
-		"longitude": 19.46353
-	},
-	{
-		"id": 182,
-		"name": "Pabianicka-Wólczańska",
-		"latitude": 51.73599,
-		"longitude": 19.45877
-	},
-	{
-		"id": 183,
-		"name": "Piotrkowska-pl. Niepodległości",
-		"latitude": 51.74098,
-		"longitude": 19.46264
-	},
-	{
-		"id": 184,
-		"name": "Pl. Niepodległości",
-		"latitude": 51.73987,
-		"longitude": 19.4634
-	},
-	{
-		"id": 185,
-		"name": "Rzgowska-Lecznicza",
-		"latitude": 51.73456,
-		"longitude": 19.4708
-	},
-	{
-		"id": 186,
-		"name": "Rzgowska-Lecznicza",
-		"latitude": 51.73459,
-		"longitude": 19.47076
-	},
-	{
-		"id": 187,
-		"name": "Starorudzka-Demokratyczna",
-		"latitude": 51.71009,
-		"longitude": 19.43794
-	},
-	{
-		"id": 188,
-		"name": "Demokratyczna-Dzwonowa",
-		"latitude": 51.71064,
-		"longitude": 19.4442
-	},
-	{
-		"id": 189,
-		"name": "Ekonomiczna-Starorudzka",
-		"latitude": 51.70678,
-		"longitude": 19.4397
-	},
-	{
-		"id": 190,
-		"name": "Demokratyczna-Matowa",
-		"latitude": 51.71147,
-		"longitude": 19.45082
-	},
-	{
-		"id": 191,
-		"name": "Demokratyczna-Demokratyczna 117",
-		"latitude": 51.71184,
-		"longitude": 19.45898
-	},
-	{
-		"id": 192,
-		"name": "Demokratyczna-Bartoszewskiego",
-		"latitude": 51.71171,
-		"longitude": 19.46349
-	},
-	{
-		"id": 193,
-		"name": "Demokratyczna-Bartoszewskiego",
-		"latitude": 51.71191,
-		"longitude": 19.4596
-	},
-	{
-		"id": 194,
-		"name": "Demokratyczna-Matowa",
-		"latitude": 51.71144,
-		"longitude": 19.45016
-	},
-	{
-		"id": 195,
-		"name": "Demokratyczna-Dzwonowa",
-		"latitude": 51.71083,
-		"longitude": 19.4453
-	},
-	{
-		"id": 196,
-		"name": "Demokratyczna-Starorudzka",
-		"latitude": 51.70983,
-		"longitude": 19.43738
-	},
-	{
-		"id": 197,
-		"name": "Gombrowicza-Pabianicka",
-		"latitude": 51.7132,
-		"longitude": 19.43187
-	},
-	{
-		"id": 198,
-		"name": "Dolna-Łagiewnicka",
-		"latitude": 51.79112,
-		"longitude": 19.45399
-	},
-	{
-		"id": 199,
-		"name": "Łagiewnicka-Kowalska",
-		"latitude": 51.79529,
-		"longitude": 19.45554
-	},
-	{
-		"id": 200,
-		"name": "Dolna-Łagiewnicka",
-		"latitude": 51.79119,
-		"longitude": 19.45399
-	},
-	{
-		"id": 201,
-		"name": "Zgierska-Dolna",
-		"latitude": 51.78996,
-		"longitude": 19.44915
-	},
-	{
-		"id": 202,
-		"name": "DK nr 71-Łagiewniki Nowe",
-		"latitude": 51.85113,
-		"longitude": 19.46543
-	},
-	{
-		"id": 203,
-		"name": "DK nr 71-Przyklasztorze",
-		"latitude": 51.85359,
-		"longitude": 19.47332
-	},
-	{
-		"id": 204,
-		"name": "DK nr 71-Łagiewniki Nowe",
-		"latitude": 51.85082,
-		"longitude": 19.4641
-	},
-	{
-		"id": 205,
-		"name": "Secesyjna",
-		"latitude": 51.84796,
-		"longitude": 19.46062
-	},
-	{
-		"id": 206,
-		"name": "Drewnowska-Okrzei",
-		"latitude": 51.78127,
-		"longitude": 19.42937
-	},
-	{
-		"id": 207,
-		"name": "Drewnowska-Karskiego",
-		"latitude": 51.78064,
-		"longitude": 19.43721
-	},
-	{
-		"id": 208,
-		"name": "Drewnowska-Piwna",
-		"latitude": 51.78108,
-		"longitude": 19.44308
-	},
-	{
-		"id": 209,
-		"name": "Zachodnia-Legionów",
-		"latitude": 51.77753,
-		"longitude": 19.45171
-	},
-	{
-		"id": 210,
-		"name": "Drewnowska-Zachodnia",
-		"latitude": 51.78209,
-		"longitude": 19.44996
-	},
-	{
-		"id": 211,
-		"name": "Drewnowska-Piwna",
-		"latitude": 51.78136,
-		"longitude": 19.44354
-	},
-	{
-		"id": 212,
-		"name": "Drewnowska-Karskiego",
-		"latitude": 51.78082,
-		"longitude": 19.43671
-	},
-	{
-		"id": 213,
-		"name": "Drewnowska-Kasprzaka",
-		"latitude": 51.78127,
-		"longitude": 19.42721
-	},
-	{
-		"id": 214,
-		"name": "Kasprzaka-Tybury",
-		"latitude": 51.78454,
-		"longitude": 19.42642
-	},
-	{
-		"id": 215,
-		"name": "Bionanopark",
-		"latitude": 51.71852,
-		"longitude": 19.41194
-	},
-	{
-		"id": 216,
-		"name": "Dubois-Pusta",
-		"latitude": 51.71991,
-		"longitude": 19.41546
-	},
-	{
-		"id": 217,
-		"name": "Dubois-Hoffmanowej",
-		"latitude": 51.71858,
-		"longitude": 19.42306
-	},
-	{
-		"id": 218,
-		"name": "Dubois-Pabianicka",
-		"latitude": 51.7156,
-		"longitude": 19.43185
-	},
-	{
-		"id": 219,
-		"name": "Rudzka-Pabianicka",
-		"latitude": 51.71055,
-		"longitude": 19.42893
-	},
-	{
-		"id": 220,
-		"name": "Pabianicka-3 Maja",
-		"latitude": 51.71862,
-		"longitude": 19.43784
-	},
-	{
-		"id": 221,
-		"name": "Pabianicka-Dubois",
-		"latitude": 51.7155,
-		"longitude": 19.43396
-	},
-	{
-		"id": 222,
-		"name": "Pabianicka-Odrzańska",
-		"latitude": 51.71163,
-		"longitude": 19.42858
-	},
-	{
-		"id": 223,
-		"name": "Pabianicka-Rudzka",
-		"latitude": 51.71143,
-		"longitude": 19.42909
-	},
-	{
-		"id": 224,
-		"name": "Dubois-Pabianicka",
-		"latitude": 51.7154,
-		"longitude": 19.43236
-	},
-	{
-		"id": 225,
-		"name": "Dubois-Hoffmanowej",
-		"latitude": 51.7184,
-		"longitude": 19.4238
-	},
-	{
-		"id": 226,
-		"name": "Pokładowa-Świętojańska",
-		"latitude": 51.71926,
-		"longitude": 19.43182
-	},
-	{
-		"id": 227,
-		"name": "Dubois-Pusta",
-		"latitude": 51.72026,
-		"longitude": 19.41617
-	},
-	{
-		"id": 229,
-		"name": "Obr.Westerplatte-Organizacji WiN",
-		"latitude": 51.78855,
-		"longitude": 19.46793
-	},
-	{
-		"id": 231,
-		"name": "Bałucki Rynek-Bałucki Rynek",
-		"latitude": 51.78756,
-		"longitude": 19.45374
-	},
-	{
-		"id": 234,
-		"name": "Pomorska-CKD szpital",
-		"latitude": 51.77741,
-		"longitude": 19.50258
-	},
-	{
-		"id": 235,
-		"name": "Telefoniczna pętla",
-		"latitude": 51.78134,
-		"longitude": 19.50673
-	},
-	{
-		"id": 236,
-		"name": "Pomorska-CKD szpital",
-		"latitude": 51.77745,
-		"longitude": 19.50247
-	},
-	{
-		"id": 237,
-		"name": "Pomorska-Konstytucyjna",
-		"latitude": 51.77743,
-		"longitude": 19.49724
-	},
-	{
-		"id": 238,
-		"name": "Pomorska-Kasprowy Wierch",
-		"latitude": 51.77355,
-		"longitude": 19.53446
-	},
-	{
-		"id": 239,
-		"name": "Krokusowa-Zrębowa",
-		"latitude": 51.777,
-		"longitude": 19.52244
-	},
-	{
-		"id": 240,
-		"name": "Edwarda-Pomorska",
-		"latitude": 51.77461,
-		"longitude": 19.52098
-	},
-	{
-		"id": 241,
-		"name": "Elektronowa-Obywatelska",
-		"latitude": 51.73814,
-		"longitude": 19.42518
-	},
-	{
-		"id": 242,
-		"name": "Obywatelska-Elektronowa",
-		"latitude": 51.73712,
-		"longitude": 19.42755
-	},
-	{
-		"id": 243,
-		"name": "Pienista-Obywatelska",
-		"latitude": 51.74063,
-		"longitude": 19.41683
-	},
-	{
-		"id": 244,
-		"name": "Waltera-Janke-Maratońska",
-		"latitude": 51.74436,
-		"longitude": 19.4211
-	},
-	{
-		"id": 246,
-		"name": "Elektronowa-Zakłady Mięsne",
-		"latitude": 51.74156,
-		"longitude": 19.42649
-	},
-	{
-		"id": 247,
-		"name": "Fabryczna-Targowa",
-		"latitude": 51.75616,
-		"longitude": 19.47415
-	},
-	{
-		"id": 248,
-		"name": "Fabryczna-Przędzalniana",
-		"latitude": 51.75754,
-		"longitude": 19.48135
-	},
-	{
-		"id": 249,
-		"name": "Przędzalniana-Tymienieckiego",
-		"latitude": 51.75352,
-		"longitude": 19.48437
-	},
-	{
-		"id": 250,
-		"name": "Fabryczna-Przędzalniana",
-		"latitude": 51.75761,
-		"longitude": 19.48117
-	},
-	{
-		"id": 251,
-		"name": "Fabryczna-Kilińskiego",
-		"latitude": 51.75581,
-		"longitude": 19.47178
-	},
-	{
-		"id": 252,
-		"name": "Śląska-Kruczkowskiego",
-		"latitude": 51.72788,
-		"longitude": 19.49886
-	},
-	{
-		"id": 253,
-		"name": "Felińskiego-Kadłubka",
-		"latitude": 51.73228,
-		"longitude": 19.50077
-	},
-	{
-		"id": 254,
-		"name": "Felińskiego-Gojawiczyńskiej",
-		"latitude": 51.7323,
-		"longitude": 19.50382
-	},
-	{
-		"id": 255,
-		"name": "Gojawiczyńskiej-Dąbrowskiego",
-		"latitude": 51.735,
-		"longitude": 19.50508
-	},
-	{
-		"id": 256,
-		"name": "Felińskiego-Kadłubka",
-		"latitude": 51.73231,
-		"longitude": 19.50051
-	},
-	{
-		"id": 257,
-		"name": "Felińskiego-Kruczkowskiego",
-		"latitude": 51.7323,
-		"longitude": 19.49787
-	},
-	{
-		"id": 258,
-		"name": "DK nr 71-Rzemieślnicza",
-		"latitude": 51.85615,
-		"longitude": 19.48136
-	},
-	{
-		"id": 259,
-		"name": "DK nr 71-Przyklasztorze",
-		"latitude": 51.85344,
-		"longitude": 19.47244
-	},
-	{
-		"id": 260,
-		"name": "Skotniki",
-		"latitude": 51.85877,
-		"longitude": 19.49095
-	},
-	{
-		"id": 261,
-		"name": "DK nr 71-Rzemieślnicza",
-		"latitude": 51.85607,
-		"longitude": 19.48072
-	},
-	{
-		"id": 262,
-		"name": "Św. Franciszka-Czahary",
-		"latitude": 51.72708,
-		"longitude": 19.42278
-	},
-	{
-		"id": 263,
-		"name": "Czahary-Prądzyńskiego",
-		"latitude": 51.72366,
-		"longitude": 19.42316
-	},
-	{
-		"id": 264,
-		"name": "Św. Franciszka-Zenitowa",
-		"latitude": 51.72706,
-		"longitude": 19.43146
-	},
-	{
-		"id": 265,
-		"name": "Franciszkańska-Wojska Polskiego",
-		"latitude": 51.78436,
-		"longitude": 19.46039
-	},
-	{
-		"id": 266,
-		"name": "Wojska Polskiego-Marynarska",
-		"latitude": 51.78545,
-		"longitude": 19.46466
-	},
-	{
-		"id": 267,
-		"name": "pl. Kościelny",
-		"latitude": 51.78356,
-		"longitude": 19.45374
-	},
-	{
-		"id": 268,
-		"name": "Franciszkańska-Wojska Polskiego",
-		"latitude": 51.78431,
-		"longitude": 19.46053
-	},
-	{
-		"id": 269,
-		"name": "Wojska Polskiego-Marynarska",
-		"latitude": 51.78536,
-		"longitude": 19.46461
-	},
-	{
-		"id": 270,
-		"name": "Franciszkańska-Północna",
-		"latitude": 51.77994,
-		"longitude": 19.46115
-	},
-	{
-		"id": 271,
-		"name": "Kilińskiego-Pomorska",
-		"latitude": 51.77754,
-		"longitude": 19.46177
-	},
-	{
-		"id": 272,
-		"name": "Północna-Nowomiejska",
-		"latitude": 51.77899,
-		"longitude": 19.45468
-	},
-	{
-		"id": 273,
-		"name": "Franciszkańska-Północna",
-		"latitude": 51.77996,
-		"longitude": 19.46127
-	},
-	{
-		"id": 274,
-		"name": "Północna-Nowomiejska",
-		"latitude": 51.77908,
-		"longitude": 19.45547
-	},
-	{
-		"id": 275,
-		"name": "Gajcego-Gajcego 121",
-		"latitude": 51.75275,
-		"longitude": 19.63065
-	},
-	{
-		"id": 277,
-		"name": "Gajcego-Gajcego 121",
-		"latitude": 51.75242,
-		"longitude": 19.63002
-	},
-	{
-		"id": 278,
-		"name": "Rataja-Gajcego",
-		"latitude": 51.74882,
-		"longitude": 19.62289
-	},
-	{
-		"id": 279,
-		"name": "Gdańska-Skłodowskiej-Curie",
-		"latitude": 51.76399,
-		"longitude": 19.45032
-	},
-	{
-		"id": 280,
-		"name": "Gdańska-Zielona",
-		"latitude": 51.76971,
-		"longitude": 19.44905
-	},
-	{
-		"id": 281,
-		"name": "Gdańska-1 Maja",
-		"latitude": 51.77286,
-		"longitude": 19.44844
-	},
-	{
-		"id": 282,
-		"name": "Zielona/Kościuszki",
-		"latitude": 51.77027,
-		"longitude": 19.45282
-	},
-	{
-		"id": 283,
-		"name": "Gdańska-Legionów",
-		"latitude": 51.77585,
-		"longitude": 19.44781
-	},
-	{
-		"id": 284,
-		"name": "Legionów-Zachodnia",
-		"latitude": 51.77647,
-		"longitude": 19.45166
-	},
-	{
-		"id": 285,
-		"name": "Legionów-Cmentarna",
-		"latitude": 51.77493,
-		"longitude": 19.44298
-	},
-	{
-		"id": 286,
-		"name": "Gdańska-1 Maja",
-		"latitude": 51.77332,
-		"longitude": 19.44814
-	},
-	{
-		"id": 287,
-		"name": "Gdańska-Zielona",
-		"latitude": 51.77054,
-		"longitude": 19.44872
-	},
-	{
-		"id": 288,
-		"name": "Gdańska-Struga",
-		"latitude": 51.76516,
-		"longitude": 19.44986
-	},
-	{
-		"id": 289,
-		"name": "Kopernika-Żeromskiego",
-		"latitude": 51.76238,
-		"longitude": 19.44844
-	},
-	{
-		"id": 290,
-		"name": "Zbocze-Giewont",
-		"latitude": 51.77869,
-		"longitude": 19.52823
-	},
-	{
-		"id": 291,
-		"name": "Telefoniczna-Pieniny",
-		"latitude": 51.78295,
-		"longitude": 19.52546
-	},
-	{
-		"id": 292,
-		"name": "Wedmanowej-Dąbrowskiego",
-		"latitude": 51.735,
-		"longitude": 19.51509
-	},
-	{
-		"id": 293,
-		"name": "Dw. Łódź Dąbrowa",
-		"latitude": 51.73658,
-		"longitude": 19.50964
-	},
-	{
-		"id": 294,
-		"name": "Felińskiego-Gojawiczyńskiej",
-		"latitude": 51.73261,
-		"longitude": 19.50373
-	},
-	{
-		"id": 295,
-		"name": "Hipoteczna-Olsztyńska",
-		"latitude": 51.79495,
-		"longitude": 19.43219
-	},
-	{
-		"id": 296,
-		"name": "Kniaziewicza-Kalinowa",
-		"latitude": 51.79931,
-		"longitude": 19.43418
-	},
-	{
-		"id": 297,
-		"name": "Pojezierska-Sierakowskiego",
-		"latitude": 51.7978,
-		"longitude": 19.43667
-	},
-	{
-		"id": 298,
-		"name": "Hipoteczna-Olsztyńska",
-		"latitude": 51.79552,
-		"longitude": 19.43212
-	},
-	{
-		"id": 299,
-		"name": "Hipoteczna-Limanowskiego",
-		"latitude": 51.79086,
-		"longitude": 19.43032
-	},
-	{
-		"id": 300,
-		"name": "Kasprzaka-Tybury",
-		"latitude": 51.78442,
-		"longitude": 19.42626
-	},
-	{
-		"id": 301,
-		"name": "Lutomierska-Klonowa",
-		"latitude": 51.78823,
-		"longitude": 19.42727
-	},
-	{
-		"id": 302,
-		"name": "Inflancka-r. Powstańców 1863r.",
-		"latitude": 51.80082,
-		"longitude": 19.45829
-	},
-	{
-		"id": 303,
-		"name": "Marysińska-Inflancka",
-		"latitude": 51.79948,
-		"longitude": 19.46564
-	},
-	{
-		"id": 304,
-		"name": "Inflancka-Marysińska",
-		"latitude": 51.80053,
-		"longitude": 19.46639
-	},
-	{
-		"id": 305,
-		"name": "Inflancka-Gibalskiego",
-		"latitude": 51.80021,
-		"longitude": 19.47246
-	},
-	{
-		"id": 306,
-		"name": "Zagajnikowa-Inflancka",
-		"latitude": 51.79902,
-		"longitude": 19.47673
-	},
-	{
-		"id": 307,
-		"name": "Strykowska-Inflancka",
-		"latitude": 51.7976,
-		"longitude": 19.48761
-	},
-	{
-		"id": 308,
-		"name": "Wycieczkowa-Strykowska",
-		"latitude": 51.80219,
-		"longitude": 19.48849
-	},
-	{
-		"id": 309,
-		"name": "Inflancka-Gibalskiego",
-		"latitude": 51.80052,
-		"longitude": 19.47245
-	},
-	{
-		"id": 310,
-		"name": "Inflancka-Marysińska",
-		"latitude": 51.80075,
-		"longitude": 19.46537
-	},
-	{
-		"id": 311,
-		"name": "Inflancka-r. Powstańców 1863r.",
-		"latitude": 51.801,
-		"longitude": 19.45839
-	},
-	{
-		"id": 313,
-		"name": "r. Powstańców 1863r.",
-		"latitude": 51.80129,
-		"longitude": 19.45918
-	},
-	{
-		"id": 314,
-		"name": "Julianowska-Żarnowcowa",
-		"latitude": 51.79966,
-		"longitude": 19.45138
-	},
-	{
-		"id": 315,
-		"name": "Łagiewnicka-rondo Powstańców 1863r.",
-		"latitude": 51.80152,
-		"longitude": 19.45778
-	},
-	{
-		"id": 316,
-		"name": "Janosika-Pszczyńska",
-		"latitude": 51.77938,
-		"longitude": 19.52179
-	},
-	{
-		"id": 317,
-		"name": "Janosika-Telefoniczna",
-		"latitude": 51.78307,
-		"longitude": 19.52242
-	},
-	{
-		"id": 318,
-		"name": "Janosika-Wyżynna",
-		"latitude": 51.78789,
-		"longitude": 19.52369
-	},
-	{
-		"id": 319,
-		"name": "Janosika-Powstańców Śląskich",
-		"latitude": 51.79199,
-		"longitude": 19.52439
-	},
-	{
-		"id": 320,
-		"name": "Janosika-Wyżynna",
-		"latitude": 51.78777,
-		"longitude": 19.52347
-	},
-	{
-		"id": 321,
-		"name": "Janosika-Telefoniczna",
-		"latitude": 51.7829,
-		"longitude": 19.52227
-	},
-	{
-		"id": 322,
-		"name": "Telefoniczna-Weselna",
-		"latitude": 51.78325,
-		"longitude": 19.51988
-	},
-	{
-		"id": 323,
-		"name": "Janosika-Pszczyńska",
-		"latitude": 51.77931,
-		"longitude": 19.52165
-	},
-	{
-		"id": 324,
-		"name": "Krokusowa-Zrębowa",
-		"latitude": 51.77735,
-		"longitude": 19.52243
-	},
-	{
-		"id": 325,
-		"name": "Jaracza-Wierzbowa",
-		"latitude": 51.77464,
-		"longitude": 19.47784
-	},
-	{
-		"id": 327,
-		"name": "Sterlinga-Pomorska",
-		"latitude": 51.77743,
-		"longitude": 19.46891
-	},
-	{
-		"id": 328,
-		"name": "Jaracza-P.O.W.",
-		"latitude": 51.77373,
-		"longitude": 19.46713
-	},
-	{
-		"id": 329,
-		"name": "Jaracza-Kilińskiego",
-		"latitude": 51.77327,
-		"longitude": 19.46195
-	},
-	{
-		"id": 330,
-		"name": "Jaracza-Piotrkowska",
-		"latitude": 51.77278,
-		"longitude": 19.45606
-	},
-	{
-		"id": 331,
-		"name": "Więckowskiego-Gdańska",
-		"latitude": 51.77205,
-		"longitude": 19.44804
-	},
-	{
-		"id": 332,
-		"name": "Zachodnia-Legionów",
-		"latitude": 51.77558,
-		"longitude": 19.45257
-	},
-	{
-		"id": 333,
-		"name": "Józefów-Rzgowska",
-		"latitude": 51.70693,
-		"longitude": 19.48906
-	},
-	{
-		"id": 334,
-		"name": "Józefów-Nowe Górki",
-		"latitude": 51.70647,
-		"longitude": 19.49566
-	},
-	{
-		"id": 335,
-		"name": "Józefów-Józefów 60",
-		"latitude": 51.70637,
-		"longitude": 19.50475
-	},
-	{
-		"id": 336,
-		"name": "Józefów-Bieszczadzka",
-		"latitude": 51.70639,
-		"longitude": 19.51036
-	},
-	{
-		"id": 337,
-		"name": "Józefów-Józefów 60",
-		"latitude": 51.70638,
-		"longitude": 19.50504
-	},
-	{
-		"id": 338,
-		"name": "Józefów-Nowe Górki",
-		"latitude": 51.70652,
-		"longitude": 19.49626
-	},
-	{
-		"id": 339,
-		"name": "Józefów-Rzgowska",
-		"latitude": 51.70711,
-		"longitude": 19.48758
-	},
-	{
-		"id": 340,
-		"name": "Rzgowska-Paradna",
-		"latitude": 51.70865,
-		"longitude": 19.48774
-	},
-	{
-		"id": 341,
-		"name": "Julianowska-Zgierska",
-		"latitude": 51.79765,
-		"longitude": 19.44553
-	},
-	{
-		"id": 342,
-		"name": "Julianowska-Żarnowcowa",
-		"latitude": 51.79974,
-		"longitude": 19.45254
-	},
-	{
-		"id": 344,
-		"name": "Julianowska-Zgierska",
-		"latitude": 51.79785,
-		"longitude": 19.44497
-	},
-	{
-		"id": 345,
-		"name": "Pojezierska-Sierakowskiego",
-		"latitude": 51.79781,
-		"longitude": 19.43796
-	},
-	{
-		"id": 346,
-		"name": "Kaczeńcowa-Lniana",
-		"latitude": 51.79728,
-		"longitude": 19.38626
-	},
-	{
-		"id": 347,
-		"name": "Kaczeńcowa-Kaczeńcowa 16",
-		"latitude": 51.80723,
-		"longitude": 19.39063
-	},
-	{
-		"id": 348,
-		"name": "Kaczeńcowa-św. Teresy",
-		"latitude": 51.80867,
-		"longitude": 19.39147
-	},
-	{
-		"id": 349,
-		"name": "Św. Teresy-Kaczeńcowa",
-		"latitude": 51.80982,
-		"longitude": 19.38981
-	},
-	{
-		"id": 350,
-		"name": "Kaczeńcowa-Kaczeńcowa 16",
-		"latitude": 51.80673,
-		"longitude": 19.39009
-	},
-	{
-		"id": 351,
-		"name": "Kaczeńcowa-Aleksandrowska",
-		"latitude": 51.80002,
-		"longitude": 19.38735
-	},
-	{
-		"id": 352,
-		"name": "Kaczeńcowa-Lniana",
-		"latitude": 51.79779,
-		"longitude": 19.38631
-	},
-	{
-		"id": 353,
-		"name": "Rojna-Kaczeńcowa",
-		"latitude": 51.79357,
-		"longitude": 19.38576
-	},
-	{
-		"id": 354,
-		"name": "Ekonomiczna-Żwawa",
-		"latitude": 51.70752,
-		"longitude": 19.44558
-	},
-	{
-		"id": 355,
-		"name": "Kniaziewicza-Kalinowa",
-		"latitude": 51.799,
-		"longitude": 19.43369
-	},
-	{
-		"id": 356,
-		"name": "Pojezierska-Grunwaldzka",
-		"latitude": 51.7985,
-		"longitude": 19.43156
-	},
-	{
-		"id": 357,
-		"name": "Ekonomiczna-Kwaterunkowa",
-		"latitude": 51.70819,
-		"longitude": 19.4509
-	},
-	{
-		"id": 358,
-		"name": "Ekonomiczna-Żwawa",
-		"latitude": 51.70766,
-		"longitude": 19.4466
-	},
-	{
-		"id": 359,
-		"name": "Ekonomiczna-Starorudzka",
-		"latitude": 51.70676,
-		"longitude": 19.4397
-	},
-	{
-		"id": 360,
-		"name": "Ekonomiczna-Kwaterunkowa",
-		"latitude": 51.70828,
-		"longitude": 19.45125
-	},
-	{
-		"id": 361,
-		"name": "Ekonomiczna-Graniczna",
-		"latitude": 51.70877,
-		"longitude": 19.45563
-	},
-	{
-		"id": 363,
-		"name": "Ekonomiczna-Graniczna",
-		"latitude": 51.70872,
-		"longitude": 19.45495
-	},
-	{
-		"id": 364,
-		"name": "Karolewska-Wileńska",
-		"latitude": 51.75254,
-		"longitude": 19.42539
-	},
-	{
-		"id": 365,
-		"name": "Kasprzaka-Legionów",
-		"latitude": 51.77048,
-		"longitude": 19.42904
-	},
-	{
-		"id": 366,
-		"name": "Kasprzaka-Srebrzyńska",
-		"latitude": 51.77398,
-		"longitude": 19.42745
-	},
-	{
-		"id": 367,
-		"name": "Kasprzaka-Drewnowska",
-		"latitude": 51.78076,
-		"longitude": 19.42696
-	},
-	{
-		"id": 368,
-		"name": "Unii Lubelskiej-Praussa",
-		"latitude": 51.77669,
-		"longitude": 19.41512
-	},
-	{
-		"id": 369,
-		"name": "Tybury-Odolanowska",
-		"latitude": 51.78498,
-		"longitude": 19.43174
-	},
-	{
-		"id": 370,
-		"name": "Klonowa-Limanowskiego",
-		"latitude": 51.79003,
-		"longitude": 19.43002
-	},
-	{
-		"id": 371,
-		"name": "Kasprzaka-Drewnowska",
-		"latitude": 51.7802,
-		"longitude": 19.42688
-	},
-	{
-		"id": 372,
-		"name": "Kasprzaka-Srebrzyńska",
-		"latitude": 51.77461,
-		"longitude": 19.42717
-	},
-	{
-		"id": 373,
-		"name": "Kasprzaka-Legionów",
-		"latitude": 51.77046,
-		"longitude": 19.42878
-	},
-	{
-		"id": 374,
-		"name": "1 Maja-Żeligowskiego",
-		"latitude": 51.77065,
-		"longitude": 19.4371
-	},
-	{
-		"id": 375,
-		"name": "Dw. Łódź Chojny",
-		"latitude": 51.72786,
-		"longitude": 19.47945
-	},
-	{
-		"id": 376,
-		"name": "Dw. Łódź Chojny",
-		"latitude": 51.72773,
-		"longitude": 19.48
-	},
-	{
-		"id": 377,
-		"name": "Kilińskiego-Broniewskiego",
-		"latitude": 51.73103,
-		"longitude": 19.47915
-	},
-	{
-		"id": 378,
-		"name": "Kilińskiego-Dąbrowskiego",
-		"latitude": 51.73833,
-		"longitude": 19.47883
-	},
-	{
-		"id": 379,
-		"name": "Kilińskiego-Przybyszewskiego",
-		"latitude": 51.74499,
-		"longitude": 19.47634
-	},
-	{
-		"id": 380,
-		"name": "Kilińskiego-Przybyszewskiego",
-		"latitude": 51.74438,
-		"longitude": 19.47682
-	},
-	{
-		"id": 381,
-		"name": "Przybyszewskiego-Brzozowa",
-		"latitude": 51.74457,
-		"longitude": 19.47081
-	},
-	{
-		"id": 382,
-		"name": "Kilińskiego-Senatorska",
-		"latitude": 51.74768,
-		"longitude": 19.47503
-	},
-	{
-		"id": 383,
-		"name": "Przybyszewskiego-Łęczycka",
-		"latitude": 51.74691,
-		"longitude": 19.48402
-	},
-	{
-		"id": 384,
-		"name": "Kilińskiego-Senatorska",
-		"latitude": 51.7477,
-		"longitude": 19.4751
-	},
-	{
-		"id": 385,
-		"name": "Kilińskiego-Tymienieckiego",
-		"latitude": 51.75129,
-		"longitude": 19.47339
-	},
-	{
-		"id": 387,
-		"name": "Kilińskiego-Fabryczna",
-		"latitude": 51.75517,
-		"longitude": 19.47108
-	},
-	{
-		"id": 388,
-		"name": "Kilińskiego-Fabryczna",
-		"latitude": 51.75499,
-		"longitude": 19.47144
-	},
-	{
-		"id": 389,
-		"name": "Kilińskiego-Piłsudskiego",
-		"latitude": 51.75944,
-		"longitude": 19.46916
-	},
-	{
-		"id": 391,
-		"name": "Kilińskiego-Nawrot",
-		"latitude": 51.76299,
-		"longitude": 19.46755
-	},
-	{
-		"id": 392,
-		"name": "Piłsudskiego-Sienkiewicza",
-		"latitude": 51.75986,
-		"longitude": 19.46372
-	},
-	{
-		"id": 393,
-		"name": "Kilińskiego-Nawrot",
-		"latitude": 51.76288,
-		"longitude": 19.46758
-	},
-	{
-		"id": 394,
-		"name": "Kilińskiego-Tuwima",
-		"latitude": 51.7661,
-		"longitude": 19.46591
-	},
-	{
-		"id": 395,
-		"name": "Kilińskiego-Tuwima",
-		"latitude": 51.76611,
-		"longitude": 19.46598
-	},
-	{
-		"id": 396,
-		"name": "Kilińskiego-Przystanek mBank",
-		"latitude": 51.76927,
-		"longitude": 19.46451
-	},
-	{
-		"id": 397,
-		"name": "Tuwima-Sienkiewicza",
-		"latitude": 51.76588,
-		"longitude": 19.46121
-	},
-	{
-		"id": 398,
-		"name": "Kilińskiego-Narutowicza",
-		"latitude": 51.77163,
-		"longitude": 19.46327
-	},
-	{
-		"id": 399,
-		"name": "Kilińskiego-Rewolucji 1905 r.",
-		"latitude": 51.7751,
-		"longitude": 19.46245
-	},
-	{
-		"id": 401,
-		"name": "Kilińskiego-Pomorska",
-		"latitude": 51.77719,
-		"longitude": 19.46206
-	},
-	{
-		"id": 402,
-		"name": "Kilińskiego-Północna",
-		"latitude": 51.77917,
-		"longitude": 19.46156
-	},
-	{
-		"id": 403,
-		"name": "Pomorska-Sterlinga",
-		"latitude": 51.77792,
-		"longitude": 19.4684
-	},
-	{
-		"id": 404,
-		"name": "Pomorska-pl. Wolności",
-		"latitude": 51.77694,
-		"longitude": 19.45575
-	},
-	{
-		"id": 405,
-		"name": "Kilińskiego-Rewolucji 1905 r.",
-		"latitude": 51.77459,
-		"longitude": 19.46239
-	},
-	{
-		"id": 406,
-		"name": "Kilińskiego-Narutowicza",
-		"latitude": 51.77174,
-		"longitude": 19.4632
-	},
-	{
-		"id": 407,
-		"name": "Kilińskiego-Przystanek mBank",
-		"latitude": 51.76907,
-		"longitude": 19.46453
-	},
-	{
-		"id": 408,
-		"name": "Zielona/Kościuszki",
-		"latitude": 51.77046,
-		"longitude": 19.45399
-	},
-	{
-		"id": 409,
-		"name": "Kilińskiego-Tuwima",
-		"latitude": 51.76547,
-		"longitude": 19.46607
-	},
-	{
-		"id": 411,
-		"name": "Piłsudskiego / Kilińskiego",
-		"latitude": 51.76034,
-		"longitude": 19.46735
-	},
-	{
-		"id": 412,
-		"name": "Kilińskiego-Piłsudskiego",
-		"latitude": 51.76066,
-		"longitude": 19.46843
-	},
-	{
-		"id": 413,
-		"name": "Kilińskiego-Fabryczna",
-		"latitude": 51.75574,
-		"longitude": 19.47093
-	},
-	{
-		"id": 414,
-		"name": "Piłsudskiego-Targowa",
-		"latitude": 51.76063,
-		"longitude": 19.47385
-	},
-	{
-		"id": 417,
-		"name": "Kilińskiego-Tymienieckiego",
-		"latitude": 51.75183,
-		"longitude": 19.47305
-	},
-	{
-		"id": 420,
-		"name": "Kilińskiego-Senatorska",
-		"latitude": 51.74805,
-		"longitude": 19.47472
-	},
-	{
-		"id": 421,
-		"name": "Kilińskiego-Senatorska",
-		"latitude": 51.74815,
-		"longitude": 19.47471
-	},
-	{
-		"id": 422,
-		"name": "Kilińskiego-Przybyszewskiego",
-		"latitude": 51.74583,
-		"longitude": 19.47583
-	},
-	{
-		"id": 423,
-		"name": "Kilińskiego-Przybyszewskiego",
-		"latitude": 51.7459,
-		"longitude": 19.47577
-	},
-	{
-		"id": 424,
-		"name": "Kilińskiego-Poznańska",
-		"latitude": 51.74257,
-		"longitude": 19.47754
-	},
-	{
-		"id": 425,
-		"name": "Kilińskiego-Poznańska",
-		"latitude": 51.74262,
-		"longitude": 19.47741
-	},
-	{
-		"id": 426,
-		"name": "Kilińskiego-Dąbrowskiego",
-		"latitude": 51.73883,
-		"longitude": 19.47858
-	},
-	{
-		"id": 427,
-		"name": "Kilińskiego-Dąbrowskiego",
-		"latitude": 51.73897,
-		"longitude": 19.47855
-	},
-	{
-		"id": 428,
-		"name": "Kilińskiego-Broniewskiego",
-		"latitude": 51.73317,
-		"longitude": 19.47874
-	},
-	{
-		"id": 430,
-		"name": "Kniaziewicza-Brzóski",
-		"latitude": 51.79992,
-		"longitude": 19.4401
-	},
-	{
-		"id": 431,
-		"name": "Liściasta-Zgierska",
-		"latitude": 51.80663,
-		"longitude": 19.438
-	},
-	{
-		"id": 432,
-		"name": "Sikorskiego-Zgierska",
-		"latitude": 51.81557,
-		"longitude": 19.43573
-	},
-	{
-		"id": 433,
-		"name": "Kniaziewicza-Brzóski",
-		"latitude": 51.79994,
-		"longitude": 19.43852
-	},
-	{
-		"id": 434,
-		"name": "Kolumny-Wrzecionowa",
-		"latitude": 51.70873,
-		"longitude": 19.52338
-	},
-	{
-		"id": 435,
-		"name": "Kolumny-Kolumny 242",
-		"latitude": 51.70972,
-		"longitude": 19.5311
-	},
-	{
-		"id": 436,
-		"name": "Kolumny-Cierniówki",
-		"latitude": 51.71047,
-		"longitude": 19.53715
-	},
-	{
-		"id": 437,
-		"name": "Kolumny-Tomaszowska",
-		"latitude": 51.71171,
-		"longitude": 19.54355
-	},
-	{
-		"id": 438,
-		"name": "Tomaszowska-Małego Rycerza",
-		"latitude": 51.71686,
-		"longitude": 19.5416
-	},
-	{
-		"id": 439,
-		"name": "Kolumny-Kalinowskiego",
-		"latitude": 51.71235,
-		"longitude": 19.55146
-	},
-	{
-		"id": 440,
-		"name": "Kolumny-Morenowa",
-		"latitude": 51.71485,
-		"longitude": 19.55615
-	},
-	{
-		"id": 441,
-		"name": "Kolumny-Mahoniowa",
-		"latitude": 51.71634,
-		"longitude": 19.56374
-	},
-	{
-		"id": 442,
-		"name": "Kolumny-Ogrodnicza",
-		"latitude": 51.7145,
-		"longitude": 19.57411
-	},
-	{
-		"id": 443,
-		"name": "Kolumny-Mozaikowa",
-		"latitude": 51.71179,
-		"longitude": 19.58561
-	},
-	{
-		"id": 444,
-		"name": "Kolumny-Platanowa",
-		"latitude": 51.70955,
-		"longitude": 19.59735
-	},
-	{
-		"id": 445,
-		"name": "Kolumny-Autostrada A1",
-		"latitude": 51.70689,
-		"longitude": 19.60427
-	},
-	{
-		"id": 446,
-		"name": "Kolumny-Czajewskiego",
-		"latitude": 51.70422,
-		"longitude": 19.61155
-	},
-	{
-		"id": 449,
-		"name": "Kolumny-Czajewskiego",
-		"latitude": 51.70464,
-		"longitude": 19.61089
-	},
-	{
-		"id": 450,
-		"name": "Kolumny-Autostrada A1",
-		"latitude": 51.70687,
-		"longitude": 19.60436
-	},
-	{
-		"id": 451,
-		"name": "Kolumny-Platanowa",
-		"latitude": 51.70977,
-		"longitude": 19.59642
-	},
-	{
-		"id": 452,
-		"name": "Kolumny-Mozaikowa",
-		"latitude": 51.71211,
-		"longitude": 19.58459
-	},
-	{
-		"id": 453,
-		"name": "Kolumny-Ogrodnicza",
-		"latitude": 51.71474,
-		"longitude": 19.57351
-	},
-	{
-		"id": 454,
-		"name": "Kolumny-Mahoniowa",
-		"latitude": 51.71639,
-		"longitude": 19.56348
-	},
-	{
-		"id": 455,
-		"name": "Kolumny-Morenowa",
-		"latitude": 51.71501,
-		"longitude": 19.55616
-	},
-	{
-		"id": 456,
-		"name": "Kolumny-Kalinowskiego",
-		"latitude": 51.71233,
-		"longitude": 19.55054
-	},
-	{
-		"id": 457,
-		"name": "Kolumny-Tomaszowska",
-		"latitude": 51.71175,
-		"longitude": 19.54338
-	},
-	{
-		"id": 458,
-		"name": "Kolumny-Cierniówki",
-		"latitude": 51.71057,
-		"longitude": 19.53715
-	},
-	{
-		"id": 459,
-		"name": "Kolumny-Kolumny 242",
-		"latitude": 51.70992,
-		"longitude": 19.53192
-	},
-	{
-		"id": 460,
-		"name": "Kolumny-Wrzecionowa",
-		"latitude": 51.70899,
-		"longitude": 19.52476
-	},
-	{
-		"id": 461,
-		"name": "Kolumny-Bronisin",
-		"latitude": 51.70814,
-		"longitude": 19.51781
-	},
-	{
-		"id": 462,
-		"name": "Dw. Łódź Widzew",
-		"latitude": 51.76257,
-		"longitude": 19.543
-	},
-	{
-		"id": 463,
-		"name": "Puszkina-Rondo Inwalidów",
-		"latitude": 51.7619,
-		"longitude": 19.53666
-	},
-	{
-		"id": 464,
-		"name": "Krzemieniecka-Konstantynowska",
-		"latitude": 51.76176,
-		"longitude": 19.40857
-	},
-	{
-		"id": 465,
-		"name": "Retkińska-Krzemieniecka",
-		"latitude": 51.7573,
-		"longitude": 19.41418
-	},
-	{
-		"id": 466,
-		"name": "Krzemieniecka-Retkińska",
-		"latitude": 51.75746,
-		"longitude": 19.41597
-	},
-	{
-		"id": 467,
-		"name": "Konstantynowska-ZOO",
-		"latitude": 51.76405,
-		"longitude": 19.41212
-	},
-	{
-		"id": 468,
-		"name": "Konstantynowska-Unii Lubelskiej",
-		"latitude": 51.76709,
-		"longitude": 19.42069
-	},
-	{
-		"id": 469,
-		"name": "Legionów-Włókniarzy",
-		"latitude": 51.76933,
-		"longitude": 19.42706
-	},
-	{
-		"id": 470,
-		"name": "Konstantynowska-Unii Lubelskiej",
-		"latitude": 51.76715,
-		"longitude": 19.42059
-	},
-	{
-		"id": 471,
-		"name": "Konstantynowska-ZOO",
-		"latitude": 51.76432,
-		"longitude": 19.41271
-	},
-	{
-		"id": 472,
-		"name": "Konstantynowska-Krakowska",
-		"latitude": 51.76307,
-		"longitude": 19.40915
-	},
-	{
-		"id": 473,
-		"name": "Zdrowie",
-		"latitude": 51.76509,
-		"longitude": 19.40623
-	},
-	{
-		"id": 474,
-		"name": "Dw. Łódź Widzew",
-		"latitude": 51.76255,
-		"longitude": 19.54166
-	},
-	{
-		"id": 475,
-		"name": "Dw. Łódź Widzew",
-		"latitude": 51.76263,
-		"longitude": 19.5425
-	},
-	{
-		"id": 476,
-		"name": "Konstytucyjna-Małachowskiego",
-		"latitude": 51.77159,
-		"longitude": 19.49918
-	},
-	{
-		"id": 477,
-		"name": "Narutowicza-Radiostacja",
-		"latitude": 51.77422,
-		"longitude": 19.49533
-	},
-	{
-		"id": 478,
-		"name": "Pomorska-Konstytucyjna",
-		"latitude": 51.77736,
-		"longitude": 19.49713
-	},
-	{
-		"id": 479,
-		"name": "Kopcińskiego-Tuwima",
-		"latitude": 51.76743,
-		"longitude": 19.48397
-	},
-	{
-		"id": 480,
-		"name": "Kopcińskiego-Narutowicza",
-		"latitude": 51.77256,
-		"longitude": 19.48288
-	},
-	{
-		"id": 481,
-		"name": "Kopcińskiego-Tuwima",
-		"latitude": 51.76739,
-		"longitude": 19.48421
-	},
-	{
-		"id": 482,
-		"name": "Kopcińskiego-Narutowicza",
-		"latitude": 51.77187,
-		"longitude": 19.48327
-	},
-	{
-		"id": 483,
-		"name": "Narutowicza-Matejki (kampus UŁ)",
-		"latitude": 51.77343,
-		"longitude": 19.48841
-	},
-	{
-		"id": 484,
-		"name": "Narutowicza-Tramwajowa",
-		"latitude": 51.77252,
-		"longitude": 19.47689
-	},
-	{
-		"id": 485,
-		"name": "Narutowicza-Matejki (kampus UŁ)",
-		"latitude": 51.77342,
-		"longitude": 19.48829
-	},
-	{
-		"id": 486,
-		"name": "Kopcińskiego-Rondo Solidarności",
-		"latitude": 51.778,
-		"longitude": 19.48185
-	},
-	{
-		"id": 487,
-		"name": "Palki-Źródłowa",
-		"latitude": 51.78146,
-		"longitude": 19.4832
-	},
-	{
-		"id": 488,
-		"name": "Kopcińskiego-Narutowicza",
-		"latitude": 51.77194,
-		"longitude": 19.48268
-	},
-	{
-		"id": 489,
-		"name": "Kopcińskiego-Tuwima",
-		"latitude": 51.76725,
-		"longitude": 19.48363
-	},
-	{
-		"id": 490,
-		"name": "Kopcińskiego-Tuwima",
-		"latitude": 51.76727,
-		"longitude": 19.48388
-	},
-	{
-		"id": 491,
-		"name": "Śmigłego-Rydza-Piłsudskiego",
-		"latitude": 51.76097,
-		"longitude": 19.48554
-	},
-	{
-		"id": 492,
-		"name": "Tuwima-Kopcińskiego",
-		"latitude": 51.7678,
-		"longitude": 19.48382
-	},
-	{
-		"id": 493,
-		"name": "Śmigłego-Rydza-Piłsudskiego",
-		"latitude": 51.76054,
-		"longitude": 19.48572
-	},
-	{
-		"id": 494,
-		"name": "Przędzalniana-Nawrot",
-		"latitude": 51.76488,
-		"longitude": 19.48048
-	},
-	{
-		"id": 495,
-		"name": "Piłsudskiego-Śmigłego-Rydza",
-		"latitude": 51.76153,
-		"longitude": 19.48711
-	},
-	{
-		"id": 496,
-		"name": "Piłsudskiego-Sarnia",
-		"latitude": 51.76212,
-		"longitude": 19.49247
-	},
-	{
-		"id": 497,
-		"name": "Śmigłego-Rydza-Zbiorcza",
-		"latitude": 51.75814,
-		"longitude": 19.48798
-	},
-	{
-		"id": 498,
-		"name": "Piłsudskiego-Przędzalniana",
-		"latitude": 51.76112,
-		"longitude": 19.48027
-	},
-	{
-		"id": 499,
-		"name": "Puszkina-Chmielowskiego",
-		"latitude": 51.75844,
-		"longitude": 19.53568
-	},
-	{
-		"id": 500,
-		"name": "Rokicińska-Maszynowa",
-		"latitude": 51.76248,
-		"longitude": 19.52861
-	},
-	{
-		"id": 501,
-		"name": "Kopernika-Tobaco Park",
-		"latitude": 51.75778,
-		"longitude": 19.43672
-	},
-	{
-		"id": 502,
-		"name": "Kopernika-Łąkowa",
-		"latitude": 51.75987,
-		"longitude": 19.44236
-	},
-	{
-		"id": 503,
-		"name": "Kopernika-Żeromskiego",
-		"latitude": 51.76175,
-		"longitude": 19.44702
-	},
-	{
-		"id": 504,
-		"name": "Żeromskiego-Mickiewicza",
-		"latitude": 51.75869,
-		"longitude": 19.44821
-	},
-	{
-		"id": 505,
-		"name": "Kopernika-Łąkowa",
-		"latitude": 51.76034,
-		"longitude": 19.4431
-	},
-	{
-		"id": 506,
-		"name": "Kopernika-Tobaco Park",
-		"latitude": 51.75826,
-		"longitude": 19.43769
-	},
-	{
-		"id": 507,
-		"name": "Bandurskiego-Dw. Łódź Kaliska",
-		"latitude": 51.7558,
-		"longitude": 19.4324
-	},
-	{
-		"id": 508,
-		"name": "Włókniarzy-Karolewska (Dw. Łódź Kal",
-		"latitude": 51.75825,
-		"longitude": 19.4335
-	},
-	{
-		"id": 509,
-		"name": "Mickiewicza-Żeromskiego",
-		"latitude": 51.75803,
-		"longitude": 19.44914
-	},
-	{
-		"id": 510,
-		"name": "Służbowa-Dw. Łódź Widzew",
-		"latitude": 51.76204,
-		"longitude": 19.54306
-	},
-	{
-		"id": 511,
-		"name": "Augustów-Rokicińska",
-		"latitude": 51.75916,
-		"longitude": 19.5543
-	},
-	{
-		"id": 512,
-		"name": "Służbowa-Dw. Łódź Widzew",
-		"latitude": 51.76228,
-		"longitude": 19.54228
-	},
-	{
-		"id": 513,
-		"name": "Kosynierów Gdyńskich-Wczesna",
-		"latitude": 51.71552,
-		"longitude": 19.47551
-	},
-	{
-		"id": 514,
-		"name": "Kosynierów Gdyńskich-Królewska",
-		"latitude": 51.71365,
-		"longitude": 19.48169
-	},
-	{
-		"id": 515,
-		"name": "Rzgowska-św. Wojciecha",
-		"latitude": 51.71406,
-		"longitude": 19.48682
-	},
-	{
-		"id": 516,
-		"name": "Kosynierów Gdyńskich-Królewska",
-		"latitude": 51.7138,
-		"longitude": 19.48134
-	},
-	{
-		"id": 517,
-		"name": "Kosynierów Gdyńskich-Wczesna",
-		"latitude": 51.7153,
-		"longitude": 19.47615
-	},
-	{
-		"id": 518,
-		"name": "Kosynierów Gdyńskich-Łazowskiego",
-		"latitude": 51.71701,
-		"longitude": 19.4719
-	},
-	{
-		"id": 519,
-		"name": "Kosynierów Gdyńskich-Trybunalska",
-		"latitude": 51.71818,
-		"longitude": 19.46901
-	},
-	{
-		"id": 520,
-		"name": "Trybunalska-Kwietniowa",
-		"latitude": 51.7141,
-		"longitude": 19.46612
-	},
-	{
-		"id": 522,
-		"name": "Kościuszki-Zamenhofa",
-		"latitude": 51.76181,
-		"longitude": 19.45525
-	},
-	{
-		"id": 523,
-		"name": "Mickiewicza-Żeromskiego",
-		"latitude": 51.75813,
-		"longitude": 19.4491
-	},
-	{
-		"id": 524,
-		"name": "Kościuszki-Mickiewicza",
-		"latitude": 51.76006,
-		"longitude": 19.45569
-	},
-	{
-		"id": 525,
-		"name": "Struga-Gdańska",
-		"latitude": 51.76496,
-		"longitude": 19.44948
-	},
-	{
-		"id": 526,
-		"name": "Kościuszki-Struga",
-		"latitude": 51.76629,
-		"longitude": 19.4544
-	},
-	{
-		"id": 527,
-		"name": "Kościuszki-Struga",
-		"latitude": 51.7657,
-		"longitude": 19.45437
-	},
-	{
-		"id": 528,
-		"name": "Kościuszki-Zielona",
-		"latitude": 51.76978,
-		"longitude": 19.4535
-	},
-	{
-		"id": 529,
-		"name": "Zachodnia-Zielona",
-		"latitude": 51.77075,
-		"longitude": 19.45358
-	},
-	{
-		"id": 530,
-		"name": "Kościuszki-Zielona",
-		"latitude": 51.76947,
-		"longitude": 19.45363
-	},
-	{
-		"id": 531,
-		"name": "Zachodnia-Więckowskiego",
-		"latitude": 51.77274,
-		"longitude": 19.453
-	},
-	{
-		"id": 532,
-		"name": "Zielona-Piotrkowska",
-		"latitude": 51.77053,
-		"longitude": 19.45577
-	},
-	{
-		"id": 533,
-		"name": "Zielona/Gdańska",
-		"latitude": 51.77007,
-		"longitude": 19.44964
-	},
-	{
-		"id": 534,
-		"name": "Kościuszki-Zielona",
-		"latitude": 51.76967,
-		"longitude": 19.45324
-	},
-	{
-		"id": 535,
-		"name": "Kościuszki-Struga",
-		"latitude": 51.76623,
-		"longitude": 19.45405
-	},
-	{
-		"id": 538,
-		"name": "Zamenhofa-Piotrkowska",
-		"latitude": 51.76215,
-		"longitude": 19.45607
-	},
-	{
-		"id": 539,
-		"name": "Kościuszki-Mickiewicza",
-		"latitude": 51.75854,
-		"longitude": 19.45574
-	},
-	{
-		"id": 540,
-		"name": "Kościuszki-Struga",
-		"latitude": 51.7649,
-		"longitude": 19.45443
-	},
-	{
-		"id": 541,
-		"name": "Kościuszki-Zamenhofa",
-		"latitude": 51.76239,
-		"longitude": 19.45502
-	},
-	{
-		"id": 543,
-		"name": "Piotrkowska Centrum",
-		"latitude": 51.75931,
-		"longitude": 19.45788
-	},
-	{
-		"id": 544,
-		"name": "Piotrkowska-Żwirki",
-		"latitude": 51.75613,
-		"longitude": 19.45919
-	},
-	{
-		"id": 545,
-		"name": "Kościuszki-Radwańska",
-		"latitude": 51.75311,
-		"longitude": 19.45691
-	},
-	{
-		"id": 546,
-		"name": "Piotrkowska-Brzeźna",
-		"latitude": 51.75301,
-		"longitude": 19.45976
-	},
-	{
-		"id": 547,
-		"name": "Krakowska-Minerska",
-		"latitude": 51.76487,
-		"longitude": 19.40468
-	},
-	{
-		"id": 548,
-		"name": "Krakowska-Michałowicza",
-		"latitude": 51.77005,
-		"longitude": 19.40178
-	},
-	{
-		"id": 549,
-		"name": "Krakowska-Biegunowa",
-		"latitude": 51.77402,
-		"longitude": 19.39923
-	},
-	{
-		"id": 550,
-		"name": "Krakowska-Siewna",
-		"latitude": 51.77877,
-		"longitude": 19.39938
-	},
-	{
-		"id": 551,
-		"name": "Złotno-Kwiatowa",
-		"latitude": 51.77961,
-		"longitude": 19.39342
-	},
-	{
-		"id": 552,
-		"name": "Traktorowa-Rąbieńska",
-		"latitude": 51.78351,
-		"longitude": 19.39187
-	},
-	{
-		"id": 553,
-		"name": "Krakowska-Biegunowa",
-		"latitude": 51.77517,
-		"longitude": 19.39861
-	},
-	{
-		"id": 554,
-		"name": "Srebrzyńska-cm. Mania",
-		"latitude": 51.77582,
-		"longitude": 19.40514
-	},
-	{
-		"id": 555,
-		"name": "Krakowska-Michałowicza",
-		"latitude": 51.76959,
-		"longitude": 19.40179
-	},
-	{
-		"id": 556,
-		"name": "Solec-cm. Mania",
-		"latitude": 51.77608,
-		"longitude": 19.40529
-	},
-	{
-		"id": 557,
-		"name": "Krakowska-Minerska",
-		"latitude": 51.76552,
-		"longitude": 19.40395
-	},
-	{
-		"id": 558,
-		"name": "Rokicińska-Augustów",
-		"latitude": 51.75714,
-		"longitude": 19.55446
-	},
-	{
-		"id": 559,
-		"name": "Augustów-Rokicińska",
-		"latitude": 51.7585,
-		"longitude": 19.55411
-	},
-	{
-		"id": 560,
-		"name": "Krzemieniecka-Kowieńska",
-		"latitude": 51.75631,
-		"longitude": 19.42067
-	},
-	{
-		"id": 561,
-		"name": "Bandurskiego-Atlas Arena",
-		"latitude": 51.75554,
-		"longitude": 19.42673
-	},
-	{
-		"id": 562,
-		"name": "Bandurskiego-Wileńska",
-		"latitude": 51.7539,
-		"longitude": 19.42123
-	},
-	{
-		"id": 563,
-		"name": "Krzemieniecka-Kowieńska",
-		"latitude": 51.7563,
-		"longitude": 19.4219
-	},
-	{
-		"id": 564,
-		"name": "Krzemieniecka-Retkińska",
-		"latitude": 51.75838,
-		"longitude": 19.41343
-	},
-	{
-		"id": 565,
-		"name": "Krakowska-Konstantynowska",
-		"latitude": 51.76296,
-		"longitude": 19.40719
-	},
-	{
-		"id": 566,
-		"name": "Książąt Polskich-Zakładowa",
-		"latitude": 51.74407,
-		"longitude": 19.55188
-	},
-	{
-		"id": 567,
-		"name": "Zakładowa-Olechowska",
-		"latitude": 51.74294,
-		"longitude": 19.55449
-	},
-	{
-		"id": 568,
-		"name": "Kurczaki-Rzgowska",
-		"latitude": 51.7179,
-		"longitude": 19.48614
-	},
-	{
-		"id": 569,
-		"name": "Kurczaki-Socjalna",
-		"latitude": 51.71849,
-		"longitude": 19.49038
-	},
-	{
-		"id": 570,
-		"name": "Kurczaki-cm. Kurczaki",
-		"latitude": 51.71926,
-		"longitude": 19.49589
-	},
-	{
-		"id": 571,
-		"name": "Komorniki",
-		"latitude": 51.72006,
-		"longitude": 19.50363
-	},
-	{
-		"id": 572,
-		"name": "Kurczaki-cm. Kurczaki",
-		"latitude": 51.71944,
-		"longitude": 19.49652
-	},
-	{
-		"id": 573,
-		"name": "Kurczaki-Socjalna",
-		"latitude": 51.71867,
-		"longitude": 19.49133
-	},
-	{
-		"id": 574,
-		"name": "Rzgowska-Kurczaki",
-		"latitude": 51.71861,
-		"longitude": 19.48513
-	},
-	{
-		"id": 575,
-		"name": "Kusocińskiego",
-		"latitude": 51.74772,
-		"longitude": 19.3833
-	},
-	{
-		"id": 576,
-		"name": "Popiełuszki-Wyszyńskiego",
-		"latitude": 51.74189,
-		"longitude": 19.38283
-	},
-	{
-		"id": 577,
-		"name": "Kusocińskiego",
-		"latitude": 51.74773,
-		"longitude": 19.3836
-	},
-	{
-		"id": 578,
-		"name": "Kusocińskiego",
-		"latitude": 51.74803,
-		"longitude": 19.3837
-	},
-	{
-		"id": 579,
-		"name": "Kusocińskiego-Popiełuszki",
-		"latitude": 51.74804,
-		"longitude": 19.38523
-	},
-	{
-		"id": 580,
-		"name": "Kusocińskiego-Armii Krajowej",
-		"latitude": 51.75013,
-		"longitude": 19.39231
-	},
-	{
-		"id": 581,
-		"name": "Kusocińskiego-Babickiego",
-		"latitude": 51.75224,
-		"longitude": 19.40016
-	},
-	{
-		"id": 582,
-		"name": "Kusocińskiego-Popiełuszki",
-		"latitude": 51.74762,
-		"longitude": 19.38386
-	},
-	{
-		"id": 583,
-		"name": "Limanowskiego-Pułaskiego",
-		"latitude": 51.79265,
-		"longitude": 19.41795
-	},
-	{
-		"id": 584,
-		"name": "Włókniarzy-Wielkopolska",
-		"latitude": 51.79025,
-		"longitude": 19.42097
-	},
-	{
-		"id": 585,
-		"name": "Limanowskiego-Mokra",
-		"latitude": 51.79121,
-		"longitude": 19.4252
-	},
-	{
-		"id": 586,
-		"name": "Limanowskiego-Klonowa",
-		"latitude": 51.79038,
-		"longitude": 19.42928
-	},
-	{
-		"id": 587,
-		"name": "Limanowskiego-Sierakowskiego",
-		"latitude": 51.78922,
-		"longitude": 19.43565
-	},
-	{
-		"id": 588,
-		"name": "Limanowskiego-Piwna",
-		"latitude": 51.78779,
-		"longitude": 19.44307
-	},
-	{
-		"id": 589,
-		"name": "Limanowskiego-Zachodnia",
-		"latitude": 51.78712,
-		"longitude": 19.44876
-	},
-	{
-		"id": 590,
-		"name": "Zachodnia-Lutomierska",
-		"latitude": 51.78333,
-		"longitude": 19.45024
-	},
-	{
-		"id": 591,
-		"name": "Limanowskiego-Bałucki Rynek",
-		"latitude": 51.78666,
-		"longitude": 19.45138
-	},
-	{
-		"id": 592,
-		"name": "Limanowskiego-Piwna",
-		"latitude": 51.7877,
-		"longitude": 19.4436
-	},
-	{
-		"id": 593,
-		"name": "Limanowskiego-Sierakowskiego",
-		"latitude": 51.78918,
-		"longitude": 19.43612
-	},
-	{
-		"id": 594,
-		"name": "Limanowskiego-Klonowa",
-		"latitude": 51.79036,
-		"longitude": 19.43039
-	},
-	{
-		"id": 595,
-		"name": "Limanowskiego-Mokra",
-		"latitude": 51.79118,
-		"longitude": 19.42561
-	},
-	{
-		"id": 596,
-		"name": "Limanowskiego-Pułaskiego",
-		"latitude": 51.79271,
-		"longitude": 19.418
-	},
-	{
-		"id": 597,
-		"name": "Limanowskiego-Woronicza",
-		"latitude": 51.79426,
-		"longitude": 19.41051
-	},
-	{
-		"id": 598,
-		"name": "Dw. Łódź Żabieniec",
-		"latitude": 51.79398,
-		"longitude": 19.40826
-	},
-	{
-		"id": 599,
-		"name": "11 Listopada-Jantarowa",
-		"latitude": 51.81574,
-		"longitude": 19.42252
-	},
-	{
-		"id": 602,
-		"name": "11 Listopada",
-		"latitude": 51.81783,
-		"longitude": 19.4188
-	},
-	{
-		"id": 603,
-		"name": "11 Listopada",
-		"latitude": 51.81761,
-		"longitude": 19.41908
-	},
-	{
-		"id": 604,
-		"name": "11 Listopada-Jantarowa",
-		"latitude": 51.8154,
-		"longitude": 19.42271
-	},
-	{
-		"id": 605,
-		"name": "Włókniarzy-Liściasta",
-		"latitude": 51.81011,
-		"longitude": 19.42513
-	},
-	{
-		"id": 606,
-		"name": "Liściasta-Liściasta 72",
-		"latitude": 51.80833,
-		"longitude": 19.42884
-	},
-	{
-		"id": 607,
-		"name": "Liściasta-Czereśniowa",
-		"latitude": 51.80709,
-		"longitude": 19.43524
-	},
-	{
-		"id": 608,
-		"name": "Liściasta-Zgierska",
-		"latitude": 51.80635,
-		"longitude": 19.4388
-	},
-	{
-		"id": 609,
-		"name": "Liściasta-Czereśniowa",
-		"latitude": 51.80743,
-		"longitude": 19.43401
-	},
-	{
-		"id": 610,
-		"name": "Liściasta-Liściasta 72",
-		"latitude": 51.80846,
-		"longitude": 19.42895
-	},
-	{
-		"id": 611,
-		"name": "Włókniarzy-Liściasta",
-		"latitude": 51.80973,
-		"longitude": 19.42576
-	},
-	{
-		"id": 612,
-		"name": "Włókniarzy-św. Teresy",
-		"latitude": 51.80383,
-		"longitude": 19.42549
-	},
-	{
-		"id": 613,
-		"name": "Lodowa-Ordonówny",
-		"latitude": 51.72881,
-		"longitude": 19.5179
-	},
-	{
-		"id": 614,
-		"name": "Lodowa-Lodowa 97",
-		"latitude": 51.7302,
-		"longitude": 19.52419
-	},
-	{
-		"id": 615,
-		"name": "Lodowa-Dąbrowskiego",
-		"latitude": 51.73396,
-		"longitude": 19.52422
-	},
-	{
-		"id": 616,
-		"name": "Lodowa-Dostawcza",
-		"latitude": 51.74032,
-		"longitude": 19.52417
-	},
-	{
-		"id": 617,
-		"name": "Lodowa-Andrzejewskiej",
-		"latitude": 51.74629,
-		"longitude": 19.52249
-	},
-	{
-		"id": 618,
-		"name": "Lodowa-cm. Zarzew",
-		"latitude": 51.74989,
-		"longitude": 19.52139
-	},
-	{
-		"id": 619,
-		"name": "Przybyszewskiego-Lodowa",
-		"latitude": 51.75166,
-		"longitude": 19.52185
-	},
-	{
-		"id": 620,
-		"name": "Lodowa-cm. Zarzew",
-		"latitude": 51.7494,
-		"longitude": 19.52135
-	},
-	{
-		"id": 621,
-		"name": "Lodowa-Andrzejewskiej",
-		"latitude": 51.7461,
-		"longitude": 19.52235
-	},
-	{
-		"id": 622,
-		"name": "Lodowa-Dostawcza",
-		"latitude": 51.74,
-		"longitude": 19.52413
-	},
-	{
-		"id": 623,
-		"name": "Lodowa-Lodowa 91",
-		"latitude": 51.73728,
-		"longitude": 19.52429
-	},
-	{
-		"id": 624,
-		"name": "Lodowa-Lodowa 97",
-		"latitude": 51.73075,
-		"longitude": 19.52399
-	},
-	{
-		"id": 625,
-		"name": "Lodowa-Ordonówny",
-		"latitude": 51.72887,
-		"longitude": 19.51824
-	},
-	{
-		"id": 626,
-		"name": "Wedmanowej-Lodowa",
-		"latitude": 51.73138,
-		"longitude": 19.51256
-	},
-	{
-		"id": 627,
-		"name": "Lutomierska-Klonowa",
-		"latitude": 51.78804,
-		"longitude": 19.42771
-	},
-	{
-		"id": 628,
-		"name": "Lutomierska-Czarnkowska",
-		"latitude": 51.78515,
-		"longitude": 19.43792
-	},
-	{
-		"id": 631,
-		"name": "Lutomierska-Zachodnia",
-		"latitude": 51.78298,
-		"longitude": 19.44959
-	},
-	{
-		"id": 633,
-		"name": "Zachodnia-Lutomierska",
-		"latitude": 51.78334,
-		"longitude": 19.45047
-	},
-	{
-		"id": 634,
-		"name": "Zachodnia-Lutomierska",
-		"latitude": 51.78247,
-		"longitude": 19.45037
-	},
-	{
-		"id": 635,
-		"name": "Lutomierska-Zachodnia",
-		"latitude": 51.78319,
-		"longitude": 19.44932
-	},
-	{
-		"id": 636,
-		"name": "Lutomierska-Czarnkowska",
-		"latitude": 51.78554,
-		"longitude": 19.43643
-	},
-	{
-		"id": 639,
-		"name": "Tybury-Odolanowska",
-		"latitude": 51.78527,
-		"longitude": 19.43272
-	},
-	{
-		"id": 640,
-		"name": "Wielkopolska-Pułaskiego",
-		"latitude": 51.79062,
-		"longitude": 19.41841
-	},
-	{
-		"id": 642,
-		"name": "Łagiewnicka-Dolna",
-		"latitude": 51.79186,
-		"longitude": 19.45497
-	},
-	{
-		"id": 643,
-		"name": "Łagiewnicka-Kowalska",
-		"latitude": 51.79526,
-		"longitude": 19.45554
-	},
-	{
-		"id": 644,
-		"name": "Łagiewnicka-Murarska",
-		"latitude": 51.79919,
-		"longitude": 19.4564
-	},
-	{
-		"id": 645,
-		"name": "Łagiewnicka-Murarska",
-		"latitude": 51.79915,
-		"longitude": 19.4564
-	},
-	{
-		"id": 646,
-		"name": "Łagiewnicka-Rondo Powstańców 1863r.",
-		"latitude": 51.80141,
-		"longitude": 19.45775
-	},
-	{
-		"id": 647,
-		"name": "Warszawska-Irysowa",
-		"latitude": 51.80289,
-		"longitude": 19.46257
-	},
-	{
-		"id": 648,
-		"name": "Zamojska-Prądzyńskiego",
-		"latitude": 51.72292,
-		"longitude": 19.43962
-	},
-	{
-		"id": 649,
-		"name": "Św. Franciszka-Zwrotnikowa",
-		"latitude": 51.72688,
-		"longitude": 19.43677
-	},
-	{
-		"id": 650,
-		"name": "Łagiewnicka-Litewska",
-		"latitude": 51.80456,
-		"longitude": 19.45923
-	},
-	{
-		"id": 651,
-		"name": "Łagiewnicka-Morelowa",
-		"latitude": 51.80844,
-		"longitude": 19.45782
-	},
-	{
-		"id": 652,
-		"name": "Łagiewnicka-Sowińskiego",
-		"latitude": 51.81226,
-		"longitude": 19.45557
-	},
-	{
-		"id": 653,
-		"name": "Sikorskiego-Dw. Łódź Arturówek",
-		"latitude": 51.81682,
-		"longitude": 19.45419
-	},
-	{
-		"id": 654,
-		"name": "Łagiewnicka-Dw. Łódź Arturówek",
-		"latitude": 51.8163,
-		"longitude": 19.45509
-	},
-	{
-		"id": 655,
-		"name": "Świtezianki-Sikorskiego",
-		"latitude": 51.81988,
-		"longitude": 19.44881
-	},
-	{
-		"id": 656,
-		"name": "Sikorskiego-Dw. Łódź Arturówek",
-		"latitude": 51.81676,
-		"longitude": 19.45367
-	},
-	{
-		"id": 657,
-		"name": "Łagiewnicka-Sowińskiego",
-		"latitude": 51.81219,
-		"longitude": 19.45521
-	},
-	{
-		"id": 658,
-		"name": "Łagiewnicka-Morelowa",
-		"latitude": 51.80757,
-		"longitude": 19.45817
-	},
-	{
-		"id": 659,
-		"name": "Łagiewnicka-Litewska",
-		"latitude": 51.80458,
-		"longitude": 19.45888
-	},
-	{
-		"id": 660,
-		"name": "Łagiewnicka-rondo Powstańców 1863r.",
-		"latitude": 51.80135,
-		"longitude": 19.45756
-	},
-	{
-		"id": 661,
-		"name": "Łagiewnicka-Rondo Powstańców 1863r.",
-		"latitude": 51.80138,
-		"longitude": 19.45761
-	},
-	{
-		"id": 662,
-		"name": "Łagiewnicka-Murarska",
-		"latitude": 51.79913,
-		"longitude": 19.45632
-	},
-	{
-		"id": 663,
-		"name": "Łagiewnicka-Stefana",
-		"latitude": 51.7951,
-		"longitude": 19.45545
-	},
-	{
-		"id": 664,
-		"name": "Łagiewnicka-Stefana",
-		"latitude": 51.79505,
-		"longitude": 19.45545
-	},
-	{
-		"id": 665,
-		"name": "Łagiewnicka-Dolna",
-		"latitude": 51.79093,
-		"longitude": 19.45447
-	},
-	{
-		"id": 666,
-		"name": "Łaskowice-Nad Dobrzynką",
-		"latitude": 51.70968,
-		"longitude": 19.37042
-	},
-	{
-		"id": 667,
-		"name": "Sanitariuszek-Łaskowice",
-		"latitude": 51.71292,
-		"longitude": 19.3661
-	},
-	{
-		"id": 668,
-		"name": "Łupkowa-Kobaltowa",
-		"latitude": 51.81486,
-		"longitude": 19.49822
-	},
-	{
-		"id": 669,
-		"name": "Strykowska-Herbowa",
-		"latitude": 51.8124,
-		"longitude": 19.5028
-	},
-	{
-		"id": 670,
-		"name": "Strykowska-Rogowska",
-		"latitude": 51.81887,
-		"longitude": 19.50615
-	},
-	{
-		"id": 671,
-		"name": "Łupkowa-Kobaltowa",
-		"latitude": 51.81513,
-		"longitude": 19.49861
-	},
-	{
-		"id": 672,
-		"name": "Warszawska-Wycieczkowa",
-		"latitude": 51.81348,
-		"longitude": 19.48659
-	},
-	{
-		"id": 673,
-		"name": "1 Maja-Pogonowskiego",
-		"latitude": 51.772,
-		"longitude": 19.44127
-	},
-	{
-		"id": 674,
-		"name": "Żeligowskiego-pl. Hallera",
-		"latitude": 51.76795,
-		"longitude": 19.43866
-	},
-	{
-		"id": 675,
-		"name": "Pl. Wolności",
-		"latitude": 51.77659,
-		"longitude": 19.45513
-	},
-	{
-		"id": 676,
-		"name": "Żeromskiego-Więckowskiego (LO nr 1)",
-		"latitude": 51.77225,
-		"longitude": 19.44524
-	},
-	{
-		"id": 677,
-		"name": "Próchnika-Gdańska",
-		"latitude": 51.77396,
-		"longitude": 19.44724
-	},
-	{
-		"id": 678,
-		"name": "Olechowska 22",
-		"latitude": 51.73041,
-		"longitude": 19.53964
-	},
-	{
-		"id": 679,
-		"name": "Olechowska-Tomaszowska",
-		"latitude": 51.72797,
-		"longitude": 19.53547
-	},
-	{
-		"id": 680,
-		"name": "3 Maja-Morska",
-		"latitude": 51.71647,
-		"longitude": 19.4486
-	},
-	{
-		"id": 681,
-		"name": "3 Maja-Świetlicowa",
-		"latitude": 51.71587,
-		"longitude": 19.45249
-	},
-	{
-		"id": 682,
-		"name": "Pryncypalna-Mocna",
-		"latitude": 51.71864,
-		"longitude": 19.4601
-	},
-	{
-		"id": 683,
-		"name": "3 Maja-Świetlicowa",
-		"latitude": 51.71594,
-		"longitude": 19.45202
-	},
-	{
-		"id": 684,
-		"name": "3 Maja-Morska",
-		"latitude": 51.71674,
-		"longitude": 19.44779
-	},
-	{
-		"id": 685,
-		"name": "Pabianicka-3 Maja",
-		"latitude": 51.71877,
-		"longitude": 19.43739
-	},
-	{
-		"id": 686,
-		"name": "Olechowska 22",
-		"latitude": 51.73061,
-		"longitude": 19.54017
-	},
-	{
-		"id": 687,
-		"name": "Olechowska-Olechowska 36",
-		"latitude": 51.73271,
-		"longitude": 19.54366
-	},
-	{
-		"id": 688,
-		"name": "Malownicza-Taborowa",
-		"latitude": 51.75345,
-		"longitude": 19.59275
-	},
-	{
-		"id": 689,
-		"name": "Malownicza-Gerberowa",
-		"latitude": 51.75864,
-		"longitude": 19.60297
-	},
-	{
-		"id": 690,
-		"name": "Malownicza-Rataja",
-		"latitude": 51.76083,
-		"longitude": 19.60717
-	},
-	{
-		"id": 691,
-		"name": "Rataja-Słoneczne Zacisze",
-		"latitude": 51.75417,
-		"longitude": 19.61641
-	},
-	{
-		"id": 692,
-		"name": "Malownicza-Rataja",
-		"latitude": 51.76107,
-		"longitude": 19.60744
-	},
-	{
-		"id": 693,
-		"name": "Malownicza-Gerberowa",
-		"latitude": 51.75759,
-		"longitude": 19.60061
-	},
-	{
-		"id": 694,
-		"name": "Malownicza-Taborowa",
-		"latitude": 51.75332,
-		"longitude": 19.59233
-	},
-	{
-		"id": 695,
-		"name": "Maratońska-Sanitariuszek",
-		"latitude": 51.72707,
-		"longitude": 19.35266
-	},
-	{
-		"id": 696,
-		"name": "Maratońska-Maratońska 172",
-		"latitude": 51.73029,
-		"longitude": 19.35889
-	},
-	{
-		"id": 697,
-		"name": "Maratońska-Golfowa",
-		"latitude": 51.73273,
-		"longitude": 19.3681
-	},
-	{
-		"id": 698,
-		"name": "Maratońska-Kolarska",
-		"latitude": 51.73458,
-		"longitude": 19.37498
-	},
-	{
-		"id": 699,
-		"name": "Maratońska-Gimnastyczna",
-		"latitude": 51.7358,
-		"longitude": 19.37937
-	},
-	{
-		"id": 700,
-		"name": "Maratońska-Popiełuszki",
-		"latitude": 51.73629,
-		"longitude": 19.38541
-	},
-	{
-		"id": 701,
-		"name": "Popiełuszki-Popiełuszki 21",
-		"latitude": 51.74025,
-		"longitude": 19.38407
-	},
-	{
-		"id": 702,
-		"name": "Maratońska-Maratońska 91",
-		"latitude": 51.73683,
-		"longitude": 19.39123
-	},
-	{
-		"id": 703,
-		"name": "Maratońska-Plocka",
-		"latitude": 51.7388,
-		"longitude": 19.39811
-	},
-	{
-		"id": 704,
-		"name": "Maratońska-Retkińska",
-		"latitude": 51.74132,
-		"longitude": 19.40638
-	},
-	{
-		"id": 705,
-		"name": "Retkińska-Maratońska",
-		"latitude": 51.74205,
-		"longitude": 19.40542
-	},
-	{
-		"id": 706,
-		"name": "Maratońska-Obywatelska",
-		"latitude": 51.7424,
-		"longitude": 19.41201
-	},
-	{
-		"id": 707,
-		"name": "Nowe Sady-Waltera-Janke",
-		"latitude": 51.74307,
-		"longitude": 19.42293
-	},
-	{
-		"id": 708,
-		"name": "Waltera-Janke-Maratońska",
-		"latitude": 51.74327,
-		"longitude": 19.42127
-	},
-	{
-		"id": 709,
-		"name": "Waltera-Janke-Bratysławska",
-		"latitude": 51.74675,
-		"longitude": 19.41967
-	},
-	{
-		"id": 711,
-		"name": "Maratońska-Obywatelska",
-		"latitude": 51.74244,
-		"longitude": 19.41179
-	},
-	{
-		"id": 712,
-		"name": "Maratońska-Retkińska",
-		"latitude": 51.741,
-		"longitude": 19.40404
-	},
-	{
-		"id": 713,
-		"name": "Maratońska-Plocka",
-		"latitude": 51.73875,
-		"longitude": 19.39749
-	},
-	{
-		"id": 714,
-		"name": "Maratońska-Maratońska 91",
-		"latitude": 51.73681,
-		"longitude": 19.39046
-	},
-	{
-		"id": 715,
-		"name": "Maratońska-Popiełuszki",
-		"latitude": 51.73638,
-		"longitude": 19.38572
-	},
-	{
-		"id": 717,
-		"name": "Maratońska (wew.)-Popiełuszki",
-		"latitude": 51.73711,
-		"longitude": 19.38812
-	},
-	{
-		"id": 718,
-		"name": "Maratońska-Popiełuszki",
-		"latitude": 51.73714,
-		"longitude": 19.38739
-	},
-	{
-		"id": 720,
-		"name": "Maratońska-Gimnastyczna",
-		"latitude": 51.7359,
-		"longitude": 19.37922
-	},
-	{
-		"id": 721,
-		"name": "Maratońska-Kolarska",
-		"latitude": 51.73493,
-		"longitude": 19.37583
-	},
-	{
-		"id": 722,
-		"name": "Maratońska-Golfowa",
-		"latitude": 51.73276,
-		"longitude": 19.36767
-	},
-	{
-		"id": 723,
-		"name": "Golfowa-Maratońska",
-		"latitude": 51.73277,
-		"longitude": 19.3671
-	},
-	{
-		"id": 724,
-		"name": "Maratońska-Maratońska 172",
-		"latitude": 51.73048,
-		"longitude": 19.3591
-	},
-	{
-		"id": 725,
-		"name": "Maratońska-Sanitariuszek",
-		"latitude": 51.72661,
-		"longitude": 19.35202
-	},
-	{
-		"id": 726,
-		"name": "Sanitariuszek-G.O.Ś.",
-		"latitude": 51.72708,
-		"longitude": 19.34939
-	},
-	{
-		"id": 727,
-		"name": "Marmurowa-Moskuliki",
-		"latitude": 51.81075,
-		"longitude": 19.55017
-	},
-	{
-		"id": 735,
-		"name": "Marmurowa-Moskuliki",
-		"latitude": 51.81052,
-		"longitude": 19.54968
-	},
-	{
-		"id": 738,
-		"name": "Marysińska-Szklana",
-		"latitude": 51.79316,
-		"longitude": 19.46597
-	},
-	{
-		"id": 739,
-		"name": "Mickiewicza-Żeromskiego",
-		"latitude": 51.75728,
-		"longitude": 19.44689
-	},
-	{
-		"id": 741,
-		"name": "Piłsudskiego / Kilińskiego",
-		"latitude": 51.76017,
-		"longitude": 19.46999
-	},
-	{
-		"id": 743,
-		"name": "Piłsudskiego-Sienkiewicza",
-		"latitude": 51.75978,
-		"longitude": 19.46383
-	},
-	{
-		"id": 744,
-		"name": "Piotrkowska Centrum",
-		"latitude": 51.75922,
-		"longitude": 19.45647
-	},
-	{
-		"id": 746,
-		"name": "Bandurskiego-Dw. Łódź Kaliska",
-		"latitude": 51.75588,
-		"longitude": 19.4318
-	},
-	{
-		"id": 747,
-		"name": "Nowy Józefów-Golfowa",
-		"latitude": 51.73637,
-		"longitude": 19.3675
-	},
-	{
-		"id": 748,
-		"name": "Żeromskiego-Kopernika",
-		"latitude": 51.76157,
-		"longitude": 19.44768
-	},
-	{
-		"id": 749,
-		"name": "Włókniarzy-Karolewska (Dw. Ł. Kalis",
-		"latitude": 51.75843,
-		"longitude": 19.43379
-	},
-	{
-		"id": 751,
-		"name": "Dw. Łódź Kaliska",
-		"latitude": 51.75671,
-		"longitude": 19.43101
-	},
-	{
-		"id": 752,
-		"name": "Milionowa-Przędzalniana",
-		"latitude": 51.75138,
-		"longitude": 19.48674
-	},
-	{
-		"id": 753,
-		"name": "Śmigłego-Rydza-Milionowa",
-		"latitude": 51.75119,
-		"longitude": 19.48908
-	},
-	{
-		"id": 754,
-		"name": "Milionowa-Śmigłego-Rydza",
-		"latitude": 51.75174,
-		"longitude": 19.48845
-	},
-	{
-		"id": 755,
-		"name": "Przędzalniana-Milionowa",
-		"latitude": 51.75165,
-		"longitude": 19.4858
-	},
-	{
-		"id": 756,
-		"name": "Młynek",
-		"latitude": 51.72359,
-		"longitude": 19.52048
-	},
-	{
-		"id": 757,
-		"name": "Śląska-Kowalszczyzna",
-		"latitude": 51.72655,
-		"longitude": 19.51676
-	},
-	{
-		"id": 758,
-		"name": "Narutowicza-Kilińskiego",
-		"latitude": 51.77113,
-		"longitude": 19.46315
-	},
-	{
-		"id": 759,
-		"name": "Narutowicza-P.O.W.",
-		"latitude": 51.77118,
-		"longitude": 19.46537
-	},
-	{
-		"id": 761,
-		"name": "Narutowicza-pl. Dąbrowskiego",
-		"latitude": 51.77185,
-		"longitude": 19.47037
-	},
-	{
-		"id": 762,
-		"name": "Sterlinga-pl. Dąbrowskiego",
-		"latitude": 51.77327,
-		"longitude": 19.46914
-	},
-	{
-		"id": 763,
-		"name": "Narutowicza-pl. Dąbrowskiego",
-		"latitude": 51.77192,
-		"longitude": 19.47043
-	},
-	{
-		"id": 764,
-		"name": "Uniwersytecka-Rondo Solidarności",
-		"latitude": 51.77814,
-		"longitude": 19.48015
-	},
-	{
-		"id": 765,
-		"name": "Narutowicza-Tramwajowa",
-		"latitude": 51.7723,
-		"longitude": 19.47572
-	},
-	{
-		"id": 766,
-		"name": "Narutowicza-Tramwajowa",
-		"latitude": 51.77239,
-		"longitude": 19.47588
-	},
-	{
-		"id": 767,
-		"name": "Narutowicza-Kopcińskiego",
-		"latitude": 51.77288,
-		"longitude": 19.48137
-	},
-	{
-		"id": 768,
-		"name": "Narutowicza-Kopcińskiego",
-		"latitude": 51.77292,
-		"longitude": 19.48203
-	},
-	{
-		"id": 769,
-		"name": "Narutowicza-pl. Dąbrowskiego",
-		"latitude": 51.7719,
-		"longitude": 19.46972
-	},
-	{
-		"id": 770,
-		"name": "Narutowicza-Radiostacja",
-		"latitude": 51.77422,
-		"longitude": 19.49513
-	},
-	{
-		"id": 771,
-		"name": "Krzywickiego-Radiostacja",
-		"latitude": 51.77346,
-		"longitude": 19.4934
-	},
-	{
-		"id": 772,
-		"name": "Narutowicza-Radiostacja",
-		"latitude": 51.77398,
-		"longitude": 19.49449
-	},
-	{
-		"id": 773,
-		"name": "Pomorska-Lumumby (kampus UŁ)",
-		"latitude": 51.77764,
-		"longitude": 19.49439
-	},
-	{
-		"id": 774,
-		"name": "Narutowicza-Radiostacja",
-		"latitude": 51.77432,
-		"longitude": 19.49442
-	},
-	{
-		"id": 775,
-		"name": "Pomorska-Konstytucyjna",
-		"latitude": 51.77757,
-		"longitude": 19.49681
-	},
-	{
-		"id": 776,
-		"name": "Narutowicza-Radiostacja",
-		"latitude": 51.77426,
-		"longitude": 19.49483
-	},
-	{
-		"id": 777,
-		"name": "Narutowicza-Matejki (kampus UŁ)",
-		"latitude": 51.77373,
-		"longitude": 19.49006
-	},
-	{
-		"id": 778,
-		"name": "Narutowicza-Matejki (kampus UŁ)",
-		"latitude": 51.77374,
-		"longitude": 19.4901
-	},
-	{
-		"id": 779,
-		"name": "Narutowicza-Kopcińskiego",
-		"latitude": 51.7731,
-		"longitude": 19.48346
-	},
-	{
-		"id": 780,
-		"name": "Narutowicza-Kopcińskiego",
-		"latitude": 51.77319,
-		"longitude": 19.484
-	},
-	{
-		"id": 783,
-		"name": "Narutowicza-pl. Dąbrowskiego",
-		"latitude": 51.77191,
-		"longitude": 19.46981
-	},
-	{
-		"id": 784,
-		"name": "Narutowicza-Kilińskiego",
-		"latitude": 51.77116,
-		"longitude": 19.46297
-	},
-	{
-		"id": 787,
-		"name": "Narutowicza-Piotrkowska",
-		"latitude": 51.7707,
-		"longitude": 19.45649
-	},
-	{
-		"id": 788,
-		"name": "Nawrot-Kilińskiego",
-		"latitude": 51.76302,
-		"longitude": 19.46654
-	},
-	{
-		"id": 789,
-		"name": "Nawrot-Targowa",
-		"latitude": 51.76359,
-		"longitude": 19.47347
-	},
-	{
-		"id": 790,
-		"name": "Nawrot-Wysoka",
-		"latitude": 51.76391,
-		"longitude": 19.47732
-	},
-	{
-		"id": 791,
-		"name": "Niciarniana-szpital położniczy",
-		"latitude": 51.75637,
-		"longitude": 19.51027
-	},
-	{
-		"id": 792,
-		"name": "Niciarniana-przychodnia",
-		"latitude": 51.75995,
-		"longitude": 19.5092
-	},
-	{
-		"id": 793,
-		"name": "Niciarniana-Piłsudskiego",
-		"latitude": 51.76429,
-		"longitude": 19.50793
-	},
-	{
-		"id": 794,
-		"name": "Niciarniana-Dw. Łódź Niciarniana",
-		"latitude": 51.76745,
-		"longitude": 19.50693
-	},
-	{
-		"id": 795,
-		"name": "Niciarniana-Czechosłowacka",
-		"latitude": 51.77133,
-		"longitude": 19.50579
-	},
-	{
-		"id": 796,
-		"name": "Piłsudskiego-Niciarniana",
-		"latitude": 51.76339,
-		"longitude": 19.50734
-	},
-	{
-		"id": 797,
-		"name": "Piłsudskiego-Niciarniana",
-		"latitude": 51.76333,
-		"longitude": 19.50898
-	},
-	{
-		"id": 798,
-		"name": "Niciarniana-Piłsudskiego",
-		"latitude": 51.76278,
-		"longitude": 19.50817
-	},
-	{
-		"id": 799,
-		"name": "Niciarniana-przychodnia",
-		"latitude": 51.75963,
-		"longitude": 19.50912
-	},
-	{
-		"id": 800,
-		"name": "Niciarniana-szpital położniczy",
-		"latitude": 51.75575,
-		"longitude": 19.51028
-	},
-	{
-		"id": 801,
-		"name": "Przybyszewskiego-Niciarniana",
-		"latitude": 51.75047,
-		"longitude": 19.51355
-	},
-	{
-		"id": 802,
-		"name": "Niższa-Śląska",
-		"latitude": 51.72893,
-		"longitude": 19.4901
-	},
-	{
-		"id": 803,
-		"name": "Niższa-Śląska",
-		"latitude": 51.729,
-		"longitude": 19.49019
-	},
-	{
-		"id": 804,
-		"name": "Niższa-Broniewskiego",
-		"latitude": 51.73219,
-		"longitude": 19.4891
-	},
-	{
-		"id": 805,
-		"name": "Śmigłego-Rydza-Dąbrowskiego",
-		"latitude": 51.73703,
-		"longitude": 19.48894
-	},
-	{
-		"id": 806,
-		"name": "Nowe Sady-Elektronowa",
-		"latitude": 51.74154,
-		"longitude": 19.43429
-	},
-	{
-		"id": 807,
-		"name": "Nowe Sady-zajezdnia NOWE SADY",
-		"latitude": 51.74605,
-		"longitude": 19.43138
-	},
-	{
-		"id": 808,
-		"name": "Nowe Sady-zajezdnia MPK",
-		"latitude": 51.7464,
-		"longitude": 19.43021
-	},
-	{
-		"id": 809,
-		"name": "Nowe Sady-ROD Olimpijka",
-		"latitude": 51.74239,
-		"longitude": 19.42712
-	},
-	{
-		"id": 810,
-		"name": "Nowe Sady-ROD Olimpijka",
-		"latitude": 51.74325,
-		"longitude": 19.42647
-	},
-	{
-		"id": 811,
-		"name": "Nowe Sady-Waltera-Janke",
-		"latitude": 51.74318,
-		"longitude": 19.42357
-	},
-	{
-		"id": 812,
-		"name": "Nowe Sady-ROD Olimpijka",
-		"latitude": 51.74317,
-		"longitude": 19.42672
-	},
-	{
-		"id": 813,
-		"name": "Nowe Sady-zajezdnia MPK",
-		"latitude": 51.74634,
-		"longitude": 19.43072
-	},
-	{
-		"id": 814,
-		"name": "Nowomiejska-Północna",
-		"latitude": 51.77865,
-		"longitude": 19.45441
-	},
-	{
-		"id": 815,
-		"name": "Zgierska-pl. Kościelny",
-		"latitude": 51.78309,
-		"longitude": 19.45337
-	},
-	{
-		"id": 816,
-		"name": "Nowomiejska-Północna",
-		"latitude": 51.77923,
-		"longitude": 19.4541
-	},
-	{
-		"id": 817,
-		"name": "Pomorska-pl. Wolności",
-		"latitude": 51.77692,
-		"longitude": 19.45701
-	},
-	{
-		"id": 818,
-		"name": "Legionów-Zachodnia",
-		"latitude": 51.77665,
-		"longitude": 19.45259
-	},
-	{
-		"id": 819,
-		"name": "Legionów-Artyleryjska",
-		"latitude": 51.77094,
-		"longitude": 19.43166
-	},
-	{
-		"id": 820,
-		"name": "Zielona-1 Maja",
-		"latitude": 51.76913,
-		"longitude": 19.431
-	},
-	{
-		"id": 821,
-		"name": "Legionów-Włókniarzy",
-		"latitude": 51.76873,
-		"longitude": 19.42693
-	},
-	{
-		"id": 822,
-		"name": "Legionów-Legionów",
-		"latitude": 51.76918,
-		"longitude": 19.4286
-	},
-	{
-		"id": 823,
-		"name": "Legionów-Włókniarzy",
-		"latitude": 51.76933,
-		"longitude": 19.42707
-	},
-	{
-		"id": 824,
-		"name": "Legionów-Żeligowskiego",
-		"latitude": 51.77284,
-		"longitude": 19.43726
-	},
-	{
-		"id": 825,
-		"name": "Legionów-Cmentarna",
-		"latitude": 51.77495,
-		"longitude": 19.44321
-	},
-	{
-		"id": 826,
-		"name": "Zachodnia-Próchnika",
-		"latitude": 51.77414,
-		"longitude": 19.4526
-	},
-	{
-		"id": 827,
-		"name": "Ogrodowa-Nowomiejska",
-		"latitude": 51.77886,
-		"longitude": 19.45374
-	},
-	{
-		"id": 828,
-		"name": "Zachodnia-Manufaktura",
-		"latitude": 51.78031,
-		"longitude": 19.45135
-	},
-	{
-		"id": 829,
-		"name": "Legionów-Gdańska",
-		"latitude": 51.77627,
-		"longitude": 19.44816
-	},
-	{
-		"id": 830,
-		"name": "Legionów-Żeligowskiego",
-		"latitude": 51.77322,
-		"longitude": 19.43808
-	},
-	{
-		"id": 831,
-		"name": "Legionów-Artyleryjska",
-		"latitude": 51.77206,
-		"longitude": 19.43484
-	},
-	{
-		"id": 832,
-		"name": "Włókniarzy-Koziny",
-		"latitude": 51.77234,
-		"longitude": 19.42168
-	},
-	{
-		"id": 833,
-		"name": "Legionów-Włókniarzy",
-		"latitude": 51.76946,
-		"longitude": 19.42692
-	},
-	{
-		"id": 834,
-		"name": "Unii Lubelskiej-Konstantynowska",
-		"latitude": 51.7681,
-		"longitude": 19.42098
-	},
-	{
-		"id": 835,
-		"name": "Źródłowa-Wojska Polskiego",
-		"latitude": 51.78551,
-		"longitude": 19.46756
-	},
-	{
-		"id": 836,
-		"name": "Obywatelska-Obywatelska 106",
-		"latitude": 51.73687,
-		"longitude": 19.43196
-	},
-	{
-		"id": 837,
-		"name": "Obywatelska-Nowe Sady",
-		"latitude": 51.73642,
-		"longitude": 19.43558
-	},
-	{
-		"id": 838,
-		"name": "Jana Pawła II-Obywatelska",
-		"latitude": 51.73581,
-		"longitude": 19.442
-	},
-	{
-		"id": 839,
-		"name": "Obywatelska-Jana Pawła II",
-		"latitude": 51.73633,
-		"longitude": 19.44302
-	},
-	{
-		"id": 840,
-		"name": "Jana Pawła II-Obywatelska",
-		"latitude": 51.73726,
-		"longitude": 19.44248
-	},
-	{
-		"id": 841,
-		"name": "Politechniki-Obywatelska",
-		"latitude": 51.73689,
-		"longitude": 19.45291
-	},
-	{
-		"id": 842,
-		"name": "Politechniki-Obywatelska",
-		"latitude": 51.73614,
-		"longitude": 19.45252
-	},
-	{
-		"id": 843,
-		"name": "Obywatelska-Politechniki",
-		"latitude": 51.73641,
-		"longitude": 19.45171
-	},
-	{
-		"id": 844,
-		"name": "Obywatelska-Jana Pawła II",
-		"latitude": 51.73655,
-		"longitude": 19.44288
-	},
-	{
-		"id": 845,
-		"name": "Obywatelska-Nowe Sady",
-		"latitude": 51.73679,
-		"longitude": 19.43539
-	},
-	{
-		"id": 846,
-		"name": "Obywatelska-Jana Pawła II",
-		"latitude": 51.73656,
-		"longitude": 19.44116
-	},
-	{
-		"id": 847,
-		"name": "Obywatelska-Elektronowa",
-		"latitude": 51.73761,
-		"longitude": 19.42592
-	},
-	{
-		"id": 848,
-		"name": "Północna-Kilińskiego",
-		"latitude": 51.77947,
-		"longitude": 19.46058
-	},
-	{
-		"id": 850,
-		"name": "Ogrodowa-Nowomiejska",
-		"latitude": 51.77876,
-		"longitude": 19.4537
-	},
-	{
-		"id": 851,
-		"name": "Północna-Kilińskiego",
-		"latitude": 51.77936,
-		"longitude": 19.46014
-	},
-	{
-		"id": 852,
-		"name": "Okólna-Łagiewniki",
-		"latitude": 51.84689,
-		"longitude": 19.47469
-	},
-	{
-		"id": 853,
-		"name": "Okólna-Łagiewnicka",
-		"latitude": 51.84675,
-		"longitude": 19.4688
-	},
-	{
-		"id": 854,
-		"name": "Wycieczkowa-sanatorium",
-		"latitude": 51.83531,
-		"longitude": 19.48328
-	},
-	{
-		"id": 855,
-		"name": "Olechowska-Olechowska 56",
-		"latitude": 51.73516,
-		"longitude": 19.54777
-	},
-	{
-		"id": 856,
-		"name": "Olechowska-Przewozowa",
-		"latitude": 51.73786,
-		"longitude": 19.55245
-	},
-	{
-		"id": 857,
-		"name": "Zakładowa-Odnowiciela",
-		"latitude": 51.74153,
-		"longitude": 19.56262
-	},
-	{
-		"id": 858,
-		"name": "Olechowska-Przewozowa",
-		"latitude": 51.73806,
-		"longitude": 19.55259
-	},
-	{
-		"id": 859,
-		"name": "Olechowska-Olechowska 56",
-		"latitude": 51.73503,
-		"longitude": 19.54735
-	},
-	{
-		"id": 860,
-		"name": "Olechowska-Olechowska 36",
-		"latitude": 51.73257,
-		"longitude": 19.54325
-	},
-	{
-		"id": 861,
-		"name": "Tomaszowska-Bławatna",
-		"latitude": 51.73241,
-		"longitude": 19.52974
-	},
-	{
-		"id": 862,
-		"name": "Opolska-Zjazdowa",
-		"latitude": 51.80695,
-		"longitude": 19.53219
-	},
-	{
-		"id": 863,
-		"name": "Zjazdowa-Budy",
-		"latitude": 51.8044,
-		"longitude": 19.53072
-	},
-	{
-		"id": 864,
-		"name": "Pabianicka-Chocianowicka",
-		"latitude": 51.70603,
-		"longitude": 19.42193
-	},
-	{
-		"id": 865,
-		"name": "Pabianicka-Rudzka",
-		"latitude": 51.71165,
-		"longitude": 19.42909
-	},
-	{
-		"id": 866,
-		"name": "Pabianicka-Chocianowicka",
-		"latitude": 51.70608,
-		"longitude": 19.42183
-	},
-	{
-		"id": 867,
-		"name": "Pabianicka- ET-2",
-		"latitude": 51.70791,
-		"longitude": 19.42448
-	},
-	{
-		"id": 868,
-		"name": "Pabianicka-Dubois",
-		"latitude": 51.71561,
-		"longitude": 19.43388
-	},
-	{
-		"id": 869,
-		"name": "Pabianicka-3 Maja",
-		"latitude": 51.71869,
-		"longitude": 19.43765
-	},
-	{
-		"id": 870,
-		"name": "Starorudzka-Pabianicka",
-		"latitude": 51.71628,
-		"longitude": 19.436
-	},
-	{
-		"id": 871,
-		"name": "Pabianicka-Prądzyńskiego",
-		"latitude": 51.72312,
-		"longitude": 19.44302
-	},
-	{
-		"id": 872,
-		"name": "Pabianicka-Prądzyńskiego",
-		"latitude": 51.72303,
-		"longitude": 19.44312
-	},
-	{
-		"id": 873,
-		"name": "Pabianicka-Jana Pawła II",
-		"latitude": 51.72763,
-		"longitude": 19.4486
-	},
-	{
-		"id": 874,
-		"name": "Jana Pawła II-Rogozińskiego",
-		"latitude": 51.73275,
-		"longitude": 19.44215
-	},
-	{
-		"id": 875,
-		"name": "Pabianicka-Jana Pawła II",
-		"latitude": 51.72738,
-		"longitude": 19.44846
-	},
-	{
-		"id": 876,
-		"name": "Pabianicka-r. Lotników Lwowskich",
-		"latitude": 51.73058,
-		"longitude": 19.45226
-	},
-	{
-		"id": 877,
-		"name": "Pabianicka-r. Lotników Lwowskich",
-		"latitude": 51.73015,
-		"longitude": 19.45188
-	},
-	{
-		"id": 878,
-		"name": "Pabianicka-Wólczańska",
-		"latitude": 51.73656,
-		"longitude": 19.45953
-	},
-	{
-		"id": 879,
-		"name": "Paderewskiego-Zaolziańska",
-		"latitude": 51.72933,
-		"longitude": 19.45675
-	},
-	{
-		"id": 880,
-		"name": "Politechniki-Obywatelska",
-		"latitude": 51.73609,
-		"longitude": 19.45283
-	},
-	{
-		"id": 881,
-		"name": "Pabianicka-Jana Pawła II",
-		"latitude": 51.72752,
-		"longitude": 19.44827
-	},
-	{
-		"id": 882,
-		"name": "Pabianicka-r. Lotników Lwowskich",
-		"latitude": 51.73208,
-		"longitude": 19.45429
-	},
-	{
-		"id": 883,
-		"name": "Paderewskiego-Zaolziańska",
-		"latitude": 51.72883,
-		"longitude": 19.45752
-	},
-	{
-		"id": 884,
-		"name": "Politechniki-r. Lotników Lwowskich",
-		"latitude": 51.73303,
-		"longitude": 19.45294
-	},
-	{
-		"id": 885,
-		"name": "Piotrkowska-pl. Niepodległości",
-		"latitude": 51.74085,
-		"longitude": 19.46266
-	},
-	{
-		"id": 886,
-		"name": "Wólczańska-Skargi",
-		"latitude": 51.7388,
-		"longitude": 19.45863
-	},
-	{
-		"id": 887,
-		"name": "pl. Niepodległości",
-		"latitude": 51.73981,
-		"longitude": 19.46356
-	},
-	{
-		"id": 888,
-		"name": "Rzgowska-Dąbrowskiego",
-		"latitude": 51.73866,
-		"longitude": 19.4669
-	},
-	{
-		"id": 889,
-		"name": "Przybyszewskiego-pl. Reymonta",
-		"latitude": 51.74278,
-		"longitude": 19.46264
-	},
-	{
-		"id": 890,
-		"name": "Piotrkowska-Czerwona",
-		"latitude": 51.74573,
-		"longitude": 19.46167
-	},
-	{
-		"id": 891,
-		"name": "Pabianicka-pl. Niepodległości",
-		"latitude": 51.73855,
-		"longitude": 19.46182
-	},
-	{
-		"id": 892,
-		"name": "Pabianicka-r. Lotników Lwowskich",
-		"latitude": 51.73247,
-		"longitude": 19.45411
-	},
-	{
-		"id": 893,
-		"name": "Pabianicka-r. Lotników Lwowskich",
-		"latitude": 51.73228,
-		"longitude": 19.45417
-	},
-	{
-		"id": 894,
-		"name": "Pabianicka-Jana Pawła II",
-		"latitude": 51.72811,
-		"longitude": 19.44883
-	},
-	{
-		"id": 895,
-		"name": "Pabianicka-Prądzyńskiego",
-		"latitude": 51.723,
-		"longitude": 19.4427
-	},
-	{
-		"id": 896,
-		"name": "Pabianicka-Prądzyńskiego",
-		"latitude": 51.7232,
-		"longitude": 19.44273
-	},
-	{
-		"id": 897,
-		"name": "Pabianicka-3 Maja",
-		"latitude": 51.71862,
-		"longitude": 19.43735
-	},
-	{
-		"id": 898,
-		"name": "Pabianicka-Dubois",
-		"latitude": 51.71567,
-		"longitude": 19.43376
-	},
-	{
-		"id": 899,
-		"name": "Pabianicka-Dubois",
-		"latitude": 51.71576,
-		"longitude": 19.43359
-	},
-	{
-		"id": 900,
-		"name": "Pabianicka-Rudzka",
-		"latitude": 51.71166,
-		"longitude": 19.42889
-	},
-	{
-		"id": 901,
-		"name": "Pabianicka-Długa",
-		"latitude": 51.70314,
-		"longitude": 19.41792
-	},
-	{
-		"id": 902,
-		"name": "Paderewskiego-Karpacka",
-		"latitude": 51.72665,
-		"longitude": 19.46271
-	},
-	{
-		"id": 903,
-		"name": "Paderewskiego-Karpacka",
-		"latitude": 51.72622,
-		"longitude": 19.46416
-	},
-	{
-		"id": 904,
-		"name": "Paderewskiego-Karpacka",
-		"latitude": 51.72608,
-		"longitude": 19.46426
-	},
-	{
-		"id": 905,
-		"name": "Paderewskiego-Tuszyńska",
-		"latitude": 51.72853,
-		"longitude": 19.46954
-	},
-	{
-		"id": 906,
-		"name": "Paderewskiego-Karpacka",
-		"latitude": 51.72697,
-		"longitude": 19.46224
-	},
-	{
-		"id": 907,
-		"name": "Paderewskiego-Tuszyńska",
-		"latitude": 51.72889,
-		"longitude": 19.47067
-	},
-	{
-		"id": 908,
-		"name": "Paderewskiego-Rzgowska",
-		"latitude": 51.73025,
-		"longitude": 19.47427
-	},
-	{
-		"id": 909,
-		"name": "Rzgowska-Dachowa",
-		"latitude": 51.7251,
-		"longitude": 19.4805
-	},
-	{
-		"id": 910,
-		"name": "Paderewskiego-Rzgowska",
-		"latitude": 51.73033,
-		"longitude": 19.4742
-	},
-	{
-		"id": 911,
-		"name": "Paderewskiego-Tuszyńska",
-		"latitude": 51.72892,
-		"longitude": 19.4703
-	},
-	{
-		"id": 912,
-		"name": "Paderewskiego-Zaolziańska",
-		"latitude": 51.7295,
-		"longitude": 19.45687
-	},
-	{
-		"id": 913,
-		"name": "Paderewskiego-Karpacka",
-		"latitude": 51.72673,
-		"longitude": 19.46277
-	},
-	{
-		"id": 914,
-		"name": "Paderewskiego-Zaolziańska",
-		"latitude": 51.72904,
-		"longitude": 19.45754
-	},
-	{
-		"id": 915,
-		"name": "Paderewskiego-r. Lotników Lwowskich",
-		"latitude": 51.73096,
-		"longitude": 19.45388
-	},
-	{
-		"id": 916,
-		"name": "Paradna-Obszerna",
-		"latitude": 51.71114,
-		"longitude": 19.47285
-	},
-	{
-		"id": 917,
-		"name": "Paradna-Matek Polskich",
-		"latitude": 51.70997,
-		"longitude": 19.47805
-	},
-	{
-		"id": 918,
-		"name": "Matek Polskich-Sczanieckiej",
-		"latitude": 51.70693,
-		"longitude": 19.47572
-	},
-	{
-		"id": 919,
-		"name": "Matek Polskich-Przednia",
-		"latitude": 51.7042,
-		"longitude": 19.47861
-	},
-	{
-		"id": 920,
-		"name": "Matek Polskich-ICZMP szpital",
-		"latitude": 51.70511,
-		"longitude": 19.48213
-	},
-	{
-		"id": 921,
-		"name": "Paradna-Rzgowska",
-		"latitude": 51.70927,
-		"longitude": 19.48562
-	},
-	{
-		"id": 922,
-		"name": "Matek Polskich-ICZMP przychodnia",
-		"latitude": 51.70851,
-		"longitude": 19.48475
-	},
-	{
-		"id": 923,
-		"name": "Matek Polskich-ICZMP szpital",
-		"latitude": 51.70555,
-		"longitude": 19.48241
-	},
-	{
-		"id": 924,
-		"name": "Matek Polskich-Przednia",
-		"latitude": 51.7043,
-		"longitude": 19.47857
-	},
-	{
-		"id": 925,
-		"name": "Matek Polskich-Sczanieckiej",
-		"latitude": 51.70715,
-		"longitude": 19.4761
-	},
-	{
-		"id": 926,
-		"name": "Paradna-Matek Polskich",
-		"latitude": 51.71025,
-		"longitude": 19.4771
-	},
-	{
-		"id": 927,
-		"name": "Paradna-Obszerna",
-		"latitude": 51.71089,
-		"longitude": 19.47429
-	},
-	{
-		"id": 928,
-		"name": "Demokratyczna-Trybunalska",
-		"latitude": 51.71177,
-		"longitude": 19.46573
-	},
-	{
-		"id": 929,
-		"name": "Ustronna-Demokratyczna",
-		"latitude": 51.71157,
-		"longitude": 19.46589
-	},
-	{
-		"id": 930,
-		"name": "Pieniny-Giewont",
-		"latitude": 51.77893,
-		"longitude": 19.52723
-	},
-	{
-		"id": 931,
-		"name": "Piłsudskiego-Kilińskiego",
-		"latitude": 51.76013,
-		"longitude": 19.46801
-	},
-	{
-		"id": 933,
-		"name": "Tuwima-Wydawnicza",
-		"latitude": 51.76722,
-		"longitude": 19.48625
-	},
-	{
-		"id": 934,
-		"name": "Tuwima-Wydawnicza",
-		"latitude": 51.76722,
-		"longitude": 19.48637
-	},
-	{
-		"id": 935,
-		"name": "Piłsudskiego-Przędzalniana",
-		"latitude": 51.76105,
-		"longitude": 19.4803
-	},
-	{
-		"id": 936,
-		"name": "Piłsudskiego-Śmigłego-Rydza",
-		"latitude": 51.7616,
-		"longitude": 19.48609
-	},
-	{
-		"id": 937,
-		"name": "Piłsudskiego-Sarnia",
-		"latitude": 51.76211,
-		"longitude": 19.49434
-	},
-	{
-		"id": 938,
-		"name": "Piłsudskiego-Konstytucyjna",
-		"latitude": 51.76291,
-		"longitude": 19.50219
-	},
-	{
-		"id": 939,
-		"name": "Piłsudskiego-Konstytucyjna",
-		"latitude": 51.76288,
-		"longitude": 19.50355
-	},
-	{
-		"id": 940,
-		"name": "Piłsudskiego-Niciarniana",
-		"latitude": 51.76342,
-		"longitude": 19.50888
-	},
-	{
-		"id": 941,
-		"name": "Piłsudskiego-WIDZEW STADION",
-		"latitude": 51.76371,
-		"longitude": 19.51698
-	},
-	{
-		"id": 942,
-		"name": "Piłsudskiego-WIDZEW STADION",
-		"latitude": 51.76371,
-		"longitude": 19.51707
-	},
-	{
-		"id": 943,
-		"name": "Rokicińska-Maszynowa",
-		"latitude": 51.76243,
-		"longitude": 19.52778
-	},
-	{
-		"id": 944,
-		"name": "Piłsudskiego-WIDZEW STADION",
-		"latitude": 51.76421,
-		"longitude": 19.5166
-	},
-	{
-		"id": 945,
-		"name": "Rokicińska-Maszynowa",
-		"latitude": 51.76218,
-		"longitude": 19.52865
-	},
-	{
-		"id": 946,
-		"name": "Widzewska-Wiejska",
-		"latitude": 51.76023,
-		"longitude": 19.51789
-	},
-	{
-		"id": 947,
-		"name": "Piłsudskiego-Niciarniana",
-		"latitude": 51.76338,
-		"longitude": 19.50722
-	},
-	{
-		"id": 948,
-		"name": "Piłsudskiego-WIDZEW STADION",
-		"latitude": 51.76422,
-		"longitude": 19.51687
-	},
-	{
-		"id": 949,
-		"name": "Piłsudskiego-Konstytucyjna",
-		"latitude": 51.76299,
-		"longitude": 19.50218
-	},
-	{
-		"id": 950,
-		"name": "Piłsudskiego-Konstytucyjna",
-		"latitude": 51.76314,
-		"longitude": 19.50196
-	},
-	{
-		"id": 951,
-		"name": "Piłsudskiego-Sarnia",
-		"latitude": 51.76225,
-		"longitude": 19.49314
-	},
-	{
-		"id": 952,
-		"name": "Piłsudskiego-Sarnia",
-		"latitude": 51.76235,
-		"longitude": 19.4923
-	},
-	{
-		"id": 953,
-		"name": "Piłsudskiego-Śmigłego-Rydza",
-		"latitude": 51.76145,
-		"longitude": 19.48401
-	},
-	{
-		"id": 954,
-		"name": "Piłsudskiego-Śmigłego-Rydza",
-		"latitude": 51.76192,
-		"longitude": 19.48761
-	},
-	{
-		"id": 955,
-		"name": "Wydawnicza",
-		"latitude": 51.76721,
-		"longitude": 19.48595
-	},
-	{
-		"id": 956,
-		"name": "Piłsudskiego-Targowa",
-		"latitude": 51.76071,
-		"longitude": 19.47381
-	},
-	{
-		"id": 957,
-		"name": "Piłsudskiego-Kilińskiego",
-		"latitude": 51.76034,
-		"longitude": 19.4695
-	},
-	{
-		"id": 958,
-		"name": "Sienkiewicza-Piłsudskiego",
-		"latitude": 51.75897,
-		"longitude": 19.46295
-	},
-	{
-		"id": 959,
-		"name": "Piotrkowska-pl. Katedralny",
-		"latitude": 51.74821,
-		"longitude": 19.46115
-	},
-	{
-		"id": 960,
-		"name": "Piotrkowska-Brzeźna",
-		"latitude": 51.75234,
-		"longitude": 19.4602
-	},
-	{
-		"id": 961,
-		"name": "Piotrkowska-Żwirki",
-		"latitude": 51.75569,
-		"longitude": 19.45935
-	},
-	{
-		"id": 962,
-		"name": "Piotrkowska-pl. Katedralny",
-		"latitude": 51.74972,
-		"longitude": 19.46048
-	},
-	{
-		"id": 963,
-		"name": "Piotrkowska-Czerwona",
-		"latitude": 51.74668,
-		"longitude": 19.46116
-	},
-	{
-		"id": 964,
-		"name": "Piotrkowska-pl. Niepodległości",
-		"latitude": 51.74047,
-		"longitude": 19.46261
-	},
-	{
-		"id": 965,
-		"name": "Przybyszewskiego-Brzozowa",
-		"latitude": 51.74399,
-		"longitude": 19.4687
-	},
-	{
-		"id": 967,
-		"name": "Rewolucji 1905r.-Kamińskiego",
-		"latitude": 51.77641,
-		"longitude": 19.47476
-	},
-	{
-		"id": 970,
-		"name": "Zgierska-Bałucki Rynek",
-		"latitude": 51.78595,
-		"longitude": 19.45273
-	},
-	{
-		"id": 972,
-		"name": "Rzgowska-pl. Niepodległości",
-		"latitude": 51.7394,
-		"longitude": 19.4661
-	},
-	{
-		"id": 973,
-		"name": "Politechniki-Felsztyńskiego",
-		"latitude": 51.74045,
-		"longitude": 19.45239
-	},
-	{
-		"id": 974,
-		"name": "Bandurskiego-Wileńska",
-		"latitude": 51.75384,
-		"longitude": 19.42178
-	},
-	{
-		"id": 975,
-		"name": "Waltera-Janke-Wyszyńskiego",
-		"latitude": 51.74658,
-		"longitude": 19.41892
-	},
-	{
-		"id": 977,
-		"name": "Włókniarzy-Mickiewicza (Dw. Ł. Kali",
-		"latitude": 51.75689,
-		"longitude": 19.43371
-	},
-	{
-		"id": 978,
-		"name": "Pojezierska-Włókniarzy",
-		"latitude": 51.799,
-		"longitude": 19.42561
-	},
-	{
-		"id": 979,
-		"name": "Pojezierska-Grunwaldzka",
-		"latitude": 51.79852,
-		"longitude": 19.43007
-	},
-	{
-		"id": 980,
-		"name": "Zgierska-Sędziowska",
-		"latitude": 51.79493,
-		"longitude": 19.44573
-	},
-	{
-		"id": 981,
-		"name": "Pojezierska-Włókniarzy",
-		"latitude": 51.79906,
-		"longitude": 19.42638
-	},
-	{
-		"id": 982,
-		"name": "Pojezierska-Elektrociepłownia EC3",
-		"latitude": 51.79959,
-		"longitude": 19.4212
-	},
-	{
-		"id": 983,
-		"name": "Św. Teresy-św. Teresy 91",
-		"latitude": 51.80473,
-		"longitude": 19.42035
-	},
-	{
-		"id": 984,
-		"name": "Włókniarzy-św. Teresy",
-		"latitude": 51.80531,
-		"longitude": 19.42618
-	},
-	{
-		"id": 985,
-		"name": "Politechniki-Felsztyńskiego",
-		"latitude": 51.73962,
-		"longitude": 19.4524
-	},
-	{
-		"id": 986,
-		"name": "Politechniki-Wróblewskiego (kampus",
-		"latitude": 51.74402,
-		"longitude": 19.4514
-	},
-	{
-		"id": 987,
-		"name": "Politechniki-Wróblewskiego (kampus",
-		"latitude": 51.74372,
-		"longitude": 19.45157
-	},
-	{
-		"id": 988,
-		"name": "Politechniki-Radwańska (kampus PŁ)",
-		"latitude": 51.75109,
-		"longitude": 19.45003
-	},
-	{
-		"id": 989,
-		"name": "Rembielińskiego-Inżynierska",
-		"latitude": 51.75042,
-		"longitude": 19.4439
-	},
-	{
-		"id": 991,
-		"name": "Wólczańska-Skrzywana",
-		"latitude": 51.74408,
-		"longitude": 19.45731
-	},
-	{
-		"id": 992,
-		"name": "Politechniki-Radwańska (kampus PŁ)",
-		"latitude": 51.75157,
-		"longitude": 19.4497
-	},
-	{
-		"id": 993,
-		"name": "Żeromskiego-Mickiewicza",
-		"latitude": 51.75734,
-		"longitude": 19.44858
-	},
-	{
-		"id": 994,
-		"name": "Żeromskiego-Mickiewicza",
-		"latitude": 51.75621,
-		"longitude": 19.44885
-	},
-	{
-		"id": 995,
-		"name": "Radwańska-Wólczańska",
-		"latitude": 51.75226,
-		"longitude": 19.45508
-	},
-	{
-		"id": 996,
-		"name": "Politechniki-Wróblewskiego (kampus",
-		"latitude": 51.74471,
-		"longitude": 19.45106
-	},
-	{
-		"id": 997,
-		"name": "Politechniki-Felsztyńskiego",
-		"latitude": 51.73961,
-		"longitude": 19.45223
-	},
-	{
-		"id": 998,
-		"name": "Politechniki-Wróblewskiego (kampus",
-		"latitude": 51.74498,
-		"longitude": 19.45072
-	},
-	{
-		"id": 999,
-		"name": "Politechniki-Felsztyńskiego",
-		"latitude": 51.739,
-		"longitude": 19.4522
-	},
-	{
-		"id": 1000,
-		"name": "Politechniki-Obywatelska",
-		"latitude": 51.73663,
-		"longitude": 19.45261
-	},
-	{
-		"id": 1001,
-		"name": "Politechniki-r. Lotników Lwowskich",
-		"latitude": 51.73229,
-		"longitude": 19.4527
-	},
-	{
-		"id": 1002,
-		"name": "Politechniki-r. Lotników Lwowskich",
-		"latitude": 51.7331,
-		"longitude": 19.45264
-	},
-	{
-		"id": 1003,
-		"name": "Pomorska-Kilińskiego",
-		"latitude": 51.77734,
-		"longitude": 19.46144
-	},
-	{
-		"id": 1004,
-		"name": "Pomorska-Kamińskiego",
-		"latitude": 51.77841,
-		"longitude": 19.47449
-	},
-	{
-		"id": 1005,
-		"name": "Pomorska-Rondo Solidarności",
-		"latitude": 51.7789,
-		"longitude": 19.4801
-	},
-	{
-		"id": 1006,
-		"name": "Pomorska-Matejki",
-		"latitude": 51.77859,
-		"longitude": 19.48503
-	},
-	{
-		"id": 1007,
-		"name": "Pomorska-Tamka",
-		"latitude": 51.77814,
-		"longitude": 19.48916
-	},
-	{
-		"id": 1008,
-		"name": "Pomorska-Lumumby (kampus UŁ)",
-		"latitude": 51.77753,
-		"longitude": 19.4953
-	},
-	{
-		"id": 1009,
-		"name": "Pomorska-Juhasowa",
-		"latitude": 51.77265,
-		"longitude": 19.5437
-	},
-	{
-		"id": 1010,
-		"name": "Pomorska-Arniki",
-		"latitude": 51.77165,
-		"longitude": 19.55322
-	},
-	{
-		"id": 1011,
-		"name": "Pomorska-Henrykowska",
-		"latitude": 51.77063,
-		"longitude": 19.56315
-	},
-	{
-		"id": 1012,
-		"name": "Pomorska-Mileszki",
-		"latitude": 51.77003,
-		"longitude": 19.57096
-	},
-	{
-		"id": 1013,
-		"name": "Pomorska-Pomorska 466",
-		"latitude": 51.77439,
-		"longitude": 19.58112
-	},
-	{
-		"id": 1014,
-		"name": "Pomorska-Śródziemnomorska",
-		"latitude": 51.78013,
-		"longitude": 19.58829
-	},
-	{
-		"id": 1015,
-		"name": "Pomorska-Gryfa Pomorskiego",
-		"latitude": 51.78453,
-		"longitude": 19.58877
-	},
-	{
-		"id": 1016,
-		"name": "Pomorska-Wendy",
-		"latitude": 51.78816,
-		"longitude": 19.58914
-	},
-	{
-		"id": 1017,
-		"name": "Pomorska-Nowosolna",
-		"latitude": 51.79319,
-		"longitude": 19.58949
-	},
-	{
-		"id": 1018,
-		"name": "Pomorska-Wendy",
-		"latitude": 51.78877,
-		"longitude": 19.58905
-	},
-	{
-		"id": 1019,
-		"name": "Pomorska-Gryfa Pomorskiego",
-		"latitude": 51.78511,
-		"longitude": 19.58869
-	},
-	{
-		"id": 1020,
-		"name": "Pomorska-Śródziemnomorska",
-		"latitude": 51.77987,
-		"longitude": 19.58811
-	},
-	{
-		"id": 1021,
-		"name": "Pomorska-Pomorska 466",
-		"latitude": 51.77405,
-		"longitude": 19.58023
-	},
-	{
-		"id": 1022,
-		"name": "Pomorska-Mileszki",
-		"latitude": 51.77024,
-		"longitude": 19.57111
-	},
-	{
-		"id": 1023,
-		"name": "Pomorska-Henrykowska",
-		"latitude": 51.77069,
-		"longitude": 19.5635
-	},
-	{
-		"id": 1024,
-		"name": "Pomorska-Arniki",
-		"latitude": 51.77174,
-		"longitude": 19.55333
-	},
-	{
-		"id": 1025,
-		"name": "Skalna-Juhasowa",
-		"latitude": 51.77415,
-		"longitude": 19.54318
-	},
-	{
-		"id": 1026,
-		"name": "Pomorska-Tamka",
-		"latitude": 51.77816,
-		"longitude": 19.49041
-	},
-	{
-		"id": 1027,
-		"name": "Pomorska-Matejki",
-		"latitude": 51.77857,
-		"longitude": 19.48639
-	},
-	{
-		"id": 1028,
-		"name": "Pomorska-Rondo Solidarności",
-		"latitude": 51.779,
-		"longitude": 19.48012
-	},
-	{
-		"id": 1029,
-		"name": "Pomorska-Kamińskiego",
-		"latitude": 51.7786,
-		"longitude": 19.47519
-	},
-	{
-		"id": 1030,
-		"name": "Pomorska-Sterlinga",
-		"latitude": 51.7781,
-		"longitude": 19.46916
-	},
-	{
-		"id": 1031,
-		"name": "Pomorska-Kilińskiego",
-		"latitude": 51.77751,
-		"longitude": 19.46237
-	},
-	{
-		"id": 1032,
-		"name": "Popiełuszki-Pływacka",
-		"latitude": 51.74376,
-		"longitude": 19.38215
-	},
-	{
-		"id": 1033,
-		"name": "Popiełuszki-Popiełuszki 21",
-		"latitude": 51.7399,
-		"longitude": 19.38416
-	},
-	{
-		"id": 1034,
-		"name": "Północna-Kamińskiego",
-		"latitude": 51.78044,
-		"longitude": 19.47284
-	},
-	{
-		"id": 1035,
-		"name": "Kopcińskiego-rondo Solidarności",
-		"latitude": 51.77812,
-		"longitude": 19.48141
-	},
-	{
-		"id": 1036,
-		"name": "Północna-Kamińskiego",
-		"latitude": 51.78068,
-		"longitude": 19.47459
-	},
-	{
-		"id": 1037,
-		"name": "Sterlinga-Pomorska",
-		"latitude": 51.77849,
-		"longitude": 19.4686
-	},
-	{
-		"id": 1038,
-		"name": "Zachodnia-Legionów",
-		"latitude": 51.77696,
-		"longitude": 19.45198
-	},
-	{
-		"id": 1039,
-		"name": "Zachodnia-Lutomierska",
-		"latitude": 51.78335,
-		"longitude": 19.45033
-	},
-	{
-		"id": 1040,
-		"name": "Próchnika-Piotrkowska",
-		"latitude": 51.77462,
-		"longitude": 19.45469
-	},
-	{
-		"id": 1041,
-		"name": "Rewolucji 1905r.-Kilińskiego",
-		"latitude": 51.77538,
-		"longitude": 19.46365
-	},
-	{
-		"id": 1042,
-		"name": "Pryncypalna-Kosynierów Gdyńskich",
-		"latitude": 51.72114,
-		"longitude": 19.46664
-	},
-	{
-		"id": 1043,
-		"name": "Pryncypalna-Mieszkalna",
-		"latitude": 51.72272,
-		"longitude": 19.47068
-	},
-	{
-		"id": 1044,
-		"name": "Kongresowa-Pryncypalna",
-		"latitude": 51.72353,
-		"longitude": 19.47385
-	},
-	{
-		"id": 1045,
-		"name": "Pryncypalna-Kosynierów Gdyńskich",
-		"latitude": 51.72129,
-		"longitude": 19.46717
-	},
-	{
-		"id": 1046,
-		"name": "Pryncypalna-Mocna",
-		"latitude": 51.71884,
-		"longitude": 19.46035
-	},
-	{
-		"id": 1047,
-		"name": "Pryncypalna-Mieszkalna",
-		"latitude": 51.72247,
-		"longitude": 19.47014
-	},
-	{
-		"id": 1048,
-		"name": "Tymienieckiego-Przędzalniana",
-		"latitude": 51.75413,
-		"longitude": 19.48284
-	},
-	{
-		"id": 1049,
-		"name": "Przędzalniana-Tymienieckiego",
-		"latitude": 51.75491,
-		"longitude": 19.48369
-	},
-	{
-		"id": 1050,
-		"name": "Tuwima-Przędzalniana",
-		"latitude": 51.76752,
-		"longitude": 19.48039
-	},
-	{
-		"id": 1051,
-		"name": "Przędzalniana-Piłsudskiego",
-		"latitude": 51.76201,
-		"longitude": 19.48098
-	},
-	{
-		"id": 1052,
-		"name": "Przybyszewskiego-Kilińskiego",
-		"latitude": 51.74511,
-		"longitude": 19.47474
-	},
-	{
-		"id": 1053,
-		"name": "Przybyszewskiego-Śmigłego-Rydza",
-		"latitude": 51.74752,
-		"longitude": 19.48885
-	},
-	{
-		"id": 1054,
-		"name": "Przybyszewskiego-Tatrzańska",
-		"latitude": 51.74802,
-		"longitude": 19.49291
-	},
-	{
-		"id": 1055,
-		"name": "Śmigłego-Rydza-Zbaraska",
-		"latitude": 51.744,
-		"longitude": 19.48928
-	},
-	{
-		"id": 1056,
-		"name": "Przybyszewskiego-Zapadła",
-		"latitude": 51.74876,
-		"longitude": 19.49934
-	},
-	{
-		"id": 1057,
-		"name": "Przybyszewskiego-Tatrzańska",
-		"latitude": 51.74804,
-		"longitude": 19.49306
-	},
-	{
-		"id": 1058,
-		"name": "Przybyszewskiego-Zapadła",
-		"latitude": 51.74876,
-		"longitude": 19.49942
-	},
-	{
-		"id": 1059,
-		"name": "Przybyszewskiego-Nurta-Kaszyńskiego",
-		"latitude": 51.74969,
-		"longitude": 19.50573
-	},
-	{
-		"id": 1060,
-		"name": "Przybyszewskiego-Nurta-Kaszyńskiego",
-		"latitude": 51.74971,
-		"longitude": 19.5059
-	},
-	{
-		"id": 1061,
-		"name": "Przybyszewskiego-Niciarniana",
-		"latitude": 51.75056,
-		"longitude": 19.51352
-	},
-	{
-		"id": 1062,
-		"name": "Przybyszewskiego-Lodowa",
-		"latitude": 51.75178,
-		"longitude": 19.5215
-	},
-	{
-		"id": 1064,
-		"name": "Przybyszewskiego-Papiernicza (CRO)",
-		"latitude": 51.75113,
-		"longitude": 19.51857
-	},
-	{
-		"id": 1065,
-		"name": "Przybyszewskiego-Rondo Sybiraków",
-		"latitude": 51.75248,
-		"longitude": 19.52906
-	},
-	{
-		"id": 1066,
-		"name": "Przybyszewskiego-Rondo Sybiraków",
-		"latitude": 51.75229,
-		"longitude": 19.52898
-	},
-	{
-		"id": 1067,
-		"name": "Puszkina-Rondo Sybiraków",
-		"latitude": 51.75402,
-		"longitude": 19.53282
-	},
-	{
-		"id": 1068,
-		"name": "Zakładowa-Hetmańska",
-		"latitude": 51.74061,
-		"longitude": 19.56769
-	},
-	{
-		"id": 1069,
-		"name": "Przybyszewskiego-Czajkowskiego",
-		"latitude": 51.75125,
-		"longitude": 19.54102
-	},
-	{
-		"id": 1070,
-		"name": "Przybyszewskiego-Augustów",
-		"latitude": 51.74922,
-		"longitude": 19.54712
-	},
-	{
-		"id": 1071,
-		"name": "Przybyszewskiego-Czajkowskiego",
-		"latitude": 51.75155,
-		"longitude": 19.5416
-	},
-	{
-		"id": 1072,
-		"name": "Przybyszewskiego-Rondo Sybiraków",
-		"latitude": 51.75291,
-		"longitude": 19.52875
-	},
-	{
-		"id": 1073,
-		"name": "Przybyszewskiego-Lodowa",
-		"latitude": 51.75188,
-		"longitude": 19.52141
-	},
-	{
-		"id": 1074,
-		"name": "Przybyszewskiego-Lodowa",
-		"latitude": 51.75188,
-		"longitude": 19.52148
-	},
-	{
-		"id": 1075,
-		"name": "Przybyszewskiego-Niciarniana",
-		"latitude": 51.75067,
-		"longitude": 19.51348
-	},
-	{
-		"id": 1076,
-		"name": "Przybyszewskiego-Niciarniana",
-		"latitude": 51.75072,
-		"longitude": 19.51298
-	},
-	{
-		"id": 1077,
-		"name": "Przybyszewskiego-Nurta-Kaszyńskiego",
-		"latitude": 51.74991,
-		"longitude": 19.50697
-	},
-	{
-		"id": 1078,
-		"name": "Przybyszewskiego-Nurta-Kaszyńskiego",
-		"latitude": 51.74992,
-		"longitude": 19.50706
-	},
-	{
-		"id": 1079,
-		"name": "Przybyszewskiego-Zapadła",
-		"latitude": 51.74888,
-		"longitude": 19.49981
-	},
-	{
-		"id": 1080,
-		"name": "Przybyszewskiego-Zapadła",
-		"latitude": 51.74889,
-		"longitude": 19.49991
-	},
-	{
-		"id": 1081,
-		"name": "Przybyszewskiego-Śmigłego-Rydza",
-		"latitude": 51.74774,
-		"longitude": 19.4903
-	},
-	{
-		"id": 1082,
-		"name": "Przybyszewskiego-Śmigłego-Rydza",
-		"latitude": 51.74775,
-		"longitude": 19.49042
-	},
-	{
-		"id": 1084,
-		"name": "Przybyszewskiego-Łęczycka",
-		"latitude": 51.74685,
-		"longitude": 19.48314
-	},
-	{
-		"id": 1085,
-		"name": "Przybyszewskiego-Łęczycka",
-		"latitude": 51.74696,
-		"longitude": 19.48401
-	},
-	{
-		"id": 1086,
-		"name": "Śmigłego-Rydza-Milionowa",
-		"latitude": 51.75131,
-		"longitude": 19.48942
-	},
-	{
-		"id": 1087,
-		"name": "Przybyszewskiego-Kilińskiego",
-		"latitude": 51.74571,
-		"longitude": 19.47703
-	},
-	{
-		"id": 1088,
-		"name": "Przybyszewskiego-pl. Reymonta",
-		"latitude": 51.74284,
-		"longitude": 19.46251
-	},
-	{
-		"id": 1089,
-		"name": "Puszkina-Andrzejewskiej",
-		"latitude": 51.74796,
-		"longitude": 19.5317
-	},
-	{
-		"id": 1090,
-		"name": "Puszkina-Rondo Sybiraków",
-		"latitude": 51.75359,
-		"longitude": 19.53206
-	},
-	{
-		"id": 1091,
-		"name": "Puszkina-Chmielowskiego",
-		"latitude": 51.7577,
-		"longitude": 19.53572
-	},
-	{
-		"id": 1092,
-		"name": "Puszkina-rondo Inwalidów",
-		"latitude": 51.75883,
-		"longitude": 19.5365
-	},
-	{
-		"id": 1093,
-		"name": "Rokicińska-Rondo Inwalidów",
-		"latitude": 51.76044,
-		"longitude": 19.53874
-	},
-	{
-		"id": 1094,
-		"name": "Rokicińska-Maszynowa",
-		"latitude": 51.76252,
-		"longitude": 19.52783
-	},
-	{
-		"id": 1095,
-		"name": "Puszkina-Rondo Inwalidów",
-		"latitude": 51.76163,
-		"longitude": 19.53812
-	},
-	{
-		"id": 1096,
-		"name": "Rondo Inwalidów",
-		"latitude": 51.7622,
-		"longitude": 19.53754
-	},
-	{
-		"id": 1097,
-		"name": "Puszkina-Chmielowskiego",
-		"latitude": 51.75776,
-		"longitude": 19.53561
-	},
-	{
-		"id": 1098,
-		"name": "Puszkina-Rondo Sybiraków",
-		"latitude": 51.75413,
-		"longitude": 19.53236
-	},
-	{
-		"id": 1099,
-		"name": "Puszkina-Rondo Sybiraków",
-		"latitude": 51.7538,
-		"longitude": 19.53156
-	},
-	{
-		"id": 1100,
-		"name": "Przybyszewskiego-Rondo Sybiraków",
-		"latitude": 51.7526,
-		"longitude": 19.529
-	},
-	{
-		"id": 1101,
-		"name": "Puszkina-Andrzejewskiej",
-		"latitude": 51.74882,
-		"longitude": 19.53093
-	},
-	{
-		"id": 1102,
-		"name": "Puszkina-Dostawcza",
-		"latitude": 51.74117,
-		"longitude": 19.53169
-	},
-	{
-		"id": 1103,
-		"name": "Radwańska-Politechniki (kampus PŁ)",
-		"latitude": 51.75166,
-		"longitude": 19.44791
-	},
-	{
-		"id": 1104,
-		"name": "Kościuszki-Radwańska",
-		"latitude": 51.75328,
-		"longitude": 19.45737
-	},
-	{
-		"id": 1107,
-		"name": "Rataja-Gajcego",
-		"latitude": 51.74824,
-		"longitude": 19.62342
-	},
-	{
-		"id": 1108,
-		"name": "Rataja-Słoneczne Zacisze",
-		"latitude": 51.75423,
-		"longitude": 19.61653
-	},
-	{
-		"id": 1109,
-		"name": "Śląska-Lodowa",
-		"latitude": 51.7275,
-		"longitude": 19.51001
-	},
-	{
-		"id": 1110,
-		"name": "Śląska-Szymańskiego",
-		"latitude": 51.72794,
-		"longitude": 19.50495
-	},
-	{
-		"id": 1111,
-		"name": "Śląska-Lodowa",
-		"latitude": 51.72753,
-		"longitude": 19.50915
-	},
-	{
-		"id": 1112,
-		"name": "Śląska-Kowalszczyzna",
-		"latitude": 51.72598,
-		"longitude": 19.51839
-	},
-	{
-		"id": 1113,
-		"name": "Retkińska-Zagrodniki",
-		"latitude": 51.74583,
-		"longitude": 19.40584
-	},
-	{
-		"id": 1114,
-		"name": "Retkińska-Kusocińskiego",
-		"latitude": 51.75288,
-		"longitude": 19.41119
-	},
-	{
-		"id": 1115,
-		"name": "Retkińska-Kusocińskiego",
-		"latitude": 51.75142,
-		"longitude": 19.4098
-	},
-	{
-		"id": 1116,
-		"name": "Retkińska-Wyszyńskiego",
-		"latitude": 51.74687,
-		"longitude": 19.4055
-	},
-	{
-		"id": 1117,
-		"name": "Kusocińskiego-Babickiego",
-		"latitude": 51.75236,
-		"longitude": 19.40009
-	},
-	{
-		"id": 1119,
-		"name": "Retkińska-Zagrodniki",
-		"latitude": 51.74475,
-		"longitude": 19.4053
-	},
-	{
-		"id": 1120,
-		"name": "Rewolucji 1905r.-Sterlinga",
-		"latitude": 51.77577,
-		"longitude": 19.46772
-	},
-	{
-		"id": 1121,
-		"name": "Rojna",
-		"latitude": 51.79548,
-		"longitude": 19.36137
-	},
-	{
-		"id": 1122,
-		"name": "Rojna-Wici",
-		"latitude": 51.79475,
-		"longitude": 19.36999
-	},
-	{
-		"id": 1123,
-		"name": "Rydzowa-Lniana",
-		"latitude": 51.79737,
-		"longitude": 19.3756
-	},
-	{
-		"id": 1124,
-		"name": "Rojna-Rydzowa",
-		"latitude": 51.79464,
-		"longitude": 19.37482
-	},
-	{
-		"id": 1126,
-		"name": "Traktorowa-Nektarowa",
-		"latitude": 51.78657,
-		"longitude": 19.39223
-	},
-	{
-		"id": 1127,
-		"name": "Traktorowa-Grabieniec",
-		"latitude": 51.79617,
-		"longitude": 19.39423
-	},
-	{
-		"id": 1128,
-		"name": "Rojna-Traktorowa",
-		"latitude": 51.79264,
-		"longitude": 19.39183
-	},
-	{
-		"id": 1129,
-		"name": "Rojna-Kaczeńcowa",
-		"latitude": 51.79369,
-		"longitude": 19.38586
-	},
-	{
-		"id": 1130,
-		"name": "Rojna-Rydzowa",
-		"latitude": 51.79472,
-		"longitude": 19.37478
-	},
-	{
-		"id": 1131,
-		"name": "Rojna-Wici",
-		"latitude": 51.79488,
-		"longitude": 19.37137
-	},
-	{
-		"id": 1132,
-		"name": "Rojna-Szczecińska",
-		"latitude": 51.79548,
-		"longitude": 19.36184
-	},
-	{
-		"id": 1133,
-		"name": "Aleksandrowska-Szczecińska",
-		"latitude": 51.80314,
-		"longitude": 19.36676
-	},
-	{
-		"id": 1134,
-		"name": "Rokicińska-Rondo Inwalidów",
-		"latitude": 51.7601,
-		"longitude": 19.53902
-	},
-	{
-		"id": 1135,
-		"name": "Rokicińska-Lermontowa",
-		"latitude": 51.75841,
-		"longitude": 19.54988
-	},
-	{
-		"id": 1136,
-		"name": "Rokicińska-Lermontowa",
-		"latitude": 51.75831,
-		"longitude": 19.54957
-	},
-	{
-		"id": 1137,
-		"name": "Rokicińska-Augustów",
-		"latitude": 51.75813,
-		"longitude": 19.5524
-	},
-	{
-		"id": 1138,
-		"name": "Janów",
-		"latitude": 51.75225,
-		"longitude": 19.57492
-	},
-	{
-		"id": 1140,
-		"name": "Rokicińska-Lermontowa",
-		"latitude": 51.75855,
-		"longitude": 19.54989
-	},
-	{
-		"id": 1141,
-		"name": "Rokicińska-Rondo Inwalidów",
-		"latitude": 51.76052,
-		"longitude": 19.53879
-	},
-	{
-		"id": 1142,
-		"name": "Rokicińska-Rondo Inwalidów",
-		"latitude": 51.76057,
-		"longitude": 19.53974
-	},
-	{
-		"id": 1145,
-		"name": "Rudzka-Municypalna",
-		"latitude": 51.70588,
-		"longitude": 19.43341
-	},
-	{
-		"id": 1146,
-		"name": "Rudzka-Przestrzenna",
-		"latitude": 51.70285,
-		"longitude": 19.43737
-	},
-	{
-		"id": 1148,
-		"name": "Rudzka-Farna",
-		"latitude": 51.70053,
-		"longitude": 19.43845
-	},
-	{
-		"id": 1149,
-		"name": "Rudzka-Popioły",
-		"latitude": 51.69766,
-		"longitude": 19.44111
-	},
-	{
-		"id": 1150,
-		"name": "Rudzka-Cienista",
-		"latitude": 51.69293,
-		"longitude": 19.4455
-	},
-	{
-		"id": 1153,
-		"name": "Rudzka-Skrajna",
-		"latitude": 51.68871,
-		"longitude": 19.4528
-	},
-	{
-		"id": 1154,
-		"name": "Rudzka-Cienista",
-		"latitude": 51.69319,
-		"longitude": 19.44544
-	},
-	{
-		"id": 1155,
-		"name": "Rudzka-Popioły",
-		"latitude": 51.69815,
-		"longitude": 19.44105
-	},
-	{
-		"id": 1156,
-		"name": "Rudzka-Farna",
-		"latitude": 51.70103,
-		"longitude": 19.43847
-	},
-	{
-		"id": 1157,
-		"name": "Rudzka-Przestrzenna",
-		"latitude": 51.70305,
-		"longitude": 19.43746
-	},
-	{
-		"id": 1158,
-		"name": "Rudzka-Municypalna",
-		"latitude": 51.70548,
-		"longitude": 19.43418
-	},
-	{
-		"id": 1159,
-		"name": "Rudzka-Pabianicka",
-		"latitude": 51.71018,
-		"longitude": 19.4295
-	},
-	{
-		"id": 1160,
-		"name": "Chocianowicka-Pabianicka",
-		"latitude": 51.70657,
-		"longitude": 19.42184
-	},
-	{
-		"id": 1161,
-		"name": "Aleksandrowska-Szparagowa",
-		"latitude": 51.80148,
-		"longitude": 19.37547
-	},
-	{
-		"id": 1162,
-		"name": "Rydzowa-Lniana",
-		"latitude": 51.79727,
-		"longitude": 19.37524
-	},
-	{
-		"id": 1164,
-		"name": "MATEK POLSKICH",
-		"latitude": 51.70356,
-		"longitude": 19.48088
-	},
-	{
-		"id": 1165,
-		"name": "Rzgowska-ICZMP szpital",
-		"latitude": 51.70467,
-		"longitude": 19.48376
-	},
-	{
-		"id": 1166,
-		"name": "Rzgowska-Kurczaki",
-		"latitude": 51.71818,
-		"longitude": 19.4865
-	},
-	{
-		"id": 1167,
-		"name": "Rzgowska-Kurczaki",
-		"latitude": 51.71849,
-		"longitude": 19.48623
-	},
-	{
-		"id": 1168,
-		"name": "Rzgowska-cm. Rzgowska",
-		"latitude": 51.7212,
-		"longitude": 19.4839
-	},
-	{
-		"id": 1169,
-		"name": "Rzgowska-cm. Rzgowska",
-		"latitude": 51.72124,
-		"longitude": 19.48401
-	},
-	{
-		"id": 1170,
-		"name": "Rzgowska-Dachowa",
-		"latitude": 51.72512,
-		"longitude": 19.4806
-	},
-	{
-		"id": 1171,
-		"name": "Rzgowska-Dachowa",
-		"latitude": 51.7249,
-		"longitude": 19.48103
-	},
-	{
-		"id": 1172,
-		"name": "Dw. Łódź Chojny",
-		"latitude": 51.72632,
-		"longitude": 19.47999
-	},
-	{
-		"id": 1173,
-		"name": "Dw. Łódź Chojny",
-		"latitude": 51.72646,
-		"longitude": 19.48005
-	},
-	{
-		"id": 1174,
-		"name": "Dw. Łódź Chojny",
-		"latitude": 51.72653,
-		"longitude": 19.4802
-	},
-	{
-		"id": 1175,
-		"name": "Dw. Łódź Chojny",
-		"latitude": 51.72653,
-		"longitude": 19.48044
-	},
-	{
-		"id": 1176,
-		"name": "Rzgowska-Paderewskiego",
-		"latitude": 51.73153,
-		"longitude": 19.47409
-	},
-	{
-		"id": 1177,
-		"name": "Rzgowska-Dachowa",
-		"latitude": 51.72443,
-		"longitude": 19.48098
-	},
-	{
-		"id": 1178,
-		"name": "Rzgowska-Lecznicza",
-		"latitude": 51.73413,
-		"longitude": 19.47151
-	},
-	{
-		"id": 1179,
-		"name": "Rzgowska-Lecznicza",
-		"latitude": 51.73407,
-		"longitude": 19.47157
-	},
-	{
-		"id": 1180,
-		"name": "Rzgowska-Dąbrowskiego",
-		"latitude": 51.73839,
-		"longitude": 19.46718
-	},
-	{
-		"id": 1181,
-		"name": "Rzgowska-Dąbrowskiego",
-		"latitude": 51.73802,
-		"longitude": 19.46754
-	},
-	{
-		"id": 1182,
-		"name": "Rzgowska-Paderewskiego",
-		"latitude": 51.73084,
-		"longitude": 19.47452
-	},
-	{
-		"id": 1183,
-		"name": "Rzgowska-cm. Rzgowska",
-		"latitude": 51.72107,
-		"longitude": 19.48385
-	},
-	{
-		"id": 1184,
-		"name": "Rzgowska-cm. Rzgowska",
-		"latitude": 51.72048,
-		"longitude": 19.48402
-	},
-	{
-		"id": 1185,
-		"name": "Rzgowska-Kurczaki",
-		"latitude": 51.71727,
-		"longitude": 19.485
-	},
-	{
-		"id": 1186,
-		"name": "Strażacka-Rzgowska",
-		"latitude": 51.71779,
-		"longitude": 19.48312
-	},
-	{
-		"id": 1187,
-		"name": "Rzgowska-św. Wojciecha",
-		"latitude": 51.71411,
-		"longitude": 19.48626
-	},
-	{
-		"id": 1188,
-		"name": "Paradna-Rzgowska",
-		"latitude": 51.70944,
-		"longitude": 19.48709
-	},
-	{
-		"id": 1189,
-		"name": "Rzgowska-Paradna",
-		"latitude": 51.70849,
-		"longitude": 19.48671
-	},
-	{
-		"id": 1190,
-		"name": "Rzgowska-ICZMP szpital",
-		"latitude": 51.70342,
-		"longitude": 19.48203
-	},
-	{
-		"id": 1191,
-		"name": "Rzgowska-Zagłoby",
-		"latitude": 51.69873,
-		"longitude": 19.47891
-	},
-	{
-		"id": 1192,
-		"name": "Ustronna",
-		"latitude": 51.69995,
-		"longitude": 19.47268
-	},
-	{
-		"id": 1193,
-		"name": "Graniczna-Graniczna 62",
-		"latitude": 51.69723,
-		"longitude": 19.46874
-	},
-	{
-		"id": 1195,
-		"name": "Centrum Handlowe PTAK",
-		"latitude": 51.64719,
-		"longitude": 19.49029
-	},
-	{
-		"id": 1197,
-		"name": "Sanitariuszek-Dw. Łódź Lublinek",
-		"latitude": 51.71896,
-		"longitude": 19.35936
-	},
-	{
-		"id": 1198,
-		"name": "Sanitariuszek-Biwakowa",
-		"latitude": 51.72331,
-		"longitude": 19.35439
-	},
-	{
-		"id": 1199,
-		"name": "Sanitariuszek-Dw. Łódź Lublinek",
-		"latitude": 51.71919,
-		"longitude": 19.35885
-	},
-	{
-		"id": 1200,
-		"name": "Sanitariuszek-Łaskowice",
-		"latitude": 51.71337,
-		"longitude": 19.36578
-	},
-	{
-		"id": 1201,
-		"name": "Sienkiewicza-Piłsudskiego",
-		"latitude": 51.75819,
-		"longitude": 19.4634
-	},
-	{
-		"id": 1202,
-		"name": "Wigury-Kilińskiego",
-		"latitude": 51.75721,
-		"longitude": 19.46886
-	},
-	{
-		"id": 1203,
-		"name": "Sienkiewicza-park Sienkiewicza",
-		"latitude": 51.76444,
-		"longitude": 19.46201
-	},
-	{
-		"id": 1204,
-		"name": "Sienkiewicza-Narutowicza",
-		"latitude": 51.76979,
-		"longitude": 19.46088
-	},
-	{
-		"id": 1205,
-		"name": "Sienkiewicza-Pogotowie Ratunkowe",
-		"latitude": 51.75482,
-		"longitude": 19.46384
-	},
-	{
-		"id": 1206,
-		"name": "Tymienieckiego-Kilińskiego",
-		"latitude": 51.75132,
-		"longitude": 19.47229
-	},
-	{
-		"id": 1207,
-		"name": "Sikorskiego-Nastrojowa",
-		"latitude": 51.81751,
-		"longitude": 19.44491
-	},
-	{
-		"id": 1208,
-		"name": "Sikorskiego-Nastrojowa",
-		"latitude": 51.81753,
-		"longitude": 19.44367
-	},
-	{
-		"id": 1209,
-		"name": "Sikorskiego-Studzińskiego",
-		"latitude": 51.81641,
-		"longitude": 19.43961
-	},
-	{
-		"id": 1210,
-		"name": "Zgierska-Sikorskiego",
-		"latitude": 51.81485,
-		"longitude": 19.43439
-	},
-	{
-		"id": 1211,
-		"name": "Skalna-Kasprowy Wierch",
-		"latitude": 51.77528,
-		"longitude": 19.53609
-	},
-	{
-		"id": 1212,
-		"name": "Zbocze-Potokowa",
-		"latitude": 51.77654,
-		"longitude": 19.53094
-	},
-	{
-		"id": 1216,
-		"name": "Skłodowskiej-Curie-Żeromskiego",
-		"latitude": 51.76333,
-		"longitude": 19.44696
-	},
-	{
-		"id": 1217,
-		"name": "Skłodowskiej-Curie-Gdańska",
-		"latitude": 51.76452,
-		"longitude": 19.45129
-	},
-	{
-		"id": 1218,
-		"name": "Skrzydlata-Kasztelańska",
-		"latitude": 51.8132,
-		"longitude": 19.47327
-	},
-	{
-		"id": 1219,
-		"name": "Skrzydlata-Żucza",
-		"latitude": 51.81798,
-		"longitude": 19.47369
-	},
-	{
-		"id": 1220,
-		"name": "Arturówek",
-		"latitude": 51.82136,
-		"longitude": 19.47432
-	},
-	{
-		"id": 1221,
-		"name": "Skrzydlata-Żucza",
-		"latitude": 51.8181,
-		"longitude": 19.47364
-	},
-	{
-		"id": 1222,
-		"name": "Skrzydlata-Kasztelańska",
-		"latitude": 51.81366,
-		"longitude": 19.4731
-	},
-	{
-		"id": 1224,
-		"name": "Warszawska-Centralna",
-		"latitude": 51.81052,
-		"longitude": 19.48006
-	},
-	{
-		"id": 1225,
-		"name": "Solec-Borowa",
-		"latitude": 51.77821,
-		"longitude": 19.41123
-	},
-	{
-		"id": 1227,
-		"name": "Sporna-Wojska Polskiego",
-		"latitude": 51.78953,
-		"longitude": 19.47904
-	},
-	{
-		"id": 1228,
-		"name": "Sporna-Bracka",
-		"latitude": 51.79253,
-		"longitude": 19.47822
-	},
-	{
-		"id": 1229,
-		"name": "Inflancka-Zagajnikowa",
-		"latitude": 51.80034,
-		"longitude": 19.47623
-	},
-	{
-		"id": 1230,
-		"name": "Sporna-Bracka",
-		"latitude": 51.79198,
-		"longitude": 19.47811
-	},
-	{
-		"id": 1231,
-		"name": "Wojska Polskiego-Sporna",
-		"latitude": 51.78883,
-		"longitude": 19.4778
-	},
-	{
-		"id": 1233,
-		"name": "Srebrzyńska-Jarzynowa",
-		"latitude": 51.77445,
-		"longitude": 19.40852
-	},
-	{
-		"id": 1234,
-		"name": "Srebrzyńska-Unii Lubelskiej",
-		"latitude": 51.77286,
-		"longitude": 19.41693
-	},
-	{
-		"id": 1235,
-		"name": "Konstantynowska-Unii Lubelskiej",
-		"latitude": 51.76743,
-		"longitude": 19.42192
-	},
-	{
-		"id": 1236,
-		"name": "Bandurskiego-Atlas Arena",
-		"latitude": 51.75602,
-		"longitude": 19.42649
-	},
-	{
-		"id": 1237,
-		"name": "Unii Lubelskiej-Praussa",
-		"latitude": 51.77611,
-		"longitude": 19.41564
-	},
-	{
-		"id": 1238,
-		"name": "Srebrzyńska-Koziny",
-		"latitude": 51.77269,
-		"longitude": 19.42252
-	},
-	{
-		"id": 1239,
-		"name": "Srebrzyńska-Koziny",
-		"latitude": 51.77256,
-		"longitude": 19.42316
-	},
-	{
-		"id": 1240,
-		"name": "Srebrzyńska-Kasprzaka",
-		"latitude": 51.77335,
-		"longitude": 19.42696
-	},
-	{
-		"id": 1241,
-		"name": "Srebrzyńska-cm. Ogrodowa",
-		"latitude": 51.77544,
-		"longitude": 19.43576
-	},
-	{
-		"id": 1242,
-		"name": "Srebrzyńska-Unii Lubelskiej",
-		"latitude": 51.77312,
-		"longitude": 19.41615
-	},
-	{
-		"id": 1243,
-		"name": "Srebrzyńska-Jarzynowa",
-		"latitude": 51.77436,
-		"longitude": 19.40966
-	},
-	{
-		"id": 1244,
-		"name": "Srebrzyńska-cm. Mania",
-		"latitude": 51.77573,
-		"longitude": 19.40622
-	},
-	{
-		"id": 1245,
-		"name": "Żeromskiego-pl. Barlickiego",
-		"latitude": 51.76897,
-		"longitude": 19.44619
-	},
-	{
-		"id": 1246,
-		"name": "Struga-Pogonowskiego",
-		"latitude": 51.76445,
-		"longitude": 19.4439
-	},
-	{
-		"id": 1247,
-		"name": "Struga-Żeligowskiego",
-		"latitude": 51.76419,
-		"longitude": 19.44078
-	},
-	{
-		"id": 1248,
-		"name": "Łąkowa-Karolewska",
-		"latitude": 51.76138,
-		"longitude": 19.44119
-	},
-	{
-		"id": 1249,
-		"name": "Palki-Smutna",
-		"latitude": 51.78797,
-		"longitude": 19.485
-	},
-	{
-		"id": 1250,
-		"name": "Doły-Telefoniczna",
-		"latitude": 51.78374,
-		"longitude": 19.49129
-	},
-	{
-		"id": 1251,
-		"name": "Telefoniczna-Bystrzycka",
-		"latitude": 51.78299,
-		"longitude": 19.49318
-	},
-	{
-		"id": 1252,
-		"name": "Palki-Wojska Polskiego",
-		"latitude": 51.79018,
-		"longitude": 19.48696
-	},
-	{
-		"id": 1253,
-		"name": "Wojska Polskiego-Palki",
-		"latitude": 51.7908,
-		"longitude": 19.48593
-	},
-	{
-		"id": 1254,
-		"name": "Strykowska-Inflancka",
-		"latitude": 51.79712,
-		"longitude": 19.48812
-	},
-	{
-		"id": 1255,
-		"name": "Wojska Polskiego-Łomnicka",
-		"latitude": 51.79364,
-		"longitude": 19.49483
-	},
-	{
-		"id": 1256,
-		"name": "Strykowska-Kwarcowa",
-		"latitude": 51.80269,
-		"longitude": 19.4934
-	},
-	{
-		"id": 1257,
-		"name": "Strykowska-Opolska",
-		"latitude": 51.80679,
-		"longitude": 19.49946
-	},
-	{
-		"id": 1258,
-		"name": "Strykowska-Herbowa",
-		"latitude": 51.81256,
-		"longitude": 19.50316
-	},
-	{
-		"id": 1259,
-		"name": "Strykowska-Łodzianka",
-		"latitude": 51.82496,
-		"longitude": 19.51999
-	},
-	{
-		"id": 1260,
-		"name": "Strykowska-Okólna",
-		"latitude": 51.82981,
-		"longitude": 19.53105
-	},
-	{
-		"id": 1261,
-		"name": "Strykowska-Jana i Cecylii",
-		"latitude": 51.83445,
-		"longitude": 19.5416
-	},
-	{
-		"id": 1262,
-		"name": "Strykowska-Strykowska 241",
-		"latitude": 51.83826,
-		"longitude": 19.5503
-	},
-	{
-		"id": 1263,
-		"name": "Strykowska-Imielnik Nowy",
-		"latitude": 51.84252,
-		"longitude": 19.55847
-	},
-	{
-		"id": 1265,
-		"name": "Strykowska-Strykowska 241",
-		"latitude": 51.83812,
-		"longitude": 19.54956
-	},
-	{
-		"id": 1267,
-		"name": "Strykowska-Jana i Cecylii",
-		"latitude": 51.83428,
-		"longitude": 19.54079
-	},
-	{
-		"id": 1268,
-		"name": "Strykowska-Okólna",
-		"latitude": 51.8296,
-		"longitude": 19.53017
-	},
-	{
-		"id": 1269,
-		"name": "Strykowska-Łodzianka",
-		"latitude": 51.82586,
-		"longitude": 19.52156
-	},
-	{
-		"id": 1270,
-		"name": "Strykowska-Rogowska",
-		"latitude": 51.81945,
-		"longitude": 19.50694
-	},
-	{
-		"id": 1271,
-		"name": "Strykowska-Opolska",
-		"latitude": 51.80702,
-		"longitude": 19.49948
-	},
-	{
-		"id": 1272,
-		"name": "Strykowska-Kwarcowa",
-		"latitude": 51.80264,
-		"longitude": 19.49294
-	},
-	{
-		"id": 1273,
-		"name": "Palki-Wojska Polskiego",
-		"latitude": 51.79037,
-		"longitude": 19.4865
-	},
-	{
-		"id": 1274,
-		"name": "Doły",
-		"latitude": 51.79719,
-		"longitude": 19.48762
-	},
-	{
-		"id": 1275,
-		"name": "Doły",
-		"latitude": 51.79705,
-		"longitude": 19.48751
-	},
-	{
-		"id": 1276,
-		"name": "Wojska Polskiego-Palki",
-		"latitude": 51.79142,
-		"longitude": 19.48655
-	},
-	{
-		"id": 1277,
-		"name": "Palki-Smutna",
-		"latitude": 51.78735,
-		"longitude": 19.48393
-	},
-	{
-		"id": 1278,
-		"name": "Palki-Źródłowa",
-		"latitude": 51.78026,
-		"longitude": 19.4821
-	},
-	{
-		"id": 1279,
-		"name": "Uniwersytecka-rondo Solidarności",
-		"latitude": 51.77854,
-		"longitude": 19.48004
-	},
-	{
-		"id": 1280,
-		"name": "Pomorska-rondo Solidarności",
-		"latitude": 51.77889,
-		"longitude": 19.48242
-	},
-	{
-		"id": 1281,
-		"name": "Szczecińska-św. Teresy",
-		"latitude": 51.81208,
-		"longitude": 19.37754
-	},
-	{
-		"id": 1282,
-		"name": "Cm. Szczecińska",
-		"latitude": 51.81685,
-		"longitude": 19.382
-	},
-	{
-		"id": 1284,
-		"name": "Szczecińska-św. Teresy",
-		"latitude": 51.81278,
-		"longitude": 19.37814
-	},
-	{
-		"id": 1285,
-		"name": "Św. Teresy-Kaczeńcowa",
-		"latitude": 51.80944,
-		"longitude": 19.3907
-	},
-	{
-		"id": 1286,
-		"name": "Św. Teresy-św. Teresy 109",
-		"latitude": 51.81119,
-		"longitude": 19.38246
-	},
-	{
-		"id": 1287,
-		"name": "Wersalska-Szczecińska",
-		"latitude": 51.80956,
-		"longitude": 19.37788
-	},
-	{
-		"id": 1288,
-		"name": "Wersalska-Wersalska 47",
-		"latitude": 51.80868,
-		"longitude": 19.37941
-	},
-	{
-		"id": 1289,
-		"name": "Szparagowa-Aleksandrowska",
-		"latitude": 51.80247,
-		"longitude": 19.37736
-	},
-	{
-		"id": 1290,
-		"name": "Rydzowa-Aleksandrowska",
-		"latitude": 51.8008,
-		"longitude": 19.37577
-	},
-	{
-		"id": 1291,
-		"name": "Aleksandrowska-Rydzowa",
-		"latitude": 51.80088,
-		"longitude": 19.37717
-	},
-	{
-		"id": 1292,
-		"name": "Śląska-Szymańskiego",
-		"latitude": 51.72788,
-		"longitude": 19.5044
-	},
-	{
-		"id": 1293,
-		"name": "Śląska-Kruczkowskiego",
-		"latitude": 51.72797,
-		"longitude": 19.49877
-	},
-	{
-		"id": 1294,
-		"name": "Kruczkowskiego-Felińskiego",
-		"latitude": 51.73174,
-		"longitude": 19.49712
-	},
-	{
-		"id": 1295,
-		"name": "Śmigłego-Rydza-Przybyszewskiego",
-		"latitude": 51.74716,
-		"longitude": 19.48983
-	},
-	{
-		"id": 1296,
-		"name": "Śmigłego-Rydza-Zbiorcza",
-		"latitude": 51.75817,
-		"longitude": 19.48806
-	},
-	{
-		"id": 1297,
-		"name": "Śmigłego-Rydza-Zbiorcza",
-		"latitude": 51.75819,
-		"longitude": 19.48831
-	},
-	{
-		"id": 1298,
-		"name": "Kopcińskiego-Piłsudskiego",
-		"latitude": 51.76215,
-		"longitude": 19.48493
-	},
-	{
-		"id": 1300,
-		"name": "Śmigłego-Rydza-Zbiorcza",
-		"latitude": 51.75802,
-		"longitude": 19.48776
-	},
-	{
-		"id": 1302,
-		"name": "Śmigłego-Rydza-Milionowa",
-		"latitude": 51.75219,
-		"longitude": 19.4893
-	},
-	{
-		"id": 1303,
-		"name": "Śmigłego-Rydza-Przybyszewskiego",
-		"latitude": 51.74833,
-		"longitude": 19.48954
-	},
-	{
-		"id": 1305,
-		"name": "Śmigłego-Rydza-Dąbrowskiego",
-		"latitude": 51.73797,
-		"longitude": 19.48892
-	},
-	{
-		"id": 1306,
-		"name": "Śmigłego-Rydza-Broniewskiego",
-		"latitude": 51.73341,
-		"longitude": 19.48888
-	},
-	{
-		"id": 1307,
-		"name": "Świtezianki-Syrenki",
-		"latitude": 51.82184,
-		"longitude": 19.4481
-	},
-	{
-		"id": 1308,
-		"name": "Świtezianki-Sikorskiego",
-		"latitude": 51.81895,
-		"longitude": 19.44834
-	},
-	{
-		"id": 1309,
-		"name": "Tatrzańska-Grota-Roweckiego",
-		"latitude": 51.74397,
-		"longitude": 19.49465
-	},
-	{
-		"id": 1310,
-		"name": "Tatrzańska-Grota-Roweckiego",
-		"latitude": 51.74328,
-		"longitude": 19.49459
-	},
-	{
-		"id": 1311,
-		"name": "Tatrzańska-Dąbrowskiego",
-		"latitude": 51.73776,
-		"longitude": 19.49464
-	},
-	{
-		"id": 1312,
-		"name": "Telefoniczna- ET-1",
-		"latitude": 51.78292,
-		"longitude": 19.50991
-	},
-	{
-		"id": 1313,
-		"name": "Telefoniczna-Telefoniczna (Zaj.MPK)",
-		"latitude": 51.78208,
-		"longitude": 19.51026
-	},
-	{
-		"id": 1314,
-		"name": "działki-Telefoniczna pętla",
-		"latitude": 51.78135,
-		"longitude": 19.50662
-	},
-	{
-		"id": 1315,
-		"name": "Telefoniczna-Chmurna",
-		"latitude": 51.78206,
-		"longitude": 19.51324
-	},
-	{
-		"id": 1316,
-		"name": "Telefoniczna-Weselna",
-		"latitude": 51.78318,
-		"longitude": 19.51973
-	},
-	{
-		"id": 1317,
-		"name": "Telefoniczna-Chmurna",
-		"latitude": 51.78209,
-		"longitude": 19.51328
-	},
-	{
-		"id": 1318,
-		"name": "Telefoniczna-Weselna",
-		"latitude": 51.78329,
-		"longitude": 19.52108
-	},
-	{
-		"id": 1319,
-		"name": "Telefoniczna-Pieniny",
-		"latitude": 51.78293,
-		"longitude": 19.52561
-	},
-	{
-		"id": 1320,
-		"name": "Telefoniczna-Pieniny",
-		"latitude": 51.78287,
-		"longitude": 19.52526
-	},
-	{
-		"id": 1322,
-		"name": "Stoki",
-		"latitude": 51.78252,
-		"longitude": 19.52927
-	},
-	{
-		"id": 1323,
-		"name": "Telefoniczna-Pieniny",
-		"latitude": 51.78297,
-		"longitude": 19.52561
-	},
-	{
-		"id": 1324,
-		"name": "Telefoniczna-Weselna",
-		"latitude": 51.78329,
-		"longitude": 19.51963
-	},
-	{
-		"id": 1325,
-		"name": "Telefoniczna-Chmurna",
-		"latitude": 51.7824,
-		"longitude": 19.51523
-	},
-	{
-		"id": 1326,
-		"name": "Telefoniczna-Chmurna",
-		"latitude": 51.78233,
-		"longitude": 19.51511
-	},
-	{
-		"id": 1327,
-		"name": "Telefoniczna-zajezdnia MPK",
-		"latitude": 51.78217,
-		"longitude": 19.50976
-	},
-	{
-		"id": 1328,
-		"name": "Telefoniczna",
-		"latitude": 51.78324,
-		"longitude": 19.50966
-	},
-	{
-		"id": 1329,
-		"name": "Telefoniczna-Telefoniczna 27",
-		"latitude": 51.78267,
-		"longitude": 19.50416
-	},
-	{
-		"id": 1330,
-		"name": "Św. Teresy-Traktorowa",
-		"latitude": 51.80826,
-		"longitude": 19.3954
-	},
-	{
-		"id": 1331,
-		"name": "Traktorowa-Ludowa",
-		"latitude": 51.80624,
-		"longitude": 19.39569
-	},
-	{
-		"id": 1332,
-		"name": "Św. Teresy-Brukowa",
-		"latitude": 51.80599,
-		"longitude": 19.41279
-	},
-	{
-		"id": 1333,
-		"name": "Św. Teresy-św. Teresy 109",
-		"latitude": 51.81114,
-		"longitude": 19.38373
-	},
-	{
-		"id": 1334,
-		"name": "Św. Teresy-Szczecińska",
-		"latitude": 51.81214,
-		"longitude": 19.3795
-	},
-	{
-		"id": 1335,
-		"name": "Cm. Szczecińska",
-		"latitude": 51.81691,
-		"longitude": 19.38188
-	},
-	{
-		"id": 1336,
-		"name": "Cm. Szczecińska",
-		"latitude": 51.81694,
-		"longitude": 19.38179
-	},
-	{
-		"id": 1337,
-		"name": "Cm. Szczecińska",
-		"latitude": 51.81703,
-		"longitude": 19.38162
-	},
-	{
-		"id": 1338,
-		"name": "Tomaszowska-Olechowska",
-		"latitude": 51.72782,
-		"longitude": 19.53455
-	},
-	{
-		"id": 1339,
-		"name": "Tomaszowska-Ofiar Terroryzmu 11 Wrz",
-		"latitude": 51.72461,
-		"longitude": 19.53774
-	},
-	{
-		"id": 1340,
-		"name": "al. Ofiar Terroryzmu 11 Września-To",
-		"latitude": 51.72557,
-		"longitude": 19.53913
-	},
-	{
-		"id": 1341,
-		"name": "Tomaszowska-Jędrzejowska",
-		"latitude": 51.72057,
-		"longitude": 19.53967
-	},
-	{
-		"id": 1342,
-		"name": "Tomaszowska-Małego Rycerza",
-		"latitude": 51.71608,
-		"longitude": 19.54182
-	},
-	{
-		"id": 1343,
-		"name": "Tomaszowska-Jędrzejowska",
-		"latitude": 51.72018,
-		"longitude": 19.54005
-	},
-	{
-		"id": 1344,
-		"name": "Tomaszowska-Ofiar Terroryzmu 11 Wrz",
-		"latitude": 51.72588,
-		"longitude": 19.53685
-	},
-	{
-		"id": 1345,
-		"name": "Tomaszowska-Olechowska",
-		"latitude": 51.7274,
-		"longitude": 19.5352
-	},
-	{
-		"id": 1346,
-		"name": "Traktorowa-Nektarowa",
-		"latitude": 51.78712,
-		"longitude": 19.39259
-	},
-	{
-		"id": 1347,
-		"name": "Traktorowa-Duńska",
-		"latitude": 51.80196,
-		"longitude": 19.39519
-	},
-	{
-		"id": 1348,
-		"name": "Traktorowa-Ludowa",
-		"latitude": 51.80397,
-		"longitude": 19.39553
-	},
-	{
-		"id": 1349,
-		"name": "Traktorowa-św. Teresy",
-		"latitude": 51.80772,
-		"longitude": 19.39626
-	},
-	{
-		"id": 1350,
-		"name": "Traktorowa-Duńska",
-		"latitude": 51.80127,
-		"longitude": 19.39477
-	},
-	{
-		"id": 1351,
-		"name": "Traktorowa-Rąbieńska",
-		"latitude": 51.78322,
-		"longitude": 19.39157
-	},
-	{
-		"id": 1352,
-		"name": "Złotno-Siewna",
-		"latitude": 51.77925,
-		"longitude": 19.39842
-	},
-	{
-		"id": 1353,
-		"name": "Trybunalska-Kwietniowa",
-		"latitude": 51.71491,
-		"longitude": 19.46653
-	},
-	{
-		"id": 1354,
-		"name": "Trybunalska-Kosynierów Gdyńskich",
-		"latitude": 51.71828,
-		"longitude": 19.46806
-	},
-	{
-		"id": 1355,
-		"name": "Kosynierów Gdyńskich-Łazowskiego",
-		"latitude": 51.71661,
-		"longitude": 19.47264
-	},
-	{
-		"id": 1357,
-		"name": "Tuwima-Wydawnicza",
-		"latitude": 51.76722,
-		"longitude": 19.48615
-	},
-	{
-		"id": 1358,
-		"name": "Tuwima-Kopcińskiego",
-		"latitude": 51.76781,
-		"longitude": 19.48317
-	},
-	{
-		"id": 1359,
-		"name": "Przędzalniana-Nawrot",
-		"latitude": 51.76398,
-		"longitude": 19.48051
-	},
-	{
-		"id": 1360,
-		"name": "Tuwima-Wysoka",
-		"latitude": 51.76734,
-		"longitude": 19.47834
-	},
-	{
-		"id": 1361,
-		"name": "Tuwima-Targowa Planetarium",
-		"latitude": 51.76679,
-		"longitude": 19.47209
-	},
-	{
-		"id": 1362,
-		"name": "Tuwima-Kilińskiego EC1 Zach.",
-		"latitude": 51.7664,
-		"longitude": 19.46674
-	},
-	{
-		"id": 1363,
-		"name": "Tymienieckiego-ŁSSE",
-		"latitude": 51.75315,
-		"longitude": 19.47942
-	},
-	{
-		"id": 1364,
-		"name": "Tymienieckiego-ŁSSE",
-		"latitude": 51.75319,
-		"longitude": 19.47913
-	},
-	{
-		"id": 1365,
-		"name": "Tymienieckiego-Kilińskiego",
-		"latitude": 51.75134,
-		"longitude": 19.47181
-	},
-	{
-		"id": 1366,
-		"name": "Tymienieckiego-Sienkiewicza",
-		"latitude": 51.74956,
-		"longitude": 19.46476
-	},
-	{
-		"id": 1367,
-		"name": "Unii Lubelskiej-Srebrzyńska",
-		"latitude": 51.77317,
-		"longitude": 19.41752
-	},
-	{
-		"id": 1368,
-		"name": "Unii Lubelskiej-Srebrzyńska",
-		"latitude": 51.77335,
-		"longitude": 19.41716
-	},
-	{
-		"id": 1369,
-		"name": "Uniwersytecka-Rewolucji 1905 r.",
-		"latitude": 51.77579,
-		"longitude": 19.4768
-	},
-	{
-		"id": 1370,
-		"name": "Warszawska-Deczyńskiego",
-		"latitude": 51.80496,
-		"longitude": 19.46735
-	},
-	{
-		"id": 1371,
-		"name": "Warszawska-Skrzydlata",
-		"latitude": 51.80757,
-		"longitude": 19.47335
-	},
-	{
-		"id": 1372,
-		"name": "Warszawska-Słowicza",
-		"latitude": 51.80948,
-		"longitude": 19.47774
-	},
-	{
-		"id": 1373,
-		"name": "Warszawska-Centralna",
-		"latitude": 51.81054,
-		"longitude": 19.48022
-	},
-	{
-		"id": 1374,
-		"name": "Warszawska-Wycieczkowa",
-		"latitude": 51.81325,
-		"longitude": 19.48666
-	},
-	{
-		"id": 1375,
-		"name": "Warszawska-Wycieczkowa",
-		"latitude": 51.81313,
-		"longitude": 19.48615
-	},
-	{
-		"id": 1376,
-		"name": "Warszawska-Centralna",
-		"latitude": 51.81075,
-		"longitude": 19.48009
-	},
-	{
-		"id": 1377,
-		"name": "Warszawska-Centralna",
-		"latitude": 51.8106,
-		"longitude": 19.48016
-	},
-	{
-		"id": 1378,
-		"name": "Warszawska-Słowicza",
-		"latitude": 51.80948,
-		"longitude": 19.47753
-	},
-	{
-		"id": 1379,
-		"name": "Warszawska-Skrzydlata",
-		"latitude": 51.80784,
-		"longitude": 19.47328
-	},
-	{
-		"id": 1380,
-		"name": "Warszawska-Skrzydlata",
-		"latitude": 51.80762,
-		"longitude": 19.4733
-	},
-	{
-		"id": 1381,
-		"name": "Warszawska-Deczyńskiego",
-		"latitude": 51.80539,
-		"longitude": 19.46815
-	},
-	{
-		"id": 1382,
-		"name": "Warszawska-Deczyńskiego",
-		"latitude": 51.8055,
-		"longitude": 19.46815
-	},
-	{
-		"id": 1383,
-		"name": "Warszawska-Irysowa",
-		"latitude": 51.80309,
-		"longitude": 19.46285
-	},
-	{
-		"id": 1384,
-		"name": "Wedmanowej-Dąbrowskiego",
-		"latitude": 51.73492,
-		"longitude": 19.51522
-	},
-	{
-		"id": 1385,
-		"name": "Wedmanowej-Lodowa",
-		"latitude": 51.73026,
-		"longitude": 19.51208
-	},
-	{
-		"id": 1386,
-		"name": "Wersalska-Wersalska 47",
-		"latitude": 51.80848,
-		"longitude": 19.37936
-	},
-	{
-		"id": 1387,
-		"name": "Wersalska-Szczecińska",
-		"latitude": 51.81058,
-		"longitude": 19.37672
-	},
-	{
-		"id": 1395,
-		"name": "Wiączyńska-Autostrada A1",
-		"latitude": 51.7814,
-		"longitude": 19.60534
-	},
-	{
-		"id": 1396,
-		"name": "Wiączyńska-Wiączyńska 16",
-		"latitude": 51.78852,
-		"longitude": 19.59657
-	},
-	{
-		"id": 1397,
-		"name": "Wiączyńska-Wiączyńska 32",
-		"latitude": 51.78374,
-		"longitude": 19.60284
-	},
-	{
-		"id": 1398,
-		"name": "Wiączyńska-Autostrada A1",
-		"latitude": 51.78093,
-		"longitude": 19.60537
-	},
-	{
-		"id": 1399,
-		"name": "Wiączyńska-Wiączyńska 32",
-		"latitude": 51.78349,
-		"longitude": 19.60338
-	},
-	{
-		"id": 1400,
-		"name": "Wiączyńska-Wiączyńska 16",
-		"latitude": 51.78879,
-		"longitude": 19.59641
-	},
-	{
-		"id": 1401,
-		"name": "Wiączyńska-Nowosolna",
-		"latitude": 51.79365,
-		"longitude": 19.59004
-	},
-	{
-		"id": 1402,
-		"name": "Wielkopolska-Pułaskiego",
-		"latitude": 51.79089,
-		"longitude": 19.41711
-	},
-	{
-		"id": 1404,
-		"name": "Woronicza-Dw. Łódź Żabieniec",
-		"latitude": 51.79428,
-		"longitude": 19.40719
-	},
-	{
-		"id": 1405,
-		"name": "Żeromskiego-pl. Barlickiego",
-		"latitude": 51.76902,
-		"longitude": 19.44605
-	},
-	{
-		"id": 1406,
-		"name": "Więckowskiego-Pogonowskiego",
-		"latitude": 51.77158,
-		"longitude": 19.44314
-	},
-	{
-		"id": 1407,
-		"name": "Więckowskiego-Żeligowskiego",
-		"latitude": 51.76975,
-		"longitude": 19.43693
-	},
-	{
-		"id": 1408,
-		"name": "Maratońska-Wróblewskiego",
-		"latitude": 51.74842,
-		"longitude": 19.42868
-	},
-	{
-		"id": 1409,
-		"name": "Jana Pawła II-Wróblewskiego",
-		"latitude": 51.74556,
-		"longitude": 19.4406
-	},
-	{
-		"id": 1410,
-		"name": "Jana Pawła II-Łaska",
-		"latitude": 51.74929,
-		"longitude": 19.43797
-	},
-	{
-		"id": 1411,
-		"name": "Dw. Łódź Kaliska",
-		"latitude": 51.75685,
-		"longitude": 19.43097
-	},
-	{
-		"id": 1412,
-		"name": "Włókniarzy-Legionów",
-		"latitude": 51.76827,
-		"longitude": 19.42614
-	},
-	{
-		"id": 1414,
-		"name": "Włókniarzy-Długosza",
-		"latitude": 51.77746,
-		"longitude": 19.42132
-	},
-	{
-		"id": 1415,
-		"name": "Włókniarzy-Żubardzka",
-		"latitude": 51.78525,
-		"longitude": 19.42132
-	},
-	{
-		"id": 1416,
-		"name": "Włókniarzy-Wielkopolska",
-		"latitude": 51.7893,
-		"longitude": 19.42114
-	},
-	{
-		"id": 1418,
-		"name": "Włókniarzy-Legionów",
-		"latitude": 51.76787,
-		"longitude": 19.42594
-	},
-	{
-		"id": 1420,
-		"name": "Włókniarzy-Żubardzka",
-		"latitude": 51.78567,
-		"longitude": 19.42116
-	},
-	{
-		"id": 1421,
-		"name": "Włókniarzy-Długosza",
-		"latitude": 51.77769,
-		"longitude": 19.42122
-	},
-	{
-		"id": 1422,
-		"name": "Włókniarzy-Koziny",
-		"latitude": 51.77216,
-		"longitude": 19.4218
-	},
-	{
-		"id": 1423,
-		"name": "Włókniarzy-Legionów",
-		"latitude": 51.76823,
-		"longitude": 19.42604
-	},
-	{
-		"id": 1424,
-		"name": "Włókniarzy-Karolewska (Dw. Łódź Kal",
-		"latitude": 51.75817,
-		"longitude": 19.43343
-	},
-	{
-		"id": 1425,
-		"name": "Jana Pawła II-Łaska",
-		"latitude": 51.74965,
-		"longitude": 19.43713
-	},
-	{
-		"id": 1426,
-		"name": "Jana Pawła II-Wróblewskiego",
-		"latitude": 51.7457,
-		"longitude": 19.43994
-	},
-	{
-		"id": 1427,
-		"name": "Jana Pawła II-Rogozińskiego",
-		"latitude": 51.73213,
-		"longitude": 19.44177
-	},
-	{
-		"id": 1428,
-		"name": "Wojska Polskiego-Franciszkańska",
-		"latitude": 51.7845,
-		"longitude": 19.45969
-	},
-	{
-		"id": 1429,
-		"name": "Wojska Polskiego-Głowackiego",
-		"latitude": 51.78729,
-		"longitude": 19.47201
-	},
-	{
-		"id": 1430,
-		"name": "Wojska Polskiego-Sporna",
-		"latitude": 51.78893,
-		"longitude": 19.47825
-	},
-	{
-		"id": 1431,
-		"name": "Wojska Polskiego-Palki",
-		"latitude": 51.79079,
-		"longitude": 19.48592
-	},
-	{
-		"id": 1432,
-		"name": "Wojska Polskiego-Palki",
-		"latitude": 51.79146,
-		"longitude": 19.48687
-	},
-	{
-		"id": 1433,
-		"name": "Śnieżna-Brzezińska",
-		"latitude": 51.79506,
-		"longitude": 19.50365
-	},
-	{
-		"id": 1434,
-		"name": "Wojska Polskiego-Sporna",
-		"latitude": 51.78937,
-		"longitude": 19.47956
-	},
-	{
-		"id": 1435,
-		"name": "Wojska Polskiego-Głowackiego",
-		"latitude": 51.78732,
-		"longitude": 19.47159
-	},
-	{
-		"id": 1436,
-		"name": "Wojska Polskiego-Marynarska",
-		"latitude": 51.7858,
-		"longitude": 19.46567
-	},
-	{
-		"id": 1437,
-		"name": "Wojska Polskiego-Marynarska",
-		"latitude": 51.78567,
-		"longitude": 19.46541
-	},
-	{
-		"id": 1438,
-		"name": "Wojska Polskiego-Franciszkańska",
-		"latitude": 51.7848,
-		"longitude": 19.46083
-	},
-	{
-		"id": 1439,
-		"name": "Wojska Polskiego-Franciszkańska",
-		"latitude": 51.78484,
-		"longitude": 19.46085
-	},
-	{
-		"id": 1440,
-		"name": "Wólczańska-Skargi",
-		"latitude": 51.73906,
-		"longitude": 19.45838
-	},
-	{
-		"id": 1442,
-		"name": "Wycieczkowa-Wypoczynkowa",
-		"latitude": 51.8044,
-		"longitude": 19.48776
-	},
-	{
-		"id": 1443,
-		"name": "Wycieczkowa-Woskowa",
-		"latitude": 51.81014,
-		"longitude": 19.48738
-	},
-	{
-		"id": 1444,
-		"name": "Wycieczkowa-Warszawska",
-		"latitude": 51.81332,
-		"longitude": 19.48733
-	},
-	{
-		"id": 1445,
-		"name": "Wycieczkowa-Rogowska",
-		"latitude": 51.81718,
-		"longitude": 19.48662
-	},
-	{
-		"id": 1446,
-		"name": "Wycieczkowa-Wiewiórcza",
-		"latitude": 51.8218,
-		"longitude": 19.48738
-	},
-	{
-		"id": 1447,
-		"name": "Wycieczkowa-Radiostacja",
-		"latitude": 51.82502,
-		"longitude": 19.48798
-	},
-	{
-		"id": 1448,
-		"name": "Wycieczkowa-sanatorium",
-		"latitude": 51.83496,
-		"longitude": 19.48368
-	},
-	{
-		"id": 1449,
-		"name": "Wycieczkowa-Radiostacja",
-		"latitude": 51.82563,
-		"longitude": 19.48791
-	},
-	{
-		"id": 1450,
-		"name": "Wycieczkowa-Wiewiórcza",
-		"latitude": 51.8216,
-		"longitude": 19.48714
-	},
-	{
-		"id": 1451,
-		"name": "Wycieczkowa-Rogowska",
-		"latitude": 51.81798,
-		"longitude": 19.48651
-	},
-	{
-		"id": 1452,
-		"name": "Wycieczkowa-Warszawska",
-		"latitude": 51.81392,
-		"longitude": 19.48705
-	},
-	{
-		"id": 1453,
-		"name": "Wycieczkowa-Woskowa",
-		"latitude": 51.80965,
-		"longitude": 19.48727
-	},
-	{
-		"id": 1454,
-		"name": "Wycieczkowa-Wypoczynkowa",
-		"latitude": 51.80487,
-		"longitude": 19.48742
-	},
-	{
-		"id": 1455,
-		"name": "Wycieczkowa-Strykowska",
-		"latitude": 51.80107,
-		"longitude": 19.48862
-	},
-	{
-		"id": 1456,
-		"name": "Retkinia",
-		"latitude": 51.74239,
-		"longitude": 19.38406
-	},
-	{
-		"id": 1457,
-		"name": "Retkinia",
-		"latitude": 51.7422,
-		"longitude": 19.38457
-	},
-	{
-		"id": 1458,
-		"name": "Wyszyńskiego-blok 270",
-		"latitude": 51.74441,
-		"longitude": 19.39225
-	},
-	{
-		"id": 1459,
-		"name": "Wyszyńskiego-Armii Krajowej",
-		"latitude": 51.74633,
-		"longitude": 19.39888
-	},
-	{
-		"id": 1460,
-		"name": "Wyszyńskiego-Retkińska",
-		"latitude": 51.74807,
-		"longitude": 19.40547
-	},
-	{
-		"id": 1461,
-		"name": "Wyszyńskiego-os. Piaski",
-		"latitude": 51.74751,
-		"longitude": 19.41339
-	},
-	{
-		"id": 1462,
-		"name": "Wyszyńskiego-os. Piaski",
-		"latitude": 51.74742,
-		"longitude": 19.41325
-	},
-	{
-		"id": 1463,
-		"name": "Wyszyńskiego-Waltera-Janke",
-		"latitude": 51.74741,
-		"longitude": 19.41825
-	},
-	{
-		"id": 1464,
-		"name": "Wyszyńskiego-Waltera-Janke",
-		"latitude": 51.74708,
-		"longitude": 19.41782
-	},
-	{
-		"id": 1465,
-		"name": "Wyszyńskiego-os. Piaski",
-		"latitude": 51.74755,
-		"longitude": 19.41368
-	},
-	{
-		"id": 1466,
-		"name": "Wyszyńskiego-Waltera-Janke",
-		"latitude": 51.74817,
-		"longitude": 19.41721
-	},
-	{
-		"id": 1467,
-		"name": "Wyszyńskiego-os. Piaski",
-		"latitude": 51.74778,
-		"longitude": 19.41268
-	},
-	{
-		"id": 1468,
-		"name": "Wyszyńskiego-Retkińska",
-		"latitude": 51.74813,
-		"longitude": 19.40502
-	},
-	{
-		"id": 1469,
-		"name": "Wyszyńskiego-Armii Krajowej",
-		"latitude": 51.74639,
-		"longitude": 19.39885
-	},
-	{
-		"id": 1470,
-		"name": "Wyszyńskiego-blok 270",
-		"latitude": 51.74451,
-		"longitude": 19.39219
-	},
-	{
-		"id": 1471,
-		"name": "Zachodnia-Legionów",
-		"latitude": 51.77617,
-		"longitude": 19.45226
-	},
-	{
-		"id": 1472,
-		"name": "Zachodnia-Limanowskiego",
-		"latitude": 51.78669,
-		"longitude": 19.44928
-	},
-	{
-		"id": 1473,
-		"name": "Zachodnia-Limanowskiego",
-		"latitude": 51.78618,
-		"longitude": 19.44958
-	},
-	{
-		"id": 1474,
-		"name": "Bałucki Rynek-Bałucki Rynek",
-		"latitude": 51.78666,
-		"longitude": 19.45302
-	},
-	{
-		"id": 1475,
-		"name": "Zgierska-Dolna",
-		"latitude": 51.79003,
-		"longitude": 19.44963
-	},
-	{
-		"id": 1476,
-		"name": "Zgierska-Dolna",
-		"latitude": 51.79012,
-		"longitude": 19.44929
-	},
-	{
-		"id": 1477,
-		"name": "Zachodnia-Limanowskiego",
-		"latitude": 51.78751,
-		"longitude": 19.44901
-	},
-	{
-		"id": 1478,
-		"name": "Zachodnia-Limanowskiego",
-		"latitude": 51.78637,
-		"longitude": 19.44912
-	},
-	{
-		"id": 1479,
-		"name": "Zachodnia-Manufaktura",
-		"latitude": 51.78033,
-		"longitude": 19.45126
-	},
-	{
-		"id": 1480,
-		"name": "Zachodnia-Zielona",
-		"latitude": 51.77084,
-		"longitude": 19.45329
-	},
-	{
-		"id": 1482,
-		"name": "al. Ofiar Terroryzmu 11 Września-Tr",
-		"latitude": 51.73256,
-		"longitude": 19.56301
-	},
-	{
-		"id": 1483,
-		"name": "Hetmańska-Dąbrówki",
-		"latitude": 51.74215,
-		"longitude": 19.56982
-	},
-	{
-		"id": 1484,
-		"name": "Zakładowa-Transmisyjna",
-		"latitude": 51.73899,
-		"longitude": 19.57742
-	},
-	{
-		"id": 1485,
-		"name": "Janów",
-		"latitude": 51.75221,
-		"longitude": 19.57441
-	},
-	{
-		"id": 1486,
-		"name": "Zakładowa-Dorabialskiej",
-		"latitude": 51.73727,
-		"longitude": 19.58724
-	},
-	{
-		"id": 1487,
-		"name": "Zakładowa-Tranzytowa",
-		"latitude": 51.73693,
-		"longitude": 19.59063
-	},
-	{
-		"id": 1488,
-		"name": "Zakładowa-Dyspozytorska",
-		"latitude": 51.73691,
-		"longitude": 19.59766
-	},
-	{
-		"id": 1489,
-		"name": "Gajcego-Zakładowa",
-		"latitude": 51.73729,
-		"longitude": 19.60774
-	},
-	{
-		"id": 1490,
-		"name": "Gajcego-Rokicińska",
-		"latitude": 51.73995,
-		"longitude": 19.61128
-	},
-	{
-		"id": 1491,
-		"name": "Zakładowa-Dyspozytorska",
-		"latitude": 51.73701,
-		"longitude": 19.59891
-	},
-	{
-		"id": 1492,
-		"name": "Zakładowa-Tranzytowa",
-		"latitude": 51.73698,
-		"longitude": 19.59169
-	},
-	{
-		"id": 1493,
-		"name": "Zakładowa-Dorabialskiej",
-		"latitude": 51.7374,
-		"longitude": 19.5869
-	},
-	{
-		"id": 1494,
-		"name": "Zakładowa-Transmisyjna",
-		"latitude": 51.73896,
-		"longitude": 19.57793
-	},
-	{
-		"id": 1495,
-		"name": "Zakładowa-Hetmańska",
-		"latitude": 51.74071,
-		"longitude": 19.56807
-	},
-	{
-		"id": 1496,
-		"name": "Zakładowa-Odnowiciela",
-		"latitude": 51.74188,
-		"longitude": 19.5616
-	},
-	{
-		"id": 1497,
-		"name": "Zakładowa-Olechowska",
-		"latitude": 51.74264,
-		"longitude": 19.55696
-	},
-	{
-		"id": 1498,
-		"name": "Zakładowa-Książąt Polskich",
-		"latitude": 51.74334,
-		"longitude": 19.55261
-	},
-	{
-		"id": 1499,
-		"name": "Przybyszewskiego-Augustów",
-		"latitude": 51.74928,
-		"longitude": 19.54711
-	},
-	{
-		"id": 1500,
-		"name": "Zdrowie",
-		"latitude": 51.76474,
-		"longitude": 19.40595
-	},
-	{
-		"id": 1501,
-		"name": "Krakowska-Konstantynowska",
-		"latitude": 51.76326,
-		"longitude": 19.4076
-	},
-	{
-		"id": 1502,
-		"name": "Limanowskiego-Zachodnia",
-		"latitude": 51.78694,
-		"longitude": 19.44972
-	},
-	{
-		"id": 1503,
-		"name": "Zgierska-Adwokacka",
-		"latitude": 51.79291,
-		"longitude": 19.44761
-	},
-	{
-		"id": 1504,
-		"name": "Zgierska-Sędziowska",
-		"latitude": 51.79552,
-		"longitude": 19.44597
-	},
-	{
-		"id": 1505,
-		"name": "Zgierska-Julianowska",
-		"latitude": 51.79715,
-		"longitude": 19.44461
-	},
-	{
-		"id": 1506,
-		"name": "Zgierska-Julianowska",
-		"latitude": 51.79835,
-		"longitude": 19.44404
-	},
-	{
-		"id": 1507,
-		"name": "Zgierska-Biegańskiego",
-		"latitude": 51.79976,
-		"longitude": 19.44275
-	},
-	{
-		"id": 1508,
-		"name": "Zgierska-cm. Radogoszcz",
-		"latitude": 51.8066,
-		"longitude": 19.43953
-	},
-	{
-		"id": 1509,
-		"name": "Zgierska-pl. Pamięci Narodowej",
-		"latitude": 51.80877,
-		"longitude": 19.43843
-	},
-	{
-		"id": 1510,
-		"name": "Zgierska-Przedwiośnie",
-		"latitude": 51.8116,
-		"longitude": 19.43669
-	},
-	{
-		"id": 1511,
-		"name": "Zgierska-Sikorskiego",
-		"latitude": 51.81507,
-		"longitude": 19.43425
-	},
-	{
-		"id": 1512,
-		"name": "Zgierska-Pasieczna",
-		"latitude": 51.81884,
-		"longitude": 19.43232
-	},
-	{
-		"id": 1513,
-		"name": "Zgierska-Świtezianki",
-		"latitude": 51.82262,
-		"longitude": 19.43005
-	},
-	{
-		"id": 1514,
-		"name": "Zgierska-Brzoskwiniowa",
-		"latitude": 51.82591,
-		"longitude": 19.42805
-	},
-	{
-		"id": 1515,
-		"name": "Zgierska-Helenówek",
-		"latitude": 51.82862,
-		"longitude": 19.42641
-	},
-	{
-		"id": 1516,
-		"name": "Zgierska-Helenówek-pętla",
-		"latitude": 51.8297,
-		"longitude": 19.42573
-	},
-	{
-		"id": 1517,
-		"name": "Chełmy",
-		"latitude": 51.83463,
-		"longitude": 19.42271
-	},
-	{
-		"id": 1518,
-		"name": "Zgierska-Helenówek",
-		"latitude": 51.8286,
-		"longitude": 19.42631
-	},
-	{
-		"id": 1519,
-		"name": "Aleksandrowska-Romanowska",
-		"latitude": 51.81191,
-		"longitude": 19.34016
-	},
-	{
-		"id": 1520,
-		"name": "Szatonia",
-		"latitude": 51.81421,
-		"longitude": 19.32916
-	},
-	{
-		"id": 1521,
-		"name": "Aleksandrowska-Romanowska",
-		"latitude": 51.81178,
-		"longitude": 19.34043
-	},
-	{
-		"id": 1522,
-		"name": "Aleksandrowska-Spadkowa",
-		"latitude": 51.80931,
-		"longitude": 19.3472
-	},
-	{
-		"id": 1523,
-		"name": "Zgierska-Brzoskwiniowa",
-		"latitude": 51.82549,
-		"longitude": 19.42815
-	},
-	{
-		"id": 1524,
-		"name": "Zgierska-Świtezianki",
-		"latitude": 51.82255,
-		"longitude": 19.42995
-	},
-	{
-		"id": 1525,
-		"name": "Zgierska-Pasieczna",
-		"latitude": 51.81888,
-		"longitude": 19.43215
-	},
-	{
-		"id": 1526,
-		"name": "Zgierska-Sikorskiego",
-		"latitude": 51.81631,
-		"longitude": 19.43348
-	},
-	{
-		"id": 1527,
-		"name": "Zgierska-Przedwiośnie",
-		"latitude": 51.81193,
-		"longitude": 19.43635
-	},
-	{
-		"id": 1528,
-		"name": "Zgierska-Julianowska",
-		"latitude": 51.79817,
-		"longitude": 19.44366
-	},
-	{
-		"id": 1529,
-		"name": "Zgierska-pl. Pamięci Narodowej",
-		"latitude": 51.80902,
-		"longitude": 19.43815
-	},
-	{
-		"id": 1530,
-		"name": "Zgierska-cm. Radogoszcz",
-		"latitude": 51.80658,
-		"longitude": 19.4394
-	},
-	{
-		"id": 1531,
-		"name": "Zgierska-Biegańskiego",
-		"latitude": 51.79973,
-		"longitude": 19.44261
-	},
-	{
-		"id": 1532,
-		"name": "Zgierska-Julianowska",
-		"latitude": 51.79702,
-		"longitude": 19.44452
-	},
-	{
-		"id": 1533,
-		"name": "Zgierska-Adwokacka",
-		"latitude": 51.79325,
-		"longitude": 19.44721
-	},
-	{
-		"id": 1534,
-		"name": "Zgierska-Dolna",
-		"latitude": 51.79006,
-		"longitude": 19.44885
-	},
-	{
-		"id": 1535,
-		"name": "Zgierska-Bałucki Rynek",
-		"latitude": 51.78766,
-		"longitude": 19.4514
-	},
-	{
-		"id": 1536,
-		"name": "Zgierska-pl. Kościelny",
-		"latitude": 51.78383,
-		"longitude": 19.453
-	},
-	{
-		"id": 1537,
-		"name": "Zielona-pl. Hallera",
-		"latitude": 51.76884,
-		"longitude": 19.43804
-	},
-	{
-		"id": 1538,
-		"name": "Zielona-pl. Barlickiego",
-		"latitude": 51.76962,
-		"longitude": 19.44575
-	},
-	{
-		"id": 1539,
-		"name": "Zielona/Gdańska",
-		"latitude": 51.76989,
-		"longitude": 19.44871
-	},
-	{
-		"id": 1540,
-		"name": "Zielona-Piotrkowska",
-		"latitude": 51.77052,
-		"longitude": 19.45572
-	},
-	{
-		"id": 1542,
-		"name": "Zielona-pl. Barlickiego",
-		"latitude": 51.76976,
-		"longitude": 19.44626
-	},
-	{
-		"id": 1543,
-		"name": "Zielona-pl. Hallera",
-		"latitude": 51.76898,
-		"longitude": 19.43892
-	},
-	{
-		"id": 1544,
-		"name": "Zielona-1 Maja",
-		"latitude": 51.76902,
-		"longitude": 19.43283
-	},
-	{
-		"id": 1545,
-		"name": "Zjazdowa-Budy",
-		"latitude": 51.805,
-		"longitude": 19.53102
-	},
-	{
-		"id": 1546,
-		"name": "Zjazdowa-Opolska",
-		"latitude": 51.80661,
-		"longitude": 19.53151
-	},
-	{
-		"id": 1547,
-		"name": "Zjazdowa-Moskuliki",
-		"latitude": 51.80941,
-		"longitude": 19.53475
-	},
-	{
-		"id": 1548,
-		"name": "Zjazdowa",
-		"latitude": 51.81474,
-		"longitude": 19.53331
-	},
-	{
-		"id": 1549,
-		"name": "Zjazdowa-Moskuliki",
-		"latitude": 51.80977,
-		"longitude": 19.53436
-	},
-	{
-		"id": 1550,
-		"name": "Zjazdowa-Beskidzka",
-		"latitude": 51.79984,
-		"longitude": 19.52899
-	},
-	{
-		"id": 1551,
-		"name": "Złotno-Złotno 141",
-		"latitude": 51.7759,
-		"longitude": 19.3595
-	},
-	{
-		"id": 1552,
-		"name": "Złotno-Stare Złotno",
-		"latitude": 51.77586,
-		"longitude": 19.36786
-	},
-	{
-		"id": 1553,
-		"name": "Złotno-Legnicka",
-		"latitude": 51.77682,
-		"longitude": 19.37564
-	},
-	{
-		"id": 1555,
-		"name": "Złotno-Podchorążych",
-		"latitude": 51.77855,
-		"longitude": 19.38915
-	},
-	{
-		"id": 1556,
-		"name": "Złotno-Kwiatowa",
-		"latitude": 51.77965,
-		"longitude": 19.39407
-	},
-	{
-		"id": 1557,
-		"name": "Złotno-Stare Złotno",
-		"latitude": 51.77589,
-		"longitude": 19.36755
-	},
-	{
-		"id": 1558,
-		"name": "Złotno-Złotno 141",
-		"latitude": 51.77598,
-		"longitude": 19.35966
-	},
-	{
-		"id": 1559,
-		"name": "Złotno-Huta Jagodnica",
-		"latitude": 51.77552,
-		"longitude": 19.34741
-	},
-	{
-		"id": 1560,
-		"name": "Huta Jagodnica",
-		"latitude": 51.77528,
-		"longitude": 19.3492
-	},
-	{
-		"id": 1561,
-		"name": "Żeligowskiego-6 Sierpnia",
-		"latitude": 51.76591,
-		"longitude": 19.43925
-	},
-	{
-		"id": 1562,
-		"name": "Żeromskiego-Radwańska (kampus PŁ)",
-		"latitude": 51.75221,
-		"longitude": 19.4494
-	},
-	{
-		"id": 1563,
-		"name": "Politechniki-Radwańska (kampus PŁ)",
-		"latitude": 51.75147,
-		"longitude": 19.44934
-	},
-	{
-		"id": 1564,
-		"name": "Wróblewskiego-Politechniki (kampus",
-		"latitude": 51.74434,
-		"longitude": 19.4525
-	},
-	{
-		"id": 1565,
-		"name": "Rokicińska-Książąt Polskich",
-		"latitude": 51.7553,
-		"longitude": 19.56624
-	},
-	{
-		"id": 1566,
-		"name": "Rokicińska-Hetmańska",
-		"latitude": 51.75343,
-		"longitude": 19.57589
-	},
-	{
-		"id": 1568,
-		"name": "Rokicińska-Transmisyjna",
-		"latitude": 51.75217,
-		"longitude": 19.58308
-	},
-	{
-		"id": 1569,
-		"name": "Rokicińska-Józefiaka",
-		"latitude": 51.75075,
-		"longitude": 19.5909
-	},
-	{
-		"id": 1570,
-		"name": "Rokicińska-Autostrada A1",
-		"latitude": 51.74751,
-		"longitude": 19.59943
-	},
-	{
-		"id": 1571,
-		"name": "Rokicińska-Tatarkówny-Majkowskiej",
-		"latitude": 51.74402,
-		"longitude": 19.60556
-	},
-	{
-		"id": 1572,
-		"name": "Rokicińska-Gajcego",
-		"latitude": 51.74027,
-		"longitude": 19.61223
-	},
-	{
-		"id": 1573,
-		"name": "Rokicińska-Gwarna",
-		"latitude": 51.7375,
-		"longitude": 19.61709
-	},
-	{
-		"id": 1574,
-		"name": "Rokicińska-Rzeźna",
-		"latitude": 51.73199,
-		"longitude": 19.62694
-	},
-	{
-		"id": 1575,
-		"name": "Wieńcowa-Rokicińska",
-		"latitude": 51.73325,
-		"longitude": 19.62407
-	},
-	{
-		"id": 1576,
-		"name": "Rokicińska-Gwarna",
-		"latitude": 51.73684,
-		"longitude": 19.61866
-	},
-	{
-		"id": 1577,
-		"name": "Dw. Łódź Andrzejów",
-		"latitude": 51.74164,
-		"longitude": 19.61443
-	},
-	{
-		"id": 1578,
-		"name": "Rokicińska-Gajcego",
-		"latitude": 51.74073,
-		"longitude": 19.61179
-	},
-	{
-		"id": 1579,
-		"name": "Rokicińska-Tatarkówny-Majkowskiej",
-		"latitude": 51.74463,
-		"longitude": 19.6048
-	},
-	{
-		"id": 1580,
-		"name": "Rokicińska-Autostrada A1",
-		"latitude": 51.7474,
-		"longitude": 19.59971
-	},
-	{
-		"id": 1581,
-		"name": "Rokicińska-Józefiaka",
-		"latitude": 51.75141,
-		"longitude": 19.58936
-	},
-	{
-		"id": 1582,
-		"name": "Rokicińska-Transmisyjna",
-		"latitude": 51.75282,
-		"longitude": 19.58158
-	},
-	{
-		"id": 1583,
-		"name": "Rokicińska-Hetmańska",
-		"latitude": 51.75412,
-		"longitude": 19.57421
-	},
-	{
-		"id": 1584,
-		"name": "Rokicińska-Książąt Polskich",
-		"latitude": 51.75593,
-		"longitude": 19.56462
-	},
-	{
-		"id": 1585,
-		"name": "Rokicińska-Rokicińska 144",
-		"latitude": 51.75695,
-		"longitude": 19.55892
-	},
-	{
-		"id": 1586,
-		"name": "Wieńcowa-Przylesie",
-		"latitude": 51.73168,
-		"longitude": 19.61432
-	},
-	{
-		"id": 1587,
-		"name": "Wieńcowa-Rokicińska",
-		"latitude": 51.73313,
-		"longitude": 19.62358
-	},
-	{
-		"id": 1588,
-		"name": "Wieńcowa-Przylesie",
-		"latitude": 51.7318,
-		"longitude": 19.61439
-	},
-	{
-		"id": 1589,
-		"name": "Łagiewnicka-Przepiórcza",
-		"latitude": 51.8235,
-		"longitude": 19.45905
-	},
-	{
-		"id": 1590,
-		"name": "Łagiewnicka-Pszczelna",
-		"latitude": 51.82678,
-		"longitude": 19.46188
-	},
-	{
-		"id": 1591,
-		"name": "Łagiewnicka-Łagiewnicka 290",
-		"latitude": 51.8291,
-		"longitude": 19.46354
-	},
-	{
-		"id": 1592,
-		"name": "Łagiewnicka-Kuropatwia",
-		"latitude": 51.83681,
-		"longitude": 19.46675
-	},
-	{
-		"id": 1593,
-		"name": "Łagiewnicka-Jaskółcza",
-		"latitude": 51.84118,
-		"longitude": 19.46751
-	},
-	{
-		"id": 1594,
-		"name": "Łagiewnicka-Łagiewnicka 311",
-		"latitude": 51.84604,
-		"longitude": 19.46813
-	},
-	{
-		"id": 1595,
-		"name": "Okólna-Łagiewniki",
-		"latitude": 51.84686,
-		"longitude": 19.4751
-	},
-	{
-		"id": 1596,
-		"name": "Łagiewnicka-Jaskółcza",
-		"latitude": 51.84131,
-		"longitude": 19.46736
-	},
-	{
-		"id": 1597,
-		"name": "Łagiewnicka-Kuropatwia",
-		"latitude": 51.83723,
-		"longitude": 19.46682
-	},
-	{
-		"id": 1598,
-		"name": "Łagiewnicka-Łagiewnicka 292",
-		"latitude": 51.82952,
-		"longitude": 19.46364
-	},
-	{
-		"id": 1599,
-		"name": "Łagiewnicka-Pszczelna",
-		"latitude": 51.82656,
-		"longitude": 19.4615
-	},
-	{
-		"id": 1600,
-		"name": "Łagiewnicka-Przepiórcza",
-		"latitude": 51.82304,
-		"longitude": 19.4587
-	},
-	{
-		"id": 1601,
-		"name": "Łagiewnicka-Dw. Łódź Arturówek",
-		"latitude": 51.81755,
-		"longitude": 19.45621
-	},
-	{
-		"id": 1602,
-		"name": "Okólna-Serwituty",
-		"latitude": 51.84506,
-		"longitude": 19.50163
-	},
-	{
-		"id": 1603,
-		"name": "Okólna-Modrzew",
-		"latitude": 51.84358,
-		"longitude": 19.50738
-	},
-	{
-		"id": 1604,
-		"name": "Okólna-Serwituty",
-		"latitude": 51.84511,
-		"longitude": 19.50201
-	},
-	{
-		"id": 1605,
-		"name": "Okólna-Łagiewniki",
-		"latitude": 51.847,
-		"longitude": 19.47494
-	},
-	{
-		"id": 1606,
-		"name": "Okólna-Secesyjna",
-		"latitude": 51.84814,
-		"longitude": 19.46019
-	},
-	{
-		"id": 1607,
-		"name": "Sanitariuszek-Biwakowa",
-		"latitude": 51.72246,
-		"longitude": 19.35507
-	},
-	{
-		"id": 1608,
-		"name": "Wieńcowa-Feliksińska",
-		"latitude": 51.72524,
-		"longitude": 19.60497
-	},
-	{
-		"id": 1609,
-		"name": "Wieńcowa-Feliksińska",
-		"latitude": 51.72538,
-		"longitude": 19.60501
-	},
-	{
-		"id": 1610,
-		"name": "Feliksińska-Dworcowa",
-		"latitude": 51.72649,
-		"longitude": 19.60067
-	},
-	{
-		"id": 1611,
-		"name": "Jędrzejowska-Feliksin",
-		"latitude": 51.72965,
-		"longitude": 19.59611
-	},
-	{
-		"id": 1612,
-		"name": "Feliksińska-Dworcowa",
-		"latitude": 51.72673,
-		"longitude": 19.59995
-	},
-	{
-		"id": 1614,
-		"name": "Rudzka-Mała(Rzgów)",
-		"latitude": 51.6709,
-		"longitude": 19.48138
-	},
-	{
-		"id": 1617,
-		"name": "Nowosolna",
-		"latitude": 51.7943,
-		"longitude": 19.59007
-	},
-	{
-		"id": 1618,
-		"name": "Byszewska-Nowosolna",
-		"latitude": 51.79473,
-		"longitude": 19.59145
-	},
-	{
-		"id": 1619,
-		"name": "Doły-Smutna",
-		"latitude": 51.78803,
-		"longitude": 19.49217
-	},
-	{
-		"id": 1620,
-		"name": "Smutna",
-		"latitude": 51.78961,
-		"longitude": 19.49944
-	},
-	{
-		"id": 1621,
-		"name": "Bandurskiego-Dw. Łódź Kaliska",
-		"latitude": 51.75548,
-		"longitude": 19.43214
-	},
-	{
-		"id": 1622,
-		"name": "Dw. Łódź Kaliska",
-		"latitude": 51.75667,
-		"longitude": 19.43103
-	},
-	{
-		"id": 1623,
-		"name": "Kopernika-Tobaco Park",
-		"latitude": 51.75776,
-		"longitude": 19.43668
-	},
-	{
-		"id": 1624,
-		"name": "Maratońska-Bandurskiego",
-		"latitude": 51.75615,
-		"longitude": 19.42998
-	},
-	{
-		"id": 1625,
-		"name": "Maratońska-Wróblewskiego",
-		"latitude": 51.74802,
-		"longitude": 19.42772
-	},
-	{
-		"id": 1626,
-		"name": "Maratońska-Waltera-Janke",
-		"latitude": 51.7448,
-		"longitude": 19.42093
-	},
-	{
-		"id": 1627,
-		"name": "Biegunowa-Krakowska",
-		"latitude": 51.7745,
-		"longitude": 19.3993
-	},
-	{
-		"id": 1628,
-		"name": "Pomorska-Nowosolna",
-		"latitude": 51.79302,
-		"longitude": 19.58964
-	},
-	{
-		"id": 1629,
-		"name": "Brzezińska-Nowosolna",
-		"latitude": 51.79373,
-		"longitude": 19.59099
-	},
-	{
-		"id": 1630,
-		"name": "Kasprowicza-ROD Relaks",
-		"latitude": 51.80097,
-		"longitude": 19.58044
-	},
-	{
-		"id": 1631,
-		"name": "Elektronowa-Nowe Sady",
-		"latitude": 51.74178,
-		"longitude": 19.43324
-	},
-	{
-		"id": 1632,
-		"name": "Telefoniczna-Telefoniczna 27",
-		"latitude": 51.78261,
-		"longitude": 19.50354
-	},
-	{
-		"id": 1633,
-		"name": "Rokicińska",
-		"latitude": 51.7624,
-		"longitude": 19.53745
-	},
-	{
-		"id": 1637,
-		"name": "Przestrzenna-Karowa",
-		"latitude": 51.70324,
-		"longitude": 19.44887
-	},
-	{
-		"id": 1638,
-		"name": "Przestrzenna-Tabelowa",
-		"latitude": 51.70481,
-		"longitude": 19.45703
-	},
-	{
-		"id": 1639,
-		"name": "Przestrzenna-Karowa",
-		"latitude": 51.70347,
-		"longitude": 19.45018
-	},
-	{
-		"id": 1640,
-		"name": "Przestrzenna-Sławna",
-		"latitude": 51.70312,
-		"longitude": 19.44378
-	},
-	{
-		"id": 1641,
-		"name": "Graniczna-Przestrzenna",
-		"latitude": 51.70644,
-		"longitude": 19.45883
-	},
-	{
-		"id": 1642,
-		"name": "Przestrzenna-Tabelowa",
-		"latitude": 51.7047,
-		"longitude": 19.45615
-	},
-	{
-		"id": 1643,
-		"name": "Graniczna-Rozalii",
-		"latitude": 51.70032,
-		"longitude": 19.46428
-	},
-	{
-		"id": 1644,
-		"name": "Graniczna-Graniczna 62",
-		"latitude": 51.6973,
-		"longitude": 19.46925
-	},
-	{
-		"id": 1645,
-		"name": "Graniczna-Rozalii",
-		"latitude": 51.70097,
-		"longitude": 19.4638
-	},
-	{
-		"id": 1646,
-		"name": "Siostrzana-Graniczna",
-		"latitude": 51.70324,
-		"longitude": 19.46205
-	},
-	{
-		"id": 1647,
-		"name": "Kongresowa-Jutrzenki",
-		"latitude": 51.72028,
-		"longitude": 19.47718
-	},
-	{
-		"id": 1648,
-		"name": "Kongresowa-Pryncypalna",
-		"latitude": 51.72323,
-		"longitude": 19.47423
-	},
-	{
-		"id": 1649,
-		"name": "Doły-Smutna",
-		"latitude": 51.78786,
-		"longitude": 19.49197
-	},
-	{
-		"id": 1650,
-		"name": "Wólczańska-Skrzywana",
-		"latitude": 51.74285,
-		"longitude": 19.45774
-	},
-	{
-		"id": 1655,
-		"name": "Strykowska-Imielnik Nowy",
-		"latitude": 51.84271,
-		"longitude": 19.55855
-	},
-	{
-		"id": 1664,
-		"name": "Pienista-Komandorska",
-		"latitude": 51.73601,
-		"longitude": 19.40761
-	},
-	{
-		"id": 1665,
-		"name": "Maczka-Aeroklub",
-		"latitude": 51.72853,
-		"longitude": 19.40391
-	},
-	{
-		"id": 1667,
-		"name": "Pienista-Komandorska",
-		"latitude": 51.73626,
-		"longitude": 19.40856
-	},
-	{
-		"id": 1668,
-		"name": "Przestrzenna-Sławna",
-		"latitude": 51.70314,
-		"longitude": 19.44288
-	},
-	{
-		"id": 1669,
-		"name": "Pienista-Rusałki",
-		"latitude": 51.73881,
-		"longitude": 19.41347
-	},
-	{
-		"id": 1670,
-		"name": "Pienista-Obywatelska",
-		"latitude": 51.7404,
-		"longitude": 19.4168
-	},
-	{
-		"id": 1671,
-		"name": "Pienista-Rusałki",
-		"latitude": 51.73905,
-		"longitude": 19.41374
-	},
-	{
-		"id": 1673,
-		"name": "Karolewska-Włókniarzy",
-		"latitude": 51.75847,
-		"longitude": 19.43516
-	},
-	{
-		"id": 1674,
-		"name": "Struga-Włókniarzy",
-		"latitude": 51.76136,
-		"longitude": 19.43285
-	},
-	{
-		"id": 1675,
-		"name": "Łąkowa-Struga",
-		"latitude": 51.76362,
-		"longitude": 19.43889
-	},
-	{
-		"id": 1676,
-		"name": "Skłodowskiej-Curie-Pogonowskiego",
-		"latitude": 51.76161,
-		"longitude": 19.44236
-	},
-	{
-		"id": 1677,
-		"name": "Puszkina-Dąbrowskiego",
-		"latitude": 51.73635,
-		"longitude": 19.53162
-	},
-	{
-		"id": 1678,
-		"name": "Puszkina-Dostawcza",
-		"latitude": 51.74138,
-		"longitude": 19.53223
-	},
-	{
-		"id": 1679,
-		"name": "Prądzyńskiego-Rozwojowa",
-		"latitude": 51.72304,
-		"longitude": 19.42678
-	},
-	{
-		"id": 1680,
-		"name": "Prądzyńskiego-Darniowa",
-		"latitude": 51.72283,
-		"longitude": 19.43278
-	},
-	{
-		"id": 1682,
-		"name": "Pokładowa-Świętojańska",
-		"latitude": 51.71872,
-		"longitude": 19.43124
-	},
-	{
-		"id": 1683,
-		"name": "Kasprowicza-Witkacego",
-		"latitude": 51.8043,
-		"longitude": 19.57611
-	},
-	{
-		"id": 1684,
-		"name": "ROD Polanka",
-		"latitude": 51.80644,
-		"longitude": 19.57332
-	},
-	{
-		"id": 1685,
-		"name": "ROD Polanka",
-		"latitude": 51.8067,
-		"longitude": 19.57262
-	},
-	{
-		"id": 1686,
-		"name": "Kasprowicza-Witkacego",
-		"latitude": 51.80354,
-		"longitude": 19.57698
-	},
-	{
-		"id": 1687,
-		"name": "Kasprowicza-ROD Relaks",
-		"latitude": 51.80091,
-		"longitude": 19.58036
-	},
-	{
-		"id": 1689,
-		"name": "Śnieżna-Stokowska",
-		"latitude": 51.79081,
-		"longitude": 19.50667
-	},
-	{
-		"id": 1690,
-		"name": "Śnieżna-Brzezińska",
-		"latitude": 51.79433,
-		"longitude": 19.50435
-	},
-	{
-		"id": 1692,
-		"name": "Śnieżna-Stokowska",
-		"latitude": 51.79137,
-		"longitude": 19.50647
-	},
-	{
-		"id": 1693,
-		"name": "Stokowska",
-		"latitude": 51.79193,
-		"longitude": 19.51249
-	},
-	{
-		"id": 1694,
-		"name": "Janów",
-		"latitude": 51.75206,
-		"longitude": 19.57487
-	},
-	{
-		"id": 1695,
-		"name": "Hetmańska-Juranda ze Spychowa",
-		"latitude": 51.74878,
-		"longitude": 19.57264
-	},
-	{
-		"id": 1696,
-		"name": "Janów",
-		"latitude": 51.75209,
-		"longitude": 19.57482
-	},
-	{
-		"id": 1697,
-		"name": "Janów",
-		"latitude": 51.752,
-		"longitude": 19.57532
-	},
-	{
-		"id": 1698,
-		"name": "Janów",
-		"latitude": 51.75197,
-		"longitude": 19.57542
-	},
-	{
-		"id": 1699,
-		"name": "Łagiewnicka-Murarska",
-		"latitude": 51.79912,
-		"longitude": 19.45629
-	},
-	{
-		"id": 1700,
-		"name": "Kongresowa-Jutrzenki",
-		"latitude": 51.72058,
-		"longitude": 19.47678
-	},
-	{
-		"id": 1701,
-		"name": "Kongresowa-Tuszyńska",
-		"latitude": 51.71787,
-		"longitude": 19.48061
-	},
-	{
-		"id": 1703,
-		"name": "Chmielowskiego-Widzewska",
-		"latitude": 51.75928,
-		"longitude": 19.51944
-	},
-	{
-		"id": 1704,
-		"name": "Pomorska-Tamka",
-		"latitude": 51.77813,
-		"longitude": 19.49049
-	},
-	{
-		"id": 1705,
-		"name": "Pomorska-Konstytucyjna",
-		"latitude": 51.77751,
-		"longitude": 19.49668
-	},
-	{
-		"id": 1706,
-		"name": "Konstytucyjna-Narutowicza",
-		"latitude": 51.77504,
-		"longitude": 19.49778
-	},
-	{
-		"id": 1707,
-		"name": "Pomorska-rondo Solidarności",
-		"latitude": 51.77885,
-		"longitude": 19.48335
-	},
-	{
-		"id": 1708,
-		"name": "Pomorska-Matejki",
-		"latitude": 51.77862,
-		"longitude": 19.48515
-	},
-	{
-		"id": 1709,
-		"name": "Pomorska-Matejki",
-		"latitude": 51.77855,
-		"longitude": 19.4863
-	},
-	{
-		"id": 1710,
-		"name": "Pomorska-Tamka",
-		"latitude": 51.77815,
-		"longitude": 19.48955
-	},
-	{
-		"id": 1711,
-		"name": "Pojezierska-Brukowa",
-		"latitude": 51.80056,
-		"longitude": 19.41192
-	},
-	{
-		"id": 1712,
-		"name": "Świtezianki-Syrenki",
-		"latitude": 51.82228,
-		"longitude": 19.44798
-	},
-	{
-		"id": 1713,
-		"name": "Świtezianki",
-		"latitude": 51.82464,
-		"longitude": 19.43821
-	},
-	{
-		"id": 1714,
-		"name": "Świtezianki",
-		"latitude": 51.82479,
-		"longitude": 19.43852
-	},
-	{
-		"id": 1715,
-		"name": "Świtezianki",
-		"latitude": 51.82493,
-		"longitude": 19.43804
-	},
-	{
-		"id": 1717,
-		"name": "Świtezianki",
-		"latitude": 51.82475,
-		"longitude": 19.43815
-	},
-	{
-		"id": 1718,
-		"name": "Pabianicka-Mierzejowa",
-		"latitude": 51.70131,
-		"longitude": 19.41565
-	},
-	{
-		"id": 1719,
-		"name": "Łódzka-Mały Skręt",
-		"latitude": 51.69505,
-		"longitude": 19.40906
-	},
-	{
-		"id": 1720,
-		"name": "Chocianowice IKEA",
-		"latitude": 51.70081,
-		"longitude": 19.41343
-	},
-	{
-		"id": 1721,
-		"name": "Pabianicka-Mierzejowa",
-		"latitude": 51.70123,
-		"longitude": 19.41572
-	},
-	{
-		"id": 1722,
-		"name": "Pabianicka-Długa",
-		"latitude": 51.70315,
-		"longitude": 19.41818
-	},
-	{
-		"id": 1724,
-		"name": "Brzezińska-Tatarkiewicza",
-		"latitude": 51.79301,
-		"longitude": 19.60237
-	},
-	{
-		"id": 1725,
-		"name": "Brzezińska-Autostrada A1",
-		"latitude": 51.79236,
-		"longitude": 19.61321
-	},
-	{
-		"id": 1726,
-		"name": "Brzezińska-Tatarkiewicza",
-		"latitude": 51.79331,
-		"longitude": 19.59943
-	},
-	{
-		"id": 1727,
-		"name": "Brzezińska-Nowosolna",
-		"latitude": 51.79382,
-		"longitude": 19.59153
-	},
-	{
-		"id": 1732,
-		"name": "Brzezińska-Autostrada A1",
-		"latitude": 51.79252,
-		"longitude": 19.61233
-	},
-	{
-		"id": 1733,
-		"name": "Wróblewskiego-Politechniki (kampus",
-		"latitude": 51.74456,
-		"longitude": 19.45265
-	},
-	{
-		"id": 1734,
-		"name": "Hetmańska-Zagłoby",
-		"latitude": 51.74622,
-		"longitude": 19.57148
-	},
-	{
-		"id": 1735,
-		"name": "Hetmańska-Dąbrówki",
-		"latitude": 51.74339,
-		"longitude": 19.57019
-	},
-	{
-		"id": 1736,
-		"name": "Hetmańska-Zagłoby",
-		"latitude": 51.7473,
-		"longitude": 19.57219
-	},
-	{
-		"id": 1738,
-		"name": "Żeromskiego-szpital im.WAM",
-		"latitude": 51.76124,
-		"longitude": 19.44754
-	},
-	{
-		"id": 1739,
-		"name": "Kopernika-Tobaco Park",
-		"latitude": 51.75827,
-		"longitude": 19.43774
-	},
-	{
-		"id": 1741,
-		"name": "Aleksandrowska-Chochoła",
-		"latitude": 51.80516,
-		"longitude": 19.35637
-	},
-	{
-		"id": 1742,
-		"name": "Szczecińska-Aleksandrowska",
-		"latitude": 51.80215,
-		"longitude": 19.36694
-	},
-	{
-		"id": 1744,
-		"name": "Okólna-Antyczna",
-		"latitude": 51.84706,
-		"longitude": 19.46624
-	},
-	{
-		"id": 1745,
-		"name": "Dw. Łódź Andrzejów",
-		"latitude": 51.74147,
-		"longitude": 19.61462
-	},
-	{
-		"id": 1746,
-		"name": "Gajcego-Rokicińska",
-		"latitude": 51.73998,
-		"longitude": 19.61114
-	},
-	{
-		"id": 1747,
-		"name": "Gajcego-Zakładowa",
-		"latitude": 51.73828,
-		"longitude": 19.60854
-	},
-	{
-		"id": 1748,
-		"name": "Retkińska-Wileńska",
-		"latitude": 51.75483,
-		"longitude": 19.41235
-	},
-	{
-		"id": 1749,
-		"name": "Okólna-Okólna 244",
-		"latitude": 51.84929,
-		"longitude": 19.4527
-	},
-	{
-		"id": 1750,
-		"name": "Długa-Łagiewnicka (Zgierz)",
-		"latitude": 51.8504,
-		"longitude": 19.4453
-	},
-	{
-		"id": 1751,
-		"name": "Okólna-Okólna 244",
-		"latitude": 51.84896,
-		"longitude": 19.45403
-	},
-	{
-		"id": 1752,
-		"name": "Doły-Telefoniczna",
-		"latitude": 51.78381,
-		"longitude": 19.49117
-	},
-	{
-		"id": 1766,
-		"name": "Aleksandrowska-Szczecińska",
-		"latitude": 51.80256,
-		"longitude": 19.37016
-	},
-	{
-		"id": 1767,
-		"name": "Aleksandrowska-Szczecińska",
-		"latitude": 51.8025,
-		"longitude": 19.36907
-	},
-	{
-		"id": 1768,
-		"name": "Aleksandrowska-Spadkowa",
-		"latitude": 51.809,
-		"longitude": 19.34805
-	},
-	{
-		"id": 1769,
-		"name": "Aleksandrowska-Chochoła",
-		"latitude": 51.80479,
-		"longitude": 19.3576
-	},
-	{
-		"id": 1770,
-		"name": "Byszewska-Pomarańczowa",
-		"latitude": 51.79925,
-		"longitude": 19.60045
-	},
-	{
-		"id": 1771,
-		"name": "Byszewska-Byszewska 26",
-		"latitude": 51.80438,
-		"longitude": 19.61058
-	},
-	{
-		"id": 1772,
-		"name": "Janów wieś",
-		"latitude": 51.81358,
-		"longitude": 19.62071
-	},
-	{
-		"id": 1773,
-		"name": "Byszewska-Byszewska 26",
-		"latitude": 51.80407,
-		"longitude": 19.60979
-	},
-	{
-		"id": 1774,
-		"name": "Byszewska-Pomarańczowa",
-		"latitude": 51.79931,
-		"longitude": 19.60035
-	},
-	{
-		"id": 1775,
-		"name": "Andrespol-Młynarska",
-		"latitude": 51.72872,
-		"longitude": 19.63269
-	},
-	{
-		"id": 1776,
-		"name": "Rokicińska-Rzeźna",
-		"latitude": 51.73208,
-		"longitude": 19.62713
-	},
-	{
-		"id": 1777,
-		"name": "Gillette-Nowy Józefów",
-		"latitude": 51.73907,
-		"longitude": 19.36761
-	},
-	{
-		"id": 1778,
-		"name": "Nowy Józefów-Golfowa",
-		"latitude": 51.73627,
-		"longitude": 19.3666
-	},
-	{
-		"id": 1782,
-		"name": "Warszawska-Deczyńskiego",
-		"latitude": 51.80545,
-		"longitude": 19.46831
-	},
-	{
-		"id": 1783,
-		"name": "Warszawska-Irysowa",
-		"latitude": 51.80317,
-		"longitude": 19.46278
-	},
-	{
-		"id": 1784,
-		"name": "Przybyszewskiego-Kilińskiego",
-		"latitude": 51.74573,
-		"longitude": 19.47712
-	},
-	{
-		"id": 1785,
-		"name": "Przybyszewskiego-Łęczycka",
-		"latitude": 51.74707,
-		"longitude": 19.48511
-	},
-	{
-		"id": 1786,
-		"name": "Przybyszewskiego-Brzozowa",
-		"latitude": 51.74464,
-		"longitude": 19.47065
-	},
-	{
-		"id": 1787,
-		"name": "Przybyszewskiego-Kilińskiego",
-		"latitude": 51.74517,
-		"longitude": 19.47485
-	},
-	{
-		"id": 1798,
-		"name": "Kusocińskiego-Retkińska",
-		"latitude": 51.75227,
-		"longitude": 19.40758
-	},
-	{
-		"id": 1799,
-		"name": "Siostrzana-Graniczna",
-		"latitude": 51.70313,
-		"longitude": 19.46156
-	},
-	{
-		"id": 1800,
-		"name": "OLECHÓW",
-		"latitude": 51.73416,
-		"longitude": 19.57574
-	},
-	{
-		"id": 1801,
-		"name": "Dell/parking",
-		"latitude": 51.73171,
-		"longitude": 19.56902
-	},
-	{
-		"id": 1803,
-		"name": "al. Ofiar Terroryzmu 11 Września-Tr",
-		"latitude": 51.73212,
-		"longitude": 19.56054
-	},
-	{
-		"id": 1804,
-		"name": "al. Ofiar Terroryzmu 11 Września-ko",
-		"latitude": 51.72977,
-		"longitude": 19.55346
-	},
-	{
-		"id": 1805,
-		"name": "al. Ofiar Terroryzmu 11 Września-ko",
-		"latitude": 51.72948,
-		"longitude": 19.5513
-	},
-	{
-		"id": 1806,
-		"name": "al. Ofiar Terroryzmu 11 Września-De",
-		"latitude": 51.73344,
-		"longitude": 19.56938
-	},
-	{
-		"id": 1807,
-		"name": "Kalonka (osiedle)",
-		"latitude": 51.82799,
-		"longitude": 19.57106
-	},
-	{
-		"id": 1814,
-		"name": "Graniczna-Przestrzenna",
-		"latitude": 51.70713,
-		"longitude": 19.45821
-	},
-	{
-		"id": 1815,
-		"name": "Sortownia",
-		"latitude": 51.72866,
-		"longitude": 19.39584
-	},
-	{
-		"id": 1816,
-		"name": "Chocianowice IKEA",
-		"latitude": 51.70084,
-		"longitude": 19.41333
-	},
-	{
-		"id": 1817,
-		"name": "Pabianicka-Długa",
-		"latitude": 51.70277,
-		"longitude": 19.4185
-	},
-	{
-		"id": 1818,
-		"name": "Staffa-Os. 650-lecia (Zgierz)",
-		"latitude": 51.86605,
-		"longitude": 19.37796
-	},
-	{
-		"id": 1819,
-		"name": "Staffa-szkoła (Zgierz)",
-		"latitude": 51.86248,
-		"longitude": 19.37773
-	},
-	{
-		"id": 1820,
-		"name": "Łaska -Wiejska (Pabianice)",
-		"latitude": 51.65851,
-		"longitude": 19.32324
-	},
-	{
-		"id": 1821,
-		"name": "Łaska -Szarych Szeregów(Pabianice)",
-		"latitude": 51.65986,
-		"longitude": 19.32565
-	},
-	{
-		"id": 1822,
-		"name": "plac Kilińskiego (Zgierz)",
-		"latitude": 51.85465,
-		"longitude": 19.41615
-	},
-	{
-		"id": 1823,
-		"name": "1 Maja-3 Maja (Zgierz)",
-		"latitude": 51.85165,
-		"longitude": 19.41513
-	},
-	{
-		"id": 1824,
-		"name": "Majątek Byszewy",
-		"latitude": 51.83226,
-		"longitude": 19.63064
-	},
-	{
-		"id": 1825,
-		"name": "Byszewska-Boginia",
-		"latitude": 51.83977,
-		"longitude": 19.63338
-	},
-	{
-		"id": 1826,
-		"name": "Majątek Byszewy",
-		"latitude": 51.83198,
-		"longitude": 19.63041
-	},
-	{
-		"id": 1827,
-		"name": "Byszewy",
-		"latitude": 51.82597,
-		"longitude": 19.62777
-	},
-	{
-		"id": 1828,
-		"name": "Adelmówek",
-		"latitude": 51.83849,
-		"longitude": 19.42028
-	},
-	{
-		"id": 1829,
-		"name": "Chełmy",
-		"latitude": 51.83445,
-		"longitude": 19.42277
-	},
-	{
-		"id": 1830,
-		"name": "Długa-Sierakowskiego (Zgierz)",
-		"latitude": 51.85193,
-		"longitude": 19.43494
-	},
-	{
-		"id": 1831,
-		"name": "Długa-Łagiewnicka (Zgierz)",
-		"latitude": 51.85032,
-		"longitude": 19.44527
-	},
-	{
-		"id": 1832,
-		"name": "Długa-Spacerowa (Zgierz)",
-		"latitude": 51.85311,
-		"longitude": 19.42724
-	},
-	{
-		"id": 1833,
-		"name": "Długa-Sierakowskiego (Zgierz)",
-		"latitude": 51.85165,
-		"longitude": 19.43666
-	},
-	{
-		"id": 1834,
-		"name": "Długa-Skłodowskiej-Curie (Zgierz)",
-		"latitude": 51.85401,
-		"longitude": 19.42142
-	},
-	{
-		"id": 1835,
-		"name": "Długa-Spacerowa (Zgierz)",
-		"latitude": 51.85323,
-		"longitude": 19.4261
-	},
-	{
-		"id": 1836,
-		"name": "1 Maja-plac Kilińskiego (Zgierz)",
-		"latitude": 51.85484,
-		"longitude": 19.41665
-	},
-	{
-		"id": 1837,
-		"name": "Długa-Skłodowskiej-Curie (Zgierz)",
-		"latitude": 51.85407,
-		"longitude": 19.42059
-	},
-	{
-		"id": 1838,
-		"name": "1 Maja-Dubois (Zgierz)",
-		"latitude": 51.85843,
-		"longitude": 19.41792
-	},
-	{
-		"id": 1839,
-		"name": "Długa-plac Kilińskiego (Zgierz)",
-		"latitude": 51.85462,
-		"longitude": 19.41687
-	},
-	{
-		"id": 1840,
-		"name": "1 Maja-Piłsudskiego (Zgierz)",
-		"latitude": 51.86146,
-		"longitude": 19.41624
-	},
-	{
-		"id": 1841,
-		"name": "1 Maja-Dubois (Zgierz)",
-		"latitude": 51.85816,
-		"longitude": 19.41776
-	},
-	{
-		"id": 1842,
-		"name": "Piłsudskiego-szkoła nr 1 (Zgierz)",
-		"latitude": 51.86117,
-		"longitude": 19.40873
-	},
-	{
-		"id": 1844,
-		"name": "Piłsudskiego-szkoła nr 1 (Zgierz)",
-		"latitude": 51.86095,
-		"longitude": 19.40791
-	},
-	{
-		"id": 1845,
-		"name": "1 Maja-Piłsudskiego (Zgierz)",
-		"latitude": 51.86129,
-		"longitude": 19.41625
-	},
-	{
-		"id": 1847,
-		"name": "Gałczyńskiego-Parzęczewska  (Zgierz",
-		"latitude": 51.86115,
-		"longitude": 19.39391
-	},
-	{
-		"id": 1850,
-		"name": "Gałczyńskiego-Tuwima (Zgierz)",
-		"latitude": 51.8577,
-		"longitude": 19.39063
-	},
-	{
-		"id": 1851,
-		"name": "Gałczyńskiego-Parzęczewska  (Zgierz",
-		"latitude": 51.86119,
-		"longitude": 19.39413
-	},
-	{
-		"id": 1852,
-		"name": "Tuwima-Sezam (Zgierz)",
-		"latitude": 51.85786,
-		"longitude": 19.38502
-	},
-	{
-		"id": 1853,
-		"name": "Gałczyńskiego-Tuwima (Zgierz)",
-		"latitude": 51.85863,
-		"longitude": 19.39112
-	},
-	{
-		"id": 1854,
-		"name": "Tuwima-Boya-Żeleńskiego (Zgierz)",
-		"latitude": 51.85811,
-		"longitude": 19.37994
-	},
-	{
-		"id": 1855,
-		"name": "Sezam (Zgierz)",
-		"latitude": 51.8577,
-		"longitude": 19.38635
-	},
-	{
-		"id": 1856,
-		"name": "Staffa-przychodnia (Zgierz)",
-		"latitude": 51.86024,
-		"longitude": 19.37827
-	},
-	{
-		"id": 1857,
-		"name": "Tuwima-Boya-Żeleńskiego (Zgierz)",
-		"latitude": 51.85802,
-		"longitude": 19.38059
-	},
-	{
-		"id": 1858,
-		"name": "Staffa-szkoła (Zgierz)",
-		"latitude": 51.86303,
-		"longitude": 19.37776
-	},
-	{
-		"id": 1859,
-		"name": "Staffa-przychodnia (Zgierz)",
-		"latitude": 51.85878,
-		"longitude": 19.37824
-	},
-	{
-		"id": 1860,
-		"name": "Staffa-Os. 650-lecia (Zgierz)",
-		"latitude": 51.86691,
-		"longitude": 19.37843
-	},
-	{
-		"id": 1861,
-		"name": "Parzęczewska /Staffa(Zgierz)",
-		"latitude": 51.86778,
-		"longitude": 19.38196
-	},
-	{
-		"id": 1862,
-		"name": "pl. Łukasińskiego (Stryków)",
-		"latitude": 51.90064,
-		"longitude": 19.60204
-	},
-	{
-		"id": 1863,
-		"name": "Warszawska-Legionów (Stryków)",
-		"latitude": 51.89653,
-		"longitude": 19.59849
-	},
-	{
-		"id": 1864,
-		"name": "Dobra",
-		"latitude": 51.86754,
-		"longitude": 19.57025
-	},
-	{
-		"id": 1865,
-		"name": "Sosnowiec",
-		"latitude": 51.88125,
-		"longitude": 19.58218
-	},
-	{
-		"id": 1866,
-		"name": "Dobra",
-		"latitude": 51.86661,
-		"longitude": 19.56929
-	},
-	{
-		"id": 1867,
-		"name": "Dobra Nowiny",
-		"latitude": 51.86208,
-		"longitude": 19.56674
-	},
-	{
-		"id": 1868,
-		"name": "Plichtów",
-		"latitude": 51.82011,
-		"longitude": 19.62613
-	},
-	{
-		"id": 1869,
-		"name": "Byszewy",
-		"latitude": 51.8264,
-		"longitude": 19.62787
-	},
-	{
-		"id": 1870,
-		"name": "Skoszewy (szkoła)",
-		"latitude": 51.8509,
-		"longitude": 19.63536
-	},
-	{
-		"id": 1871,
-		"name": "Skoszewy",
-		"latitude": 51.85483,
-		"longitude": 19.63899
-	},
-	{
-		"id": 1872,
-		"name": "Skoszewy (szkoła)",
-		"latitude": 51.85076,
-		"longitude": 19.6352
-	},
-	{
-		"id": 1873,
-		"name": "Byszewska-Boginia",
-		"latitude": 51.83944,
-		"longitude": 19.63337
-	},
-	{
-		"id": 1874,
-		"name": "Boginia działki",
-		"latitude": 51.83634,
-		"longitude": 19.61667
-	},
-	{
-		"id": 1875,
-		"name": "Plichtów",
-		"latitude": 51.81993,
-		"longitude": 19.6259
-	},
-	{
-		"id": 1876,
-		"name": "Janów wieś",
-		"latitude": 51.81373,
-		"longitude": 19.62069
-	},
-	{
-		"id": 1877,
-		"name": "Adelmówek",
-		"latitude": 51.83833,
-		"longitude": 19.42035
-	},
-	{
-		"id": 1878,
-		"name": "Łódzka-Kurak (Zgierz)",
-		"latitude": 51.84648,
-		"longitude": 19.41289
-	},
-	{
-		"id": 1879,
-		"name": "1 Maja-3 Maja (Zgierz)",
-		"latitude": 51.85164,
-		"longitude": 19.41528
-	},
-	{
-		"id": 1880,
-		"name": "Łódzka-Kurak (Zgierz)",
-		"latitude": 51.84624,
-		"longitude": 19.413
-	},
-	{
-		"id": 1881,
-		"name": "Łódzka-Ksawerów",
-		"latitude": 51.68921,
-		"longitude": 19.40608
-	},
-	{
-		"id": 1882,
-		"name": "Łódzka-Mały Skręt",
-		"latitude": 51.69497,
-		"longitude": 19.40914
-	},
-	{
-		"id": 1883,
-		"name": "Łódzka-Widzew -Żdżary",
-		"latitude": 51.683,
-		"longitude": 19.4028
-	},
-	{
-		"id": 1884,
-		"name": "Łódzka-Ksawerów",
-		"latitude": 51.68888,
-		"longitude": 19.40595
-	},
-	{
-		"id": 1885,
-		"name": "Łódzka-Teklin",
-		"latitude": 51.67676,
-		"longitude": 19.39953
-	},
-	{
-		"id": 1886,
-		"name": "Łódzka-Widzew -Żdżary",
-		"latitude": 51.68256,
-		"longitude": 19.40264
-	},
-	{
-		"id": 1887,
-		"name": "Łódzka-Dąbrowa",
-		"latitude": 51.67042,
-		"longitude": 19.39627
-	},
-	{
-		"id": 1888,
-		"name": "Łódzka-Teklin",
-		"latitude": 51.67634,
-		"longitude": 19.39938
-	},
-	{
-		"id": 1889,
-		"name": "Warszawska-Duży Skręt",
-		"latitude": 51.66408,
-		"longitude": 19.39295
-	},
-	{
-		"id": 1890,
-		"name": "Warszawska-Dąbrowa",
-		"latitude": 51.67,
-		"longitude": 19.39612
-	},
-	{
-		"id": 1891,
-		"name": "Warszawska-\"Tkaniny Techniczne\"(Pab",
-		"latitude": 51.6635,
-		"longitude": 19.3861
-	},
-	{
-		"id": 1892,
-		"name": "Warszawska-Duży Skręt",
-		"latitude": 51.66437,
-		"longitude": 19.39317
-	},
-	{
-		"id": 1893,
-		"name": "Warszawska-Sikorskiego (Pabianice)",
-		"latitude": 51.66375,
-		"longitude": 19.37757
-	},
-	{
-		"id": 1894,
-		"name": "Warszawska-\"Tkaniny Techniczne\"(Pab",
-		"latitude": 51.66344,
-		"longitude": 19.38615
-	},
-	{
-		"id": 1895,
-		"name": "Warszawska-Kapliczna (Pabianice)",
-		"latitude": 51.66395,
-		"longitude": 19.37017
-	},
-	{
-		"id": 1896,
-		"name": "Warszawska-Nawrockiego (Pabianice)",
-		"latitude": 51.66368,
-		"longitude": 19.37805
-	},
-	{
-		"id": 1897,
-		"name": "Warszawska-Poprzeczna (Pabianice)",
-		"latitude": 51.66399,
-		"longitude": 19.36582
-	},
-	{
-		"id": 1898,
-		"name": "Warszawska-3 Maja (Pabianice)",
-		"latitude": 51.66387,
-		"longitude": 19.37051
-	},
-	{
-		"id": 1899,
-		"name": "Warszawska-Zamek (Pabianice)",
-		"latitude": 51.66396,
-		"longitude": 19.3603
-	},
-	{
-		"id": 1900,
-		"name": "Warszawska-Poprzeczna (Pabianice)",
-		"latitude": 51.66386,
-		"longitude": 19.36514
-	},
-	{
-		"id": 1901,
-		"name": "Zamkowa-św. Jana (Pabianice)",
-		"latitude": 51.66437,
-		"longitude": 19.35536
-	},
-	{
-		"id": 1902,
-		"name": "Warszawska-kościół św. Mateusza (Pa",
-		"latitude": 51.66387,
-		"longitude": 19.36155
-	},
-	{
-		"id": 1903,
-		"name": "Zamkowa-Traugutta (Pabianice)",
-		"latitude": 51.6645,
-		"longitude": 19.3514
-	},
-	{
-		"id": 1904,
-		"name": "Zamkowa-Kilińskiego (Pabianice)",
-		"latitude": 51.66429,
-		"longitude": 19.35425
-	},
-	{
-		"id": 1905,
-		"name": "Zamkowa-Lutomierska (Pabianice)",
-		"latitude": 51.6648,
-		"longitude": 19.3455
-	},
-	{
-		"id": 1906,
-		"name": "Zamkowa-Narutowicza (Pabianice)",
-		"latitude": 51.66443,
-		"longitude": 19.35137
-	},
-	{
-		"id": 1907,
-		"name": "Zamkowa-Staszewskiego (Pab.)",
-		"latitude": 51.66497,
-		"longitude": 19.34165
-	},
-	{
-		"id": 1908,
-		"name": "Zamkowa-Wyspiańskiego (Pabianice)",
-		"latitude": 51.66461,
-		"longitude": 19.34567
-	},
-	{
-		"id": 1909,
-		"name": "Łaska -Mielczarskiego (Pabianice)",
-		"latitude": 51.66402,
-		"longitude": 19.33598
-	},
-	{
-		"id": 1910,
-		"name": "Zamkowa-Konopnickiej (Pabianice)",
-		"latitude": 51.6649,
-		"longitude": 19.34079
-	},
-	{
-		"id": 1911,
-		"name": "Łaska -Tkacka (Pabianice)",
-		"latitude": 51.66239,
-		"longitude": 19.33203
-	},
-	{
-		"id": 1912,
-		"name": "Łaska -Mielczarskiego (Pabianice)",
-		"latitude": 51.66387,
-		"longitude": 19.33565
-	},
-	{
-		"id": 1913,
-		"name": "Łaska -Szarych Szeregów(Pabianice)",
-		"latitude": 51.66031,
-		"longitude": 19.32653
-	},
-	{
-		"id": 1914,
-		"name": "Łaska -Tkacka (Pabianice)",
-		"latitude": 51.66236,
-		"longitude": 19.33216
-	},
-	{
-		"id": 1915,
-		"name": "Dobra Nowiny",
-		"latitude": 51.86328,
-		"longitude": 19.56741
-	},
-	{
-		"id": 1917,
-		"name": "Warszawska-Legionów (Stryków)",
-		"latitude": 51.89694,
-		"longitude": 19.59906
-	},
-	{
-		"id": 1918,
-		"name": "Corning (Smolice)",
-		"latitude": 51.8937,
-		"longitude": 19.57711
-	},
-	{
-		"id": 1919,
-		"name": "Sosnowiec",
-		"latitude": 51.88096,
-		"longitude": 19.58186
-	},
-	{
-		"id": 1920,
-		"name": "Wojska Polskiego-Bratoszewskiego (A",
-		"latitude": 51.81617,
-		"longitude": 19.31961
-	},
-	{
-		"id": 1921,
-		"name": "Szatonia",
-		"latitude": 51.81379,
-		"longitude": 19.33037
-	},
-	{
-		"id": 1922,
-		"name": "Wojska Polskiego-Krótka (Aleksandró",
-		"latitude": 51.81766,
-		"longitude": 19.31234
-	},
-	{
-		"id": 1923,
-		"name": "Wojska Polskiego-Bratoszewskiego (A",
-		"latitude": 51.81651,
-		"longitude": 19.31736
-	},
-	{
-		"id": 1924,
-		"name": "Wojska Polskiego-Południowa (Aleks.",
-		"latitude": 51.81873,
-		"longitude": 19.30718
-	},
-	{
-		"id": 1925,
-		"name": "Warszawska (Aleksandrów)",
-		"latitude": 51.82144,
-		"longitude": 19.30497
-	},
-	{
-		"id": 1926,
-		"name": "Wojska Polskiego-Południowa (Aleks.",
-		"latitude": 51.8184,
-		"longitude": 19.30845
-	},
-	{
-		"id": 1927,
-		"name": "Niecki",
-		"latitude": 51.83029,
-		"longitude": 19.58268
-	},
-	{
-		"id": 1928,
-		"name": "Borchówka 21",
-		"latitude": 51.83354,
-		"longitude": 19.58917
-	},
-	{
-		"id": 1929,
-		"name": "Niecki",
-		"latitude": 51.83019,
-		"longitude": 19.58215
-	},
-	{
-		"id": 1930,
-		"name": "Kalonka (osiedle)",
-		"latitude": 51.82799,
-		"longitude": 19.57086
-	},
-	{
-		"id": 1931,
-		"name": "Borchówka  Las",
-		"latitude": 51.8394,
-		"longitude": 19.60197
-	},
-	{
-		"id": 1932,
-		"name": "Borchówka 39",
-		"latitude": 51.83617,
-		"longitude": 19.59398
-	},
-	{
-		"id": 1933,
-		"name": "Borchówka  Las",
-		"latitude": 51.83949,
-		"longitude": 19.6024
-	},
-	{
-		"id": 1934,
-		"name": "Borchówka  7",
-		"latitude": 51.8343,
-		"longitude": 19.60697
-	},
-	{
-		"id": 1935,
-		"name": "Borchówka  7",
-		"latitude": 51.83451,
-		"longitude": 19.60758
-	},
-	{
-		"id": 1936,
-		"name": "Boginia działki",
-		"latitude": 51.83637,
-		"longitude": 19.61713
-	},
-	{
-		"id": 1940,
-		"name": "Andrespol",
-		"latitude": 51.72638,
-		"longitude": 19.63735
-	},
-	{
-		"id": 1941,
-		"name": "Andrespol O.S.P.",
-		"latitude": 51.72679,
-		"longitude": 19.63631
-	},
-	{
-		"id": 1942,
-		"name": "Tuszyńska-Urząd Gminy(Andrespol)",
-		"latitude": 51.72486,
-		"longitude": 19.63778
-	},
-	{
-		"id": 1943,
-		"name": "Andrespol-Młynarska",
-		"latitude": 51.72896,
-		"longitude": 19.63245
-	},
-	{
-		"id": 1944,
-		"name": "Borchówka 39",
-		"latitude": 51.83593,
-		"longitude": 19.59362
-	},
-	{
-		"id": 1945,
-		"name": "Borchówka 21",
-		"latitude": 51.83388,
-		"longitude": 19.58972
-	},
-	{
-		"id": 1946,
-		"name": "Stryków Dworzec PKP",
-		"latitude": 51.91028,
-		"longitude": 19.59426
-	},
-	{
-		"id": 1947,
-		"name": "Kopernika-Kolejowa (Stryków)",
-		"latitude": 51.90547,
-		"longitude": 19.59536
-	},
-	{
-		"id": 1948,
-		"name": "Kopernika-Słowackiego (Stryków)",
-		"latitude": 51.90275,
-		"longitude": 19.60453
-	},
-	{
-		"id": 1949,
-		"name": "Kopernika-Kolejowa (Stryków)",
-		"latitude": 51.90554,
-		"longitude": 19.59509
-	},
-	{
-		"id": 1950,
-		"name": "Kopernika-Słowackiego (Stryków)",
-		"latitude": 51.90303,
-		"longitude": 19.60379
-	},
-	{
-		"id": 1951,
-		"name": "pl. Łukasińskiego (Stryków)",
-		"latitude": 51.9008,
-		"longitude": 19.60077
-	},
-	{
-		"id": 1952,
-		"name": "Corning (Smolice)",
-		"latitude": 51.89368,
-		"longitude": 19.57714
-	},
-	{
-		"id": 1953,
-		"name": "Targowy Rynek",
-		"latitude": 51.82683,
-		"longitude": 19.3063
-	},
-	{
-		"id": 1954,
-		"name": "Warszawska 16 (Aleksandrów)",
-		"latitude": 51.82221,
-		"longitude": 19.30526
-	},
-	{
-		"id": 1955,
-		"name": "pl. 500-lecia(Rzgów)",
-		"latitude": 51.66251,
-		"longitude": 19.49017
-	},
-	{
-		"id": 1956,
-		"name": "Rudzka-Łódzka(Rzgów)",
-		"latitude": 51.66756,
-		"longitude": 19.48653
-	},
-	{
-		"id": 1957,
-		"name": "Tuszyńska(Rzgów)",
-		"latitude": 51.65178,
-		"longitude": 19.49406
-	},
-	{
-		"id": 1958,
-		"name": "Tuszyńska-Kamienna(Rzgów)",
-		"latitude": 51.65683,
-		"longitude": 19.49313
-	},
-	{
-		"id": 1959,
-		"name": "Rudzka-Nasienna(Rzgów)",
-		"latitude": 51.67522,
-		"longitude": 19.47512
-	},
-	{
-		"id": 1960,
-		"name": "Grabina 50",
-		"latitude": 51.82146,
-		"longitude": 19.58861
-	},
-	{
-		"id": 1961,
-		"name": "Grabina-Grabina/Lipowa1",
-		"latitude": 51.81959,
-		"longitude": 19.59671
-	},
-	{
-		"id": 1962,
-		"name": "Bukowiec-Bukowiec 61",
-		"latitude": 51.82216,
-		"longitude": 19.58414
-	},
-	{
-		"id": 1963,
-		"name": "Grabina 50",
-		"latitude": 51.82125,
-		"longitude": 19.58994
-	},
-	{
-		"id": 1964,
-		"name": "Kalonka-Kalonka/Centrum Ojca Pio",
-		"latitude": 51.82575,
-		"longitude": 19.57401
-	},
-	{
-		"id": 1965,
-		"name": "Bukowiec-Bukowiec 61",
-		"latitude": 51.82213,
-		"longitude": 19.58419
-	},
-	{
-		"id": 1966,
-		"name": "Rudzka-Łódzka(Rzgów)",
-		"latitude": 51.66769,
-		"longitude": 19.48613
-	},
-	{
-		"id": 1967,
-		"name": "Rudzka-Mała(Rzgów)",
-		"latitude": 51.67129,
-		"longitude": 19.48108
-	},
-	{
-		"id": 1968,
-		"name": "pl. 500-lecia(Rzgów)",
-		"latitude": 51.66235,
-		"longitude": 19.4901
-	},
-	{
-		"id": 1969,
-		"name": "Tuszyńska-Kamienna(Rzgów)",
-		"latitude": 51.65675,
-		"longitude": 19.49286
-	},
-	{
-		"id": 1970,
-		"name": "Tuszyńska-Szkoła(Wiśniowa Góra)",
-		"latitude": 51.72064,
-		"longitude": 19.63257
-	},
-	{
-		"id": 1971,
-		"name": "Tuszyńska-Akacjowa(Wiśniowa Góra)",
-		"latitude": 51.70813,
-		"longitude": 19.6239
-	},
-	{
-		"id": 1972,
-		"name": "Tuszyńska-Hanki Sawickiej(Stróża)",
-		"latitude": 51.7026,
-		"longitude": 19.61978
-	},
-	{
-		"id": 1973,
-		"name": "Tuszyńska-Piekarnicza(Wiśniowa Góra",
-		"latitude": 51.71537,
-		"longitude": 19.62893
-	},
-	{
-		"id": 1974,
-		"name": "Tuszyńska-Szkoła(Wiśniowa Góra)",
-		"latitude": 51.72112,
-		"longitude": 19.63296
-	},
-	{
-		"id": 1975,
-		"name": "Tuszyńska-Jednostka Wojskowa(Wiśnio",
-		"latitude": 51.71222,
-		"longitude": 19.62678
-	},
-	{
-		"id": 1976,
-		"name": "Tuszyńska-Piekarnicza(Wiśniowa Góra",
-		"latitude": 51.71585,
-		"longitude": 19.6294
-	},
-	{
-		"id": 1977,
-		"name": "Tuszyńska-Jednostka Wojskowa(Wiśnio",
-		"latitude": 51.71264,
-		"longitude": 19.62719
-	},
-	{
-		"id": 1978,
-		"name": "Tuszyńska-Akacjowa(Wiśniowa Góra)",
-		"latitude": 51.7064,
-		"longitude": 19.62272
-	},
-	{
-		"id": 1979,
-		"name": "Tuszyńska-Hanki Sawickiej(Stróża)",
-		"latitude": 51.70269,
-		"longitude": 19.61997
-	},
-	{
-		"id": 1980,
-		"name": "Krzywickiego-Małachowskiego",
-		"latitude": 51.77074,
-		"longitude": 19.49404
-	},
-	{
-		"id": 1984,
-		"name": "Limanowskiego-Pułaskiego",
-		"latitude": 51.79292,
-		"longitude": 19.41802
-	},
-	{
-		"id": 1987,
-		"name": "Klonowa-Limanowskiego",
-		"latitude": 51.78974,
-		"longitude": 19.4297
-	},
-	{
-		"id": 1988,
-		"name": "Limanowskiego-Mokra",
-		"latitude": 51.79114,
-		"longitude": 19.42586
-	},
-	{
-		"id": 1990,
-		"name": "Limanowskiego-Mokra",
-		"latitude": 51.79133,
-		"longitude": 19.42565
-	},
-	{
-		"id": 1991,
-		"name": "Złotno-Zaporowa",
-		"latitude": 51.77783,
-		"longitude": 19.38375
-	},
-	{
-		"id": 1992,
-		"name": "Złotno-Podchorążych",
-		"latitude": 51.77833,
-		"longitude": 19.38722
-	},
-	{
-		"id": 1993,
-		"name": "Złotno-Zaporowa",
-		"latitude": 51.77774,
-		"longitude": 19.38246
-	},
-	{
-		"id": 1994,
-		"name": "Złotno-Legnicka",
-		"latitude": 51.77706,
-		"longitude": 19.37691
-	},
-	{
-		"id": 2000,
-		"name": "Konstytucyjna-Małachowskiego",
-		"latitude": 51.77167,
-		"longitude": 19.49899
-	},
-	{
-		"id": 2001,
-		"name": "Małachowskiego-Niciarniana",
-		"latitude": 51.77144,
-		"longitude": 19.50504
-	},
-	{
-		"id": 2022,
-		"name": "Kilińskiego-Narutowicza",
-		"latitude": 51.77175,
-		"longitude": 19.46318
-	},
-	{
-		"id": 2034,
-		"name": "Kościuszki(Brzeziny)",
-		"latitude": 51.80106,
-		"longitude": 19.74218
-	},
-	{
-		"id": 2035,
-		"name": "Kościuszki(Brzeziny)",
-		"latitude": 51.80112,
-		"longitude": 19.74187
-	},
-	{
-		"id": 2036,
-		"name": "św.Anny",
-		"latitude": 51.79955,
-		"longitude": 19.75132
-	},
-	{
-		"id": 2037,
-		"name": "Głowackiego(Brzeziny)",
-		"latitude": 51.80387,
-		"longitude": 19.762
-	},
-	{
-		"id": 2038,
-		"name": "Woj. Polskiego(Brzeziny)",
-		"latitude": 51.80549,
-		"longitude": 19.75528
-	},
-	{
-		"id": 2039,
-		"name": "Traugutta(Brzeziny)",
-		"latitude": 51.80087,
-		"longitude": 19.7521
-	},
-	{
-		"id": 2040,
-		"name": "Paprotnia",
-		"latitude": 51.80357,
-		"longitude": 19.70409
-	},
-	{
-		"id": 2041,
-		"name": "Paprotnia",
-		"latitude": 51.80364,
-		"longitude": 19.7041
-	},
-	{
-		"id": 2042,
-		"name": "Łódzka(Brzeziny)",
-		"latitude": 51.80248,
-		"longitude": 19.72278
-	},
-	{
-		"id": 2043,
-		"name": "Łódzka(Brzeziny)",
-		"latitude": 51.80258,
-		"longitude": 19.72255
-	},
-	{
-		"id": 2044,
-		"name": "Techniczna-Puszkina",
-		"latitude": 51.73693,
-		"longitude": 19.53361
-	},
-	{
-		"id": 2045,
-		"name": "Techniczna 6",
-		"latitude": 51.73886,
-		"longitude": 19.5379
-	},
-	{
-		"id": 2046,
-		"name": "Franciszkańska-Tokarzewskiego",
-		"latitude": 51.79098,
-		"longitude": 19.46005
-	},
-	{
-		"id": 2049,
-		"name": "Franciszkańska-Tokarzewskiego",
-		"latitude": 51.79151,
-		"longitude": 19.46009
-	},
-	{
-		"id": 2051,
-		"name": "Spadochroniarzy-Biegunowa",
-		"latitude": 51.77294,
-		"longitude": 19.3863
-	},
-	{
-		"id": 2052,
-		"name": "Biegunowa-Krakowska",
-		"latitude": 51.77418,
-		"longitude": 19.39841
-	},
-	{
-		"id": 2053,
-		"name": "Biegunowa-Krańcowa",
-		"latitude": 51.77252,
-		"longitude": 19.3929
-	},
-	{
-		"id": 2054,
-		"name": "Fizylierów-Złotno",
-		"latitude": 51.77815,
-		"longitude": 19.38879
-	},
-	{
-		"id": 2055,
-		"name": "Spadochroniarzy-Biegunowa",
-		"latitude": 51.77242,
-		"longitude": 19.38585
-	},
-	{
-		"id": 2056,
-		"name": "Podchorążych-Napoleońska",
-		"latitude": 51.77902,
-		"longitude": 19.38487
-	},
-	{
-		"id": 2057,
-		"name": "Podchorążych-Napoleońska",
-		"latitude": 51.77912,
-		"longitude": 19.38382
-	},
-	{
-		"id": 2058,
-		"name": "Biegunowa-Krańcowa",
-		"latitude": 51.77297,
-		"longitude": 19.39423
-	},
-	{
-		"id": 2059,
-		"name": "Podchorążych-Łucznicza",
-		"latitude": 51.78,
-		"longitude": 19.37862
-	},
-	{
-		"id": 2060,
-		"name": "Podchorążych-Łucznicza",
-		"latitude": 51.78,
-		"longitude": 19.37802
-	},
-	{
-		"id": 2062,
-		"name": "Podchorążych 121",
-		"latitude": 51.78213,
-		"longitude": 19.36212
-	},
-	{
-		"id": 2063,
-		"name": "Podchorążych 121",
-		"latitude": 51.7821,
-		"longitude": 19.36152
-	},
-	{
-		"id": 2064,
-		"name": "Podchorążych-Szczecińska",
-		"latitude": 51.78301,
-		"longitude": 19.34966
-	},
-	{
-		"id": 2065,
-		"name": "Fizylierów-Złotno",
-		"latitude": 51.77811,
-		"longitude": 19.38863
-	},
-	{
-		"id": 2066,
-		"name": "Podchorążych-Molla",
-		"latitude": 51.78151,
-		"longitude": 19.36863
-	},
-	{
-		"id": 2067,
-		"name": "Molla",
-		"latitude": 51.7812,
-		"longitude": 19.37036
-	},
-	{
-		"id": 2068,
-		"name": "Podchorążych-Szczecińska",
-		"latitude": 51.78297,
-		"longitude": 19.3487
-	},
-	{
-		"id": 2069,
-		"name": "Niesięcin-Szczecińska",
-		"latitude": 51.77471,
-		"longitude": 19.33744
-	},
-	{
-		"id": 2070,
-		"name": "Niesięcin-Szczecińska",
-		"latitude": 51.77477,
-		"longitude": 19.33709
-	},
-	{
-		"id": 2071,
-		"name": "Niesięcin-Aleksandrowska",
-		"latitude": 51.77428,
-		"longitude": 19.32591
-	},
-	{
-		"id": 2072,
-		"name": "Niesięcin-Niesięcin",
-		"latitude": 51.77434,
-		"longitude": 19.31513
-	},
-	{
-		"id": 2075,
-		"name": "Rąbień Centrum",
-		"latitude": 51.79881,
-		"longitude": 19.32268
-	},
-	{
-		"id": 2076,
-		"name": "Rąbień Centrum",
-		"latitude": 51.7981,
-		"longitude": 19.32239
-	},
-	{
-		"id": 2078,
-		"name": "Niesięcin-Aleksandrowska",
-		"latitude": 51.77425,
-		"longitude": 19.32786
-	},
-	{
-		"id": 2080,
-		"name": "Konstantynowska-Zajezdnia Muzealna",
-		"latitude": 51.75362,
-		"longitude": 19.38207
-	},
-	{
-		"id": 2081,
-		"name": "Konstantynowska-Zajezdnia Muzealna",
-		"latitude": 51.75368,
-		"longitude": 19.38189
-	},
-	{
-		"id": 2082,
-		"name": "Konstantynowska-Krakowska",
-		"latitude": 51.76271,
-		"longitude": 19.40835
-	},
-	{
-		"id": 2083,
-		"name": "Lutomierska-Włókniarzy",
-		"latitude": 51.78965,
-		"longitude": 19.422
-	},
-	{
-		"id": 2084,
-		"name": "Lutomierska-Włókniarzy",
-		"latitude": 51.78932,
-		"longitude": 19.42271
-	},
-	{
-		"id": 2085,
-		"name": "pl. Jana Pawła II",
-		"latitude": 51.75484,
-		"longitude": 19.21167
-	},
-	{
-		"id": 2086,
-		"name": "plac Wolności (Konstantynów)",
-		"latitude": 51.75041,
-		"longitude": 19.31345
-	},
-	{
-		"id": 2087,
-		"name": "Ozorków (Cegielniana)",
-		"latitude": 51.95931,
-		"longitude": 19.28058
-	},
-	{
-		"id": 2088,
-		"name": "Konstantynów Łódzki-Szkoła",
-		"latitude": 51.7485,
-		"longitude": 19.35415
-	},
-	{
-		"id": 2089,
-		"name": "Konstantynów Łódzki-Szkoła",
-		"latitude": 51.74846,
-		"longitude": 19.35396
-	},
-	{
-		"id": 2090,
-		"name": "Konstantynów Łódzki-Ignacew",
-		"latitude": 51.75962,
-		"longitude": 19.2648
-	},
-	{
-		"id": 2091,
-		"name": "Konstantynów Łódzki-Ignacew",
-		"latitude": 51.75959,
-		"longitude": 19.26487
-	},
-	{
-		"id": 2092,
-		"name": "plac Kościuszki (Konstantynów)",
-		"latitude": 51.7475,
-		"longitude": 19.32611
-	},
-	{
-		"id": 2093,
-		"name": "plac Kościuszki (Konstantynów)",
-		"latitude": 51.74765,
-		"longitude": 19.32518
-	},
-	{
-		"id": 2094,
-		"name": "Konstantynów Łódzki-Konstantynówek",
-		"latitude": 51.75422,
-		"longitude": 19.29256
-	},
-	{
-		"id": 2095,
-		"name": "Mirosławice",
-		"latitude": 51.759,
-		"longitude": 19.24104
-	},
-	{
-		"id": 2098,
-		"name": "Mirosławice",
-		"latitude": 51.75896,
-		"longitude": 19.24144
-	},
-	{
-		"id": 2099,
-		"name": "Konstantynów Łódzki-Konstantynówek",
-		"latitude": 51.75414,
-		"longitude": 19.29264
-	},
-	{
-		"id": 2100,
-		"name": "Musierowicza (Zgierz)",
-		"latitude": 51.86323,
-		"longitude": 19.40078
-	},
-	{
-		"id": 2101,
-		"name": "Gałczyńskiego (Zgierz)",
-		"latitude": 51.86361,
-		"longitude": 19.40043
-	},
-	{
-		"id": 2102,
-		"name": "Przedmieście (Zgierz)",
-		"latitude": 51.87026,
-		"longitude": 19.39568
-	},
-	{
-		"id": 2103,
-		"name": "Przedmieście (Zgierz)",
-		"latitude": 51.87011,
-		"longitude": 19.39573
-	},
-	{
-		"id": 2104,
-		"name": "Zgierz-Proboszczewice I",
-		"latitude": 51.87545,
-		"longitude": 19.39258
-	},
-	{
-		"id": 2105,
-		"name": "Zgierz-Proboszczewice I",
-		"latitude": 51.87568,
-		"longitude": 19.39248
-	},
-	{
-		"id": 2106,
-		"name": "Zgierz-Proboszczewice II",
-		"latitude": 51.88261,
-		"longitude": 19.38723
-	},
-	{
-		"id": 2107,
-		"name": "Zgierz-Proboszczewice II",
-		"latitude": 51.88245,
-		"longitude": 19.3874
-	},
-	{
-		"id": 2108,
-		"name": "LuŹmierz",
-		"latitude": 51.89795,
-		"longitude": 19.37325
-	},
-	{
-		"id": 2109,
-		"name": "LuŹmierz",
-		"latitude": 51.89783,
-		"longitude": 19.37328
-	},
-	{
-		"id": 2110,
-		"name": "Emilia (Rosanów)",
-		"latitude": 51.91475,
-		"longitude": 19.36475
-	},
-	{
-		"id": 2111,
-		"name": "Emilia (Rosanów)",
-		"latitude": 51.91453,
-		"longitude": 19.3649
-	},
-	{
-		"id": 2112,
-		"name": "Emilia (Kania Góra)",
-		"latitude": 51.92326,
-		"longitude": 19.3604
-	},
-	{
-		"id": 2113,
-		"name": "Emilia (Kania Góra)",
-		"latitude": 51.92338,
-		"longitude": 19.36033
-	},
-	{
-		"id": 2114,
-		"name": "Słowik (szkoła)",
-		"latitude": 51.92866,
-		"longitude": 19.35285
-	},
-	{
-		"id": 2115,
-		"name": "Słowik (szkoła)",
-		"latitude": 51.92883,
-		"longitude": 19.3525
-	},
-	{
-		"id": 2116,
-		"name": "Słowik",
-		"latitude": 51.93688,
-		"longitude": 19.33795
-	},
-	{
-		"id": 2117,
-		"name": "Słowik",
-		"latitude": 51.93665,
-		"longitude": 19.33838
-	},
-	{
-		"id": 2118,
-		"name": "Aleksandria",
-		"latitude": 51.9413,
-		"longitude": 19.3305
-	},
-	{
-		"id": 2119,
-		"name": "Aleksandria",
-		"latitude": 51.94129,
-		"longitude": 19.33071
-	},
-	{
-		"id": 2120,
-		"name": "Tartak (Ozorków)",
-		"latitude": 51.94723,
-		"longitude": 19.32098
-	},
-	{
-		"id": 2121,
-		"name": "Tartak (Ozorków)",
-		"latitude": 51.94675,
-		"longitude": 19.32176
-	},
-	{
-		"id": 2122,
-		"name": "Ozorków Las",
-		"latitude": 51.9516,
-		"longitude": 19.31383
-	},
-	{
-		"id": 2123,
-		"name": "Ozorków Las",
-		"latitude": 51.95151,
-		"longitude": 19.31391
-	},
-	{
-		"id": 2124,
-		"name": "Cmentarz (Ozorków)",
-		"latitude": 51.95566,
-		"longitude": 19.30713
-	},
-	{
-		"id": 2125,
-		"name": "Cmentarz (Ozorków)",
-		"latitude": 51.95555,
-		"longitude": 19.30741
-	},
-	{
-		"id": 2126,
-		"name": "Wyszyńskiego (Ozorków)",
-		"latitude": 51.96021,
-		"longitude": 19.29711
-	},
-	{
-		"id": 2127,
-		"name": "Wyszyńskiego (Ozorków)",
-		"latitude": 51.96031,
-		"longitude": 19.29725
-	},
-	{
-		"id": 2128,
-		"name": "Nowy Rynek (Ozorków)",
-		"latitude": 51.95805,
-		"longitude": 19.28851
-	},
-	{
-		"id": 2129,
-		"name": "Nowy Rynek (Ozorków)",
-		"latitude": 51.95817,
-		"longitude": 19.28822
-	},
-	{
-		"id": 2130,
-		"name": "Łódzka-Śniechowskiego (Zgierz)",
-		"latitude": 51.85175,
-		"longitude": 19.40793
-	},
-	{
-		"id": 2131,
-		"name": "Łódzka-Śniechowskiego (Zgierz)",
-		"latitude": 51.85158,
-		"longitude": 19.4081
-	},
-	{
-		"id": 2132,
-		"name": "Stary Rynek(Zgierz)",
-		"latitude": 51.85491,
-		"longitude": 19.40513
-	},
-	{
-		"id": 2133,
-		"name": "Stary Rynek(Zgierz)",
-		"latitude": 51.85483,
-		"longitude": 19.40535
-	},
-	{
-		"id": 2134,
-		"name": "Łęczycka-Al.Armii Krajowej(Zgierz)",
-		"latitude": 51.85888,
-		"longitude": 19.4048
-	},
-	{
-		"id": 2135,
-		"name": "Łęczycka-Łaźnia (Zgierz)",
-		"latitude": 51.86,
-		"longitude": 19.40396
-	},
-	{
-		"id": 2136,
-		"name": "Mirosławice I",
-		"latitude": 51.7594,
-		"longitude": 19.25261
-	},
-	{
-		"id": 2137,
-		"name": "Mirosławice I",
-		"latitude": 51.75938,
-		"longitude": 19.25287
-	},
-	{
-		"id": 2138,
-		"name": "Lutomiersk-Klasztor",
-		"latitude": 51.75844,
-		"longitude": 19.22231
-	},
-	{
-		"id": 2139,
-		"name": "Lutomiersk-Klasztor",
-		"latitude": 51.75815,
-		"longitude": 19.22188
-	},
-	{
-		"id": 2140,
-		"name": "Konstantynów Łódzki-Krzywa",
-		"latitude": 51.75671,
-		"longitude": 19.27991
-	},
-	{
-		"id": 2141,
-		"name": "Konstantynów Łódzki-Krzywa",
-		"latitude": 51.75679,
-		"longitude": 19.27962
-	},
-	{
-		"id": 2142,
-		"name": "Konstantynów Łódzki-Żabiczki",
-		"latitude": 51.75568,
-		"longitude": 19.28528
-	},
-	{
-		"id": 2143,
-		"name": "Konstantynów Łódzki-Żabiczki",
-		"latitude": 51.75561,
-		"longitude": 19.28551
-	},
-	{
-		"id": 2144,
-		"name": "Konstantynów Łódzki-Przedmieście",
-		"latitude": 51.75295,
-		"longitude": 19.29898
-	},
-	{
-		"id": 2145,
-		"name": "Konstantynów Łódzki-Przedmieście",
-		"latitude": 51.75291,
-		"longitude": 19.29888
-	},
-	{
-		"id": 2146,
-		"name": "Konstantynów Łódzki-Sienkiewicza",
-		"latitude": 51.75157,
-		"longitude": 19.30574
-	},
-	{
-		"id": 2147,
-		"name": "Konstantynów Łódzki-Sienkiewicza",
-		"latitude": 51.75149,
-		"longitude": 19.30595
-	},
-	{
-		"id": 2148,
-		"name": "Konstantynów Łódzki-plac Wolności",
-		"latitude": 51.74992,
-		"longitude": 19.31383
-	},
-	{
-		"id": 2149,
-		"name": "Konstantynów Łódzki-plac Wolności",
-		"latitude": 51.7501,
-		"longitude": 19.31309
-	},
-	{
-		"id": 2150,
-		"name": "Konstantynów Łódzki-Daszyńskiego",
-		"latitude": 51.74884,
-		"longitude": 19.31941
-	},
-	{
-		"id": 2151,
-		"name": "Konstantynów Łódzki-Moniuszki",
-		"latitude": 51.74876,
-		"longitude": 19.31951
-	},
-	{
-		"id": 2152,
-		"name": "Konstantynów Łódzki-Krótka",
-		"latitude": 51.74658,
-		"longitude": 19.33093
-	},
-	{
-		"id": 2153,
-		"name": "Konstantynów Łódzki-Krótka",
-		"latitude": 51.74655,
-		"longitude": 19.3312
-	},
-	{
-		"id": 2154,
-		"name": "Konstantynów Łódzki-Gdańska",
-		"latitude": 51.74729,
-		"longitude": 19.33968
-	},
-	{
-		"id": 2155,
-		"name": "Konstantynów Łódzki-Gdańska",
-		"latitude": 51.74725,
-		"longitude": 19.33999
-	},
-	{
-		"id": 2156,
-		"name": "Konstantynów Łódzki-Spółdzielcza",
-		"latitude": 51.74817,
-		"longitude": 19.34982
-	},
-	{
-		"id": 2157,
-		"name": "Konstantynów Łódzki-Spółdzielcza",
-		"latitude": 51.74799,
-		"longitude": 19.3491
-	},
-	{
-		"id": 2158,
-		"name": "Konstantynów Łódzki-Srebrna",
-		"latitude": 51.74897,
-		"longitude": 19.35843
-	},
-	{
-		"id": 2159,
-		"name": "Konstantynów Łódzki-Srebrna",
-		"latitude": 51.74906,
-		"longitude": 19.35918
-	},
-	{
-		"id": 2160,
-		"name": "Konstantynów Łódzki-Cegielniana",
-		"latitude": 51.75038,
-		"longitude": 19.36547
-	},
-	{
-		"id": 2161,
-		"name": "Konstantynów Łódzki-Cegielniana",
-		"latitude": 51.75038,
-		"longitude": 19.36567
-	},
-	{
-		"id": 2166,
-		"name": "Zielony Romanów",
-		"latitude": 51.80735,
-		"longitude": 19.32105
-	},
-	{
-		"id": 2167,
-		"name": "Proboszczewice II mijanka",
-		"latitude": 51.87843,
-		"longitude": 19.3909
-	},
-	{
-		"id": 2168,
-		"name": "Konstantynów Łódzki-Srebrna mijanka",
-		"latitude": 51.7487,
-		"longitude": 19.35622
-	},
-	{
-		"id": 2169,
-		"name": "Konstantynów Łódzki-Gdańska mijanka",
-		"latitude": 51.74771,
-		"longitude": 19.34492
-	},
-	{
-		"id": 2170,
-		"name": "Wyszyńskiego mijanka(Ozorków)",
-		"latitude": 51.95721,
-		"longitude": 19.29347
-	},
-	{
-		"id": 2171,
-		"name": "pl. Wolności",
-		"latitude": 51.77644,
-		"longitude": 19.45477
-	},
-	{
-		"id": 2175,
-		"name": "Narutowicza-P.O.W.",
-		"latitude": 51.77148,
-		"longitude": 19.46584
-	},
-	{
-		"id": 2176,
-		"name": "Starowa Góra-Centralna",
-		"latitude": 51.69071,
-		"longitude": 19.47666
-	},
-	{
-		"id": 2177,
-		"name": "Starowa Góra-Starowa Góra - Central",
-		"latitude": 51.69105,
-		"longitude": 19.47751
-	},
-	{
-		"id": 2181,
-		"name": "Telefoniczna (Zaj.MPK)",
-		"latitude": 51.78335,
-		"longitude": 19.50283
-	},
-	{
-		"id": 2182,
-		"name": "Zgierska-Helenówek",
-		"latitude": 51.82985,
-		"longitude": 19.42581
-	},
-	{
-		"id": 2183,
-		"name": "Zgierska-Helenówek",
-		"latitude": 51.82839,
-		"longitude": 19.42657
-	},
-	{
-		"id": 2184,
-		"name": "1 Maja-plac Kilińskiego (Zgierz)",
-		"latitude": 51.85446,
-		"longitude": 19.41632
-	},
-	{
-		"id": 2185,
-		"name": "Kurak (Zgierz)",
-		"latitude": 51.8472,
-		"longitude": 19.41237
-	},
-	{
-		"id": 2186,
-		"name": "Kurak (Zgierz)",
-		"latitude": 51.84636,
-		"longitude": 19.41312
-	},
-	{
-		"id": 2190,
-		"name": "Piłsudskiego-Przędzalniana",
-		"latitude": 51.76094,
-		"longitude": 19.48014
-	},
-	{
-		"id": 2198,
-		"name": "Stróża-Gajowa",
-		"latitude": 51.69619,
-		"longitude": 19.61429
-	},
-	{
-		"id": 2199,
-		"name": "Stróża-Gajowa",
-		"latitude": 51.69628,
-		"longitude": 19.6145
-	},
-	{
-		"id": 2200,
-		"name": "Stróża-Ludwików",
-		"latitude": 51.69186,
-		"longitude": 19.61028
-	},
-	{
-		"id": 2201,
-		"name": "Konstantynowska-Smulska",
-		"latitude": 51.75167,
-		"longitude": 19.37202
-	},
-	{
-		"id": 2202,
-		"name": "Konstantynowska-Smulska",
-		"latitude": 51.75154,
-		"longitude": 19.37191
-	},
-	{
-		"id": 2203,
-		"name": "Konstantynowska-Krańcowa",
-		"latitude": 51.75945,
-		"longitude": 19.39898
-	},
-	{
-		"id": 2204,
-		"name": "Konstantynowska-Krańcowa",
-		"latitude": 51.75944,
-		"longitude": 19.39913
-	},
-	{
-		"id": 2208,
-		"name": "Natolin",
-		"latitude": 51.79259,
-		"longitude": 19.61932
-	},
-	{
-		"id": 2209,
-		"name": "Natolin",
-		"latitude": 51.79282,
-		"longitude": 19.61936
-	},
-	{
-		"id": 2210,
-		"name": "Natolin - pętla",
-		"latitude": 51.79576,
-		"longitude": 19.62962
-	},
-	{
-		"id": 2211,
-		"name": "Teolin",
-		"latitude": 51.79963,
-		"longitude": 19.63928
-	},
-	{
-		"id": 2212,
-		"name": "Teolin",
-		"latitude": 51.80046,
-		"longitude": 19.64117
-	},
-	{
-		"id": 2213,
-		"name": "Lipiny 67",
-		"latitude": 51.80636,
-		"longitude": 19.6616
-	},
-	{
-		"id": 2214,
-		"name": "Lipiny 67",
-		"latitude": 51.80638,
-		"longitude": 19.65943
-	},
-	{
-		"id": 2215,
-		"name": "Lipiny",
-		"latitude": 51.80633,
-		"longitude": 19.66738
-	},
-	{
-		"id": 2216,
-		"name": "Lipiny",
-		"latitude": 51.80651,
-		"longitude": 19.66959
-	},
-	{
-		"id": 2217,
-		"name": "Stary Imielnik-Stary Imielnik 45A",
-		"latitude": 51.84684,
-		"longitude": 19.58094
-	},
-	{
-		"id": 2218,
-		"name": "Stary Imielnik-Stary Imielnik 45",
-		"latitude": 51.84692,
-		"longitude": 19.58033
-	},
-	{
-		"id": 2219,
-		"name": "Dobieszków-O.Sz. i W",
-		"latitude": 51.85198,
-		"longitude": 19.59266
-	},
-	{
-		"id": 2220,
-		"name": "Dobieszków-Hotel",
-		"latitude": 51.85193,
-		"longitude": 19.59246
-	},
-	{
-		"id": 2221,
-		"name": "Dobieszków-Młyn",
-		"latitude": 51.85632,
-		"longitude": 19.59838
-	},
-	{
-		"id": 2222,
-		"name": "Dobieszków-Młyn",
-		"latitude": 51.85548,
-		"longitude": 19.59935
-	},
-	{
-		"id": 2223,
-		"name": "Dobieszków-Wieś",
-		"latitude": 51.85965,
-		"longitude": 19.59171
-	},
-	{
-		"id": 2224,
-		"name": "Dobieszków-Wieś",
-		"latitude": 51.85951,
-		"longitude": 19.59188
-	},
-	{
-		"id": 2225,
-		"name": "Michałówek-Michałówek",
-		"latitude": 51.86384,
-		"longitude": 19.58063
-	},
-	{
-		"id": 2226,
-		"name": "Michałówek-Michałówek 26",
-		"latitude": 51.86356,
-		"longitude": 19.58163
-	},
-	{
-		"id": 2227,
-		"name": "Michałówek / Dobra",
-		"latitude": 51.86691,
-		"longitude": 19.57068
-	},
-	{
-		"id": 2228,
-		"name": "Stary Imielnik-Stary Imielnik 17",
-		"latitude": 51.84643,
-		"longitude": 19.57059
-	},
-	{
-		"id": 2229,
-		"name": "Stary Imielnik-Stary Imielnik 18",
-		"latitude": 51.8464,
-		"longitude": 19.57033
-	},
-	{
-		"id": 2230,
-		"name": "Zielony Romanów",
-		"latitude": 51.80655,
-		"longitude": 19.32164
-	},
-	{
-		"id": 2231,
-		"name": "Uniwersytecka-Rewolucji 1905 r.",
-		"latitude": 51.77542,
-		"longitude": 19.47675
-	},
-	{
-		"id": 2233,
-		"name": "Lotnisko",
-		"latitude": 51.72737,
-		"longitude": 19.40077
-	},
-	{
-		"id": 2234,
-		"name": "Dąbrowa-Dąbrowa",
-		"latitude": 51.81256,
-		"longitude": 19.55399
-	},
-	{
-		"id": 2235,
-		"name": "Dąbrowa-Dąbrowa",
-		"latitude": 51.8126,
-		"longitude": 19.55398
-	},
-	{
-		"id": 2236,
-		"name": "Kopanka-Kopanka 24a",
-		"latitude": 51.82342,
-		"longitude": 19.56286
-	},
-	{
-		"id": 2237,
-		"name": "Kopanka-Kopanka 24a",
-		"latitude": 51.82293,
-		"longitude": 19.5627
-	},
-	{
-		"id": 2239,
-		"name": "Konstantynowska-CPN",
-		"latitude": 51.81109,
-		"longitude": 19.31924
-	},
-	{
-		"id": 2240,
-		"name": "Konstantynowska-CPN",
-		"latitude": 51.81084,
-		"longitude": 19.31902
-	},
-	{
-		"id": 2241,
-		"name": "Złotno-Huta Jagodnica",
-		"latitude": 51.77554,
-		"longitude": 19.34934
-	},
-	{
-		"id": 2243,
-		"name": "Rudzka-Nasienna(Rzgów)",
-		"latitude": 51.67572,
-		"longitude": 19.47407
-	},
-	{
-		"id": 2244,
-		"name": "Rzgów-Zachodnia-Łódzka",
-		"latitude": 51.68319,
-		"longitude": 19.47656
-	},
-	{
-		"id": 2245,
-		"name": "Stara Gadka  - cmentarz",
-		"latitude": 51.67869,
-		"longitude": 19.46981
-	},
-	{
-		"id": 2250,
-		"name": "Stara Gadka  - cmentarz",
-		"latitude": 51.67846,
-		"longitude": 19.46955
-	},
-	{
-		"id": 2251,
-		"name": "Stara Gadka-Stara Gadka - Uczniowsk",
-		"latitude": 51.68312,
-		"longitude": 19.46178
-	},
-	{
-		"id": 2252,
-		"name": "Stara Gadka-Stara Gadka - Zdrojowa",
-		"latitude": 51.68289,
-		"longitude": 19.46235
-	},
-	{
-		"id": 2267,
-		"name": "Kalonka",
-		"latitude": 51.82717,
-		"longitude": 19.56506
-	},
-	{
-		"id": 2268,
-		"name": "Kalonka",
-		"latitude": 51.82723,
-		"longitude": 19.56539
-	},
-	{
-		"id": 2275,
-		"name": "Kolumny-Stróża Sawickiej  - pętla",
-		"latitude": 51.70219,
-		"longitude": 19.61927
-	},
-	{
-		"id": 2276,
-		"name": "Wiączyń Dolny-Wiączyń Dolny 4",
-		"latitude": 51.77571,
-		"longitude": 19.61349
-	},
-	{
-		"id": 2277,
-		"name": "Wiączyń Dolny-Wiączyń Dolny 4",
-		"latitude": 51.77593,
-		"longitude": 19.61328
-	},
-	{
-		"id": 2278,
-		"name": "Wiączyń Dolny-Wiączyń Dolny 18",
-		"latitude": 51.76906,
-		"longitude": 19.62208
-	},
-	{
-		"id": 2279,
-		"name": "Wiączyń Dolny-Wiączyń Dolny 18",
-		"latitude": 51.76924,
-		"longitude": 19.62206
-	},
-	{
-		"id": 2280,
-		"name": "Wiączyń Dolny-Wiączyń Dolny Gimnazj",
-		"latitude": 51.76708,
-		"longitude": 19.62474
-	},
-	{
-		"id": 2281,
-		"name": "Wiączyń Dolny-Wiączyń Dolny Gimnazj",
-		"latitude": 51.76742,
-		"longitude": 19.6244
-	},
-	{
-		"id": 2282,
-		"name": "Wiączyń Dolny-Wiączyń Dolny 42",
-		"latitude": 51.76191,
-		"longitude": 19.63145
-	},
-	{
-		"id": 2283,
-		"name": "Wiączyń Dolny-Wiączyń Dolny 42",
-		"latitude": 51.76183,
-		"longitude": 19.63173
-	},
-	{
-		"id": 2295,
-		"name": "Lipiny - pętla",
-		"latitude": 51.80804,
-		"longitude": 19.67294
-	},
-	{
-		"id": 2296,
-		"name": "Paprotnia I",
-		"latitude": 51.8032,
-		"longitude": 19.71215
-	},
-	{
-		"id": 2297,
-		"name": "Paprotnia I",
-		"latitude": 51.80325,
-		"longitude": 19.71175
-	},
-	{
-		"id": 2301,
-		"name": "Tuszyńska-Rzemieślnicza(Rzgów)",
-		"latitude": 51.65139,
-		"longitude": 19.49342
-	},
-	{
-		"id": 2302,
-		"name": "Tuszyńska-Centrum Handlowe PTAK",
-		"latitude": 51.64656,
-		"longitude": 19.49393
-	},
-	{
-		"id": 2303,
-		"name": "Tuszyńska-Centrum Handlowe PTAK",
-		"latitude": 51.64715,
-		"longitude": 19.49395
-	},
-	{
-		"id": 2304,
-		"name": "C.T. \"Ptak Outlet\"",
-		"latitude": 51.64508,
-		"longitude": 19.4875
-	},
-	{
-		"id": 2305,
-		"name": "Kalonka II",
-		"latitude": 51.82768,
-		"longitude": 19.56939
-	},
-	{
-		"id": 2306,
-		"name": "Kalonka II",
-		"latitude": 51.82769,
-		"longitude": 19.56918
-	},
-	{
-		"id": 2308,
-		"name": "Zarzewska-pl. Niepodległości",
-		"latitude": 51.7414,
-		"longitude": 19.46471
-	},
-	{
-		"id": 2309,
-		"name": "Sieradzka-pl. Niepodległości",
-		"latitude": 51.74125,
-		"longitude": 19.46339
-	},
-	{
-		"id": 2331,
-		"name": "Karolewska-Włókniarzy (Dw. Łódź Kal",
-		"latitude": 51.75726,
-		"longitude": 19.43268
-	},
-	{
-		"id": 2332,
-		"name": "Karolewska-Włókniarzy (Dw. Łódź Kal",
-		"latitude": 51.75707,
-		"longitude": 19.43271
-	},
-	{
-		"id": 2337,
-		"name": "Św. Franciszka-Zenitowa",
-		"latitude": 51.72696,
-		"longitude": 19.43176
-	},
-	{
-		"id": 2338,
-		"name": "Św. Franciszka-Zwrotnikowa",
-		"latitude": 51.72674,
-		"longitude": 19.43915
-	},
-	{
-		"id": 2339,
-		"name": "Prądzyńskiego-Darniowa",
-		"latitude": 51.72293,
-		"longitude": 19.43125
-	},
-	{
-		"id": 2340,
-		"name": "Prądzyńskiego-Rozwojowa",
-		"latitude": 51.723,
-		"longitude": 19.42401
-	},
-	{
-		"id": 2353,
-		"name": "Piłsudskiego-Targowa",
-		"latitude": 51.76081,
-		"longitude": 19.4737
-	},
-	{
-		"id": 2364,
-		"name": "Tatrzańska-Dąbrowskiego",
-		"latitude": 51.73624,
-		"longitude": 19.49442
-	},
-	{
-		"id": 2366,
-		"name": "Stara Gadka-Skrajna",
-		"latitude": 51.68863,
-		"longitude": 19.45265
-	},
-	{
-		"id": 2367,
-		"name": "Starowa Góra-Zagłoby",
-		"latitude": 51.69623,
-		"longitude": 19.47864
-	},
-	{
-		"id": 2376,
-		"name": "Mickiewicza-Łąkowa",
-		"latitude": 51.75638,
-		"longitude": 19.44235
-	},
-	{
-		"id": 2377,
-		"name": "Mickiewicza-Łąkowa",
-		"latitude": 51.75664,
-		"longitude": 19.44231
-	},
-	{
-		"id": 2381,
-		"name": "Narutowicza-Kopcińskiego",
-		"latitude": 51.77307,
-		"longitude": 19.48418
-	},
-	{
-		"id": 2393,
-		"name": "Sienkiewicza-Nawrot",
-		"latitude": 51.7626,
-		"longitude": 19.46222
-	},
-	{
-		"id": 2397,
-		"name": "Piotrkowska-Brzeźna",
-		"latitude": 51.75185,
-		"longitude": 19.46013
-	},
-	{
-		"id": 2398,
-		"name": "Piotrkowska-Czerwona",
-		"latitude": 51.747,
-		"longitude": 19.46134
-	},
-	{
-		"id": 2401,
-		"name": "Ogrodowa-Cmentarna",
-		"latitude": 51.77607,
-		"longitude": 19.43762
-	},
-	{
-		"id": 2411,
-		"name": "Służbowa-Jurczyńskiego",
-		"latitude": 51.76082,
-		"longitude": 19.55119
-	},
-	{
-		"id": 2412,
-		"name": "Służbowa-Jurczyńskiego",
-		"latitude": 51.76069,
-		"longitude": 19.5516
-	},
-	{
-		"id": 2416,
-		"name": "ŁSSE Nowy Józefów",
-		"latitude": 51.74092,
-		"longitude": 19.36742
-	},
-	{
-		"id": 2418,
-		"name": "Gillette-Nowy Józefów",
-		"latitude": 51.74002,
-		"longitude": 19.36755
-	},
-	{
-		"id": 2425,
-		"name": "Daszyńskiego-Sienkiewicza (Aleksand",
-		"latitude": 51.82374,
-		"longitude": 19.30348
-	},
-	{
-		"id": 2426,
-		"name": "1 Maja-MDK (Aleksandrów)",
-		"latitude": 51.82247,
-		"longitude": 19.29834
-	},
-	{
-		"id": 2427,
-		"name": "1 Maja-MDK (Aleksandrów)",
-		"latitude": 51.82085,
-		"longitude": 19.29748
-	},
-	{
-		"id": 2428,
-		"name": "Wierzbińska-11-go Listopada (Aleksa",
-		"latitude": 51.81627,
-		"longitude": 19.30191
-	},
-	{
-		"id": 2429,
-		"name": "Daszyńskiego-Sienkiewicza (Aleksand",
-		"latitude": 51.82382,
-		"longitude": 19.30288
-	},
-	{
-		"id": 2430,
-		"name": "Pabianicka-Piłsudskiego (Aleksandró",
-		"latitude": 51.81303,
-		"longitude": 19.31735
-	},
-	{
-		"id": 2431,
-		"name": "Pabianicka-Południowa (Aleksandrów)",
-		"latitude": 51.81519,
-		"longitude": 19.30697
-	},
-	{
-		"id": 2432,
-		"name": "Poselska (Aleksandrów)",
-		"latitude": 51.80823,
-		"longitude": 19.31966
-	},
-	{
-		"id": 2433,
-		"name": "Słowiańska-szkoła (Rąbień)",
-		"latitude": 51.78962,
-		"longitude": 19.32185
-	},
-	{
-		"id": 2434,
-		"name": "Słowiańska-szkoła (Rąbień)",
-		"latitude": 51.78951,
-		"longitude": 19.32166
-	},
-	{
-		"id": 2435,
-		"name": "Słowiańska-Szaraka (Rąbień)",
-		"latitude": 51.79013,
-		"longitude": 19.33252
-	},
-	{
-		"id": 2436,
-		"name": "Słowiańska-Szaraka (Rąbień)",
-		"latitude": 51.79005,
-		"longitude": 19.33271
-	},
-	{
-		"id": 2437,
-		"name": "Słowiańska-Wysoka (Rąbień)",
-		"latitude": 51.79058,
-		"longitude": 19.34267
-	},
-	{
-		"id": 2438,
-		"name": "Słowiańska-Wysoka (Rąbień)",
-		"latitude": 51.79047,
-		"longitude": 19.3429
-	},
-	{
-		"id": 2439,
-		"name": "Słowiańska-Szczecińska (Antoniew)",
-		"latitude": 51.79009,
-		"longitude": 19.35279
-	},
-	{
-		"id": 2440,
-		"name": "Słowiańska-Szczecińska (Antoniew)",
-		"latitude": 51.78995,
-		"longitude": 19.35296
-	},
-	{
-		"id": 2442,
-		"name": "MATEK POLSKICH",
-		"latitude": 51.70351,
-		"longitude": 19.48043
-	},
-	{
-		"id": 2444,
-		"name": "Kotoniarska-Szybowa",
-		"latitude": 51.7227,
-		"longitude": 19.52705
-	},
-	{
-		"id": 2445,
-		"name": "Kotoniarska-Szybowa",
-		"latitude": 51.72266,
-		"longitude": 19.52688
-	},
-	{
-		"id": 2446,
-		"name": "Kolumny-Rzgowska",
-		"latitude": 51.70934,
-		"longitude": 19.48899
-	},
-	{
-		"id": 2447,
-		"name": "Kolumny-Rzgowska",
-		"latitude": 51.7095,
-		"longitude": 19.48939
-	},
-	{
-		"id": 2448,
-		"name": "Kolumny-Kolumny 88",
-		"latitude": 51.71078,
-		"longitude": 19.50123
-	},
-	{
-		"id": 2449,
-		"name": "Kolumny-Kolumny 88",
-		"latitude": 51.71079,
-		"longitude": 19.50233
-	},
-	{
-		"id": 2450,
-		"name": "Kolumny-Kolumny 118",
-		"latitude": 51.70906,
-		"longitude": 19.5084
-	},
-	{
-		"id": 2451,
-		"name": "Kolumny-Kolumny 118",
-		"latitude": 51.7082,
-		"longitude": 19.51223
-	},
-	{
-		"id": 2457,
-		"name": "Struga-Piotrkowska",
-		"latitude": 51.76548,
-		"longitude": 19.45646
-	},
-	{
-		"id": 2459,
-		"name": "Marmurowa-Opolska",
-		"latitude": 51.80723,
-		"longitude": 19.54548
-	},
-	{
-		"id": 2460,
-		"name": "Marmurowa-Opolska",
-		"latitude": 51.80728,
-		"longitude": 19.54569
-	},
-	{
-		"id": 2461,
-		"name": "Paprotnia-Moczydła",
-		"latitude": 51.8056,
-		"longitude": 19.67906
-	},
-	{
-		"id": 2462,
-		"name": "Paprotnia-Moczydła",
-		"latitude": 51.80573,
-		"longitude": 19.67968
-	},
-	{
-		"id": 2463,
-		"name": "Rojna-Szczecińska",
-		"latitude": 51.7958,
-		"longitude": 19.36141
-	},
-	{
-		"id": 2465,
-		"name": "plac Niepodległości",
-		"latitude": 51.74034,
-		"longitude": 19.46302
-	},
-	{
-		"id": 2466,
-		"name": "Zgierska-Sikorskiego",
-		"latitude": 51.81693,
-		"longitude": 19.43376
-	},
-	{
-		"id": 2467,
-		"name": "Dąbrowskiego-Dw. Łódź Dąbrowa",
-		"latitude": 51.73572,
-		"longitude": 19.51032
-	},
-	{
-		"id": 2468,
-		"name": "Dąbrowskiego-Dw. Łódź Dąbrowa",
-		"latitude": 51.73611,
-		"longitude": 19.51043
-	},
-	{
-		"id": 2469,
-		"name": "Innowacyjna (Konstantynów)",
-		"latitude": 51.74619,
-		"longitude": 19.36306
-	},
-	{
-		"id": 2470,
-		"name": "ŁSSE ks. Janika (Konstantynów)",
-		"latitude": 51.74306,
-		"longitude": 19.36066
-	},
-	{
-		"id": 2471,
-		"name": "ŁSSE Inwestycyjna (Konstantynów)",
-		"latitude": 51.74098,
-		"longitude": 19.36224
-	},
-	{
-		"id": 2498,
-		"name": "Rojna-Wiernej Rzeki",
-		"latitude": 51.79368,
-		"longitude": 19.3796
-	},
-	{
-		"id": 2499,
-		"name": "Rojna-Wiernej Rzeki",
-		"latitude": 51.79373,
-		"longitude": 19.37984
-	},
-	{
-		"id": 2515,
-		"name": "Zagajnikowa-Okopowa",
-		"latitude": 51.79508,
-		"longitude": 19.47701
-	},
-	{
-		"id": 2516,
-		"name": "Zagajnikowa-Okopowa",
-		"latitude": 51.79575,
-		"longitude": 19.47652
-	},
-	{
-		"id": 2517,
-		"name": "Rewolucji 1905r.-Wschodnia",
-		"latitude": 51.77497,
-		"longitude": 19.45818
-	},
-	{
-		"id": 2520,
-		"name": "Maczka-Pienista",
-		"latitude": 51.73371,
-		"longitude": 19.40507
-	},
-	{
-		"id": 2525,
-		"name": "Wiączyń Dolny 96",
-		"latitude": 51.7571,
-		"longitude": 19.63157
-	},
-	{
-		"id": 2526,
-		"name": "Wiączyń Dolny 96",
-		"latitude": 51.75685,
-		"longitude": 19.6314
-	},
-	{
-		"id": 2541,
-		"name": "Lodowa-Przybyszewskiego",
-		"latitude": 51.7511,
-		"longitude": 19.52081
-	},
-	{
-		"id": 2547,
-		"name": "Ustronna-Zagadkowa",
-		"latitude": 51.70817,
-		"longitude": 19.46814
-	},
-	{
-		"id": 2548,
-		"name": "Ustronna-Zagadkowa",
-		"latitude": 51.70809,
-		"longitude": 19.46814
-	},
-	{
-		"id": 2549,
-		"name": "Siostrzana-Bartoszewskiego",
-		"latitude": 51.70544,
-		"longitude": 19.46793
-	},
-	{
-		"id": 2550,
-		"name": "Siostrzana-Bartoszewskiego",
-		"latitude": 51.70532,
-		"longitude": 19.46726
-	},
-	{
-		"id": 2552,
-		"name": "Pryncypalna-Bartoszewskiego",
-		"latitude": 51.71767,
-		"longitude": 19.45758
-	},
-	{
-		"id": 2553,
-		"name": "Pryncypalna-Bartoszewskiego",
-		"latitude": 51.71729,
-		"longitude": 19.45629
-	},
-	{
-		"id": 2554,
-		"name": "Bartoszewskiego-Pabianicka",
-		"latitude": 51.72627,
-		"longitude": 19.4483
-	},
-	{
-		"id": 2555,
-		"name": "Bartoszewskiego-Pryncypalna",
-		"latitude": 51.71783,
-		"longitude": 19.45698
-	},
-	{
-		"id": 2556,
-		"name": "Bartoszewskiego-Pryncypalna",
-		"latitude": 51.71736,
-		"longitude": 19.457
-	},
-	{
-		"id": 2557,
-		"name": "Bartoszewskiego-Demokratyczna",
-		"latitude": 51.71164,
-		"longitude": 19.46223
-	},
-	{
-		"id": 2558,
-		"name": "Bartoszewskiego-Demokratyczna",
-		"latitude": 51.71205,
-		"longitude": 19.46247
-	},
-	{
-		"id": 2559,
-		"name": "Bartoszewskiego-Siostrzana",
-		"latitude": 51.70509,
-		"longitude": 19.4677
-	},
-	{
-		"id": 2560,
-		"name": "Bartoszewskiego-Siostrzana",
-		"latitude": 51.70558,
-		"longitude": 19.46761
-	},
-	{
-		"id": 2561,
-		"name": "Rzgowska-Bartoszewskiego",
-		"latitude": 51.70045,
-		"longitude": 19.48004
-	},
-	{
-		"id": 2562,
-		"name": "Bartoszewskiego-Rzgowska",
-		"latitude": 51.70018,
-		"longitude": 19.4786
-	},
-	{
-		"id": 2563,
-		"name": "Jana Pawła II-Pabianicka",
-		"latitude": 51.72758,
-		"longitude": 19.44712
-	},
-	{
-		"id": 2564,
-		"name": "Pabianicka-Dw. Łódź Pabianicka",
-		"latitude": 51.72609,
-		"longitude": 19.44659
-	},
-	{
-		"id": 2565,
-		"name": "Przestrzenna-Rudzka",
-		"latitude": 51.70304,
-		"longitude": 19.43772
-	},
-	{
-		"id": 2567,
-		"name": "Rudzka-Stara Gadka  - cmentarz",
-		"latitude": 51.67857,
-		"longitude": 19.46956
-	},
-	{
-		"id": 2579,
-		"name": "Kopcińskiego-Piłsudskiego",
-		"latitude": 51.76232,
-		"longitude": 19.48502
-	},
-	{
-		"id": 2580,
-		"name": "Traktorowa-Rojna",
-		"latitude": 51.79201,
-		"longitude": 19.3933
-	},
-	{
-		"id": 2581,
-		"name": "Traktorowa-Rojna",
-		"latitude": 51.79296,
-		"longitude": 19.39362
-	},
-	{
-		"id": 2589,
-		"name": "Brójecka-Czternastu Straconych",
-		"latitude": 51.70804,
-		"longitude": 19.54496
-	},
-	{
-		"id": 2590,
-		"name": "Brójecka-Czternastu Straconych",
-		"latitude": 51.70808,
-		"longitude": 19.54497
-	},
-	{
-		"id": 2591,
-		"name": "Brójecka-Bronisin",
-		"latitude": 51.6911,
-		"longitude": 19.52943
-	},
-	{
-		"id": 2592,
-		"name": "Bronisin-Brójecka",
-		"latitude": 51.69128,
-		"longitude": 19.5292
-	},
-	{
-		"id": 2593,
-		"name": "Bronisin-Paprociowa",
-		"latitude": 51.69895,
-		"longitude": 19.52614
-	},
-	{
-		"id": 2594,
-		"name": "Bronisin-Paprociowa",
-		"latitude": 51.69864,
-		"longitude": 19.52623
-	},
-	{
-		"id": 2595,
-		"name": "Bronisin-Wiskicka",
-		"latitude": 51.70371,
-		"longitude": 19.51954
-	},
-	{
-		"id": 2596,
-		"name": "Bronisin-Wiskicka",
-		"latitude": 51.70362,
-		"longitude": 19.5195
-	},
-	{
-		"id": 2597,
-		"name": "Wiączyń Dolny 16",
-		"latitude": 51.77139,
-		"longitude": 19.6192
-	},
-	{
-		"id": 2598,
-		"name": "Wiączyń Dolny 16",
-		"latitude": 51.77145,
-		"longitude": 19.61897
-	},
-	{
-		"id": 2606,
-		"name": "Brójecka-Paprociowa",
-		"latitude": 51.69759,
-		"longitude": 19.53943
-	},
-	{
-		"id": 2607,
-		"name": "Brójecka-Paprociowa",
-		"latitude": 51.69742,
-		"longitude": 19.53907
-	},
-	{
-		"id": 2608,
-		"name": "Maczka-Pienista",
-		"latitude": 51.73359,
-		"longitude": 19.40502
-	},
-	{
-		"id": 2611,
-		"name": "Dworzec PKP(Pabianice)",
-		"latitude": 51.66038,
-		"longitude": 19.32548
-	},
-	{
-		"id": 2612,
-		"name": "Myśliwska-Wschodnia(Pabianice)",
-		"latitude": 51.66018,
-		"longitude": 19.38946
-	},
-	{
-		"id": 2613,
-		"name": "Myśliwska-Skargi(Pabianice)",
-		"latitude": 51.66084,
-		"longitude": 19.38967
-	},
-	{
-		"id": 2614,
-		"name": "Myśliwska-Podleśna(Pabianice)",
-		"latitude": 51.6551,
-		"longitude": 19.38869
-	},
-	{
-		"id": 2615,
-		"name": "Myśliwska-Dolna(Pabianice)",
-		"latitude": 51.65657,
-		"longitude": 19.38902
-	},
-	{
-		"id": 2616,
-		"name": "Waltera - Janke pętla(Pabianice)",
-		"latitude": 51.65224,
-		"longitude": 19.38763
-	},
-	{
-		"id": 2617,
-		"name": "Waltera-Janke-Waltera - Janke bl. 2",
-		"latitude": 51.65196,
-		"longitude": 19.38204
-	},
-	{
-		"id": 2618,
-		"name": "Waltera-Janke-Waltera - Janke bl. 2",
-		"latitude": 51.65187,
-		"longitude": 19.38304
-	},
-	{
-		"id": 2619,
-		"name": "Waltera - Janke bl. 221(Pabianice)",
-		"latitude": 51.65177,
-		"longitude": 19.37716
-	},
-	{
-		"id": 2620,
-		"name": "Waltera - Janke bl. 228(Pabianice)",
-		"latitude": 51.65168,
-		"longitude": 19.37819
-	},
-	{
-		"id": 2621,
-		"name": "Nawrockiego-Waltera - Janke(Pabiani",
-		"latitude": 51.65197,
-		"longitude": 19.37351
-	},
-	{
-		"id": 2622,
-		"name": "Waltera-Janke-Nawrockiego (Pabianic",
-		"latitude": 51.65152,
-		"longitude": 19.37452
-	},
-	{
-		"id": 2623,
-		"name": "Nawrockiego-Mokra(Pabianice)",
-		"latitude": 51.65459,
-		"longitude": 19.37431
-	},
-	{
-		"id": 2624,
-		"name": "Nawrockiego-Gawrońska(Pabianice)",
-		"latitude": 51.65281,
-		"longitude": 19.3736
-	},
-	{
-		"id": 2625,
-		"name": "Grota-Roweckiego-Gryzla(Pabianice)",
-		"latitude": 51.65638,
-		"longitude": 19.37325
-	},
-	{
-		"id": 2626,
-		"name": "Grota-Roweckiego-Nawrockiego (Pabia",
-		"latitude": 51.65623,
-		"longitude": 19.374
-	},
-	{
-		"id": 2627,
-		"name": "Grota-Roweckiego-Bugaj(Pabianice)",
-		"latitude": 51.65672,
-		"longitude": 19.3679
-	},
-	{
-		"id": 2628,
-		"name": "Grota-Roweckiego-os.Kopernika(Pabia",
-		"latitude": 51.65665,
-		"longitude": 19.36745
-	},
-	{
-		"id": 2629,
-		"name": "Grota-Roweckiego-Kilińskiego (Pabia",
-		"latitude": 51.65734,
-		"longitude": 19.35766
-	},
-	{
-		"id": 2630,
-		"name": "Grota-Roweckiego-Hala Sportowa(Pabi",
-		"latitude": 51.65728,
-		"longitude": 19.3575
-	},
-	{
-		"id": 2631,
-		"name": "Kilińskiego-Przychodnia(Pabianice)",
-		"latitude": 51.65953,
-		"longitude": 19.35467
-	},
-	{
-		"id": 2632,
-		"name": "Kilińskiego-Moniuszki(Pabianice)",
-		"latitude": 51.6594,
-		"longitude": 19.3546
-	},
-	{
-		"id": 2633,
-		"name": "Kilińskiego-Zamkowa(Pabianice)",
-		"latitude": 51.66371,
-		"longitude": 19.35475
-	},
-	{
-		"id": 2634,
-		"name": "Kilińskiego-SDH(Pabianice)",
-		"latitude": 51.66358,
-		"longitude": 19.35453
-	},
-	{
-		"id": 2635,
-		"name": "Konopnickiej-Zamkowa(Pabianice)",
-		"latitude": 51.6644,
-		"longitude": 19.34113
-	},
-	{
-		"id": 2636,
-		"name": "Moniuszki-Zielona(Pabianice)",
-		"latitude": 51.66098,
-		"longitude": 19.33872
-	},
-	{
-		"id": 2637,
-		"name": "Moniuszki-Niecała(Pabianice)",
-		"latitude": 51.65887,
-		"longitude": 19.33315
-	},
-	{
-		"id": 2638,
-		"name": "Moniuszki-Ostatnia(Pabianice)",
-		"latitude": 51.65849,
-		"longitude": 19.33207
-	},
-	{
-		"id": 2639,
-		"name": "Moniuszki-Szarych Szeregów(Pab.)",
-		"latitude": 51.65671,
-		"longitude": 19.32875
-	},
-	{
-		"id": 2640,
-		"name": "Moniuszki-Wiejska (Pabianice)",
-		"latitude": 51.65552,
-		"longitude": 19.32665
-	},
-	{
-		"id": 2641,
-		"name": "Wiejska-DPS(Pabianice)",
-		"latitude": 51.65796,
-		"longitude": 19.32424
-	},
-	{
-		"id": 2642,
-		"name": "Wiejska-Łaska(Pabianice)",
-		"latitude": 51.65853,
-		"longitude": 19.32372
-	},
-	{
-		"id": 2643,
-		"name": "Parzęczewska-Parzęczewska /Staffa(Z",
-		"latitude": 51.86785,
-		"longitude": 19.38203
-	},
-	{
-		"id": 2644,
-		"name": "Waltera - Janke pętla(Pabianice)",
-		"latitude": 51.65234,
-		"longitude": 19.38766
-	},
-	{
-		"id": 2658,
-		"name": "Dąbrowskiego-Tatrzańska",
-		"latitude": 51.73679,
-		"longitude": 19.49601
-	},
-	{
-		"id": 2663,
-		"name": "Małczewska 37(Brzeziny)",
-		"latitude": 51.79421,
-		"longitude": 19.7356
-	},
-	{
-		"id": 2664,
-		"name": "Fredry-SP nr 1(Brzeziny)",
-		"latitude": 51.79712,
-		"longitude": 19.74473
-	},
-	{
-		"id": 2666,
-		"name": "Piłsudskiego-Muzeum Regionalne(Brze",
-		"latitude": 51.79926,
-		"longitude": 19.74434
-	},
-	{
-		"id": 2667,
-		"name": "Małczewska 28(Brzeziny)",
-		"latitude": 51.79452,
-		"longitude": 19.73612
-	},
-	{
-		"id": 2668,
-		"name": "Małczewska-Leśna(Brzeziny)",
-		"latitude": 51.78704,
-		"longitude": 19.72089
-	},
-	{
-		"id": 2669,
-		"name": "Małczewska-Leśna(Brzeziny)",
-		"latitude": 51.78622,
-		"longitude": 19.71955
-	},
-	{
-		"id": 2670,
-		"name": "Brzezińska-Rokicińska(Andrespol)",
-		"latitude": 51.72565,
-		"longitude": 19.63909
-	},
-	{
-		"id": 2671,
-		"name": "Brzezińska-Sienkiewicza(Andrespol)",
-		"latitude": 51.7334,
-		"longitude": 19.64483
-	},
-	{
-		"id": 2672,
-		"name": "Brzezińska-Sienkiewicza(Andrespol)",
-		"latitude": 51.73341,
-		"longitude": 19.64472
-	},
-	{
-		"id": 2673,
-		"name": "Ogrodowa-Brzezińska(Andrespol)",
-		"latitude": 51.73655,
-		"longitude": 19.64625
-	},
-	{
-		"id": 2674,
-		"name": "Ogrodowa-Brzezińska(Andrespol)",
-		"latitude": 51.73661,
-		"longitude": 19.6462
-	},
-	{
-		"id": 2675,
-		"name": "Ogrodowa-Magdalenki(Andrespol)",
-		"latitude": 51.73803,
-		"longitude": 19.63847
-	},
-	{
-		"id": 2676,
-		"name": "Ogrodowa-Magdalenki(Andrespol)",
-		"latitude": 51.73812,
-		"longitude": 19.63783
-	},
-	{
-		"id": 2677,
-		"name": "Bedoń Kościelna/Kościół",
-		"latitude": 51.7371,
-		"longitude": 19.63471
-	},
-	{
-		"id": 2678,
-		"name": "Brzezińska-Mazowiecka(Andrespol)",
-		"latitude": 51.73788,
-		"longitude": 19.64935
-	},
-	{
-		"id": 2679,
-		"name": "Brzezińska-Słowiańska(Andrespol)",
-		"latitude": 51.73795,
-		"longitude": 19.64929
-	},
-	{
-		"id": 2680,
-		"name": "Małczew I",
-		"latitude": 51.78254,
-		"longitude": 19.71219
-	},
-	{
-		"id": 2681,
-		"name": "Małczew I",
-		"latitude": 51.7825,
-		"longitude": 19.71231
-	},
-	{
-		"id": 2682,
-		"name": "Małczew II",
-		"latitude": 51.77834,
-		"longitude": 19.70399
-	},
-	{
-		"id": 2683,
-		"name": "Małczew II",
-		"latitude": 51.77833,
-		"longitude": 19.70417
-	},
-	{
-		"id": 2684,
-		"name": "Adamów",
-		"latitude": 51.77148,
-		"longitude": 19.69045
-	},
-	{
-		"id": 2685,
-		"name": "Adamów",
-		"latitude": 51.77148,
-		"longitude": 19.69055
-	},
-	{
-		"id": 2686,
-		"name": "Jordanów I",
-		"latitude": 51.75885,
-		"longitude": 19.67666
-	},
-	{
-		"id": 2687,
-		"name": "Jordanów I",
-		"latitude": 51.75782,
-		"longitude": 19.67535
-	},
-	{
-		"id": 2688,
-		"name": "Jordanów II",
-		"latitude": 51.75268,
-		"longitude": 19.66794
-	},
-	{
-		"id": 2689,
-		"name": "Jordanów II",
-		"latitude": 51.75259,
-		"longitude": 19.66801
-	},
-	{
-		"id": 2690,
-		"name": "Jordanów III",
-		"latitude": 51.74714,
-		"longitude": 19.66084
-	},
-	{
-		"id": 2691,
-		"name": "Jordanów III",
-		"latitude": 51.74713,
-		"longitude": 19.66099
-	},
-	{
-		"id": 2698,
-		"name": "Konstantynowska-ZOO",
-		"latitude": 51.76441,
-		"longitude": 19.4134
-	},
-	{
-		"id": 2699,
-		"name": "Narutowicza-Piotrkowska",
-		"latitude": 51.77067,
-		"longitude": 19.45657
-	},
-	{
-		"id": 2701,
-		"name": "Nawrot-Sienkiewicza",
-		"latitude": 51.76274,
-		"longitude": 19.46307
-	},
-	{
-		"id": 2718,
-		"name": "Srebrzyńska-Kasprzaka",
-		"latitude": 51.77339,
-		"longitude": 19.42681
-	},
-	{
-		"id": 2720,
-		"name": "Zgierska-Julianowska",
-		"latitude": 51.79653,
-		"longitude": 19.44469
-	},
-	{
-		"id": 2721,
-		"name": "św. Anny 27-31(Brzeziny)",
-		"latitude": 51.79741,
-		"longitude": 19.75223
-	},
-	{
-		"id": 2722,
-		"name": "Przedwiośnie(Brzeziny)",
-		"latitude": 51.80048,
-		"longitude": 19.76291
-	},
-	{
-		"id": 2723,
-		"name": "Bohaterów Warszawy-Gimnazjum(Brzezi",
-		"latitude": 51.80123,
-		"longitude": 19.75887
-	},
-	{
-		"id": 2724,
-		"name": "Głowackiego(Brzeziny)",
-		"latitude": 51.80386,
-		"longitude": 19.76266
-	},
-	{
-		"id": 2725,
-		"name": "Modrzewskiego-Biedronka(Brzeziny)",
-		"latitude": 51.80182,
-		"longitude": 19.75596
-	},
-	{
-		"id": 2731,
-		"name": "Włókniarzy-Struga",
-		"latitude": 51.76105,
-		"longitude": 19.43148
-	},
-	{
-		"id": 2732,
-		"name": "Tuwima-Wydawnicza",
-		"latitude": 51.76747,
-		"longitude": 19.48611
-	},
-	{
-		"id": 2736,
-		"name": "Boginia chłodnia",
-		"latitude": 51.83671,
-		"longitude": 19.62691
-	},
-	{
-		"id": 2737,
-		"name": "Boginia chłodnia",
-		"latitude": 51.8367,
-		"longitude": 19.62657
-	},
-	{
-		"id": 2739,
-		"name": "Proboszczewice II mijanka",
-		"latitude": 51.87843,
-		"longitude": 19.3909
-	},
-	{
-		"id": 2740,
-		"name": "Wyszyńskiego mijanka(Ozorków)",
-		"latitude": 51.95721,
-		"longitude": 19.29347
-	},
-	{
-		"id": 2746,
-		"name": "Żeromskiego-Kopernika",
-		"latitude": 51.76236,
-		"longitude": 19.4475
-	},
-	{
-		"id": 2748,
-		"name": "Konstantynów Łódzki-Srebrna mijanka",
-		"latitude": 51.74874,
-		"longitude": 19.35637
-	},
-	{
-		"id": 2749,
-		"name": "Konstantynów Łódzki-Gdańska mijanka",
-		"latitude": 51.74771,
-		"longitude": 19.34492
-	},
-	{
-		"id": 2750,
-		"name": "Obywatelska-Obywatelska 106",
-		"latitude": 51.737,
-		"longitude": 19.43104
-	},
-	{
-		"id": 2752,
-		"name": "Wojska Polskiego-Głowackiego",
-		"latitude": 51.78708,
-		"longitude": 19.47165
-	},
-	{
-		"id": 2758,
-		"name": "Politechniki-Targi Łódzkie",
-		"latitude": 51.74882,
-		"longitude": 19.45026
-	},
-	{
-		"id": 2759,
-		"name": "Politechniki-Targi Łódzkie",
-		"latitude": 51.74908,
-		"longitude": 19.45012
-	},
-	{
-		"id": 2760,
-		"name": "Wyszyńskiego-Armii Krajowej",
-		"latitude": 51.74634,
-		"longitude": 19.39872
-	},
-	{
-		"id": 2761,
-		"name": "Wyszyńskiego-Armii Krajowej",
-		"latitude": 51.7463,
-		"longitude": 19.39875
-	},
-	{
-		"id": 2762,
-		"name": "Wyszyńskiego-Retkińska",
-		"latitude": 51.74814,
-		"longitude": 19.40514
-	},
-	{
-		"id": 2763,
-		"name": "Wyszyńskiego-Retkińska",
-		"latitude": 51.74808,
-		"longitude": 19.40562
-	},
-	{
-		"id": 2765,
-		"name": "Włókniarzy-Mickiewicza (Dw. Łódź Ka",
-		"latitude": 51.75692,
-		"longitude": 19.43434
-	},
-	{
-		"id": 2766,
-		"name": "Włókniarzy-Mickiewicza (Dw. Łódź Ka",
-		"latitude": 51.75672,
-		"longitude": 19.4343
-	},
-	{
-		"id": 2767,
-		"name": "Bandurskiego-Wróblewskiego",
-		"latitude": 51.75042,
-		"longitude": 19.4192
-	},
-	{
-		"id": 2768,
-		"name": "Bandurskiego-Wróblewskiego",
-		"latitude": 51.75052,
-		"longitude": 19.4188
-	},
-	{
-		"id": 2770,
-		"name": "Maratońska-Wileńska",
-		"latitude": 51.75086,
-		"longitude": 19.43071
-	},
-	{
-		"id": 2772,
-		"name": "Retkinia",
-		"latitude": 51.74218,
-		"longitude": 19.38442
-	},
-	{
-		"id": 2773,
-		"name": "Retkinia",
-		"latitude": 51.74234,
-		"longitude": 19.38434
-	},
-	{
-		"id": 2774,
-		"name": "Retkinia",
-		"latitude": 51.74233,
-		"longitude": 19.38397
-	},
-	{
-		"id": 2775,
-		"name": "Retkinia",
-		"latitude": 51.74231,
-		"longitude": 19.38366
-	},
-	{
-		"id": 2776,
-		"name": "Włókniarzy-Mickiewicza (Dw. Ł. Kali",
-		"latitude": 51.75654,
-		"longitude": 19.43454
-	},
-	{
-		"id": 2777,
-		"name": "Piotrkowska Centrum",
-		"latitude": 51.75928,
-		"longitude": 19.45646
-	},
-	{
-		"id": 2778,
-		"name": "Piotrkowska Centrum",
-		"latitude": 51.75926,
-		"longitude": 19.45789
-	},
-	{
-		"id": 2779,
-		"name": "Puszkina-Rondo Inwalidów",
-		"latitude": 51.76006,
-		"longitude": 19.53672
-	},
-	{
-		"id": 2780,
-		"name": "Puszkina-Rondo Inwalidów",
-		"latitude": 51.76002,
-		"longitude": 19.53659
-	},
-	{
-		"id": 2781,
-		"name": "Rokicińska-Gogola",
-		"latitude": 51.75959,
-		"longitude": 19.54319
-	},
-	{
-		"id": 2782,
-		"name": "Rokicińska-Gogola",
-		"latitude": 51.75955,
-		"longitude": 19.54419
-	},
-	{
-		"id": 2783,
-		"name": "Rokicińska-Gogola",
-		"latitude": 51.75927,
-		"longitude": 19.54481
-	},
-	{
-		"id": 2784,
-		"name": "Rokicińska-Gogola",
-		"latitude": 51.75957,
-		"longitude": 19.54379
-	},
-	{
-		"id": 2785,
-		"name": "Rokicińska-Książąt Polskich",
-		"latitude": 51.75549,
-		"longitude": 19.56607
-	},
-	{
-		"id": 2786,
-		"name": "Rokicińska-Książąt Polskich",
-		"latitude": 51.7554,
-		"longitude": 19.5662
-	},
-	{
-		"id": 2787,
-		"name": "Hetmańska-Janów",
-		"latitude": 51.75213,
-		"longitude": 19.57462
-	},
-	{
-		"id": 2788,
-		"name": "Hetmańska-Janów",
-		"latitude": 51.75212,
-		"longitude": 19.57449
-	},
-	{
-		"id": 2789,
-		"name": "Hetmańska-Zagłoby",
-		"latitude": 51.74733,
-		"longitude": 19.57242
-	},
-	{
-		"id": 2790,
-		"name": "Hetmańska-Zagłoby",
-		"latitude": 51.74724,
-		"longitude": 19.57229
-	},
-	{
-		"id": 2791,
-		"name": "Hetmańska-Dąbrówki",
-		"latitude": 51.7432,
-		"longitude": 19.5705
-	},
-	{
-		"id": 2792,
-		"name": "Hetmańska-Dąbrówki",
-		"latitude": 51.7432,
-		"longitude": 19.5705
-	},
-	{
-		"id": 2793,
-		"name": "Hetmańska-Zakładowa",
-		"latitude": 51.74061,
-		"longitude": 19.56941
-	},
-	{
-		"id": 2794,
-		"name": "Hetmańska-Zakładowa",
-		"latitude": 51.74011,
-		"longitude": 19.56895
-	},
-	{
-		"id": 2795,
-		"name": "Odnowiciela-Hetmańska",
-		"latitude": 51.73748,
-		"longitude": 19.56577
-	},
-	{
-		"id": 2796,
-		"name": "Odnowiciela-Hetmańska",
-		"latitude": 51.7368,
-		"longitude": 19.5668
-	},
-	{
-		"id": 2797,
-		"name": "al. Ofiar Terroryzmu 11 Września-De",
-		"latitude": 51.7338,
-		"longitude": 19.569
-	},
-	{
-		"id": 2798,
-		"name": "al. Ofiar Terroryzmu 11 Września-De",
-		"latitude": 51.7338,
-		"longitude": 19.569
-	},
-	{
-		"id": 2799,
-		"name": "al. Ofiar Terroryzmu 11 Września-De",
-		"latitude": 51.73354,
-		"longitude": 19.56913
-	},
-	{
-		"id": 2800,
-		"name": "OLECHÓW",
-		"latitude": 51.73378,
-		"longitude": 19.57592
-	},
-	{
-		"id": 2801,
-		"name": "OLECHÓW",
-		"latitude": 51.73405,
-		"longitude": 19.57661
-	},
-	{
-		"id": 2802,
-		"name": "Piłsudskiego-CH Tulipan",
-		"latitude": 51.7626,
-		"longitude": 19.49605
-	},
-	{
-		"id": 2803,
-		"name": "Piłsudskiego-CH Tulipan",
-		"latitude": 51.76244,
-		"longitude": 19.49767
-	},
-	{
-		"id": 2804,
-		"name": "Sienkiewicza-Narutowicza",
-		"latitude": 51.77057,
-		"longitude": 19.46049
-	},
-	{
-		"id": 2805,
-		"name": "cm. Zarzew",
-		"latitude": 51.74942,
-		"longitude": 19.52021
-	},
-	{
-		"id": 2806,
-		"name": "Lodowa-Przybyszewskiego",
-		"latitude": 51.75096,
-		"longitude": 19.52054
-	},
-	{
-		"id": 2807,
-		"name": "Lodowa-Przybyszewskiego",
-		"latitude": 51.7513,
-		"longitude": 19.5205
-	},
-	{
-		"id": 2808,
-		"name": "Ogrodowa-Karskiego",
-		"latitude": 51.77694,
-		"longitude": 19.44008
-	},
-	{
-		"id": 2810,
-		"name": "Kopernika-Łąkowa",
-		"latitude": 51.76028,
-		"longitude": 19.44333
-	},
-	{
-		"id": 2811,
-		"name": "Mickiewicza-Kościuszki",
-		"latitude": 51.75891,
-		"longitude": 19.45532
-	},
-	{
-		"id": 2813,
-		"name": "Zgierska-cm. Radogoszcz",
-		"latitude": 51.80701,
-		"longitude": 19.43949
-	},
-	{
-		"id": 2814,
-		"name": "Zgierska-cm. Radogoszcz",
-		"latitude": 51.80694,
-		"longitude": 19.43944
-	},
-	{
-		"id": 2815,
-		"name": "Bronisin Dworski-Pogodna",
-		"latitude": 51.69248,
-		"longitude": 19.53381
-	},
-	{
-		"id": 2816,
-		"name": "Bronisin Dworski-Pogodna",
-		"latitude": 51.69241,
-		"longitude": 19.53364
-	},
-	{
-		"id": 2817,
-		"name": "Bandurskiego-Dw. Łódź Kaliska",
-		"latitude": 51.75576,
-		"longitude": 19.43271
-	},
-	{
-		"id": 2818,
-		"name": "Kopernika-Żeromskiego",
-		"latitude": 51.76182,
-		"longitude": 19.44705
-	},
-	{
-		"id": 2819,
-		"name": "Żeromskiego-Mickiewicza",
-		"latitude": 51.75899,
-		"longitude": 19.44799
-	},
-	{
-		"id": 2821,
-		"name": "Sienkiewicza (Brzeziny)",
-		"latitude": 51.80001,
-		"longitude": 19.76495
-	},
-	{
-		"id": 2822,
-		"name": "Legionów-Zachodnia",
-		"latitude": 51.77662,
-		"longitude": 19.45265
-	},
-	{
-		"id": 2823,
-		"name": "Pomorska-Edwarda",
-		"latitude": 51.77494,
-		"longitude": 19.52104
-	},
-	{
-		"id": 2824,
-		"name": "Pomorska-Dw. Łódź Stoki",
-		"latitude": 51.77603,
-		"longitude": 19.51049
-	},
-	{
-		"id": 2832,
-		"name": "Rataja",
-		"latitude": 51.74499,
-		"longitude": 19.62722
-	},
-	{
-		"id": 2833,
-		"name": "Gajcego-Rataja",
-		"latitude": 51.748,
-		"longitude": 19.62336
-	},
-	{
-		"id": 2834,
-		"name": "Gajcego-Rataja",
-		"latitude": 51.74799,
-		"longitude": 19.62352
-	},
-	{
-		"id": 2835,
-		"name": "Gajcego-Szelburg-Zarembiny",
-		"latitude": 51.74594,
-		"longitude": 19.62022
-	},
-	{
-		"id": 2836,
-		"name": "Gajcego-Szelburg-Zarembiny",
-		"latitude": 51.74596,
-		"longitude": 19.62042
-	},
-	{
-		"id": 2837,
-		"name": "Gajcego-Dw. Łódź Andrzejów",
-		"latitude": 51.74257,
-		"longitude": 19.61512
-	},
-	{
-		"id": 2838,
-		"name": "Gajcego-Dw. Łódź Andrzejów",
-		"latitude": 51.74241,
-		"longitude": 19.61506
-	},
-	{
-		"id": 2839,
-		"name": "Gajcego-Rokicińska",
-		"latitude": 51.74071,
-		"longitude": 19.61244
-	},
-	{
-		"id": 2840,
-		"name": "Budy-Marmurowa",
-		"latitude": 51.80109,
-		"longitude": 19.53778
-	},
-	{
-		"id": 2841,
-		"name": "Budy-Marmurowa",
-		"latitude": 51.80103,
-		"longitude": 19.53764
-	},
-	{
-		"id": 2852,
-		"name": "6 Sierpnia-Pogonowskiego",
-		"latitude": 51.76754,
-		"longitude": 19.44315
-	},
-	{
-		"id": 2854,
-		"name": "Pabianicka-Wólczańska",
-		"latitude": 51.73631,
-		"longitude": 19.45899
-	},
-	{
-		"id": 2857,
-		"name": "Zakładowa-Cynarskiego",
-		"latitude": 51.73949,
-		"longitude": 19.57452
-	},
-	{
-		"id": 2858,
-		"name": "Zakładowa-Cynarskiego",
-		"latitude": 51.73961,
-		"longitude": 19.57434
-	},
-	{
-		"id": 2859,
-		"name": "Pabianicka-Wólczańska",
-		"latitude": 51.73639,
-		"longitude": 19.45947
-	},
-	{
-		"id": 2860,
-		"name": "Okólna-Łagiewnicka",
-		"latitude": 51.84658,
-		"longitude": 19.46923
-	},
-	{
-		"id": 2861,
-		"name": "Kilińskiego-Dw. Łódź Chojny",
-		"latitude": 51.72775,
-		"longitude": 19.48032
-	},
-	{
-		"id": 2862,
-		"name": "Kilińskiego-Dw. Łódź Chojny",
-		"latitude": 51.72778,
-		"longitude": 19.4804
-	},
-	{
-		"id": 2863,
-		"name": "Niższa-Śląska",
-		"latitude": 51.72897,
-		"longitude": 19.49007
-	},
-	{
-		"id": 2864,
-		"name": "Niższa-Śląska",
-		"latitude": 51.72888,
-		"longitude": 19.48999
-	},
-	{
-		"id": 2865,
-		"name": "Poronińska-Dw. Łódź Stoki",
-		"latitude": 51.77638,
-		"longitude": 19.50973
-	},
-	{
-		"id": 2866,
-		"name": "CKD stomatologia",
-		"latitude": 51.77568,
-		"longitude": 19.50863
-	},
-	{
-		"id": 2871,
-		"name": "Pomorska-Edwarda",
-		"latitude": 51.77506,
-		"longitude": 19.52085
-	},
-	{
-		"id": 2881,
-		"name": "Transmisyjna-Kosodrzewiny",
-		"latitude": 51.75841,
-		"longitude": 19.57673
-	},
-	{
-		"id": 2884,
-		"name": "Transmisyjna-Kosodrzewiny",
-		"latitude": 51.75834,
-		"longitude": 19.57669
-	},
-	{
-		"id": 2911,
-		"name": "Rąbieńska-Kwiatowa",
-		"latitude": 51.78143,
-		"longitude": 19.39472
-	},
-	{
-		"id": 2912,
-		"name": "Rąbieńska-Kwiatowa",
-		"latitude": 51.78164,
-		"longitude": 19.3945
-	},
-	{
-		"id": 2913,
-		"name": "Marysińska-Okopowa",
-		"latitude": 51.79653,
-		"longitude": 19.46559
-	},
-	{
-		"id": 2914,
-		"name": "Marysińska-Okopowa",
-		"latitude": 51.79659,
-		"longitude": 19.46545
-	},
-	{
-		"id": 2915,
-		"name": "Popiełuszki-Maratońska",
-		"latitude": 51.73672,
-		"longitude": 19.38632
-	},
-	{
-		"id": 2931,
-		"name": "Okulickiego-Zgierska",
-		"latitude": 51.82876,
-		"longitude": 19.42533
-	},
-	{
-		"id": 2932,
-		"name": "Nastrojowa-Plac Słoneczny",
-		"latitude": 51.82024,
-		"longitude": 19.44254
-	},
-	{
-		"id": 2933,
-		"name": "Świtezianki-Nastrojowa",
-		"latitude": 51.82417,
-		"longitude": 19.43763
-	},
-	{
-		"id": 2934,
-		"name": "Świtezianki-Zgierska",
-		"latitude": 51.82255,
-		"longitude": 19.43113
-	},
-	{
-		"id": 2935,
-		"name": "Okulickiego-Zgierska",
-		"latitude": 51.82886,
-		"longitude": 19.42549
-	},
-	{
-		"id": 2936,
-		"name": "11 Listopada-Dw. Łódź Radogoszcz Za",
-		"latitude": 51.82081,
-		"longitude": 19.4168
-	},
-	{
-		"id": 2937,
-		"name": "11 Listopada-Dw. Łódź Radogoszcz Za",
-		"latitude": 51.8205,
-		"longitude": 19.41723
-	},
-	{
-		"id": 2938,
-		"name": "11 Listopada-Pętla",
-		"latitude": 51.81845,
-		"longitude": 19.41875
-	},
-	{
-		"id": 2939,
-		"name": "Świtezianki-Zgierska",
-		"latitude": 51.82254,
-		"longitude": 19.43143
-	},
-	{
-		"id": 2940,
-		"name": "Zielony Romanów",
-		"latitude": 51.80769,
-		"longitude": 19.32613
-	},
-	{
-		"id": 2941,
-		"name": "Romanowska-Romanowska 27",
-		"latitude": 51.80693,
-		"longitude": 19.3333
-	},
-	{
-		"id": 2942,
-		"name": "Romanowska-Romanowska 27",
-		"latitude": 51.80713,
-		"longitude": 19.33317
-	},
-	{
-		"id": 2943,
-		"name": "Romanowska-Aleksandrowska",
-		"latitude": 51.81122,
-		"longitude": 19.34054
-	},
-	{
-		"id": 2944,
-		"name": "Romanowska-Aleksandrowska",
-		"latitude": 51.81135,
-		"longitude": 19.34028
-	},
-	{
-		"id": 2945,
-		"name": "Okulickiego-11 Listopada",
-		"latitude": 51.82694,
-		"longitude": 19.4186
-	},
-	{
-		"id": 2946,
-		"name": "Okulickiego-11 Listopada",
-		"latitude": 51.82719,
-		"longitude": 19.41859
-	},
-	{
-		"id": 2947,
-		"name": "Świtezianki-Nastrojowa",
-		"latitude": 51.82461,
-		"longitude": 19.43959
-	},
-	{
-		"id": 2969,
-		"name": "Moniuszki-Toruńska (Pabianice)",
-		"latitude": 51.65969,
-		"longitude": 19.33478
-	},
-	{
-		"id": 2970,
-		"name": "Moniuszki-Wysoka (Pabianice)",
-		"latitude": 51.66011,
-		"longitude": 19.33625
-	},
-	{
-		"id": 2976,
-		"name": "Przybyszewskiego-Rondo Sybiraków",
-		"latitude": 51.7523,
-		"longitude": 19.53334
-	},
-	{
-		"id": 2977,
-		"name": "Przybyszewskiego-Rondo Sybiraków",
-		"latitude": 51.75293,
-		"longitude": 19.5333
-	},
-	{
-		"id": 2978,
-		"name": "Nowogrodzka-Mazowiecka",
-		"latitude": 51.76714,
-		"longitude": 19.51202
-	},
-	{
-		"id": 2979,
-		"name": "Edwarda-Czechosłowacka",
-		"latitude": 51.77004,
-		"longitude": 19.516
-	},
-	{
-		"id": 2980,
-		"name": "Piątkowska /park (Zgierz)",
-		"latitude": 51.86066,
-		"longitude": 19.40653
-	},
-	{
-		"id": 2981,
-		"name": "Piątkowska /park (Zgierz)",
-		"latitude": 51.86051,
-		"longitude": 19.40662
-	},
-	{
-		"id": 2982,
-		"name": "Łęczycka (Zgierz)",
-		"latitude": 51.85983,
-		"longitude": 19.40393
-	},
-	{
-		"id": 2983,
-		"name": "Łęczycka (Zgierz)",
-		"latitude": 51.85983,
-		"longitude": 19.40393
-	},
-	{
-		"id": 2989,
-		"name": "Łódź Fabryczna",
-		"latitude": 51.77001,
-		"longitude": 19.46593
-	},
-	{
-		"id": 2990,
-		"name": "Łódź Fabryczna",
-		"latitude": 51.76994,
-		"longitude": 19.46598
-	},
-	{
-		"id": 2991,
-		"name": "Łódź Fabryczna",
-		"latitude": 51.76992,
-		"longitude": 19.46633
-	},
-	{
-		"id": 2992,
-		"name": "Łódź Fabryczna",
-		"latitude": 51.76989,
-		"longitude": 19.46652
-	},
-	{
-		"id": 2993,
-		"name": "Łódź Fabryczna",
-		"latitude": 51.77002,
-		"longitude": 19.46638
-	},
-	{
-		"id": 2994,
-		"name": "Łódź Fabryczna",
-		"latitude": 51.76989,
-		"longitude": 19.46617
-	},
-	{
-		"id": 2995,
-		"name": "Łódź Fabryczna",
-		"latitude": 51.77019,
-		"longitude": 19.4686
-	},
-	{
-		"id": 2996,
-		"name": "Łódź Fabryczna",
-		"latitude": 51.77014,
-		"longitude": 19.46943
-	},
-	{
-		"id": 2997,
-		"name": "Łódź Fabryczna",
-		"latitude": 51.77011,
-		"longitude": 19.4703
-	},
-	{
-		"id": 2998,
-		"name": "Łódź Fabryczna",
-		"latitude": 51.77007,
-		"longitude": 19.47115
-	},
-	{
-		"id": 2999,
-		"name": "Łódź Fabryczna",
-		"latitude": 51.77037,
-		"longitude": 19.46865
-	},
-	{
-		"id": 3000,
-		"name": "Łódź Fabryczna",
-		"latitude": 51.77029,
-		"longitude": 19.4697
-	},
-	{
-		"id": 3001,
-		"name": "Łódź Fabryczna",
-		"latitude": 51.77029,
-		"longitude": 19.47029
-	},
-	{
-		"id": 3002,
-		"name": "Łódź Fabryczna",
-		"latitude": 51.77002,
-		"longitude": 19.472
-	},
-	{
-		"id": 3003,
-		"name": "Łódź Fabryczna",
-		"latitude": 51.76994,
-		"longitude": 19.47204
-	},
-	{
-		"id": 3004,
-		"name": "Kilińskiego-Nawrot",
-		"latitude": 51.76328,
-		"longitude": 19.46722
-	},
-	{
-		"id": 3005,
-		"name": "Tramwajowa-Narutowicza",
-		"latitude": 51.77219,
-		"longitude": 19.47666
-	},
-	{
-		"id": 3006,
-		"name": "Kilińskiego-Narutowicza",
-		"latitude": 51.77162,
-		"longitude": 19.46325
-	},
-	{
-		"id": 3007,
-		"name": "Niciarniana-Przybyszewskiego",
-		"latitude": 51.75058,
-		"longitude": 19.51252
-	},
-	{
-		"id": 3010,
-		"name": "Wojska Polskiego-Franciszkańska",
-		"latitude": 51.78477,
-		"longitude": 19.46088
-	},
-	{
-		"id": 3011,
-		"name": "Żeromskiego-Kopernika",
-		"latitude": 51.76253,
-		"longitude": 19.44762
-	},
-	{
-		"id": 3012,
-		"name": "Widzewska-Wiejska",
-		"latitude": 51.76005,
-		"longitude": 19.51809
-	},
-	{
-		"id": 3013,
-		"name": "Północna",
-		"latitude": 51.77952,
-		"longitude": 19.4583
-	},
-	{
-		"id": 3014,
-		"name": "Prądzyńskiego-Pokładowa",
-		"latitude": 51.72274,
-		"longitude": 19.43753
-	},
-	{
-		"id": 3015,
-		"name": "Łódź Fabryczna",
-		"latitude": 51.77019,
-		"longitude": 19.47192
-	},
-	{
-		"id": 3016,
-		"name": "Węglowa-Tramwajowa",
-		"latitude": 51.7695,
-		"longitude": 19.47602
-	},
-	{
-		"id": 3017,
-		"name": "Węglowa-Lindleya",
-		"latitude": 51.76948,
-		"longitude": 19.47531
-	},
-	{
-		"id": 3018,
-		"name": "Piłsudskiego-Niciarniana",
-		"latitude": 51.76355,
-		"longitude": 19.50759
-	},
-	{
-		"id": 3019,
-		"name": "CKD parking",
-		"latitude": 51.77259,
-		"longitude": 19.50844
-	},
-	{
-		"id": 3020,
-		"name": "CKD parking",
-		"latitude": 51.77255,
-		"longitude": 19.50823
-	},
-	{
-		"id": 3021,
-		"name": "CKD szpital",
-		"latitude": 51.77438,
-		"longitude": 19.50838
-	},
-	{
-		"id": 3022,
-		"name": "CKD szpital",
-		"latitude": 51.77455,
-		"longitude": 19.50799
-	},
-	{
-		"id": 3023,
-		"name": "Tęczowa-Centralna",
-		"latitude": 51.80637,
-		"longitude": 19.48052
-	},
-	{
-		"id": 3024,
-		"name": "Bednarska-Unicka",
-		"latitude": 51.7346,
-		"longitude": 19.46534
-	},
-	{
-		"id": 3025,
-		"name": "Bednarska-Unicka",
-		"latitude": 51.73464,
-		"longitude": 19.46474
-	},
-	{
-		"id": 3026,
-		"name": "park Podolski",
-		"latitude": 51.74075,
-		"longitude": 19.49916
-	},
-	{
-		"id": 3027,
-		"name": "Żubardzka-Inowrocławska",
-		"latitude": 51.78644,
-		"longitude": 19.41921
-	},
-	{
-		"id": 3028,
-		"name": "Żubardź",
-		"latitude": 51.78874,
-		"longitude": 19.41937
-	},
-	{
-		"id": 3029,
-		"name": "Ogrodowa-Karskiego",
-		"latitude": 51.77696,
-		"longitude": 19.43989
-	},
-	{
-		"id": 3030,
-		"name": "Karskiego-Ogrodowa",
-		"latitude": 51.77771,
-		"longitude": 19.4387
-	},
-	{
-		"id": 3031,
-		"name": "Ogrodowa-Gdańska",
-		"latitude": 51.77838,
-		"longitude": 19.44945
-	},
-	{
-		"id": 3032,
-		"name": "Ogrodowa-Gdańska",
-		"latitude": 51.77825,
-		"longitude": 19.44676
-	},
-	{
-		"id": 3033,
-		"name": "Telefoniczna-Bystrzycka",
-		"latitude": 51.78291,
-		"longitude": 19.49461
-	},
-	{
-		"id": 3034,
-		"name": "Leszczowa-Dw. Łódź Pabianicka",
-		"latitude": 51.72617,
-		"longitude": 19.44492
-	},
-	{
-		"id": 3035,
-		"name": "Karpacka-Zaolziańska",
-		"latitude": 51.72638,
-		"longitude": 19.45451
-	},
-	{
-		"id": 3036,
-		"name": "Lodowa-Przybyszewskiego",
-		"latitude": 51.75255,
-		"longitude": 19.52075
-	},
-	{
-		"id": 3037,
-		"name": "Przybyszewskiego-Mechaniczna",
-		"latitude": 51.75152,
-		"longitude": 19.5183
-	},
-	{
-		"id": 3038,
-		"name": "Urząd Skarbowy Widzew",
-		"latitude": 51.74743,
-		"longitude": 19.51667
-	},
-	{
-		"id": 3039,
-		"name": "Śląska-Niższa",
-		"latitude": 51.72803,
-		"longitude": 19.49146
-	},
-	{
-		"id": 3040,
-		"name": "Śląska-Dw. Łódź Chojny",
-		"latitude": 51.72748,
-		"longitude": 19.48116
-	},
-	{
-		"id": 3041,
-		"name": "Kruczkowskiego-Śląska",
-		"latitude": 51.72826,
-		"longitude": 19.49826
-	},
-	{
-		"id": 3042,
-		"name": "Maratońska (wew.)-Plocka",
-		"latitude": 51.73909,
-		"longitude": 19.39727
-	},
-	{
-		"id": 3043,
-		"name": "Maratońska (wew.)-Plocka",
-		"latitude": 51.73917,
-		"longitude": 19.39734
-	},
-	{
-		"id": 3044,
-		"name": "Zenitowa-św. Franciszka",
-		"latitude": 51.72749,
-		"longitude": 19.43052
-	},
-	{
-		"id": 3045,
-		"name": "Pustynna-Nowe Sady",
-		"latitude": 51.7312,
-		"longitude": 19.43173
-	},
-	{
-		"id": 3046,
-		"name": "Nowe Sady-Pustynna",
-		"latitude": 51.73146,
-		"longitude": 19.43369
-	},
-	{
-		"id": 3047,
-		"name": "Proletariacka-Wróblewskiego",
-		"latitude": 51.74488,
-		"longitude": 19.4423
-	},
-	{
-		"id": 3048,
-		"name": "Włókniarzy-Zgierska",
-		"latitude": 51.81562,
-		"longitude": 19.43249
-	},
-	{
-		"id": 3049,
-		"name": "Niezapominajki-Stawowa",
-		"latitude": 51.81477,
-		"longitude": 19.42868
-	},
-	{
-		"id": 3050,
-		"name": "Franciszkańska-Organizacji WiN",
-		"latitude": 51.78774,
-		"longitude": 19.45972
-	},
-	{
-		"id": 3051,
-		"name": "Źródłowa-Wojska Polskiego",
-		"latitude": 51.78539,
-		"longitude": 19.46767
-	},
-	{
-		"id": 3052,
-		"name": "Okopowa-Zagajnikowa",
-		"latitude": 51.79617,
-		"longitude": 19.47543
-	},
-	{
-		"id": 3053,
-		"name": "Skrzydlata-Dojazdowa",
-		"latitude": 51.81019,
-		"longitude": 19.47293
-	},
-	{
-		"id": 3054,
-		"name": "Marysińska-Szklana",
-		"latitude": 51.79333,
-		"longitude": 19.46543
-	},
-	{
-		"id": 3055,
-		"name": "Tamka-Styrska",
-		"latitude": 51.78068,
-		"longitude": 19.48924
-	},
-	{
-		"id": 3056,
-		"name": "Zamenhofa-Gdańska",
-		"latitude": 51.76163,
-		"longitude": 19.45037
-	},
-	{
-		"id": 3057,
-		"name": "Sternfelda-Powszechna",
-		"latitude": 51.71758,
-		"longitude": 19.49576
-	},
-	{
-		"id": 3058,
-		"name": "Sternfelda-Powszechna",
-		"latitude": 51.71731,
-		"longitude": 19.49576
-	},
-	{
-		"id": 3059,
-		"name": "Św. Wojciecha-Mieszczańska",
-		"latitude": 51.71336,
-		"longitude": 19.49146
-	},
-	{
-		"id": 3060,
-		"name": "Św. Wojciecha-Mieszczańska",
-		"latitude": 51.71336,
-		"longitude": 19.49216
-	},
-	{
-		"id": 3061,
-		"name": "Żeligowskiego-Zielona",
-		"latitude": 51.76954,
-		"longitude": 19.43844
-	},
-	{
-		"id": 3062,
-		"name": "Hipoteczna-Pojezierska",
-		"latitude": 51.79771,
-		"longitude": 19.433
-	},
-	{
-		"id": 3063,
-		"name": "Hipoteczna-Pojezierska",
-		"latitude": 51.79771,
-		"longitude": 19.43275
-	},
-	{
-		"id": 3064,
-		"name": "Przędzalniana-Fabryczna",
-		"latitude": 51.75707,
-		"longitude": 19.48229
-	},
-	{
-		"id": 3065,
-		"name": "Przędzalniana-Fabryczna",
-		"latitude": 51.75783,
-		"longitude": 19.48192
-	},
-	{
-		"id": 3067,
-		"name": "Piotrkowska-Żwirki",
-		"latitude": 51.75569,
-		"longitude": 19.45932
-	},
-	{
-		"id": 3068,
-		"name": "Piotrkowska-Żwirki",
-		"latitude": 51.75615,
-		"longitude": 19.45918
-	},
-	{
-		"id": 3069,
-		"name": "Piotrkowska-Brzeźna",
-		"latitude": 51.75303,
-		"longitude": 19.45978
-	},
-	{
-		"id": 3070,
-		"name": "Piotrkowska-pl. Katedralny",
-		"latitude": 51.74823,
-		"longitude": 19.46115
-	},
-	{
-		"id": 3071,
-		"name": "Piotrkowska-pl. Katedralny",
-		"latitude": 51.74972,
-		"longitude": 19.46048
-	},
-	{
-		"id": 3072,
-		"name": "Piotrkowska-Czerwona",
-		"latitude": 51.74573,
-		"longitude": 19.46167
-	},
-	{
-		"id": 3073,
-		"name": "Zawiszy-Franciszkańska",
-		"latitude": 51.78669,
-		"longitude": 19.4577
-	},
-	{
-		"id": 3074,
-		"name": "Organizacji WiN-Franciszkańska",
-		"latitude": 51.78757,
-		"longitude": 19.45746
-	},
-	{
-		"id": 3075,
-		"name": "Bednarska-Pabianicka",
-		"latitude": 51.73603,
-		"longitude": 19.45967
-	},
-	{
-		"id": 3076,
-		"name": "Armii Krajowej-Batalionów Chłopskic",
-		"latitude": 51.74205,
-		"longitude": 19.40156
-	},
-	{
-		"id": 3077,
-		"name": "Armii Krajowej-Batalionów Chłopskic",
-		"latitude": 51.74255,
-		"longitude": 19.40089
-	},
-	{
-		"id": 3078,
-		"name": "Radwańska-Inżynierska",
-		"latitude": 51.75121,
-		"longitude": 19.44269
-	},
-	{
-		"id": 3079,
-		"name": "Franciszkańska-Organizacji WiN",
-		"latitude": 51.78811,
-		"longitude": 19.45944
-	},
-	{
-		"id": 3080,
-		"name": "Astrów-Inflancka",
-		"latitude": 51.80122,
-		"longitude": 19.466
-	},
-	{
-		"id": 3081,
-		"name": "Karolew",
-		"latitude": 51.74736,
-		"longitude": 19.42123
-	},
-	{
-		"id": 3082,
-		"name": "Młynek",
-		"latitude": 51.72356,
-		"longitude": 19.52021
-	},
-	{
-		"id": 3083,
-		"name": "Uniwersytecka-Narutowicza",
-		"latitude": 51.77322,
-		"longitude": 19.47404
-	},
-	{
-		"id": 3084,
-		"name": "Uniwersytecka-Narutowicza",
-		"latitude": 51.77277,
-		"longitude": 19.474
-	},
-	{
-		"id": 3085,
-		"name": "Wieńcowa-Wieśniacza",
-		"latitude": 51.72659,
-		"longitude": 19.60806
-	},
-	{
-		"id": 3086,
-		"name": "Wieńcowa-Wieśniacza",
-		"latitude": 51.72662,
-		"longitude": 19.60792
-	},
-	{
-		"id": 3087,
-		"name": "Skrzydlata-Dojazdowa",
-		"latitude": 51.81013,
-		"longitude": 19.47271
-	},
-	{
-		"id": 3088,
-		"name": "Paderewskiego-Zaolziańska",
-		"latitude": 51.7292,
-		"longitude": 19.45677
-	},
-	{
-		"id": 3089,
-		"name": "Czahary-Prądzyńskiego",
-		"latitude": 51.72381,
-		"longitude": 19.42329
-	},
-	{
-		"id": 3090,
-		"name": "Lodowa-Przybyszewskiego",
-		"latitude": 51.75247,
-		"longitude": 19.52044
-	},
-	{
-		"id": 3091,
-		"name": "Sienkiewicza-Tuwima",
-		"latitude": 51.76566,
-		"longitude": 19.46142
-	},
-	{
-		"id": 3092,
-		"name": "Sienkiewicza-Nawrot",
-		"latitude": 51.76259,
-		"longitude": 19.46221
-	},
-	{
-		"id": 3093,
-		"name": "Konstantynów Łódzki-1-go Maja",
-		"latitude": 51.74257,
-		"longitude": 19.32682
-	},
-	{
-		"id": 3094,
-		"name": "Konstantynów Łódzki-1-go Maja",
-		"latitude": 51.74236,
-		"longitude": 19.3286
-	},
-	{
-		"id": 3095,
-		"name": "Konstantynów Łódzki-Kolejowa",
-		"latitude": 51.74096,
-		"longitude": 19.33344
-	},
-	{
-		"id": 3096,
-		"name": "Konstantynów Łódzki-Kolejowa",
-		"latitude": 51.74066,
-		"longitude": 19.33354
-	},
-	{
-		"id": 3097,
-		"name": "plac Wolności (Konstantynów)",
-		"latitude": 51.75053,
-		"longitude": 19.31371
-	},
-	{
-		"id": 3098,
-		"name": "Konstantynów Łódzki-plac Kościuszki",
-		"latitude": 51.74785,
-		"longitude": 19.32456
-	},
-	{
-		"id": 3099,
-		"name": "Konstantynów Łódzki-plac Kościuszki",
-		"latitude": 51.74784,
-		"longitude": 19.32422
-	},
-	{
-		"id": 3100,
-		"name": "Konstantynów Łódzki-Daszyńskiego",
-		"latitude": 51.74887,
-		"longitude": 19.31953
-	},
-	{
-		"id": 3101,
-		"name": "Konstantynów Łódzki-Moniuszki",
-		"latitude": 51.74876,
-		"longitude": 19.3195
-	},
-	{
-		"id": 3102,
-		"name": "plac Wolności (Konstantynów)",
-		"latitude": 51.75046,
-		"longitude": 19.31367
-	},
-	{
-		"id": 3103,
-		"name": "ŁSSE Langiewicza (Konstantynów)",
-		"latitude": 51.74136,
-		"longitude": 19.35348
-	},
-	{
-		"id": 3104,
-		"name": "ŁSSE Łąkowa (Konstantynów)",
-		"latitude": 51.74396,
-		"longitude": 19.35074
-	},
-	{
-		"id": 3105,
-		"name": "Konstantynów Łódzki-Kolejowa 28",
-		"latitude": 51.73677,
-		"longitude": 19.33845
-	},
-	{
-		"id": 3106,
-		"name": "Kościelna (Konstantynów)",
-		"latitude": 51.74667,
-		"longitude": 19.36052
-	},
-	{
-		"id": 3108,
-		"name": "Mazowiecka-Czechosłowacka",
-		"latitude": 51.77166,
-		"longitude": 19.5101
-	},
-	{
-		"id": 3109,
-		"name": "Zachodnia-Manufaktura",
-		"latitude": 51.78072,
-		"longitude": 19.45087
-	},
-	{
-		"id": 3110,
-		"name": "przejazd techniczny",
-		"latitude": 51.79185,
-		"longitude": 19.42558
-	},
-	{
-		"id": 3111,
-		"name": "Nowa-Nawrot",
-		"latitude": 51.76467,
-		"longitude": 19.48231
-	},
-	{
-		"id": 3112,
-		"name": "Nawrot-Przędzalniana",
-		"latitude": 51.7642,
-		"longitude": 19.4807
-	},
-	{
-		"id": 3113,
-		"name": "Wodna-Tuwima",
-		"latitude": 51.7668,
-		"longitude": 19.47555
-	},
-	{
-		"id": 3114,
-		"name": "Srebrzyńska-Cmentarna",
-		"latitude": 51.77551,
-		"longitude": 19.43563
-	}
-];
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAgAElEQVR4AQBJgLZ/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///xIAAAAnAAAAJAAAABAAAAANAAAADAAAAA0AAAANAAAADQAAAA0AAAAAAAAA8wAAAPMAAADzAAAA8wAAAPQAAADzAAAA8AAAANwAAADZAQEB7gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///xUAAAA5AAAAKAAAACcAAAAnAAAAJwAAABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA7AAAANkAAADZAAAA2QAAANgAAADHAQEB6wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALwile8AACAASURBVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////DwAAAEAAAABCAAAAQgAAACsAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/AAAA1QAAAL4AAAC+AAAAwAEBAfEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////NAAAAFQAAABDAAAAMQAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/QAAAM8AAAC9AAAArAEBAcwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////HAAAAFwAAABdAAAAKgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANYAAACjAAAApAEBAeQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////DAAAAFMAAABeAAAAQAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/gAAAL8AAACjAAAArQEBAfQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///xYAAABxAAAAagAAAA4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8gAAAJYAAACOAQEB6wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8cAAAAdQAAAGUAAAAJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD3AAAAmwAAAIsBAQHkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////IwAAAHgAAABeAAAABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPoAAACiAAAAiAEBAd0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///w8AAACEAAAAaQAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/QAAAJcAAAB8AQEB8QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////XQAAAIsAAAAXAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADpAAAAdAEBAaQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///ysAAACVAAAAPwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAABrAQEB1gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8J////igAAAM8AAAA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeIXyYgAAIABJREFUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAADQ////iv///wkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///ykAAACqAAAALAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANMAAABWAQEB2AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////XQAAAMsAAAAsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC0AAADM////XQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///woAAACUAAAAYQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPgAAADnAAAA8wAAAPMAAADzAAAA8wAAAPQAAAAAAAAADAAAAA0AAAANAAAADQAAAA0AAAAZAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJ8AAABrAQEB9wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////KQAAAKsAAAArAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPUAAADJAAAA2AAAANkAAADZAAAA2QAAAOIBAQH+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8CAAAAHgAAACcAAAAnAAAAJwAAACgAAAA3AAAACwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADUAAAAVgEBAdcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///9DAAAArwAAAA0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA+QAAAMgAAAC9AAAAvgAAAMoBAQH7AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8FAAAANgAAAEMAAABCAAAAOAAAAAcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8wAAAFABAQG+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///1X////5////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////9////6n///9M////CQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////Cf///0z///+p////9/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////j///9UAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////av////3//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////v///8L///9k////DwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////D////2X////D/////v/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////9////aQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///+B//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////n///+Z////JAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////JP///5n////5/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////4EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////Af///5f////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////1////j////xsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8b////j/////X///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+W////AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////jv//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+P///4j///8VAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///xX///+I////+P/////////////////////////////ZXiUIAAAgAElEQVT/////////////////////////////////////////////////////////////////////////////////////////////////jQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///93//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+4////JAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////JP///7j//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////3YAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///2H/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////4////1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///9U////4/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////9gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////Tf////z///////////////////////////////////////////////////////////////////////////////////////////////////////////////////+R////DAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////DP///5H////////////////////////////////////////////////////////////////////////////////////////////////////////////////////7////TAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///87////9v//////////////////////////////////////////////////////////////////////////////////////////////////////////////7f///00AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///9O////7v//////////////////////////////////////////////////////////////////////////////////////////////////////////////9v///zsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///xr////q///////////////////////////////////////////////////////////////////////////////////////////////////////////////F////HgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////Hv///8b//////////////////////////////////////////////////////////////////////////////////////////////////////////////+n///8ZAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////A////8D//////////////////////////////////////////////////////////////////////////////////////////////////////////////4n///8EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wT///+J//////////////////////////////////////////////////////////////////////////////////////////////////////////////+/////AwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////g//////////////////////////////////////////////////////////////////////////////////////////////////////////8////YgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////Y/////z/////////////////////////////////////////////////////////////////////////////////////////////////////////ggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///9E/////f////////////////////////////////////////////////////////////////////////////////////////////////////f///9PAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///0/////3/////////////////////////////////////////////////////////////////////////////////////////////////////f///0MAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///xn////p////////////////////////////////////////////////////////////////////////////////////////////////////8P///z0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8+////8P///////////////////////////////////////////////////////////////////////////////////////////////////+j///8YAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////Af///73////////////////////////////////////////////////////////////////////////////////////////////////////r////LgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////L////+v///////////////////////////////////////////////////////////////////////////////////////////////////+8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP5KqOIAACAASURBVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALd/SIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///9g////////////////////////////////////////////////////////////////////////////////////////////////////8////zUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////Nf////T///////////////////////////////////////////////////////////////////////////////////////////////////9fAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///xH////q///////////////////////////////////////////////////////////////////////////////////////////////6////RQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///0b////6///////////////////////////////////////////////////////////////////////////////////////////////p////EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///5b///////////////////////////////////////////////////////////////////////////////////////////////7///9ZAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///9a/////v//////////////////////////////////////////////////////////////////////////////////////////////lQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////NP////3//////////////////////////////////////////////////////////////////////////////////////////////3AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////cf///////////////////////////////////////////////////////////////////////////////////////////////f///zMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8C////y///////////////////////////////////////////////////////////////////////////////////////////////pQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///6b//////////////////////////////////////////////////////////////////////////////////////////////8r///8CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///9m///////////////////////////////////////////////////////////////////////////////////////////////Z////DAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///w3////Z//////////////////////////////////////////////////////////////////////////////////////////////9mAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wUAAADdAAAAHQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPgAAAA3AQEB0gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///4AAAABeAAAABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPgAAACYAQEBjAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8vAAAAyAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADjAAAAIwEBAfsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///2T//////////////////////////////////////////////////////////////////////////////////////////////2YAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////R///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////NQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////Z///////////////////////////////////////////////////////////////////////////////////////////////YwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////AwAAAHgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAswEBAZoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEBmQAAALQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeP///wMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWAAAACMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD3AAAAbgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wMAAAANAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC////xAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP8AAADzAQEB/gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAG4AAABDAAAACQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJAAAAFcAAACmAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFNXaWgAAIABJREFUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8B////1f////////////////////////////////////////////////////////////////////////////////////////97AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////c/////P////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////v////ZQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///99/////////////////////////////////////////////////////////////////////////////////////////9T///8BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///9TAAAArAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANkAAAAuAQEB+gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///89AAAAwgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAAC4BAQHUAAAAAAAAAAAAAAAAAAAAAAAAAAD///8HAAAA1AAAACQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABTAQEBrgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABtAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGsBAQH6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA7AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAADkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQH5AAAAbQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABtAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///x8AAAA+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAuwEBAb0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEBuAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/////HgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFwAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAhQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAXAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAF0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADFAQEBwQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANMAAAAxAAAAMQAAADEAAAAxAAAAiAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAewAAADUAAAA1AAAANQAAADUAAADkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAb0AAADIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////NwAAACcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPYBAQHQAAAAAAAAAAAAAAAA////PAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA3gEBAcwAAAAAAAAAAAAAAAD////5AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACFAAAAswAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKP///zYBAQHKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAM4BAQG3AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAsQAAAOcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADfAAAAugAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQG0AAAA0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAF0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8FAAAAWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAxAAAAFoAAAAoAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP0AAADXAAAAfAAAAEYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlAAAAJwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFj///9xAQEB/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA2AAAAEwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA9wAAAKsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAfYAAADOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArAAAAJQAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAAAA2AAAAxgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAsAEBAfMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADD8omyAAAgAElEQVQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEB8QAAALIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAogAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wgAAAA5AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADoAAAAuwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALgAAADrAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA5////BwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADoAAAAHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACsAQEB/QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/AAAAAAAAAAAAAAAAAAAAAAAAAP4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD+AAAAAAAAAAAAAAAAAAAAAAAAAP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAfwAAACtAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAOgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADTAAAAAAAAAAAAAAAAAAAAAAAAANMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADTAAAAAAAAAAAAAAAAAAAAAAAAANQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC9AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP4AAADBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACzAAAAoQAAAAAAAAAAAAAA1AAAAH8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB1AAAA3gAAAAAAAAAAAAAAjwEBAcUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC/AAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAM8BAQHwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQH/AAAAYP///4MAAAAPAAAA0QEBAf0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQHe////KAAAADAAAADrAQEB4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQHt////0QAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////GgAAAA0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAL8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAd0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEB+wAAAMsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAvgAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADf///xkBAQHnAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAL4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAvQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAM4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAzgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8QEBAekAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKttRTgAACAASURBVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEB6AAAAPIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA2gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA2QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA2QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8HAAAABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA2wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAb///8GAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA7QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAO4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA9QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPUAAAAAAAAAAAAA8Wij4AAAIABJREFUAAAAAAAAAAAAAAAAAACA/38AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAfIAAAD5AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAjAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA+AEBAfMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADXAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA1gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA1gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAC+1uRtAAAgAElEQVQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAV////EQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAApAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAqAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8SAAAAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA1gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALwAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABf////1AAAAL8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAEoAAABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAuAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA1gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADYAAAA/gAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAAAAjgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD+AAAA2AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQH3AAAA4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADfAQEB+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAzQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOP///wkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///woAAAA3AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAuwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgAAADsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADsAAAAGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC7AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAugAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD7AAAAkwAAAFsAAACCAAAA8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPMAAACGAAAAWwAAAI8AAAD5AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC5AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///9j//////////////////////////////////////////////////////////////////////////////9oAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///9s/////////////////////////+H///9x////i/////v///////////////////9QAAAAAAAAAAAAAAAA////LP////j/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+v///zQAAAAAAAAAAAAAAAD///9I/////////////////////f///5D///9v////3f////////////////////////9YAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///9v//////////////////////////////////////////////////////////////////////////////9gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///5L///////////////////////////////////////////////////////////////////////////////////84AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///9s/////////////////////////zIAAAAAAAAAAP///4f//////////////9QAAAAAAAAAAAAAAAAAAAAAAAAAAP///6j/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////sgAAAAAAAAAAAAAAAAAAAAAAAAAA////yv//////////////kQAAAAAAAAAA////KP////////////////////////9YAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////Of///////////////////////////////////////////////////////////////////////////////////5EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOEAAAAAAAAAAAAAAOIAAAAAAAAAAAAAAO0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAO8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA7gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA7gAAAAAAAAAAAAAA4QAAAAAAAAAAAAAA4gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wv////5///////////////////////////////////////////////////////////////////////////////t////BgAAAAAAAAAAAAAAAA1LrSYAACAASURBVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///9s/////////////////////////5////8N////J////9r///////////////f///8aAAAAAAAAAAAAAAAA////Bv///97/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////5f///woAAAAAAAAAAAAAAAD///8U////8v//////////////3////yz///8L////l/////////////////////////9YAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8G////7v//////////////////////////////////////////////////////////////////////////////+f///wsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///+1////////////////////////////////////////////////////////////////////////////////////UgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///9s///////////////////////////////////////////////////////////////N////LwAAAAD///8f////sv///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////7n///8iAAAAAP///yv////I//////////////////////////////////////////////////////////////9YAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///9T////////////////////////////////////////////////////////////////////////////////////tQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACfAAAASgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaAAAAK4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyAAAA0P////gAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEYAAADd////+AAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACyAAAA7AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARf///zUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///zcAAABEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADrAAAAsgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQH6AAAApQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACjAQEB+wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE7///8sAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////MAAAAEwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEB0gAAAM0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAB7AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAewAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMkBAQHVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJ0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABW////LwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD2AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8yAAAAUgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJ0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wsAAADfAAAAFQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAxgAAADwBAQH/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8TAAAAzwAAAB0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANgAAAA0AQEB9QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wEAAADHAAAANwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA6AAAACIBAQH3AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAfX///+OAAAAhwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOgAAAGEAAACeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQHt////LAAAAEAAAAAGAAAAPQAAAG4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHcAAADeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALQAAAH4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIgAAADNAAAA+AAAAL4BAQH2AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGQAAAA3AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAjAEBAfcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8M////7P///////////////////////////////////////////////////////////////////////////////////+v///8SAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////XP///////////////////////////////////zQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAdZnKWgAAIABJREFUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////RP///////////////////////////////////0wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////E////+z////////////////////////////////////////////////////////////////////////////////////q////CwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQH0AAAAjwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAAACIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAiAAAABMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACOAQEB9QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAkwAAAO8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABk////SQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///9JAAAAYwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAO4AAACVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEB8gAAAJEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAov///xsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA+QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///xwAAACiAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJABAQHzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///w8AAADZAAAAFwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMMAAABBAQEB/QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////CgAAAKYAAAArAAAAAQAAAAAAAAD/AAAAvwAAAGcBAQH/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////BAAAAKAAAAA3AAAAAQAAAAAAAAD/AAAAzQAAAF4BAQH6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////BAAAAL8AAAA8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA6QAAACYBAQHyAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///9d//////////////////////////////////////////////////////////////////////////////////////////////+GAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////h///////////////////////////////////////////////////////////////////////////////////////////////XAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////wf/////////////////////////////////////////////////////////////////////////////////////////+////TQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///9N/////v/////////////////////////////////////////////////////////////////////////////////////////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////K/////v/////////////////////////////////////////////////////////////////////////////////////////9f///zgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///zr////2//////////////////////////////////////////////////////////////////////////////////////////r///8qAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///4v//////////////////////////////////////////////////////////////////////////////////////////////+3///8pAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////K////+7//////////////////////////////////////////////////////////////////////////////////////////////4oAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wv////j///////////////////////////////////////////////////////////////////////////////////////////////i////HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8e////5P//////////////////////////////////////////////////////////////////////////////////////////////4v///wsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///9M////////////////////////////////////////////////////////////////////////////////////////////////////1P///xUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///xctgguYAAAgAElEQVT////X/////////////////wAAgP9///////////////////////////////////////////////////////////////////////////////////9MAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///+W////////////////////////////////////////////////////////////////////////////////////////////////////2v///yEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8j////3P///////////////////////////////////////////////////////////////////////////////////////////////////5UAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8J////1f///////////////////////////////////////////////////////////////////////////////////////////////////+f///8vAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///zH////o////////////////////////////////////////////////////////////////////////////////////////////////////1f///wkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////L/////j////////////////////////////////////////////////////////////////////////////////////////////////////x////QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////Qf////H////////////////////////////////////////////////////////////////////////////////////////////////////4////LgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///3H/////////////////////////////////////////////////////////////////////////////////////////////////////////+P///2EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///9h////+P////////////////////////////////////////////////////////////////////////////////////////////////////////9wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wH///+4//////////////////////////////////////////////////////////////////////////////////////////////////////////////+h////CwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////C////6H//////////////////////////////////////////////////////////////////////////////////////////////////////////////7j///8BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8V////3///////////////////////////////////////////////////////////////////////////////////////////////////////////////1v///ywAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8s////1v//////////////////////////////////////////////////////////////////////////////////////////////////////////////3////xUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////Lf////P///////////////////////////////////////////////////////////////////////////////////////////////////////////////b///9m////AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////Af///2b////2///////////////////////////////////////////////////////////////////////////////////////////////////////////////z////LQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///07////9////////////////////////////////////////////////////////////////////////////////////////////////////////////////////w////y0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8t////xP////////////////////////////////////////////////////////////////////////////////////////////////////////////////////3///9OAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///94//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////v///+N////DQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////Df///47////7/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////3kAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////ov//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////5P///1z///8DAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wP///9d////5f//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////pAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB76ErsAACAASURBVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////B////8T////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////c////ZP///wYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8G////ZP///9z////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////H////CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///xL////X/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+P///9u////CQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////Cf///27////j/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////9n///8TAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8f////5v//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////7v///5f///85AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///zr///+X////7v//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////5////yEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////MAAAAMIAAAANAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA2wAAAKQAAACjAQEB3wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///yEAAABdAAAAXQAAACQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD0AAAAPwEBAc4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///0QAAAC2AAAABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA2AAAAL8AAAC+AAAAwAEBAewAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////FAAAAEAAAABCAAAAQQAAACgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPsAAABNAQEBuQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///9cAAAAogAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAANMAAADFAAAA1wAAANkAAADYAAAA4wEBAf8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////AQAAAB0AAAAoAAAAJwAAACkAAAA7AAAALQAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAF8BAQGiAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////eAAAAIcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA9gAAANoAAADjAAAA9AAAAPMAAADzAAAA8wAAAPMAAAAAAAAADQAAAA0AAAANAAAADQAAAA0AAAAcAAAAJgAAAAoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAewEBAYYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///5QAAABrAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACXAQEBagAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wIAAACsAAAAUQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALAAAABTAQEB/gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8IAAAAvAAAADsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAxgAAAEQBAQH3AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJGerkAAAIABJREFUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////EgAAAMUAAAAoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADZAAAAOgEBAe4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///x8AAADHAAAAGQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOgAAAA5AQEB4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAeEAAABJAAAA8gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8wAAAEoBAQHgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQHRAAAAUwAAAPsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD7AAAAUwEBAc8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEBvAAAAGIAAAD/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABjAQEBuwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAaQAAAB5AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHoBAQGjAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////kwAAAGwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlQEBAWwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////AgAAAKsAAABSAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACvAAAAVAEBAf4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wgAAAC7AAAAPAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMUAAABEAQEB+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8RAAAAxQAAACkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA2AAAADsBAQHuAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////HgAAAMcAAAAaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADsF8mZAAAgAElEQVQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADnAAAAOQEBAeEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEB4gAAAEoAAADyAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPMAAABJAQEB4QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAdEAAABSAAAA+wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA+wAAAFIBAQHRAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQG9AAAAYQAAAP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/AAAAYgEBAbwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEBpQAAAHgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB5AQEBpAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///+SAAAAbQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJQBAQFtAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8CAAAAqgAAAFMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArgAAAFUBAQH+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////CAAAALoAAAA9AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADEAAAARQEBAfgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///xEAAADEAAAAKgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANcAAAA7AQEB7wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8eAAAAxwAAABoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA5gAAADkBAQHiAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQHiAAAASQAAAPIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI82wsgAACAASURBVAAAAAAAAAAAAAAAAADyAAAASgEBAeIByHE3jgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQHSAAAAUQAAAPoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA+gAAAFEBAQHRAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEBvgAAAGEAAAD/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/AAAAYQEBAb4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///91//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////92AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////kf///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////5EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////Av///6v/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////q////wIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wcAAAC6AAAAPgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADDAAAARQEBAfkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8RAAAAxAAAACoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANYAAAA8AQEB7wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////HQAAAMcAAAAbAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA5QAAADkBAQHjAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEB4wAAAEkAAADxAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADxAAAASQEBAeMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAdMAAABRAAAA+gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPoAAABRAQEB0wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAl5nxfgAAIABJREFUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////Wf////7//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////v///1kAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///3T/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////dAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///+Q//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8C////qv///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////6r///8CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////B////8H/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////wf///wcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///xD////U///////////////////////////////////////////////////////////////////////////////////////////////////////////////U////EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8d////5P///////////////////////////////////////////////////////////////////////////////////////////////////+T///8cAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////Lf////D/////////////////////////////////////////////////////////////////////////////////////////8P///y0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///0D////5///////////////////////////////////////////////////////////////////////////////5////QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///9Y/////v////////////////////////////////////////////////////////////////////7///9XAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA2KWxwAAAgAElEQVQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////c////////////////////////////////////////////////////////////////////3IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///4//////////////////////////////////////////////////////////jgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wH///+p//////////////////////////////////////////////+o////AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8H////wP///////////////////////////////////7////8HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////EP///9P/////////////////////////0////w8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///xz////j///////////////j////HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8s////8P///+////8sAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////QP///z8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFYhmyIAABHnSURBVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADrd/f4HTuNXQAAAABJRU5ErkJggg=="
 
 /***/ })
 /******/ ]);
