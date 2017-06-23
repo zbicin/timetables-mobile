@@ -4,7 +4,7 @@
   "description": "A PhoneGap Hello World template",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"webpack\" \"corsproxy\" \"phonegap serve\"",
+    "start": "concurrently -p name -n webpack,proxy,serve \"webpack\" \"corsproxy\" \"phonegap serve\"",
     "android": "phonegap run android",
     "generateIcons": "node scripts/generate-icons.js",
     "test": "echo \"Error: no test specified\" && exit 1"
