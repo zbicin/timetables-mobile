@@ -10180,13 +10180,21 @@ var setupRefresh = function setupRefresh(cardsHandles) {
 };
 
 var onInfo = function onInfo(e) {
-    var information = 'Wygodny klient rozkładów jazdy dostępnych na stronie rozklady.lodz.pl. Aplikacja wyświetla na żywo tablice rozkładowe przystanków znajdujących się w okolicy.\n\n';
-    if (lastRefreshTime) {
-        information += 'Ostatnia aktualizacja danych: ' + formatTime(lastRefreshTime) + '.\n\n';
-    }
-    information += 'Kontakt: tabliceprzystankowe@gmail.com\n\nAutorem ikony "Bus" udostępnionej na bazie licencji CC 3.0 BY US jest Nikita Kozin.\nhttps://creativecommons.org/licenses/by/3.0/us/';
+    var version = void 0;
 
-    navigator.notification.alert(information, null, 'Tablice Przystankowe');
+    cordova.getAppVersion().catch(function () {
+        return version = 'N/A';
+    }).then(function (v) {
+        version = version || v;
+        var information = 'Wygodny klient rozkładów jazdy dostępnych na stronie rozklady.lodz.pl. Aplikacja wyświetla na żywo tablice rozkładowe przystanków znajdujących się w okolicy.\n\n';
+        if (lastRefreshTime) {
+            information += 'Ostatnia aktualizacja danych: ' + formatTime(lastRefreshTime) + '.\n\n';
+        }
+        information += 'Wersja aplikacji: ' + version + '\n';
+        information += 'Kontakt: tabliceprzystankowe@gmail.com\n\nAutorem ikony "Bus" udostępnionej na bazie licencji CC 3.0 BY US jest Nikita Kozin.\nhttps://creativecommons.org/licenses/by/3.0/us/';
+
+        navigator.notification.alert(information, null, 'Tablice Przystankowe');
+    });
 };
 
 var onPause = function onPause() {

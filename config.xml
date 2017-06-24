@@ -30,13 +30,8 @@
         <splash density="port-xxhdpi" src="www/res/screen/android/drawable-port-xxhdpi-screen.png" />
         <splash density="port-xxxhdpi" src="www/res/screen/android/drawable-port-xxxhdpi-screen.png" />
     </platform>
-    <!--<platform name="wp8">
-        <icon height="99" platform="wp8" src="www/res/icon/wp8/ApplicationIcon.png" width="99" />
-        <icon height="159" platform="wp8" src="www/res/icon/wp8/Background.png" width="159" />
-        <splash height="1280" platform="wp8" src="www/res/screen/wp8/screen-portrait.jpg" width="768" />
-    </platform>-->
     <platform name="browser">
-        <preference name="ShowSplashScreen" value="false" /> 
+        <preference name="ShowSplashScreen" value="false" />
     </platform>
     <access origin="*" />
     <allow-intent href="http://*/*" />
@@ -57,4 +52,5 @@
     <plugin name="cordova-plugin-dialogs" spec="~1.3.3" />
     <plugin name="cordova-plugin-splashscreen" spec="~4.0.3" />
     <plugin name="cordova-plugin-statusbar" spec="~2.2.3" />
+    <plugin name="cordova-plugin-app-version" spec="~0.1.9" />
 </widget>

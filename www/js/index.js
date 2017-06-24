@@ -29,8 +29,8 @@ const onError = (e) => {
     clearInterval(refreshHandle);
     pendingPromises.forEach((p) => p.cancel());
     pendingPromises.clear();
-    
-    if(loaderElement) {
+
+    if (loaderElement) {
         loaderElement.classList.remove('active');
     }
 };
@@ -107,13 +107,21 @@ const setupRefresh = (cardsHandles) => {
 };
 
 const onInfo = (e) => {
-    let information = 'Wygodny klient rozkładów jazdy dostępnych na stronie rozklady.lodz.pl. Aplikacja wyświetla na żywo tablice rozkładowe przystanków znajdujących się w okolicy.\n\n';
-    if (lastRefreshTime) {
-        information += `Ostatnia aktualizacja danych: ${formatTime(lastRefreshTime)}.\n\n`;
-    }
-    information += 'Kontakt: tabliceprzystankowe@gmail.com\n\nAutorem ikony "Bus" udostępnionej na bazie licencji CC 3.0 BY US jest Nikita Kozin.\nhttps://creativecommons.org/licenses/by/3.0/us/';
+    let version;
 
-    navigator.notification.alert(information, null, 'Tablice Przystankowe');
+    cordova.getAppVersion()
+        .catch(() => version = 'N/A')
+        .then((v) => {
+            version = version || v;
+            let information = 'Wygodny klient rozkładów jazdy dostępnych na stronie rozklady.lodz.pl. Aplikacja wyświetla na żywo tablice rozkładowe przystanków znajdujących się w okolicy.\n\n';
+            if (lastRefreshTime) {
+                information += `Ostatnia aktualizacja danych: ${formatTime(lastRefreshTime)}.\n\n`;
+            }
+            information += `Wersja aplikacji: ${version}\n`;
+            information += 'Kontakt: tabliceprzystankowe@gmail.com\n\nAutorem ikony "Bus" udostępnionej na bazie licencji CC 3.0 BY US jest Nikita Kozin.\nhttps://creativecommons.org/licenses/by/3.0/us/';
+
+            navigator.notification.alert(information, null, 'Tablice Przystankowe');
+        })
 };
 
 const onPause = () => {
