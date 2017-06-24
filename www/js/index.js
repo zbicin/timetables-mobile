@@ -15,6 +15,9 @@ const dom = Object.create(DOMHelper);
 const timetables = Object.create(Timetables);
 const card = Object.create(Card);
 const pendingPromises = new Set();
+
+let lastRefreshTime;
+let loaderElement;
 let refreshHandle;
 
 const onError = (e) => {
@@ -22,6 +25,14 @@ const onError = (e) => {
     const information = `Nie udało się pobrać danych przystanków w okolicy. Upewnij się, że masz włączone usługi lokalizacji oraz dostęp do Internetu, a następnie uruchom ponownie aplikację. (${errorMessage})`;
     navigator.notification.alert(information, null, '¯\\_(ツ)_/¯');
     console.error(e);
+
+    clearInterval(refreshHandle);
+    pendingPromises.forEach((p) => p.cancel());
+    pendingPromises.clear();
+    
+    if(loaderElement) {
+        loaderElement.classList.remove('active');
+    }
 };
 
 const animateSplash = () => {
@@ -52,12 +63,22 @@ const formatTime = (date) => {
     return [date.getHours(), date.getMinutes(), date.getSeconds()]
         .map((segment) => segment < 10 ? '0' + segment : '' + segment)
         .join(':');
-}
+};
+
+const updateLoaderState = () => {
+    if (pendingPromises.size > 0) {
+        loaderElement.classList.add('active');
+    }
+    else {
+        loaderElement.classList.remove('active');
+    }
+};
 
 const refreshView = (onRefresh) => {
     const promise = timetables.fetchNearbyTimetables()
         .then((boardsData) => {
             pendingPromises.delete(promise);
+            updateLoaderState();
 
             let cardsHandles = dom.$all('.card');
             if (cardsHandles.length === 0) {
@@ -69,16 +90,19 @@ const refreshView = (onRefresh) => {
             if (!refreshHandle) {
                 refreshHandle = setupRefresh(cardsHandles);
             }
-            dom.$('.menu span').innerText = `Ostatnia aktualizacja danych: ${formatTime(new Date())}.`;
+            lastRefreshTime = new Date();
+
             if (onRefresh) {
                 onRefresh();
             }
         }).catch((error) => {
             pendingPromises.delete(promise);
+            updateLoaderState();
             onError(error);
         });
     pendingPromises.add(promise);
-}
+    updateLoaderState();
+};
 
 const renderBoards = (boards) => {
     const container = document.querySelector('.cards');
@@ -97,7 +121,7 @@ const renderBoards = (boards) => {
 
 const updateBoards = (boardsData, cardsHandles) => {
     boardsData.forEach((boardData, index) => card.update(cardsHandles[index], boardData));
-}
+};
 
 const setupRefresh = (cardsHandles) => {
     const refreshInterval = 15 * 1000;
@@ -106,18 +130,21 @@ const setupRefresh = (cardsHandles) => {
 };
 
 const onInfo = (e) => {
-    const information =
-        `Wygodny klient rozkładów jazdy dostępnych na stronie rozklady.lodz.pl. Aplikacja wyświetla na żywo tablice rozkładowe przystanków znajdujących się w okolicy.
+    let information = 'Wygodny klient rozkładów jazdy dostępnych na stronie rozklady.lodz.pl. Aplikacja wyświetla na żywo tablice rozkładowe przystanków znajdujących się w okolicy.\n\n';
+    if (lastRefreshTime) {
+        information += `Ostatnia aktualizacja danych: ${formatTime(lastRefreshTime)}.\n\n`;
+    }
+    information += 'Kontakt: tabliceprzystankowe@gmail.com';
 
-Kontakt: tabliceprzystankowe@gmail.com`;
     navigator.notification.alert(information, null, 'Tablice Przystankowe');
-}
+};
 
 const onPause = () => {
     clearInterval(refreshHandle);
     pendingPromises.forEach((p) => p.cancel());
     pendingPromises.clear();
 };
+
 const onResume = () => {
     refreshView();
 };
@@ -129,6 +156,7 @@ const onDeviceReady = () => {
 
     const stopAnimateSplash = animateSplash();
 
+    loaderElement = dom.$('.loader');
     dom.$('#menu-info').addEventListener('click', onInfo);
     document.addEventListener('pause', onPause);
     document.addEventListener('resume', onResume);

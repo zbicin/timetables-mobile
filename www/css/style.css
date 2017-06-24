@@ -31,10 +31,6 @@ body {
  
 }
 
-.hidden {
-    display: none;
-}
-
 .menu {
     background: #ff9912;
     height: 60px;
@@ -51,16 +47,30 @@ body {
     height: 32px;
     margin: 14px;
     transition: opacity 0.1s ease-out;
-}
-
-.menu span {
-    color: #fff;
-    line-height: 60px;
-    vertical-align: top;
+    width: 32px;
 }
 
 .menu img:active {
     opacity: 0.5;
+}
+
+.loader {
+    display: none;
+    height: 32px;
+    margin: 14px 0 14px 14px;
+    width: 32px;
+    vertical-align: top;
+}
+
+.loader.active {
+    display: inline-block;
+}
+
+.loader svg {
+    animation: dash 2s ease infinite,rotate 2s linear infinite;
+	fill: transparent;
+	stroke: #fff;
+	stroke-width: 3;
 }
 
 .splash {
@@ -200,5 +210,25 @@ button:active {
 
 button:focus {
     outline: 0;
+}
+
+@keyframes dash {
+	0% {
+		stroke-dasharray: 1,95;
+		stroke-dashoffset: 0;
+	}
+	50% {
+		stroke-dasharray: 85,95;
+		stroke-dashoffset: -25;
+	}
+	100% {
+		stroke-dasharray: 85,95;
+		stroke-dashoffset: -93;
+	}
+}
+
+@keyframes rotate {
+	0% {transform: rotate(0deg); }
+	100% {transform: rotate(360deg); }
 }
 
