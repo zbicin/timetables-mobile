@@ -111,7 +111,7 @@ const onInfo = (e) => {
     if (lastRefreshTime) {
         information += `Ostatnia aktualizacja danych: ${formatTime(lastRefreshTime)}.\n\n`;
     }
-    information += 'Kontakt: tabliceprzystankowe@gmail.com';
+    information += 'Kontakt: tabliceprzystankowe@gmail.com\n\nAutorem ikony "Bus" udostępnionej na bazie licencji CC 3.0 BY US jest Nikita Kozin.\nhttps://creativecommons.org/licenses/by/3.0/us/';
 
     navigator.notification.alert(information, null, 'Tablice Przystankowe');
 };
