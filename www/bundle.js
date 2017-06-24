@@ -10115,7 +10115,7 @@ var formatTime = function formatTime(date) {
 };
 
 var updateLoaderState = function updateLoaderState() {
-    if (pendingPromises.size > 0) {
+    if (lastRefreshTime && pendingPromises.size > 0) {
         loaderElement.classList.add('active');
     } else {
         loaderElement.classList.remove('active');

@@ -43,7 +43,7 @@ const formatTime = (date) => {
 };
 
 const updateLoaderState = () => {
-    if (pendingPromises.size > 0) {
+    if (lastRefreshTime && pendingPromises.size > 0) {
         loaderElement.classList.add('active');
     }
     else {
