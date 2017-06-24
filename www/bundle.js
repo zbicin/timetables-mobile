@@ -10105,31 +10105,6 @@ var onError = function onError(e) {
     }
 };
 
-var animateSplash = function animateSplash() {
-    var direction = 'up';
-    var splash = dom.$('.splash');
-
-    var changeDirection = function changeDirection() {
-        if (direction === 'out') {
-            splash.removeEventListener('transitionend', changeDirection);
-        } else {
-            direction = direction === 'down' ? 'up' : 'down';
-        }
-        ['down', 'up'].forEach(function (c) {
-            return splash.classList.remove(c);
-        });
-        splash.classList.add(direction);
-    };
-
-    splash.addEventListener('transitionend', changeDirection);
-    changeDirection();
-
-    return function (outCallback) {
-        direction = 'out';
-        splash.addEventListener('transitionend', outCallback);
-    };
-};
-
 var formatTime = function formatTime(date) {
     var twoDigits = function twoDigits(input) {
         return input < 10 ? '0' + input : '' + input;
@@ -10231,14 +10206,18 @@ var onDeviceReady = function onDeviceReady() {
         StatusBar.backgroundColorByHexString('ee8801');
     }
 
-    var stopAnimateSplash = animateSplash();
-
     loaderElement = dom.$('.loader');
     dom.$('#menu-info').addEventListener('click', onInfo);
     document.addEventListener('pause', onPause);
     document.addEventListener('resume', onResume);
 
-    refreshView(stopAnimateSplash);
+    refreshView(function () {
+        var splash = dom.$('#splash');
+        splash.addEventListener('transitionend', function () {
+            splash.parentNode.removeChild(splash);
+        });
+        splash.classList.add('hidden');
+    });
 };
 
 document.addEventListener('deviceready', onDeviceReady);
@@ -14665,7 +14644,7 @@ exports = module.exports = __webpack_require__(122)(undefined);
 
 
 // module
-exports.push([module.i, "* {\n    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */\n}\n\nhtml, body {\n    height: 100%;\n    width: 100%;\n    margin: 0;\n    display: flex;\n    align-content: center;\n    justify-content: center;\n}\n\nbody {\n    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */\n    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */\n    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */\n    box-sizing: border-box;\n    font-family:'Roboto', 'Open Sans', 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;\n    font-size: 0.9em;\n    line-height: 1.333;\n    padding-top: 60px;\n    text-align: center;\n}\n\n/* Portrait layout (default) */\n\n\n/* Landscape layout (with min-width) */\n@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {\n \n}\n\n.menu {\n    background: #ff9912;\n    height: 60px;\n    left: 0;\n    position: fixed;\n    right: 0;\n    text-align: right;\n    top: 0;\n    z-index: 3;\n}\n\n.menu img {\n    cursor: pointer;\n    height: 32px;\n    margin: 14px;\n    transition: opacity 0.1s ease-out;\n    width: 32px;\n}\n\n.menu img:active {\n    opacity: 0.5;\n}\n\n.loader {\n    display: none;\n    height: 32px;\n    margin: 14px 0 14px 14px;\n    width: 32px;\n    vertical-align: top;\n}\n\n.loader.active {\n    display: inline-block;\n}\n\n.loader svg {\n    animation: dash 2s ease infinite,rotate 2s linear infinite;\n\tfill: transparent;\n\tstroke: #fff;\n\tstroke-width: 3;\n}\n\n.splash {\n    align-content: center;\n    background: #ff9912 url(" + __webpack_require__(328) + ") center no-repeat;\n    background-size: 100px 100px;\n    display: flex;\n    height: calc(100% + 20px);\n    justify-content: center;\n    position: fixed;\n    top: 0;\n    transition: transform 1s ease;\n    width: 100%;\n    will-change: transform;\n    z-index: 2;\n}\n\n.splash.up {transform: translateY(-20px);}\n.splash.down {transform: translateY(0px);}\n.splash.out {\n    transform: translateY(calc(-100% + 60px));\n    transition-timing-function: ease-in;\n}\n\n.cards {\n    background: #fafafa;\n    width: 100%;\n}\n\n.card {\n    background-color: #fff;\n    border: 1px solid #ddd;\n    border-bottom-width: 2px;\n    cursor: pointer;\n    margin: 10px;\n    padding: 8px 10px;\n    position: relative;\n    transition: background-color 0.1s ease-out;\n    z-index: 1;\n}\n\n.card:active {\n    background-color: transparent;\n}\n\n.card::after {\n    background: url(" + __webpack_require__(327) + ") center no-repeat;\n    background-size: 100%;\n    content: '';\n    height: 1em;\n    opacity: 0;\n    position: absolute;\n    right: 10px;\n    top: 10px;\n    width: 1em;\n}\n\n.card.expendable::after {\n    opacity: 1;\n}\n\n.card.expanded::after {\n    transform: rotate(180deg);\n}\n\n.card .timetable tr:nth-child(n+5) {\n    display: none;\n}\n\n.card.expanded .timetable tr:nth-child(n+5) {\n    display: table-row;\n}\n\n.card h2 {\n    font-size: 1.5em;\n    font-weight: 300;\n    margin: 0 0 2px 0;\n    text-align: left;\n}\n\n.timetable {\n    color: #666;\n    text-align: left;\n    width: 100%;\n}\n\n.timetable td {\n    padding: 2px 1px;\n}\n\n.timetable td:first-child {\n    text-align: left;\n    width: 40px;\n}\n\n.timetable td:last-child {\n    text-align: right;\n    width: 50px;\n}\n\n.container {\n    width: 100%;\n    height: 100%;\n    box-sizing: border-box;\n}\n\n.container.boards {\n    padding: 10px;\n}\n\n.home {\n    background: #ff9912;\n    display: flex;\n    flex-direction: column;\n    align-content: center;\n    justify-content: center;\n    color: #fff;\n    padding: 20px;\n    transform: translate3d(0,0,0);\n}\n\n.home h1 {\n    font-weight: normal;\n}\n\nbutton {\n    border: 0;\n    background: #ff9912;\n    color: #fff;\n    margin: 10px;\n    padding: 10px 20px;\n}\n\nbutton:active {\n    background: #583608;\n}\n\nbutton:focus {\n    outline: 0;\n}\n\n@keyframes dash {\n\t0% {\n\t\tstroke-dasharray: 1,95;\n\t\tstroke-dashoffset: 0;\n\t}\n\t50% {\n\t\tstroke-dasharray: 85,95;\n\t\tstroke-dashoffset: -25;\n\t}\n\t100% {\n\t\tstroke-dasharray: 85,95;\n\t\tstroke-dashoffset: -93;\n\t}\n}\n\n@keyframes rotate {\n\t0% {transform: rotate(0deg); }\n\t100% {transform: rotate(360deg); }\n}\n\n", ""]);
+exports.push([module.i, "* {\n    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */\n}\n\nhtml, body {\n    height: 100%;\n    width: 100%;\n    margin: 0;\n    display: flex;\n    align-content: center;\n    justify-content: center;\n}\n\nbody {\n    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */\n    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */\n    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */\n    box-sizing: border-box;\n    font-family:'Roboto', 'Open Sans', 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;\n    font-size: 0.9em;\n    line-height: 1.333;\n    padding-top: 60px;\n    text-align: center;\n}\n\n/* Portrait layout (default) */\n\n\n/* Landscape layout (with min-width) */\n@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {\n \n}\n\n.menu {\n    background: #ff9912;\n    height: 60px;\n    left: 0;\n    position: fixed;\n    right: 0;\n    text-align: right;\n    top: 0;\n    z-index: 3;\n}\n\n.menu img {\n    cursor: pointer;\n    height: 32px;\n    margin: 14px;\n    transition: opacity 0.1s ease-out;\n    width: 32px;\n}\n\n.menu img:active {\n    opacity: 0.5;\n}\n\n.loader {\n    display: none;\n    height: 32px;\n    margin: 14px 0 14px 14px;\n    width: 32px;\n    vertical-align: top;\n}\n\n.loader.active {\n    display: inline-block;\n}\n\n.loader svg {\n    animation: dash 2s ease infinite,rotate 2s linear infinite;\n\tfill: transparent;\n\tstroke: #fff;\n\tstroke-width: 3;\n}\n\n.splash {\n    background-color: #ff9912;\n    height: 100%;\n    position: fixed;\n    top: 0;\n    transition: opacity 0.4s ease;\n    width: 100%;\n    will-change: opacity;\n    z-index: 2;\n}\n\n.splash i {\n    animation: jump 2s ease infinite;\n    background: #ff9912 url(" + __webpack_require__(328) + ") center no-repeat;\n    background-size: 100px 100px;\n    height: 100px;\n    left: 50%;\n    margin: -50px 0 0 -50px;\n    position: absolute;\n    top: 50%;\n    width: 100px;\n}\n\n.splash.hidden {\n    opacity: 0;\n    pointer-events: none;\n}\n\n.cards {\n    background: #fafafa;\n    overflow: scroll;\n    width: 100%;\n}\n\n.card {\n    background-color: #fff;\n    border: 1px solid #ddd;\n    border-bottom-width: 2px;\n    cursor: pointer;\n    margin: 10px;\n    padding: 8px 10px;\n    position: relative;\n    transition: background-color 0.1s ease-out;\n    z-index: 1;\n}\n\n.card:active {\n    background-color: transparent;\n}\n\n.card::after {\n    background: url(" + __webpack_require__(327) + ") center no-repeat;\n    background-size: 100%;\n    content: '';\n    height: 1em;\n    opacity: 0;\n    position: absolute;\n    right: 10px;\n    top: 10px;\n    width: 1em;\n}\n\n.card.expendable::after {\n    opacity: 1;\n}\n\n.card.expanded::after {\n    transform: rotate(180deg);\n}\n\n.card .timetable tr:nth-child(n+5) {\n    display: none;\n}\n\n.card.expanded .timetable tr:nth-child(n+5) {\n    display: table-row;\n}\n\n.card h2 {\n    font-size: 1.5em;\n    font-weight: 300;\n    margin: 0 0 2px 0;\n    text-align: left;\n}\n\n.timetable {\n    color: #666;\n    text-align: left;\n    width: 100%;\n}\n\n.timetable td {\n    padding: 2px 1px;\n}\n\n.timetable td:first-child {\n    text-align: left;\n    width: 40px;\n}\n\n.timetable td:last-child {\n    text-align: right;\n    width: 50px;\n}\n\n.container {\n    width: 100%;\n    height: 100%;\n    box-sizing: border-box;\n}\n\n.container.boards {\n    padding: 10px;\n}\n\n.home {\n    background: #ff9912;\n    display: flex;\n    flex-direction: column;\n    align-content: center;\n    justify-content: center;\n    color: #fff;\n    padding: 20px;\n    transform: translate3d(0,0,0);\n}\n\n.home h1 {\n    font-weight: normal;\n}\n\nbutton {\n    border: 0;\n    background: #ff9912;\n    color: #fff;\n    margin: 10px;\n    padding: 10px 20px;\n}\n\nbutton:active {\n    background: #583608;\n}\n\nbutton:focus {\n    outline: 0;\n}\n\n@keyframes dash {\n\t0% {\n\t\tstroke-dasharray: 1,95;\n\t\tstroke-dashoffset: 0;\n\t}\n\t50% {\n\t\tstroke-dasharray: 85,95;\n\t\tstroke-dashoffset: -25;\n\t}\n\t100% {\n\t\tstroke-dasharray: 85,95;\n\t\tstroke-dashoffset: -93;\n\t}\n}\n\n@keyframes rotate {\n\t0% { transform: rotate(0deg); }\n\t100% { transform: rotate(360deg); }\n}\n\n@keyframes jump {\n    0% { transform: translateY(0px); }\n    50% { transform: translateY(-20px); }\n    100% { transform: translateY(0px); }\n}\n", ""]);
 
 // exports
 

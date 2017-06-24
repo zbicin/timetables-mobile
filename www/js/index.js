@@ -35,29 +35,6 @@ const onError = (e) => {
     }
 };
 
-const animateSplash = () => {
-    let direction = 'up';
-    const splash = dom.$('.splash');
-
-    const changeDirection = () => {
-        if (direction === 'out') {
-            splash.removeEventListener('transitionend', changeDirection);
-        } else {
-            direction = direction === 'down' ? 'up' : 'down';
-        }
-        ['down', 'up'].forEach((c) => splash.classList.remove(c));
-        splash.classList.add(direction);
-    }
-
-    splash.addEventListener('transitionend', changeDirection);
-    changeDirection();
-
-    return (outCallback) => {
-        direction = 'out';
-        splash.addEventListener('transitionend', outCallback);
-    };
-};
-
 const formatTime = (date) => {
     const twoDigits = (input) => input < 10 ? '0' + input : '' + input;
     return [date.getHours(), date.getMinutes(), date.getSeconds()]
@@ -154,14 +131,18 @@ const onDeviceReady = () => {
         StatusBar.backgroundColorByHexString('ee8801');
     }
 
-    const stopAnimateSplash = animateSplash();
-
     loaderElement = dom.$('.loader');
     dom.$('#menu-info').addEventListener('click', onInfo);
     document.addEventListener('pause', onPause);
     document.addEventListener('resume', onResume);
 
-    refreshView(stopAnimateSplash);
+    refreshView(() => {
+        const splash = dom.$('#splash');
+        splash.addEventListener('transitionend', () => {
+            splash.parentNode.removeChild(splash);
+        });
+        splash.classList.add('hidden');
+    });
 };
 
 document.addEventListener('deviceready', onDeviceReady);

@@ -74,29 +74,36 @@ body {
 }
 
 .splash {
-    align-content: center;
-    background: #ff9912 url('../img/splash-icon.png') center no-repeat;
-    background-size: 100px 100px;
-    display: flex;
-    height: calc(100% + 20px);
-    justify-content: center;
+    background-color: #ff9912;
+    height: 100%;
     position: fixed;
     top: 0;
-    transition: transform 1s ease;
+    transition: opacity 0.4s ease;
     width: 100%;
-    will-change: transform;
+    will-change: opacity;
     z-index: 2;
 }
 
-.splash.up {transform: translateY(-20px);}
-.splash.down {transform: translateY(0px);}
-.splash.out {
-    transform: translateY(calc(-100% + 60px));
-    transition-timing-function: ease-in;
+.splash i {
+    animation: jump 2s ease infinite;
+    background: #ff9912 url('../img/splash-icon.png') center no-repeat;
+    background-size: 100px 100px;
+    height: 100px;
+    left: 50%;
+    margin: -50px 0 0 -50px;
+    position: absolute;
+    top: 50%;
+    width: 100px;
+}
+
+.splash.hidden {
+    opacity: 0;
+    pointer-events: none;
 }
 
 .cards {
     background: #fafafa;
+    overflow: scroll;
     width: 100%;
 }
 
@@ -228,7 +235,12 @@ button:focus {
 }
 
 @keyframes rotate {
-	0% {transform: rotate(0deg); }
-	100% {transform: rotate(360deg); }
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
 }
 
+@keyframes jump {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
