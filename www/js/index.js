@@ -20,15 +20,19 @@ let lastRefreshTime;
 let loaderElement;
 let refreshHandle;
 
+const cleanupHandles = () => {
+    clearInterval(refreshHandle);
+    pendingPromises.forEach((p) => p.cancel());
+    pendingPromises.clear();
+};
+
 const onError = (e) => {
     const errorMessage = e.message || e.code || e;
     const information = `Nie udało się pobrać danych przystanków w okolicy. Upewnij się, że masz włączone usługi lokalizacji oraz dostęp do Internetu, a następnie uruchom ponownie aplikację. (${errorMessage})`;
     navigator.notification.alert(information, null, '¯\\_(ツ)_/¯');
     console.error(e);
 
-    clearInterval(refreshHandle);
-    pendingPromises.forEach((p) => p.cancel());
-    pendingPromises.clear();
+    cleanupHandles();
 
     if (loaderElement) {
         loaderElement.classList.remove('active');
@@ -52,8 +56,10 @@ const updateLoaderState = () => {
 };
 
 const refreshView = (onRefresh) => {
+    console.log('refreshView');
     const promise = timetables.fetchNearbyTimetables()
         .then((boardsData) => {
+            console.log('rendering boards');
             pendingPromises.delete(promise);
             updateLoaderState();
 
@@ -106,6 +112,17 @@ const setupRefresh = (cardsHandles) => {
     return setInterval(refreshView, refreshInterval);
 };
 
+const waitAndHideSplash = () => {
+    const splash = dom.$('#splash');
+    if (splash) {
+        splash.addEventListener('transitionend', () => {
+            console.log('splash.transitionend');
+            splash.parentNode.removeChild(splash);
+        });
+        splash.classList.add('hidden');
+    }
+};
+
 const onInfo = (e) => {
     let version;
 
@@ -124,20 +141,19 @@ const onInfo = (e) => {
         })
 };
 
-const cleanupHandles = () => {
-    clearInterval(refreshHandle);
-    pendingPromises.forEach((p) => p.cancel());
-    pendingPromises.clear();
-}
-
-const onPause = cleanupHandles;
+const onPause = () => {
+    console.log('device.pause');
+    cleanupHandles();
+};
 
 const onResume = () => {
+    console.log('device.resume');
     cleanupHandles();
-    refreshView();
+    refreshView(waitAndHideSplash);
 };
 
 const onDeviceReady = () => {
+    console.log('document.deviceready');
     if (cordova.platformId == 'android') {
         StatusBar.backgroundColorByHexString('ee8801');
     }
@@ -147,13 +163,7 @@ const onDeviceReady = () => {
     document.addEventListener('pause', onPause);
     document.addEventListener('resume', onResume);
 
-    refreshView(() => {
-        const splash = dom.$('#splash');
-        splash.addEventListener('transitionend', () => {
-            splash.parentNode.removeChild(splash);
-        });
-        splash.classList.add('hidden');
-    });
+    refreshView(waitAndHideSplash);
 };
 
 document.addEventListener('deviceready', onDeviceReady);

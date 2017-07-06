@@ -10088,17 +10088,21 @@ var lastRefreshTime = void 0;
 var loaderElement = void 0;
 var refreshHandle = void 0;
 
+var cleanupHandles = function cleanupHandles() {
+    clearInterval(refreshHandle);
+    pendingPromises.forEach(function (p) {
+        return p.cancel();
+    });
+    pendingPromises.clear();
+};
+
 var onError = function onError(e) {
     var errorMessage = e.message || e.code || e;
     var information = 'Nie uda\u0142o si\u0119 pobra\u0107 danych przystank\xF3w w okolicy. Upewnij si\u0119, \u017Ce masz w\u0142\u0105czone us\u0142ugi lokalizacji oraz dost\u0119p do Internetu, a nast\u0119pnie uruchom ponownie aplikacj\u0119. (' + errorMessage + ')';
     navigator.notification.alert(information, null, '¯\\_(ツ)_/¯');
     console.error(e);
 
-    clearInterval(refreshHandle);
-    pendingPromises.forEach(function (p) {
-        return p.cancel();
-    });
-    pendingPromises.clear();
+    cleanupHandles();
 
     if (loaderElement) {
         loaderElement.classList.remove('active');
@@ -10123,7 +10127,9 @@ var updateLoaderState = function updateLoaderState() {
 };
 
 var refreshView = function refreshView(onRefresh) {
+    console.log('refreshView');
     var promise = timetables.fetchNearbyTimetables().then(function (boardsData) {
+        console.log('rendering boards');
         pendingPromises.delete(promise);
         updateLoaderState();
 
@@ -10179,6 +10185,17 @@ var setupRefresh = function setupRefresh(cardsHandles) {
     return setInterval(refreshView, refreshInterval);
 };
 
+var waitAndHideSplash = function waitAndHideSplash() {
+    var splash = dom.$('#splash');
+    if (splash) {
+        splash.addEventListener('transitionend', function () {
+            console.log('splash.transitionend');
+            splash.parentNode.removeChild(splash);
+        });
+        splash.classList.add('hidden');
+    }
+};
+
 var onInfo = function onInfo(e) {
     var version = void 0;
 
@@ -10197,22 +10214,19 @@ var onInfo = function onInfo(e) {
     });
 };
 
-var cleanupHandles = function cleanupHandles() {
-    clearInterval(refreshHandle);
-    pendingPromises.forEach(function (p) {
-        return p.cancel();
-    });
-    pendingPromises.clear();
+var onPause = function onPause() {
+    console.log('device.pause');
+    cleanupHandles();
 };
 
-var onPause = cleanupHandles;
-
 var onResume = function onResume() {
+    console.log('device.resume');
     cleanupHandles();
-    refreshView();
+    refreshView(waitAndHideSplash);
 };
 
 var onDeviceReady = function onDeviceReady() {
+    console.log('document.deviceready');
     if (cordova.platformId == 'android') {
         StatusBar.backgroundColorByHexString('ee8801');
     }
@@ -10222,13 +10236,7 @@ var onDeviceReady = function onDeviceReady() {
     document.addEventListener('pause', onPause);
     document.addEventListener('resume', onResume);
 
-    refreshView(function () {
-        var splash = dom.$('#splash');
-        splash.addEventListener('transitionend', function () {
-            splash.parentNode.removeChild(splash);
-        });
-        splash.classList.add('hidden');
-    });
+    refreshView(waitAndHideSplash);
 };
 
 document.addEventListener('deviceready', onDeviceReady);
