@@ -113,7 +113,7 @@ const onInfo = (e) => {
         .catch(() => version = 'N/A')
         .then((v) => {
             version = version || v;
-            let information = 'Aplikacja wyświetla na żywo tablice rozkładowe przystanków znajdujących się w okolicy. Pobiera informacje z serwisu rozklady.lodz.pl i wyświetla je w wygodnej formie.\n\n';
+            let information = 'Aplikacja wyświetla na żywo tablice rozkładowe przystanków znajdujących się w okolicy. Pobiera informacje z serwisu rozklady.lodz.pl i przedstawia je w wygodnej formie.\n\n';
             if (lastRefreshTime) {
                 information += `Ostatnia aktualizacja danych: ${formatTime(lastRefreshTime)}.\n\n`;
             }
