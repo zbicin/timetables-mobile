@@ -124,13 +124,16 @@ const onInfo = (e) => {
         })
 };
 
-const onPause = () => {
+const cleanupHandles = () => {
     clearInterval(refreshHandle);
     pendingPromises.forEach((p) => p.cancel());
     pendingPromises.clear();
-};
+}
+
+const onPause = cleanupHandles;
 
 const onResume = () => {
+    cleanupHandles();
     refreshView();
 };
 

@@ -10197,7 +10197,7 @@ var onInfo = function onInfo(e) {
     });
 };
 
-var onPause = function onPause() {
+var cleanupHandles = function cleanupHandles() {
     clearInterval(refreshHandle);
     pendingPromises.forEach(function (p) {
         return p.cancel();
@@ -10205,7 +10205,10 @@ var onPause = function onPause() {
     pendingPromises.clear();
 };
 
+var onPause = cleanupHandles;
+
 var onResume = function onResume() {
+    cleanupHandles();
     refreshView();
 };
 
