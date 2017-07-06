@@ -113,7 +113,7 @@ const onInfo = (e) => {
         .catch(() => version = 'N/A')
         .then((v) => {
             version = version || v;
-            let information = 'Wygodny klient rozkładów jazdy dostępnych na stronie rozklady.lodz.pl. Aplikacja wyświetla na żywo tablice rozkładowe przystanków znajdujących się w okolicy.\n\n';
+            let information = 'Aplikacja wyświetla na żywo tablice rozkładowe przystanków znajdujących się w okolicy. Pobiera informacje z serwisu rozklady.lodz.pl i wyświetla je w wygodnej formie.\n\n';
             if (lastRefreshTime) {
                 information += `Ostatnia aktualizacja danych: ${formatTime(lastRefreshTime)}.\n\n`;
             }

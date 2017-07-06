@@ -2,7 +2,7 @@
 <widget id="in.zbic.timetables" version="1.0.6" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Tablice Przystankowe</name>
     <description>
-        Wygodny klient rozkładów jazdy dostępnych na stronie rozklady.lodz.pl. Aplikacja wyświetla na żywo tablice rozkładowe przystanków znajdujących się w okolicy.
+        Aplikacja wyświetla na żywo tablice rozkładowe przystanków znajdujących się w okolicy. Pobiera informacje z serwisu rozklady.lodz.pl i wyświetla je w wygodnej formie.
     </description>
     <author email="k.zbicinski@gmail.com" href="http://zbic.in">
         Krzysztof Zbiciński
