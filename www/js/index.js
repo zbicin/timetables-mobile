@@ -18,6 +18,7 @@ const pendingPromises = new Set();
 
 let lastRefreshTime;
 let loaderElement;
+let splashElement;
 let refreshHandle;
 
 const cleanupHandles = () => {
@@ -28,14 +29,26 @@ const cleanupHandles = () => {
 
 const onError = (e) => {
     const errorMessage = e.message || e.code || e;
-    const information = `Nie udało się pobrać danych przystanków w okolicy. Upewnij się, że masz włączone usługi lokalizacji oraz dostęp do Internetu, a następnie uruchom ponownie aplikację. (${errorMessage})`;
-    navigator.notification.alert(information, null, '¯\\_(ツ)_/¯');
+
+    let information;
+
+    if(e instanceof XMLHttpRequest) {
+        information = 'Wystąpił problem z połączeniem internetowym. Sprawdź ustawienia telefonu i spróbuj ponownie.';
+    } else if (e.toString().indexOf('PositionError') > -1) {
+        information = 'Nie udało się ustalić Twojego położenia. Sprawdź ustawienia lokalizacji w swoim telefonie i spróbuj ponownie.';
+    } else {
+        information = `Nie udało się pobrać danych przystanków w okolicy. Upewnij się, że masz włączone usługi lokalizacji oraz dostęp do Internetu, a następnie uruchom ponownie aplikację. (${errorMessage})`;
+    }
+    navigator.notification. alert(information, null, '¯\\_(ツ)_/¯');
     console.error(e);
 
     cleanupHandles();
 
     if (loaderElement) {
         loaderElement.classList.remove('active');
+    }
+    if(splashElement) {
+        splashElement.classList.remove('animate');
     }
 };
 
@@ -159,6 +172,7 @@ const onDeviceReady = () => {
     }
 
     loaderElement = dom.$('.loader');
+    splashElement = dom.$('#splash');
     dom.$('#menu-info').addEventListener('click', onInfo);
     document.addEventListener('pause', onPause);
     document.addEventListener('resume', onResume);

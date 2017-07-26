@@ -85,7 +85,6 @@ body {
 }
 
 .splash i {
-    animation: jump 2s ease infinite;
     background: #ff9912 url('../img/splash-icon.png') center no-repeat;
     background-size: 100px 100px;
     height: 100px;
@@ -94,6 +93,10 @@ body {
     position: absolute;
     top: 50%;
     width: 100px;
+}
+
+.splash.animate i {
+    animation: jump 2s ease infinite;
 }
 
 .splash.hidden {
