@@ -11,10 +11,11 @@ Promise.config({
     cancellation: true
 });
 
-const dom = Object.create(DOMHelper);
-const timetables = Object.create(Timetables);
 const card = Object.create(Card);
+const dom = Object.create(DOMHelper);
 const pendingPromises = new Set();
+const refreshIntervalInSeconds = 15;
+const timetables = Object.create(Timetables);
 
 let lastRefreshTime;
 let loaderElement;
@@ -35,7 +36,7 @@ const onError = (e) => {
     if(e instanceof XMLHttpRequest) {
         information = 'Wystąpił problem z połączeniem internetowym. Sprawdź ustawienia telefonu i spróbuj ponownie.';
     } else if (e.toString().indexOf('PositionError') > -1) {
-        information = 'Nie udało się ustalić Twojego położenia. Sprawdź ustawienia lokalizacji w swoim telefonie i spróbuj ponownie.';
+        information = 'Nie udało się ustalić Twojego położenia. Sprawdź ustawienia lokalizacji w swoim urządzeniu i spróbuj ponownie.';
     } else {
         information = `Nie udało się pobrać danych przystanków w okolicy. Upewnij się, że masz włączone usługi lokalizacji oraz dostęp do Internetu, a następnie uruchom ponownie aplikację. (${errorMessage})`;
     }
@@ -120,7 +121,7 @@ const updateBoards = (boardsData, cardsHandles) => {
 };
 
 const setupRefresh = (cardsHandles) => {
-    const refreshInterval = 15 * 1000;
+    const refreshInterval = refreshIntervalInSeconds * 1000;
 
     return setInterval(refreshView, refreshInterval);
 };
@@ -143,11 +144,11 @@ const onInfo = (e) => {
         .catch(() => version = 'N/A')
         .then((v) => {
             version = version || v;
-            let information = 'Aplikacja wyświetla na żywo tablice rozkładowe przystanków znajdujących się w okolicy. Pobiera informacje z serwisu rozklady.lodz.pl i przedstawia je w wygodnej formie.\n\n';
+            let information = `Aplikacja wyświetla na żywo tablice rozkładowe przystanków znajdujących się w okolicy. Pobiera informacje z serwisu rozklady.lodz.pl i przedstawia je w wygodnej formie.\n\nDane odświeżane są automatycznie co ${refreshIntervalInSeconds} sekund.`;
             if (lastRefreshTime) {
-                information += `Ostatnia aktualizacja danych: ${formatTime(lastRefreshTime)}.\n\n`;
+                information += ` Ostatnia aktualizacja danych: ${formatTime(lastRefreshTime)}.`;
             }
-            information += `Wersja aplikacji: ${version}\n`;
+            information += `\n\nWersja aplikacji: ${version}\n`;
             information += 'Kontakt: tabliceprzystankowe@gmail.com\n\nAutorem ikony "Bus" udostępnionej na bazie licencji CC 3.0 BY US jest Nikita Kozin.\nhttps://creativecommons.org/licenses/by/3.0/us/';
 
             navigator.notification.alert(information, null, 'Tablice Przystankowe');

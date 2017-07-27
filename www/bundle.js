@@ -10079,10 +10079,11 @@ _bluebird.Promise.config({
     cancellation: true
 });
 
-var dom = Object.create(_dom.DOMHelper);
-var timetables = Object.create(_timetables.Timetables);
 var card = Object.create(_card.Card);
+var dom = Object.create(_dom.DOMHelper);
 var pendingPromises = new Set();
+var refreshIntervalInSeconds = 15;
+var timetables = Object.create(_timetables.Timetables);
 
 var lastRefreshTime = void 0;
 var loaderElement = void 0;
@@ -10105,7 +10106,7 @@ var onError = function onError(e) {
     if (e instanceof XMLHttpRequest) {
         information = 'Wystąpił problem z połączeniem internetowym. Sprawdź ustawienia telefonu i spróbuj ponownie.';
     } else if (e.toString().indexOf('PositionError') > -1) {
-        information = 'Nie udało się ustalić Twojego położenia. Sprawdź ustawienia lokalizacji w swoim telefonie i spróbuj ponownie.';
+        information = 'Nie udało się ustalić Twojego położenia. Sprawdź ustawienia lokalizacji w swoim urządzeniu i spróbuj ponownie.';
     } else {
         information = 'Nie uda\u0142o si\u0119 pobra\u0107 danych przystank\xF3w w okolicy. Upewnij si\u0119, \u017Ce masz w\u0142\u0105czone us\u0142ugi lokalizacji oraz dost\u0119p do Internetu, a nast\u0119pnie uruchom ponownie aplikacj\u0119. (' + errorMessage + ')';
     }
@@ -10193,7 +10194,7 @@ var updateBoards = function updateBoards(boardsData, cardsHandles) {
 };
 
 var setupRefresh = function setupRefresh(cardsHandles) {
-    var refreshInterval = 15 * 1000;
+    var refreshInterval = refreshIntervalInSeconds * 1000;
 
     return setInterval(refreshView, refreshInterval);
 };
@@ -10216,11 +10217,11 @@ var onInfo = function onInfo(e) {
         return version = 'N/A';
     }).then(function (v) {
         version = version || v;
-        var information = 'Aplikacja wyświetla na żywo tablice rozkładowe przystanków znajdujących się w okolicy. Pobiera informacje z serwisu rozklady.lodz.pl i przedstawia je w wygodnej formie.\n\n';
+        var information = 'Aplikacja wy\u015Bwietla na \u017Cywo tablice rozk\u0142adowe przystank\xF3w znajduj\u0105cych si\u0119 w okolicy. Pobiera informacje z serwisu rozklady.lodz.pl i przedstawia je w wygodnej formie.\n\nDane od\u015Bwie\u017Cane s\u0105 automatycznie co ' + refreshIntervalInSeconds + ' sekund.';
         if (lastRefreshTime) {
-            information += 'Ostatnia aktualizacja danych: ' + formatTime(lastRefreshTime) + '.\n\n';
+            information += ' Ostatnia aktualizacja danych: ' + formatTime(lastRefreshTime) + '.';
         }
-        information += 'Wersja aplikacji: ' + version + '\n';
+        information += '\n\nWersja aplikacji: ' + version + '\n';
         information += 'Kontakt: tabliceprzystankowe@gmail.com\n\nAutorem ikony "Bus" udostępnionej na bazie licencji CC 3.0 BY US jest Nikita Kozin.\nhttps://creativecommons.org/licenses/by/3.0/us/';
 
         navigator.notification.alert(information, null, 'Tablice Przystankowe');
