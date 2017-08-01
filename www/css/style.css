@@ -105,6 +105,7 @@ body {
 }
 
 .pull-indicator {
+    box-sizing: border-box;
     color: #555;
     display: block;
     height: 48px;
