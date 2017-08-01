@@ -3,6 +3,7 @@ import style from '../css/style.css'
 
 import 'core-js';
 import { DOMHelper } from './dom';
+// import { DummyTimetables as Timetables } from './timetables.dummy';
 import { Timetables } from './timetables';
 import { Card } from './card';
 
@@ -14,9 +15,16 @@ Promise.config({
 const card = Object.create(Card);
 const dom = Object.create(DOMHelper);
 const pendingPromises = new Set();
-const refreshIntervalInSeconds = 15;
+const refreshIntervalInSeconds = 30;
 const timetables = Object.create(Timetables);
 
+let pullStartY = null;
+let pullDiffY = 0;
+
+let cardsContainer;
+let cardsHandles;
+let pullDiffLimit;
+let pullIndicator;
 let lastRefreshTime;
 let loaderElement;
 let splashElement;
@@ -53,6 +61,9 @@ const onError = (e) => {
     }
 };
 
+const isPending = () => pendingPromises.size > 0;
+const isPulling = () => pullStartY !== null;
+
 const formatTime = (date) => {
     const twoDigits = (input) => input < 10 ? '0' + input : '' + input;
     return [date.getHours(), date.getMinutes(), date.getSeconds()]
@@ -61,7 +72,7 @@ const formatTime = (date) => {
 };
 
 const updateLoaderState = () => {
-    if (lastRefreshTime && pendingPromises.size > 0) {
+    if (lastRefreshTime && isPending()) {
         loaderElement.classList.add('active');
     }
     else {
@@ -77,7 +88,7 @@ const refreshView = (onRefresh) => {
             pendingPromises.delete(promise);
             updateLoaderState();
 
-            let cardsHandles = dom.$all('.card');
+            cardsHandles = dom.$all('.card');
             if (cardsHandles.length === 0) {
                 cardsHandles = renderBoards(boardsData);
             }
@@ -101,8 +112,47 @@ const refreshView = (onRefresh) => {
     updateLoaderState();
 };
 
+const updateCardsTransform = () => {
+    let cardsTransform = `translateY(${Math.min(pullDiffY, pullDiffLimit)}px)`;
+    let ratio = pullDiffY / pullDiffLimit;
+    let pullIndicatorTranslateOffset = pullDiffY - pullDiffLimit;
+    let pullIndicatorTransform = `translateY(${pullIndicatorTranslateOffset}px) scale(${ratio})`;
+
+    cardsHandles.forEach((c) => c.style.transform = cardsTransform);
+    pullIndicator.style.opacity = Math.max(ratio, 0.5);
+    pullIndicator.style.transform = pullIndicatorTransform;
+};
+
+const onCardsTouchStart = (e) => {
+    if(cardsContainer.scrollTop === 0 && !isPending()) {
+        pullStartY = e.touches[0].clientY;
+        cardsContainer.classList.add('pulled');
+    }
+};
+
+const onCardsTouchMove = (e) => {
+    if(pullStartY !== null) {
+        pullDiffY = Math.min(e.touches[0].clientY - pullStartY, pullDiffLimit);
+        if(pullDiffY > 0) {
+            updateCardsTransform();
+        }
+    }
+};
+
+const onCardsTouchEnd = (e) => {
+    cardsContainer.classList.remove('pulled');        
+
+    if(pullDiffY > pullDiffLimit * 0.66 && !isPending()) {
+        refreshView();
+    }
+
+    pullDiffY = 0;
+    pullStartY = null;
+    updateCardsTransform();
+};
+
 const renderBoards = (boards) => {
-    const container = document.querySelector('.cards');
+    const container = cardsContainer;
     const fragment = document.createDocumentFragment();
     const cards = boards.map(card.buildFullCard);
 
@@ -112,6 +162,9 @@ const renderBoards = (boards) => {
 
     cards.forEach((card) => fragment.appendChild(card));
     container.appendChild(fragment);
+    container.addEventListener('touchstart', onCardsTouchStart);
+    container.addEventListener('touchmove', onCardsTouchMove);
+    container.addEventListener('touchend', onCardsTouchEnd);
 
     return cards;
 };
@@ -123,7 +176,11 @@ const updateBoards = (boardsData, cardsHandles) => {
 const setupRefresh = (cardsHandles) => {
     const refreshInterval = refreshIntervalInSeconds * 1000;
 
-    return setInterval(refreshView, refreshInterval);
+    return setInterval(() => {
+        if(!isPulling() && !isPending()) {
+            refreshView();
+        }
+    }, refreshInterval);
 };
 
 const waitAndHideSplash = () => {
@@ -172,6 +229,9 @@ const onDeviceReady = () => {
         StatusBar.backgroundColorByHexString('ee8801');
     }
 
+    cardsContainer = dom.$('.cards');
+    pullIndicator = dom.$('.pull-indicator');
+    pullDiffLimit = pullIndicator.clientHeight;
     loaderElement = dom.$('.loader');
     splashElement = dom.$('#splash');
     dom.$('#menu-info').addEventListener('click', onInfo);
