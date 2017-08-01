@@ -3,8 +3,8 @@ import style from '../css/style.css'
 
 import 'core-js';
 import { DOMHelper } from './dom';
-// import { DummyTimetables as Timetables } from './timetables.dummy';
-import { Timetables } from './timetables';
+import { DummyTimetables as Timetables } from './timetables.dummy';
+// import { Timetables } from './timetables';
 import { Card } from './card';
 
 import { Promise } from 'bluebird';
@@ -114,13 +114,7 @@ const refreshView = (onRefresh) => {
 
 const updateCardsTransform = () => {
     let cardsTransform = `translateY(${Math.min(pullDiffY, pullDiffLimit)}px)`;
-    let ratio = pullDiffY / pullDiffLimit;
-    let pullIndicatorTranslateOffset = pullDiffY - pullDiffLimit;
-    let pullIndicatorTransform = `translateY(${pullIndicatorTranslateOffset}px) scale(${ratio})`;
-
     cardsHandles.forEach((c) => c.style.transform = cardsTransform);
-    pullIndicator.style.opacity = Math.max(ratio, 0.5);
-    pullIndicator.style.transform = pullIndicatorTransform;
 };
 
 const onCardsTouchStart = (e) => {

@@ -104,23 +104,25 @@ body {
     pointer-events: none;
 }
 
-.cards {
-    background: #fafafa;
-    overflow: scroll;
-    width: 100%;
-}
-
 .pull-indicator {
     color: #555;
     display: block;
-    font-size: 2em;
-    height: 64px;
-    line-height: 72px;
-    opacity: 0.5;
+    height: 48px;
+    padding: 20px;
     position: absolute;
     width: 100%;
-    will-change: opacity, transform;
     z-index: 1;
+}
+
+.pull-indicator i {
+    font-size: 1.5em;    
+}
+
+.cards {
+    background: #fafafa;
+    overflow: scroll;
+    position: relative;
+    width: 100%;
 }
 
 .cards.pulled .card {
