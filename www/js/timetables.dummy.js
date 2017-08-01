@@ -35,7 +35,7 @@ const fetchNearbyTimetables = (limit = 10) => {
         result.push(dummyBoard);
     }
 
-    return Promise.resolve(result);
+    return new Promise((resolve) => setTimeout(() => resolve(result), 500));
 };
 
 export const DummyTimetables = {
