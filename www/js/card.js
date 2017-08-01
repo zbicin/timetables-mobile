@@ -78,6 +78,10 @@ const update = (card, boardData) => {
         ? card.classList.add(expendableClassName)
         : card.classList.remove(expendableClassName);
 
+    boardData.departures.length === 0
+        ? card.setAttribute('hidden', true)
+        : card.removeAttribute('hidden');
+
     while (card.firstChild) {
         card.removeChild(card.firstChild);
     }
