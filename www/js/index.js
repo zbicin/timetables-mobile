@@ -3,8 +3,8 @@ import style from '../css/style.css'
 
 import 'core-js';
 import { DOMHelper } from './dom';
-import { DummyTimetables as Timetables } from './timetables.dummy';
-// import { Timetables } from './timetables';
+// import { DummyTimetables as Timetables } from './timetables.dummy';
+import { Timetables } from './timetables';
 import { Card } from './card';
 
 import { Promise } from 'bluebird';
