@@ -19,6 +19,8 @@ const elements = {
     splashElement: null
 };
 
+const addEventListener = (event, callback) => document.addEventListener(event, callback);
+
 const generateBoardsDOM = (boards) => {
     const container = elements.cardsContainer;
     const fragment = document.createDocumentFragment();
@@ -81,6 +83,8 @@ const showErrorMessage = (e) => {
 const onFetchUpdate = (progress) => {
     elements.progressBarInner.style.width = `${progress * 100}%`;
 };
+
+const reload = () => location.reload();
 
 const renderBoards = (boardsData) => {
     log('rendering boards');
@@ -163,8 +167,10 @@ const init = () => {
 export const UI = {
     elements,
 
+    addEventListener,
     init,
     log,
+    reload,
     renderBoards,
     showInfoMessage,
     showErrorMessage,

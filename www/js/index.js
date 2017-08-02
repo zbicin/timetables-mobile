@@ -42,7 +42,7 @@ const refresh = (onRefresh = noop) => {
         .then((boardsData) => timeout(boardsData, 100))
         .then((boardsData) => {
             if (!refreshHandle) {
-                refreshHandle = setupRefresh(ui.elements.cards);
+                refreshHandle = setupRefreshInterval(ui.elements.cards);
             }
             pendingPromises.delete(promise);
             ui.renderBoards(boardsData);
@@ -56,7 +56,7 @@ const refresh = (onRefresh = noop) => {
     ui.updateRefreshState(lastRefreshTime, isPending());
 };
 
-const setupRefresh = (cardsHandles) => {
+const setupRefreshInterval = (cardsHandles) => {
     const refreshInterval = refreshIntervalInSeconds * 1000;
 
     return setInterval(() => {
@@ -72,16 +72,16 @@ const onRefreshButton = (e) => {
     }
 };
 
-const onInfo = (e) => {
+const onInfoButton = (e) => {
     ui.showInfoMessage(lastRefreshTime, refreshIntervalInSeconds);
 };
 
-const onPause = () => {
+const onDevicePause = () => {
     ui.log('device.pause');
     cleanupHandles();
 };
 
-const onResume = () => {
+const onDeviceResume = () => {
     ui.log('device.resume');
     cleanupHandles();
     refresh(ui.waitAndHideSplash);
@@ -97,23 +97,21 @@ const onKonamiCode = () => {
     ui.updateConsoleVisibility();
 };
 
-const onRetryButton = () => {
-    location.reload();
-};
+const onRetryButton = () => ui.reload();
 
 const onDeviceReady = () => {
     ui.init();
     
-    ui.elements.menuInfo.addEventListener('click', onInfo);
+    ui.elements.menuInfo.addEventListener('click', onInfoButton);
     ui.elements.menuRefresh.addEventListener('click', onRefreshButton);
     ui.elements.retryButton.addEventListener('click', onRetryButton);
-    document.addEventListener('konamiCode', onKonamiCode);
-    document.addEventListener('pause', onPause);
-    document.addEventListener('resume', onResume);
+    ui.addEventListener('konamiCode', onKonamiCode);
+    ui.addEventListener('pause', onDevicePause);
+    ui.addEventListener('resume', onDeviceResume);
 
     ui.log('document.deviceready');
     refresh(ui.waitAndHideSplash);
     ui.updateConsoleVisibility();
 };
 
-document.addEventListener('deviceready', onDeviceReady);
+ui.addEventListener('deviceready', onDeviceReady);

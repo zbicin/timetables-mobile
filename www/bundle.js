@@ -10217,7 +10217,7 @@ var refresh = function refresh() {
         return timeout(boardsData, 100);
     }).then(function (boardsData) {
         if (!refreshHandle) {
-            refreshHandle = setupRefresh(ui.elements.cards);
+            refreshHandle = setupRefreshInterval(ui.elements.cards);
         }
         pendingPromises.delete(promise);
         ui.renderBoards(boardsData);
@@ -10231,7 +10231,7 @@ var refresh = function refresh() {
     ui.updateRefreshState(lastRefreshTime, isPending());
 };
 
-var setupRefresh = function setupRefresh(cardsHandles) {
+var setupRefreshInterval = function setupRefreshInterval(cardsHandles) {
     var refreshInterval = refreshIntervalInSeconds * 1000;
 
     return setInterval(function () {
@@ -10247,16 +10247,16 @@ var onRefreshButton = function onRefreshButton(e) {
     }
 };
 
-var onInfo = function onInfo(e) {
+var onInfoButton = function onInfoButton(e) {
     ui.showInfoMessage(lastRefreshTime, refreshIntervalInSeconds);
 };
 
-var onPause = function onPause() {
+var onDevicePause = function onDevicePause() {
     ui.log('device.pause');
     cleanupHandles();
 };
 
-var onResume = function onResume() {
+var onDeviceResume = function onDeviceResume() {
     ui.log('device.resume');
     cleanupHandles();
     refresh(ui.waitAndHideSplash);
@@ -10273,25 +10273,25 @@ var onKonamiCode = function onKonamiCode() {
 };
 
 var onRetryButton = function onRetryButton() {
-    location.reload();
+    return ui.reload();
 };
 
 var onDeviceReady = function onDeviceReady() {
     ui.init();
 
-    ui.elements.menuInfo.addEventListener('click', onInfo);
+    ui.elements.menuInfo.addEventListener('click', onInfoButton);
     ui.elements.menuRefresh.addEventListener('click', onRefreshButton);
     ui.elements.retryButton.addEventListener('click', onRetryButton);
-    document.addEventListener('konamiCode', onKonamiCode);
-    document.addEventListener('pause', onPause);
-    document.addEventListener('resume', onResume);
+    ui.addEventListener('konamiCode', onKonamiCode);
+    ui.addEventListener('pause', onDevicePause);
+    ui.addEventListener('resume', onDeviceResume);
 
     ui.log('document.deviceready');
     refresh(ui.waitAndHideSplash);
     ui.updateConsoleVisibility();
 };
 
-document.addEventListener('deviceready', onDeviceReady);
+ui.addEventListener('deviceready', onDeviceReady);
 
 /***/ }),
 /* 136 */
@@ -15208,6 +15208,10 @@ var elements = {
     splashElement: null
 };
 
+var addEventListener = function addEventListener(event, callback) {
+    return document.addEventListener(event, callback);
+};
+
 var generateBoardsDOM = function generateBoardsDOM(boards) {
     var container = elements.cardsContainer;
     var fragment = document.createDocumentFragment();
@@ -15273,6 +15277,10 @@ var showErrorMessage = function showErrorMessage(e) {
 
 var onFetchUpdate = function onFetchUpdate(progress) {
     elements.progressBarInner.style.width = progress * 100 + '%';
+};
+
+var reload = function reload() {
+    return location.reload();
 };
 
 var renderBoards = function renderBoards(boardsData) {
@@ -15356,8 +15364,10 @@ var init = function init() {
 var UI = exports.UI = {
     elements: elements,
 
+    addEventListener: addEventListener,
     init: init,
     log: log,
+    reload: reload,
     renderBoards: renderBoards,
     showInfoMessage: showInfoMessage,
     showErrorMessage: showErrorMessage,
