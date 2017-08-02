@@ -15392,7 +15392,9 @@ var onDeviceReady = function onDeviceReady() {
     ui.updateConsoleVisibility();
 };
 
-var init = ui.addEventListener('deviceready', onDeviceReady);
+var init = function init() {
+    return ui.addEventListener('deviceready', onDeviceReady);
+};
 
 var App = exports.App = {
     init: init

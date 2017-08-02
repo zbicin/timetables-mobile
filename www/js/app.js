@@ -104,7 +104,7 @@ const onDeviceReady = () => {
     ui.updateConsoleVisibility();
 };
 
-const init = ui.addEventListener('deviceready', onDeviceReady);
+const init = () => ui.addEventListener('deviceready', onDeviceReady);
 
 export const App = {
     init
