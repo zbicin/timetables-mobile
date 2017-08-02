@@ -49,7 +49,7 @@ const onError = (e) => {
     let information;
 
     if (e instanceof XMLHttpRequest) {
-        errorMessage = e.statusText;
+        errorMessage = e.statusText || e.status;
         information = `Wystąpił problem z połączeniem internetowym. Sprawdź ustawienia telefonu i spróbuj ponownie (${errorMessage}).`;
     } else if (e.toString().indexOf('PositionError') > -1) {
         errorMessage = e.code;
