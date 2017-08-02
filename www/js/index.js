@@ -25,6 +25,7 @@ let cardsHandles;
 let debugConsole;
 let lastRefreshTime;
 let menuRefresh;
+let retryButton;
 let splashElement;
 let refreshHandle;
 
@@ -42,15 +43,17 @@ const log = (message) => {
 };
 
 const onError = (e) => {
-    const errorMessage = e.message || e.code || e;
-
+    let errorMessage;
     let information;
 
     if(e instanceof XMLHttpRequest) {
-        information = 'Wystąpił problem z połączeniem internetowym. Sprawdź ustawienia telefonu i spróbuj ponownie.';
+        errorMessage = e.statusText;
+        information = `Wystąpił problem z połączeniem internetowym. Sprawdź ustawienia telefonu i spróbuj ponownie (${errorMessage}).`;
     } else if (e.toString().indexOf('PositionError') > -1) {
-        information = 'Nie udało się ustalić Twojego położenia. Sprawdź ustawienia lokalizacji w swoim urządzeniu i spróbuj ponownie.';
+        errorMessage = e.code;
+        information = `Nie udało się ustalić Twojego położenia. Sprawdź ustawienia lokalizacji w swoim urządzeniu i spróbuj ponownie (kod błędu: ${errorMessage}).`;
     } else {
+        errorMessage = e.message || e.code || e;
         information = `Nie udało się pobrać danych przystanków w okolicy. Upewnij się, że masz włączone usługi lokalizacji oraz dostęp do Internetu, a następnie uruchom ponownie aplikację. (${errorMessage})`;
     }
     navigator.notification. alert(information, null, '¯\\_(ツ)_/¯');
@@ -60,6 +63,7 @@ const onError = (e) => {
     cleanupHandles();
 
     if(splashElement) {
+        retryButton.removeAttribute('hidden');
         splashElement.classList.remove('animate');
     }
     if(menuRefresh) {
@@ -210,6 +214,10 @@ const onKonamiCode = () => {
     updateConsoleVisibility();
 };
 
+const onRetryButton = () => {
+    location.reload();
+};
+
 const onDeviceReady = () => {
     if (cordova.platformId == 'android') {
         StatusBar.backgroundColorByHexString('ee8801');
@@ -218,10 +226,12 @@ const onDeviceReady = () => {
     cardsContainer = dom.$('.cards');
     debugConsole = dom.$('.debug-console');
     menuRefresh = dom.$('#menu-refresh');
+    retryButton = dom.$('#retry-button');
     splashElement = dom.$('#splash');
 
     dom.$('#menu-info').addEventListener('click', onInfo);
     menuRefresh.addEventListener('click', onRefresh);
+    retryButton.addEventListener('click', onRetryButton);
     document.addEventListener('konamiCode', onKonamiCode);
     document.addEventListener('pause', onPause);
     document.addEventListener('resume', onResume);

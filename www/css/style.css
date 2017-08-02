@@ -24,7 +24,7 @@ body {
 }
 
 [hidden] {
-    display: none;
+    display: none !important;
 }
 
 /* Portrait layout (default) */
@@ -91,6 +91,7 @@ body {
     background-color: #ff9912;
     height: 100%;
     position: fixed;
+    text-align: center;
     top: 0;
     transition: opacity 0.4s ease;
     width: 100%;
@@ -116,6 +117,15 @@ body {
 .splash.hidden {
     opacity: 0;
     pointer-events: none;
+}
+
+.splash button {
+    display: inline-block;
+    left: 50%;
+    margin: 100px 0 0 -100px;
+    position: absolute;
+    top: 50%;
+    width: 200px;
 }
 
 .cards {
@@ -222,8 +232,14 @@ button {
     padding: 10px 20px;
 }
 
-button:active {
+button:active,
+button.button-alternative:active {
     background: #583608;
+}
+
+button.button-alternative {
+    background: #fff;
+    color: #ff9912;
 }
 
 button:focus {

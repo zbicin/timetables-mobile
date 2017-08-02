@@ -10097,6 +10097,7 @@ var cardsHandles = void 0;
 var debugConsole = void 0;
 var lastRefreshTime = void 0;
 var menuRefresh = void 0;
+var retryButton = void 0;
 var splashElement = void 0;
 var refreshHandle = void 0;
 
@@ -10116,15 +10117,17 @@ var log = function log(message) {
 };
 
 var onError = function onError(e) {
-    var errorMessage = e.message || e.code || e;
-
+    var errorMessage = void 0;
     var information = void 0;
 
     if (e instanceof XMLHttpRequest) {
-        information = 'Wystąpił problem z połączeniem internetowym. Sprawdź ustawienia telefonu i spróbuj ponownie.';
+        errorMessage = e.statusText;
+        information = 'Wyst\u0105pi\u0142 problem z po\u0142\u0105czeniem internetowym. Sprawd\u017A ustawienia telefonu i spr\xF3buj ponownie (' + errorMessage + ').';
     } else if (e.toString().indexOf('PositionError') > -1) {
-        information = 'Nie udało się ustalić Twojego położenia. Sprawdź ustawienia lokalizacji w swoim urządzeniu i spróbuj ponownie.';
+        errorMessage = e.code;
+        information = 'Nie uda\u0142o si\u0119 ustali\u0107 Twojego po\u0142o\u017Cenia. Sprawd\u017A ustawienia lokalizacji w swoim urz\u0105dzeniu i spr\xF3buj ponownie (kod b\u0142\u0119du: ' + errorMessage + ').';
     } else {
+        errorMessage = e.message || e.code || e;
         information = 'Nie uda\u0142o si\u0119 pobra\u0107 danych przystank\xF3w w okolicy. Upewnij si\u0119, \u017Ce masz w\u0142\u0105czone us\u0142ugi lokalizacji oraz dost\u0119p do Internetu, a nast\u0119pnie uruchom ponownie aplikacj\u0119. (' + errorMessage + ')';
     }
     navigator.notification.alert(information, null, '¯\\_(ツ)_/¯');
@@ -10134,6 +10137,7 @@ var onError = function onError(e) {
     cleanupHandles();
 
     if (splashElement) {
+        retryButton.removeAttribute('hidden');
         splashElement.classList.remove('animate');
     }
     if (menuRefresh) {
@@ -10289,6 +10293,10 @@ var onKonamiCode = function onKonamiCode() {
     updateConsoleVisibility();
 };
 
+var onRetryButton = function onRetryButton() {
+    location.reload();
+};
+
 var onDeviceReady = function onDeviceReady() {
     if (cordova.platformId == 'android') {
         StatusBar.backgroundColorByHexString('ee8801');
@@ -10297,10 +10305,12 @@ var onDeviceReady = function onDeviceReady() {
     cardsContainer = dom.$('.cards');
     debugConsole = dom.$('.debug-console');
     menuRefresh = dom.$('#menu-refresh');
+    retryButton = dom.$('#retry-button');
     splashElement = dom.$('#splash');
 
     dom.$('#menu-info').addEventListener('click', onInfo);
     menuRefresh.addEventListener('click', onRefresh);
+    retryButton.addEventListener('click', onRetryButton);
     document.addEventListener('konamiCode', onKonamiCode);
     document.addEventListener('pause', onPause);
     document.addEventListener('resume', onResume);
@@ -14734,7 +14744,7 @@ exports = module.exports = __webpack_require__(122)(undefined);
 
 
 // module
-exports.push([module.i, "* {\n    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */\n}\n\nhtml, body {\n    height: 100%;\n    width: 100%;\n    margin: 0;\n    display: flex;\n    align-content: center;\n    justify-content: center;\n}\n\nbody {\n    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */\n    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */\n    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */\n    box-sizing: border-box;\n    font-family:'Roboto', 'Open Sans', 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;\n    font-size: 0.9em;\n    line-height: 1.333;\n    padding-top: 60px;\n    text-align: center;\n}\n\n[hidden] {\n    display: none;\n}\n\n/* Portrait layout (default) */\n\n\n/* Landscape layout (with min-width) */\n@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {\n \n}\n\n.menu {\n    background: #ff9912;\n    box-sizing: border-box;\n    color: #fff;\n    height: 60px;\n    left: 0;\n    padding: 14px 12px;\n    position: fixed;\n    right: 0;\n    text-align: left;\n    top: 0;\n    z-index: 3;\n}\n\n.menu img {\n    cursor: pointer;\n    float: right;\n    height: 32px;\n    margin: 0;\n    transition: opacity 0.1s ease-out;\n    width: 32px;\n}\n\n.menu img+img {\n    margin-right: 14px;\n}\n\n.menu img:active {\n    opacity: 0.5;\n}\n\n.menu h1 {\n    display: inline-block;\n    font-size: 1.3em;\n    font-weight: 400;\n    line-height: 32px;\n}\n\n@media screen and (max-width:319px) {\n    .menu h1 {\n        display: none;\n    }\n}\n\n.refresh-icon {\n    transform: rotateZ(-45deg);\n}\n\n.refresh-icon.animate {\n    animation: rotate 2s linear infinite;\n}\n\n.splash {\n    background-color: #ff9912;\n    height: 100%;\n    position: fixed;\n    top: 0;\n    transition: opacity 0.4s ease;\n    width: 100%;\n    will-change: opacity;\n    z-index: 3;\n}\n\n.splash i {\n    background: #ff9912 url(" + __webpack_require__(328) + ") center no-repeat;\n    background-size: 100px 100px;\n    height: 100px;\n    left: 50%;\n    margin: -50px 0 0 -50px;\n    position: absolute;\n    top: 50%;\n    width: 100px;\n}\n\n.splash.animate i {\n    animation: jump 2s ease infinite;\n}\n\n.splash.hidden {\n    opacity: 0;\n    pointer-events: none;\n}\n\n.cards {\n    background: #fafafa;\n    overflow: scroll;\n    position: relative;\n    width: 100%;\n}\n\n.card {\n    background-color: #fff;\n    border: 1px solid #ddd;\n    border-bottom-width: 2px;\n    cursor: pointer;\n    margin: 10px;\n    padding: 8px 10px;\n    position: relative;\n    transition: background-color 0.1s ease-out;\n    z-index: 2;\n}\n\n.card:active {\n    background-color: #fafafa;\n}\n\n.card::after {\n    background: url(" + __webpack_require__(327) + ") center no-repeat;\n    background-size: 100%;\n    content: '';\n    height: 1em;\n    opacity: 0;\n    position: absolute;\n    right: 10px;\n    top: 10px;\n    width: 1em;\n}\n\n.card.expendable::after {\n    opacity: 1;\n}\n\n.card.expanded::after {\n    transform: rotate(180deg);\n}\n\n.card .timetable tr:nth-child(n+5) {\n    display: none;\n}\n\n.card.expanded .timetable tr:nth-child(n+5) {\n    display: table-row;\n}\n\n.card h2 {\n    font-size: 1.5em;\n    font-weight: 300;\n    margin: 0 0 2px 0;\n    padding-right: 1em;\n    text-align: left;\n}\n\n.timetable {\n    color: #666;\n    text-align: left;\n    width: 100%;\n}\n\n.timetable td {\n    padding: 2px 1px;\n}\n\n.timetable td:first-child {\n    text-align: left;\n    width: 40px;\n}\n\n.timetable td:last-child {\n    text-align: right;\n    width: 50px;\n}\n\n.debug-console {\n    background: #222;\n    bottom: 0;\n    box-sizing: border-box;\n    color: #eee;\n    font-family: monospace;\n    height: 50vh;\n    opacity: 0.75;\n    overflow: auto;\n    padding: 4px;\n    position: absolute;\n    text-align: left;\n    width: 100%;\n    white-space: pre;\n    z-index: 3;\n}\n\nbutton {\n    border: 0;\n    background: #ff9912;\n    color: #fff;\n    margin: 10px;\n    padding: 10px 20px;\n}\n\nbutton:active {\n    background: #583608;\n}\n\nbutton:focus {\n    outline: 0;\n}\n\n@keyframes rotate {\n\t0% { transform: rotate(-45deg); }\n\t100% { transform: rotate(-405deg); }\n}\n\n@keyframes jump {\n    0% { transform: translateY(0px); }\n    50% { transform: translateY(-20px); }\n    100% { transform: translateY(0px); }\n}", ""]);
+exports.push([module.i, "* {\n    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */\n}\n\nhtml, body {\n    height: 100%;\n    width: 100%;\n    margin: 0;\n    display: flex;\n    align-content: center;\n    justify-content: center;\n}\n\nbody {\n    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */\n    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */\n    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */\n    box-sizing: border-box;\n    font-family:'Roboto', 'Open Sans', 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;\n    font-size: 0.9em;\n    line-height: 1.333;\n    padding-top: 60px;\n    text-align: center;\n}\n\n[hidden] {\n    display: none !important;\n}\n\n/* Portrait layout (default) */\n\n\n/* Landscape layout (with min-width) */\n@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {\n \n}\n\n.menu {\n    background: #ff9912;\n    box-sizing: border-box;\n    color: #fff;\n    height: 60px;\n    left: 0;\n    padding: 14px 12px;\n    position: fixed;\n    right: 0;\n    text-align: left;\n    top: 0;\n    z-index: 3;\n}\n\n.menu img {\n    cursor: pointer;\n    float: right;\n    height: 32px;\n    margin: 0;\n    transition: opacity 0.1s ease-out;\n    width: 32px;\n}\n\n.menu img+img {\n    margin-right: 14px;\n}\n\n.menu img:active {\n    opacity: 0.5;\n}\n\n.menu h1 {\n    display: inline-block;\n    font-size: 1.3em;\n    font-weight: 400;\n    line-height: 32px;\n}\n\n@media screen and (max-width:319px) {\n    .menu h1 {\n        display: none;\n    }\n}\n\n.refresh-icon {\n    transform: rotateZ(-45deg);\n}\n\n.refresh-icon.animate {\n    animation: rotate 2s linear infinite;\n}\n\n.splash {\n    background-color: #ff9912;\n    height: 100%;\n    position: fixed;\n    text-align: center;\n    top: 0;\n    transition: opacity 0.4s ease;\n    width: 100%;\n    will-change: opacity;\n    z-index: 3;\n}\n\n.splash i {\n    background: #ff9912 url(" + __webpack_require__(328) + ") center no-repeat;\n    background-size: 100px 100px;\n    height: 100px;\n    left: 50%;\n    margin: -50px 0 0 -50px;\n    position: absolute;\n    top: 50%;\n    width: 100px;\n}\n\n.splash.animate i {\n    animation: jump 2s ease infinite;\n}\n\n.splash.hidden {\n    opacity: 0;\n    pointer-events: none;\n}\n\n.splash button {\n    display: inline-block;\n    left: 50%;\n    margin: 100px 0 0 -100px;\n    position: absolute;\n    top: 50%;\n    width: 200px;\n}\n\n.cards {\n    background: #fafafa;\n    overflow: scroll;\n    position: relative;\n    width: 100%;\n}\n\n.card {\n    background-color: #fff;\n    border: 1px solid #ddd;\n    border-bottom-width: 2px;\n    cursor: pointer;\n    margin: 10px;\n    padding: 8px 10px;\n    position: relative;\n    transition: background-color 0.1s ease-out;\n    z-index: 2;\n}\n\n.card:active {\n    background-color: #fafafa;\n}\n\n.card::after {\n    background: url(" + __webpack_require__(327) + ") center no-repeat;\n    background-size: 100%;\n    content: '';\n    height: 1em;\n    opacity: 0;\n    position: absolute;\n    right: 10px;\n    top: 10px;\n    width: 1em;\n}\n\n.card.expendable::after {\n    opacity: 1;\n}\n\n.card.expanded::after {\n    transform: rotate(180deg);\n}\n\n.card .timetable tr:nth-child(n+5) {\n    display: none;\n}\n\n.card.expanded .timetable tr:nth-child(n+5) {\n    display: table-row;\n}\n\n.card h2 {\n    font-size: 1.5em;\n    font-weight: 300;\n    margin: 0 0 2px 0;\n    padding-right: 1em;\n    text-align: left;\n}\n\n.timetable {\n    color: #666;\n    text-align: left;\n    width: 100%;\n}\n\n.timetable td {\n    padding: 2px 1px;\n}\n\n.timetable td:first-child {\n    text-align: left;\n    width: 40px;\n}\n\n.timetable td:last-child {\n    text-align: right;\n    width: 50px;\n}\n\n.debug-console {\n    background: #222;\n    bottom: 0;\n    box-sizing: border-box;\n    color: #eee;\n    font-family: monospace;\n    height: 50vh;\n    opacity: 0.75;\n    overflow: auto;\n    padding: 4px;\n    position: absolute;\n    text-align: left;\n    width: 100%;\n    white-space: pre;\n    z-index: 3;\n}\n\nbutton {\n    border: 0;\n    background: #ff9912;\n    color: #fff;\n    margin: 10px;\n    padding: 10px 20px;\n}\n\nbutton:active,\nbutton.button-alternative:active {\n    background: #583608;\n}\n\nbutton.button-alternative {\n    background: #fff;\n    color: #ff9912;\n}\n\nbutton:focus {\n    outline: 0;\n}\n\n@keyframes rotate {\n\t0% { transform: rotate(-45deg); }\n\t100% { transform: rotate(-405deg); }\n}\n\n@keyframes jump {\n    0% { transform: translateY(0px); }\n    50% { transform: translateY(-20px); }\n    100% { transform: translateY(0px); }\n}", ""]);
 
 // exports
 
