@@ -37,6 +37,7 @@ const cleanupHandles = () => {
 const log = (message) => {
     const line = dom.create('div', message);
     debugConsole.appendChild(line);
+    debugConsole.scrollTop = debugConsole.scrollHeight;
     console.log(message);
 };
 

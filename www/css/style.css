@@ -187,7 +187,7 @@ body {
     color: #eee;
     font-family: monospace;
     height: 50vh;
-    overflow: scroll;
+    overflow: auto;
     padding: 4px;
     position: absolute;
     text-align: left;
