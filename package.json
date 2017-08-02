@@ -1,6 +1,6 @@
 {
   "name": "timetables-mobile",
-  "version": "1.0.0",
+  "version": "1.0.8",
   "description": "A PhoneGap Hello World template",
   "main": "index.js",
   "scripts": {
