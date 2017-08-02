@@ -25,6 +25,8 @@ let cardsHandles;
 let debugConsole;
 let lastRefreshTime;
 let menuRefresh;
+let progressBar;
+let progressBarInner;
 let retryButton;
 let splashElement;
 let refreshHandle;
@@ -46,7 +48,7 @@ const onError = (e) => {
     let errorMessage;
     let information;
 
-    if(e instanceof XMLHttpRequest) {
+    if (e instanceof XMLHttpRequest) {
         errorMessage = e.statusText;
         information = `Wystąpił problem z połączeniem internetowym. Sprawdź ustawienia telefonu i spróbuj ponownie (${errorMessage}).`;
     } else if (e.toString().indexOf('PositionError') > -1) {
@@ -56,23 +58,26 @@ const onError = (e) => {
         errorMessage = e.message || e.code || e;
         information = `Nie udało się pobrać danych przystanków w okolicy. Upewnij się, że masz włączone usługi lokalizacji oraz dostęp do Internetu, a następnie uruchom ponownie aplikację. (${errorMessage})`;
     }
-    navigator.notification. alert(information, null, '¯\\_(ツ)_/¯');
+    navigator.notification.alert(information, null, '¯\\_(ツ)_/¯');
     console.error(e);
     log(errorMessage);
 
     cleanupHandles();
 
-    if(splashElement) {
+    if (progressBar) {
+        progressBar.setAttribute('hidden', true);
+    }
+    if (splashElement) {
         retryButton.removeAttribute('hidden');
         splashElement.classList.remove('animate');
     }
-    if(menuRefresh) {
+    if (menuRefresh) {
         menuRefresh.classList.remove('animate');
     }
 };
 
 const updateConsoleVisibility = () => {
-    if(localStorage.getItem(debugModeKey)) {
+    if (localStorage.getItem(debugModeKey)) {
         debugConsole.removeAttribute('hidden');
     } else {
         debugConsole.setAttribute('hidden', 'true');
@@ -97,9 +102,16 @@ const updateRefreshState = () => {
     }
 };
 
+const onFetchUpdate = (progress) => {
+    progressBarInner.style.width = `${progress * 100}%`;
+};
+
+const timeout = (data, timeout) => new Promise((resolve) => setTimeout(() => resolve(data), timeout));
+
 const refreshView = (onRefresh) => {
     log('refreshView');
-    const promise = timetables.fetchNearbyTimetables()
+    const promise = timetables.fetchNearbyTimetables(onFetchUpdate)
+        .then((boardsData) => timeout(boardsData, 100))
         .then((boardsData) => {
             log('rendering boards');
             pendingPromises.delete(promise);
@@ -116,6 +128,7 @@ const refreshView = (onRefresh) => {
                 refreshHandle = setupRefresh(cardsHandles);
             }
             lastRefreshTime = new Date();
+            progressBar.setAttribute('hidden', true);
 
             if (onRefresh) {
                 onRefresh();
@@ -152,7 +165,7 @@ const setupRefresh = (cardsHandles) => {
     const refreshInterval = refreshIntervalInSeconds * 1000;
 
     return setInterval(() => {
-        if(!isPending()) {
+        if (!isPending()) {
             refreshView();
         }
     }, refreshInterval);
@@ -170,7 +183,7 @@ const waitAndHideSplash = () => {
 };
 
 const onRefresh = (e) => {
-    if(!isPending()) {
+    if (!isPending()) {
         refreshView();
     }
 };
@@ -205,12 +218,12 @@ const onResume = () => {
 };
 
 const onKonamiCode = () => {
-    if(localStorage.getItem(debugModeKey)) {
+    if (localStorage.getItem(debugModeKey)) {
         localStorage.removeItem(debugModeKey);
     } else {
         localStorage.setItem(debugModeKey, true);
     }
-    
+
     updateConsoleVisibility();
 };
 
@@ -226,6 +239,8 @@ const onDeviceReady = () => {
     cardsContainer = dom.$('.cards');
     debugConsole = dom.$('.debug-console');
     menuRefresh = dom.$('#menu-refresh');
+    progressBar = dom.$('.progress-bar');
+    progressBarInner = dom.$('.progress-bar-inner');
     retryButton = dom.$('#retry-button');
     splashElement = dom.$('#splash');
 

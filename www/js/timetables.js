@@ -6,6 +6,7 @@ import { Promise } from 'bluebird';
 
 const api = Object.create(Api);
 const geolocation = Object.create(Geolocation);
+const noop = () => {};
 const stop = Object.create(Stop);
 
 const parseXmlDepartures = (rawXml) => {
@@ -34,11 +35,24 @@ const parseXmlDepartures = (rawXml) => {
     return result;
 };
 
-const fetchNearbyTimetables = (limit = 10) => geolocation.getCurrentPosition()
-    .then((position) => stop.getNearest(position.coords.latitude, position.coords.longitude, limit))
-    .then((nearestStopsDistances) => nearestStopsDistances.map((s) => s.id))
-    .then((stopsIds) => api.fetchTimetablesByStopsIds(stopsIds))
-    .then((responses) => responses.map(parseXmlDepartures));
+const fetchNearbyTimetables = (updateCallback = noop, limit = 10) => {
+    let completedStepsCount = 0;
+    const totalStepsCount = 1 + 1 + 1 + (limit + 1) + 1;
+    return geolocation.getCurrentPosition()
+        .then((position) => {
+            updateCallback(++completedStepsCount / totalStepsCount);
+            return stop.getNearest(position.coords.latitude, position.coords.longitude, limit)
+        }).then((nearestStopsDistances) => {
+            updateCallback(++completedStepsCount / totalStepsCount);
+            return nearestStopsDistances.map((s) => s.id);
+        }).then((stopsIds) => {
+            updateCallback(++completedStepsCount / totalStepsCount);
+            return api.fetchTimetablesByStopsIds(stopsIds, () => updateCallback(++completedStepsCount / totalStepsCount));
+        }).then((responses) => {
+            updateCallback(++completedStepsCount / totalStepsCount);
+            return responses.map(parseXmlDepartures)
+        });
+};
 
 export const Timetables = {
     fetchNearbyTimetables

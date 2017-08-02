@@ -8318,6 +8318,7 @@ var _bluebird = __webpack_require__(46);
 
 var apiUrlBase = 'http://rozklady.lodz.pl';
 var http = Object.create(_http.Http);
+var noop = function noop() {};
 
 var hasCookie = false;
 
@@ -8340,11 +8341,19 @@ var fetchStopsData = function fetchStopsData() {
 };
 
 var fetchTimetablesByStopsIds = function fetchTimetablesByStopsIds(stopIds) {
+    var updateCallback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : noop;
+
+    var completedStepsCount = 0;
+    var totalStepsCount = stopIds + 1; // +1 because of fetchCookie
     var promises = stopIds.map(function (stopId) {
-        return http.get(apiUrlBase + '/Home/GetTimetableReal?busStopId=' + stopId);
+        return http.get(apiUrlBase + '/Home/GetTimetableReal?busStopId=' + stopId).tap(function () {
+            return updateCallback(++completedStepsCount / totalStepsCount);
+        });
     });
 
-    return fetchCookie().then(function () {
+    return fetchCookie().tap(function () {
+        return updateCallback(++completedStepsCount / totalStepsCount);
+    }).then(function () {
         return _bluebird.Promise.all(promises);
     }).then(function (responses) {
         return responses.map(function (r) {
@@ -9827,6 +9836,7 @@ var _bluebird = __webpack_require__(46);
 
 var api = Object.create(_api.Api);
 var geolocation = Object.create(_geolocation.Geolocation);
+var noop = function noop() {};
 var stop = Object.create(_stop.Stop);
 
 var parseXmlDepartures = function parseXmlDepartures(rawXml) {
@@ -9856,16 +9866,26 @@ var parseXmlDepartures = function parseXmlDepartures(rawXml) {
 };
 
 var fetchNearbyTimetables = function fetchNearbyTimetables() {
-    var limit = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 10;
+    var updateCallback = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : noop;
+    var limit = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 10;
+
+    var completedStepsCount = 0;
+    var totalStepsCount = 1 + 1 + 1 + (limit + 1) + 1;
     return geolocation.getCurrentPosition().then(function (position) {
+        updateCallback(++completedStepsCount / totalStepsCount);
         return stop.getNearest(position.coords.latitude, position.coords.longitude, limit);
     }).then(function (nearestStopsDistances) {
+        updateCallback(++completedStepsCount / totalStepsCount);
         return nearestStopsDistances.map(function (s) {
             return s.id;
         });
     }).then(function (stopsIds) {
-        return api.fetchTimetablesByStopsIds(stopsIds);
+        updateCallback(++completedStepsCount / totalStepsCount);
+        return api.fetchTimetablesByStopsIds(stopsIds, function () {
+            return updateCallback(++completedStepsCount / totalStepsCount);
+        });
     }).then(function (responses) {
+        updateCallback(++completedStepsCount / totalStepsCount);
         return responses.map(parseXmlDepartures);
     });
 };
@@ -10097,6 +10117,8 @@ var cardsHandles = void 0;
 var debugConsole = void 0;
 var lastRefreshTime = void 0;
 var menuRefresh = void 0;
+var progressBar = void 0;
+var progressBarInner = void 0;
 var retryButton = void 0;
 var splashElement = void 0;
 var refreshHandle = void 0;
@@ -10136,6 +10158,9 @@ var onError = function onError(e) {
 
     cleanupHandles();
 
+    if (progressBar) {
+        progressBar.setAttribute('hidden', true);
+    }
     if (splashElement) {
         retryButton.removeAttribute('hidden');
         splashElement.classList.remove('animate');
@@ -10174,9 +10199,23 @@ var updateRefreshState = function updateRefreshState() {
     }
 };
 
+var onFetchUpdate = function onFetchUpdate(progress) {
+    progressBarInner.style.width = progress * 100 + '%';
+};
+
+var timeout = function timeout(data, _timeout) {
+    return new _bluebird.Promise(function (resolve) {
+        return setTimeout(function () {
+            return resolve(data);
+        }, _timeout);
+    });
+};
+
 var refreshView = function refreshView(onRefresh) {
     log('refreshView');
-    var promise = timetables.fetchNearbyTimetables().then(function (boardsData) {
+    var promise = timetables.fetchNearbyTimetables(onFetchUpdate).then(function (boardsData) {
+        return timeout(boardsData, 100);
+    }).then(function (boardsData) {
         log('rendering boards');
         pendingPromises.delete(promise);
         updateRefreshState();
@@ -10191,6 +10230,7 @@ var refreshView = function refreshView(onRefresh) {
             refreshHandle = setupRefresh(cardsHandles);
         }
         lastRefreshTime = new Date();
+        progressBar.setAttribute('hidden', true);
 
         if (onRefresh) {
             onRefresh();
@@ -10305,6 +10345,8 @@ var onDeviceReady = function onDeviceReady() {
     cardsContainer = dom.$('.cards');
     debugConsole = dom.$('.debug-console');
     menuRefresh = dom.$('#menu-refresh');
+    progressBar = dom.$('.progress-bar');
+    progressBarInner = dom.$('.progress-bar-inner');
     retryButton = dom.$('#retry-button');
     splashElement = dom.$('#splash');
 
@@ -14744,7 +14786,7 @@ exports = module.exports = __webpack_require__(122)(undefined);
 
 
 // module
-exports.push([module.i, "* {\n    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */\n}\n\nhtml, body {\n    height: 100%;\n    width: 100%;\n    margin: 0;\n    display: flex;\n    align-content: center;\n    justify-content: center;\n}\n\nbody {\n    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */\n    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */\n    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */\n    box-sizing: border-box;\n    font-family:'Roboto', 'Open Sans', 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;\n    font-size: 0.9em;\n    line-height: 1.333;\n    padding-top: 60px;\n    text-align: center;\n}\n\n[hidden] {\n    display: none !important;\n}\n\n/* Portrait layout (default) */\n\n\n/* Landscape layout (with min-width) */\n@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {\n \n}\n\n.menu {\n    background: #ff9912;\n    box-sizing: border-box;\n    color: #fff;\n    height: 60px;\n    left: 0;\n    padding: 14px 12px;\n    position: fixed;\n    right: 0;\n    text-align: left;\n    top: 0;\n    z-index: 3;\n}\n\n.menu img {\n    cursor: pointer;\n    float: right;\n    height: 32px;\n    margin: 0;\n    transition: opacity 0.1s ease-out;\n    width: 32px;\n}\n\n.menu img+img {\n    margin-right: 14px;\n}\n\n.menu img:active {\n    opacity: 0.5;\n}\n\n.menu h1 {\n    display: inline-block;\n    font-size: 1.3em;\n    font-weight: 400;\n    line-height: 32px;\n}\n\n@media screen and (max-width:319px) {\n    .menu h1 {\n        display: none;\n    }\n}\n\n.refresh-icon {\n    transform: rotateZ(-45deg);\n}\n\n.refresh-icon.animate {\n    animation: rotate 2s linear infinite;\n}\n\n.splash {\n    background-color: #ff9912;\n    height: 100%;\n    position: fixed;\n    text-align: center;\n    top: 0;\n    transition: opacity 0.4s ease;\n    width: 100%;\n    will-change: opacity;\n    z-index: 3;\n}\n\n.splash i {\n    background: #ff9912 url(" + __webpack_require__(328) + ") center no-repeat;\n    background-size: 100px 100px;\n    height: 100px;\n    left: 50%;\n    margin: -50px 0 0 -50px;\n    position: absolute;\n    top: 50%;\n    width: 100px;\n}\n\n.splash.animate i {\n    animation: jump 2s ease infinite;\n}\n\n.splash.hidden {\n    opacity: 0;\n    pointer-events: none;\n}\n\n.splash button {\n    display: inline-block;\n    left: 50%;\n    margin: 100px 0 0 -100px;\n    position: absolute;\n    top: 50%;\n    width: 200px;\n}\n\n.cards {\n    background: #fafafa;\n    overflow: scroll;\n    position: relative;\n    width: 100%;\n}\n\n.card {\n    background-color: #fff;\n    border: 1px solid #ddd;\n    border-bottom-width: 2px;\n    cursor: pointer;\n    margin: 10px;\n    padding: 8px 10px;\n    position: relative;\n    transition: background-color 0.1s ease-out;\n    z-index: 2;\n}\n\n.card:active {\n    background-color: #fafafa;\n}\n\n.card::after {\n    background: url(" + __webpack_require__(327) + ") center no-repeat;\n    background-size: 100%;\n    content: '';\n    height: 1em;\n    opacity: 0;\n    position: absolute;\n    right: 10px;\n    top: 10px;\n    width: 1em;\n}\n\n.card.expendable::after {\n    opacity: 1;\n}\n\n.card.expanded::after {\n    transform: rotate(180deg);\n}\n\n.card .timetable tr:nth-child(n+5) {\n    display: none;\n}\n\n.card.expanded .timetable tr:nth-child(n+5) {\n    display: table-row;\n}\n\n.card h2 {\n    font-size: 1.5em;\n    font-weight: 300;\n    margin: 0 0 2px 0;\n    padding-right: 1em;\n    text-align: left;\n}\n\n.timetable {\n    color: #666;\n    text-align: left;\n    width: 100%;\n}\n\n.timetable td {\n    padding: 2px 1px;\n}\n\n.timetable td:first-child {\n    text-align: left;\n    width: 40px;\n}\n\n.timetable td:last-child {\n    text-align: right;\n    width: 50px;\n}\n\n.debug-console {\n    background: #222;\n    bottom: 0;\n    box-sizing: border-box;\n    color: #eee;\n    font-family: monospace;\n    height: 50vh;\n    opacity: 0.75;\n    overflow: auto;\n    padding: 4px;\n    position: absolute;\n    text-align: left;\n    width: 100%;\n    white-space: pre;\n    z-index: 3;\n}\n\nbutton {\n    border: 0;\n    background: #ff9912;\n    color: #fff;\n    margin: 10px;\n    padding: 10px 20px;\n}\n\nbutton:active,\nbutton.button-alternative:active {\n    background: #583608;\n}\n\nbutton.button-alternative {\n    background: #fff;\n    color: #ff9912;\n}\n\nbutton:focus {\n    outline: 0;\n}\n\n@keyframes rotate {\n\t0% { transform: rotate(-45deg); }\n\t100% { transform: rotate(-405deg); }\n}\n\n@keyframes jump {\n    0% { transform: translateY(0px); }\n    50% { transform: translateY(-20px); }\n    100% { transform: translateY(0px); }\n}", ""]);
+exports.push([module.i, "* {\n    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */\n}\n\nhtml, body {\n    height: 100%;\n    width: 100%;\n    margin: 0;\n    display: flex;\n    align-content: center;\n    justify-content: center;\n}\n\nbody {\n    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */\n    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */\n    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */\n    box-sizing: border-box;\n    font-family:'Roboto', 'Open Sans', 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;\n    font-size: 0.9em;\n    line-height: 1.333;\n    padding-top: 60px;\n    text-align: center;\n}\n\n[hidden] {\n    display: none !important;\n}\n\n/* Portrait layout (default) */\n\n\n/* Landscape layout (with min-width) */\n@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {\n \n}\n\n.menu {\n    background: #ff9912;\n    box-sizing: border-box;\n    color: #fff;\n    height: 60px;\n    left: 0;\n    padding: 14px 12px;\n    position: fixed;\n    right: 0;\n    text-align: left;\n    top: 0;\n    z-index: 3;\n}\n\n.menu img {\n    cursor: pointer;\n    float: right;\n    height: 32px;\n    margin: 0;\n    transition: opacity 0.1s ease-out;\n    width: 32px;\n}\n\n.menu img+img {\n    margin-right: 14px;\n}\n\n.menu img:active {\n    opacity: 0.5;\n}\n\n.menu h1 {\n    display: inline-block;\n    font-size: 1.3em;\n    font-weight: 400;\n    line-height: 32px;\n}\n\n@media screen and (max-width:319px) {\n    .menu h1 {\n        display: none;\n    }\n}\n\n.refresh-icon {\n    transform: rotateZ(-45deg);\n}\n\n.refresh-icon.animate {\n    animation: rotate 2s linear infinite;\n}\n\n.splash {\n    background-color: #ff9912;\n    height: 100%;\n    position: fixed;\n    text-align: center;\n    top: 0;\n    transition: opacity 0.4s ease;\n    width: 100%;\n    will-change: opacity;\n    z-index: 3;\n}\n\n.splash i {\n    background: #ff9912 url(" + __webpack_require__(328) + ") center no-repeat;\n    background-size: 100px 100px;\n    height: 100px;\n    left: 50%;\n    margin: -50px 0 0 -50px;\n    position: absolute;\n    top: 50%;\n    width: 100px;\n}\n\n.splash.animate i {\n    animation: jump 2s ease infinite;\n}\n\n.splash.hidden {\n    opacity: 0;\n    pointer-events: none;\n}\n\n.splash button {\n    display: inline-block;\n    left: 50%;\n    margin: 100px 0 0 -100px;\n    position: absolute;\n    top: 50%;\n    width: 200px;\n}\n\n.progress-bar {\n    background: #583608;\n    height: 2px;\n    left: 25%;\n    margin-top: 70px;\n    position: absolute;\n    top: 50%;\n    width: 50%;\n}\n\n.progress-bar-inner {\n    background: #fff;\n    bottom: 0;\n    left: 0;\n    position: absolute;\n    top: 0;\n    transition: width 0.1s ease-in;\n    width: 0%;\n}\n\n.cards {\n    background: #fafafa;\n    overflow: scroll;\n    position: relative;\n    width: 100%;\n}\n\n.card {\n    background-color: #fff;\n    border: 1px solid #ddd;\n    border-bottom-width: 2px;\n    cursor: pointer;\n    margin: 10px;\n    padding: 8px 10px;\n    position: relative;\n    transition: background-color 0.1s ease-out;\n    z-index: 2;\n}\n\n.card:active {\n    background-color: #fafafa;\n}\n\n.card::after {\n    background: url(" + __webpack_require__(327) + ") center no-repeat;\n    background-size: 100%;\n    content: '';\n    height: 1em;\n    opacity: 0;\n    position: absolute;\n    right: 10px;\n    top: 10px;\n    width: 1em;\n}\n\n.card.expendable::after {\n    opacity: 1;\n}\n\n.card.expanded::after {\n    transform: rotate(180deg);\n}\n\n.card .timetable tr:nth-child(n+5) {\n    display: none;\n}\n\n.card.expanded .timetable tr:nth-child(n+5) {\n    display: table-row;\n}\n\n.card h2 {\n    font-size: 1.5em;\n    font-weight: 300;\n    margin: 0 0 2px 0;\n    padding-right: 1em;\n    text-align: left;\n}\n\n.timetable {\n    color: #666;\n    text-align: left;\n    width: 100%;\n}\n\n.timetable td {\n    padding: 2px 1px;\n}\n\n.timetable td:first-child {\n    text-align: left;\n    width: 40px;\n}\n\n.timetable td:last-child {\n    text-align: right;\n    width: 50px;\n}\n\n.debug-console {\n    background: #222;\n    bottom: 0;\n    box-sizing: border-box;\n    color: #eee;\n    font-family: monospace;\n    height: 50vh;\n    opacity: 0.75;\n    overflow: auto;\n    padding: 4px;\n    position: absolute;\n    text-align: left;\n    width: 100%;\n    white-space: pre;\n    z-index: 3;\n}\n\nbutton {\n    border: 0;\n    background: #ff9912;\n    color: #fff;\n    margin: 10px;\n    padding: 10px 20px;\n}\n\nbutton:active,\nbutton.button-alternative:active {\n    background: #583608;\n}\n\nbutton.button-alternative {\n    background: #fff;\n    color: #ff9912;\n}\n\nbutton:focus {\n    outline: 0;\n}\n\n@keyframes rotate {\n\t0% { transform: rotate(-45deg); }\n\t100% { transform: rotate(-405deg); }\n}\n\n@keyframes jump {\n    0% { transform: translateY(0px); }\n    50% { transform: translateY(-20px); }\n    100% { transform: translateY(0px); }\n}", ""]);
 
 // exports
 
