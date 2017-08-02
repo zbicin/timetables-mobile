@@ -204,6 +204,7 @@ body {
     color: #eee;
     font-family: monospace;
     height: 50vh;
+    opacity: 0.75;
     overflow: auto;
     padding: 4px;
     position: absolute;
