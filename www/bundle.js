@@ -15158,7 +15158,9 @@ var showErrorMessage = function showErrorMessage(e) {
 };
 
 var onFetchUpdate = function onFetchUpdate(progress) {
-    elements.progressBarInner.style.width = progress * 100 + '%';
+    var percentage = progress * 100 + '%';
+    log(percentage);
+    elements.progressBarInner.style.width = percentage;
 };
 
 var reload = function reload() {
@@ -15197,7 +15199,7 @@ var showInfoMessage = function showInfoMessage(lastRefreshTime, refreshIntervalI
 };
 
 var updateBoardsDOM = function updateBoardsDOM(boardsData, cardsHandles) {
-    boardsData.forEach(function (boardData, index) {
+    return boardsData.forEach(function (boardData, index) {
         return card.update(cardsHandles[index], boardData);
     });
 };

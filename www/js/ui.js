@@ -81,7 +81,9 @@ const showErrorMessage = (e) => {
 };
 
 const onFetchUpdate = (progress) => {
-    elements.progressBarInner.style.width = `${progress * 100}%`;
+    const percentage = `${progress * 100}%`;
+    log(percentage);
+    elements.progressBarInner.style.width = percentage;
 };
 
 const reload = () => location.reload();
@@ -118,9 +120,8 @@ const showInfoMessage = (lastRefreshTime, refreshIntervalInSeconds) => {
         });
 };
 
-const updateBoardsDOM = (boardsData, cardsHandles) => {
+const updateBoardsDOM = (boardsData, cardsHandles) =>
     boardsData.forEach((boardData, index) => card.update(cardsHandles[index], boardData));
-};
 
 const updateConsoleVisibility = () => {
     if (localStorage.getItem(debugModeKey)) {
