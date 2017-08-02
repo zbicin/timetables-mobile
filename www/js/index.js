@@ -3,8 +3,8 @@ import style from '../css/style.css'
 
 import 'core-js';
 import { DOMHelper } from './dom';
-// import { DummyTimetables as Timetables } from './timetables.dummy';
-import { Timetables } from './timetables';
+import { DummyTimetables as Timetables } from './timetables.dummy';
+// import { Timetables } from './timetables';
 import { Card } from './card';
 
 import { Promise } from 'bluebird';
@@ -18,15 +18,10 @@ const pendingPromises = new Set();
 const refreshIntervalInSeconds = 30;
 const timetables = Object.create(Timetables);
 
-let pullStartY = null;
-let pullDiffY = 0;
-
 let cardsContainer;
 let cardsHandles;
-let pullDiffLimit;
-let pullIndicator;
 let lastRefreshTime;
-let loaderElement;
+let menuRefresh;
 let splashElement;
 let refreshHandle;
 
@@ -53,16 +48,15 @@ const onError = (e) => {
 
     cleanupHandles();
 
-    if (loaderElement) {
-        loaderElement.classList.remove('active');
-    }
     if(splashElement) {
         splashElement.classList.remove('animate');
+    }
+    if(menuRefresh) {
+        menuRefresh.classList.remove('animate');
     }
 };
 
 const isPending = () => pendingPromises.size > 0;
-const isPulling = () => pullStartY !== null;
 
 const formatTime = (date) => {
     const twoDigits = (input) => input < 10 ? '0' + input : '' + input;
@@ -71,12 +65,12 @@ const formatTime = (date) => {
         .join(':');
 };
 
-const updateLoaderState = () => {
+const updateRefreshState = () => {
     if (lastRefreshTime && isPending()) {
-        loaderElement.classList.add('active');
+        menuRefresh.classList.add('animate');
     }
     else {
-        loaderElement.classList.remove('active');
+        menuRefresh.classList.remove('animate');
     }
 };
 
@@ -86,7 +80,7 @@ const refreshView = (onRefresh) => {
         .then((boardsData) => {
             console.log('rendering boards');
             pendingPromises.delete(promise);
-            updateLoaderState();
+            updateRefreshState();
 
             cardsHandles = dom.$all('.card');
             if (cardsHandles.length === 0) {
@@ -105,44 +99,11 @@ const refreshView = (onRefresh) => {
             }
         }).catch((error) => {
             pendingPromises.delete(promise);
-            updateLoaderState();
+            updateRefreshState();
             onError(error);
         });
     pendingPromises.add(promise);
-    updateLoaderState();
-};
-
-const updateCardsTransform = () => {
-    let cardsTransform = `translateY(${Math.min(pullDiffY, pullDiffLimit)}px)`;
-    cardsHandles.forEach((c) => c.style.transform = cardsTransform);
-};
-
-const onCardsTouchStart = (e) => {
-    if(cardsContainer.scrollTop === 0 && !isPending()) {
-        pullStartY = e.touches[0].clientY;
-        cardsContainer.classList.add('pulled');
-    }
-};
-
-const onCardsTouchMove = (e) => {
-    if(pullStartY !== null) {
-        pullDiffY = Math.min(e.touches[0].clientY - pullStartY, pullDiffLimit);
-        if(pullDiffY > 0) {
-            updateCardsTransform();
-        }
-    }
-};
-
-const onCardsTouchEnd = (e) => {
-    cardsContainer.classList.remove('pulled');        
-
-    if(pullDiffY > pullDiffLimit * 0.66 && !isPending()) {
-        refreshView();
-    }
-
-    pullDiffY = 0;
-    pullStartY = null;
-    updateCardsTransform();
+    updateRefreshState();
 };
 
 const renderBoards = (boards) => {
@@ -156,9 +117,6 @@ const renderBoards = (boards) => {
 
     cards.forEach((card) => fragment.appendChild(card));
     container.appendChild(fragment);
-    container.addEventListener('touchstart', onCardsTouchStart);
-    container.addEventListener('touchmove', onCardsTouchMove);
-    container.addEventListener('touchend', onCardsTouchEnd);
 
     return cards;
 };
@@ -171,7 +129,7 @@ const setupRefresh = (cardsHandles) => {
     const refreshInterval = refreshIntervalInSeconds * 1000;
 
     return setInterval(() => {
-        if(!isPulling() && !isPending()) {
+        if(!isPending()) {
             refreshView();
         }
     }, refreshInterval);
@@ -185,6 +143,12 @@ const waitAndHideSplash = () => {
             splash.parentNode.removeChild(splash);
         });
         splash.classList.add('hidden');
+    }
+};
+
+const onRefresh = (e) => {
+    if(!isPending()) {
+        refreshView();
     }
 };
 
@@ -224,11 +188,11 @@ const onDeviceReady = () => {
     }
 
     cardsContainer = dom.$('.cards');
-    pullIndicator = dom.$('.pull-indicator');
-    pullDiffLimit = pullIndicator.clientHeight;
-    loaderElement = dom.$('.loader');
+    menuRefresh = dom.$('#menu-refresh');
     splashElement = dom.$('#splash');
+
     dom.$('#menu-info').addEventListener('click', onInfo);
+    menuRefresh.addEventListener('click', onRefresh);
     document.addEventListener('pause', onPause);
     document.addEventListener('resume', onResume);
 
