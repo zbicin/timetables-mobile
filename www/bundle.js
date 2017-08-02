@@ -9851,6 +9851,8 @@ var _style2 = _interopRequireDefault(_style);
 
 __webpack_require__(128);
 
+__webpack_require__(331);
+
 var _dom = __webpack_require__(91);
 
 var _timetables = __webpack_require__(329);
@@ -9868,12 +9870,14 @@ _bluebird.Promise.config({
 
 var card = Object.create(_card.Card);
 var dom = Object.create(_dom.DOMHelper);
+var debugModeKey = 'debug';
 var pendingPromises = new Set();
 var refreshIntervalInSeconds = 30;
 var timetables = Object.create(_timetables.DummyTimetables);
 
 var cardsContainer = void 0;
 var cardsHandles = void 0;
+var debugConsole = void 0;
 var lastRefreshTime = void 0;
 var menuRefresh = void 0;
 var splashElement = void 0;
@@ -9885,6 +9889,12 @@ var cleanupHandles = function cleanupHandles() {
         return p.cancel();
     });
     pendingPromises.clear();
+};
+
+var log = function log(message) {
+    var line = dom.create('div', message);
+    debugConsole.appendChild(line);
+    console.log(message);
 };
 
 var onError = function onError(e) {
@@ -9901,6 +9911,7 @@ var onError = function onError(e) {
     }
     navigator.notification.alert(information, null, '¯\\_(ツ)_/¯');
     console.error(e);
+    log(errorMessage);
 
     cleanupHandles();
 
@@ -9909,6 +9920,14 @@ var onError = function onError(e) {
     }
     if (menuRefresh) {
         menuRefresh.classList.remove('animate');
+    }
+};
+
+var updateConsoleVisibility = function updateConsoleVisibility() {
+    if (localStorage.getItem(debugModeKey)) {
+        debugConsole.removeAttribute('hidden');
+    } else {
+        debugConsole.setAttribute('hidden', 'true');
     }
 };
 
@@ -9934,9 +9953,9 @@ var updateRefreshState = function updateRefreshState() {
 };
 
 var refreshView = function refreshView(onRefresh) {
-    console.log('refreshView');
+    log('refreshView');
     var promise = timetables.fetchNearbyTimetables().then(function (boardsData) {
-        console.log('rendering boards');
+        log('rendering boards');
         pendingPromises.delete(promise);
         updateRefreshState();
 
@@ -10000,7 +10019,7 @@ var waitAndHideSplash = function waitAndHideSplash() {
     var splash = dom.$('#splash');
     if (splash) {
         splash.addEventListener('transitionend', function () {
-            console.log('splash.transitionend');
+            log('splash.transitionend');
             splash.parentNode.removeChild(splash);
         });
         splash.classList.add('hidden');
@@ -10032,32 +10051,45 @@ var onInfo = function onInfo(e) {
 };
 
 var onPause = function onPause() {
-    console.log('device.pause');
+    log('device.pause');
     cleanupHandles();
 };
 
 var onResume = function onResume() {
-    console.log('device.resume');
+    log('device.resume');
     cleanupHandles();
     refreshView(waitAndHideSplash);
 };
 
+var onKonamiCode = function onKonamiCode() {
+    if (localStorage.getItem(debugModeKey)) {
+        localStorage.removeItem(debugModeKey);
+    } else {
+        localStorage.setItem(debugModeKey, true);
+    }
+
+    updateConsoleVisibility();
+};
+
 var onDeviceReady = function onDeviceReady() {
-    console.log('document.deviceready');
     if (cordova.platformId == 'android') {
         StatusBar.backgroundColorByHexString('ee8801');
     }
 
     cardsContainer = dom.$('.cards');
+    debugConsole = dom.$('.debug-console');
     menuRefresh = dom.$('#menu-refresh');
     splashElement = dom.$('#splash');
 
     dom.$('#menu-info').addEventListener('click', onInfo);
     menuRefresh.addEventListener('click', onRefresh);
+    document.addEventListener('konamiCode', onKonamiCode);
     document.addEventListener('pause', onPause);
     document.addEventListener('resume', onResume);
 
+    log('document.deviceready');
     refreshView(waitAndHideSplash);
+    updateConsoleVisibility();
 };
 
 document.addEventListener('deviceready', onDeviceReady);
@@ -14402,7 +14434,7 @@ exports = module.exports = __webpack_require__(122)(undefined);
 
 
 // module
-exports.push([module.i, "* {\n    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */\n}\n\nhtml, body {\n    height: 100%;\n    width: 100%;\n    margin: 0;\n    display: flex;\n    align-content: center;\n    justify-content: center;\n}\n\nbody {\n    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */\n    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */\n    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */\n    box-sizing: border-box;\n    font-family:'Roboto', 'Open Sans', 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;\n    font-size: 0.9em;\n    line-height: 1.333;\n    padding-top: 60px;\n    text-align: center;\n}\n\n[hidden] {\n    display: none;\n}\n\n/* Portrait layout (default) */\n\n\n/* Landscape layout (with min-width) */\n@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {\n \n}\n\n.menu {\n    background: #ff9912;\n    height: 60px;\n    left: 0;\n    position: fixed;\n    right: 0;\n    text-align: right;\n    top: 0;\n    z-index: 3;\n}\n\n.menu img {\n    cursor: pointer;\n    height: 32px;\n    margin: 14px;\n    transition: opacity 0.1s ease-out;\n    width: 32px;\n}\n\n.menu img+img {\n    margin-left: 0;\n}\n\n.menu img:active {\n    opacity: 0.5;\n}\n\n.refresh-icon {\n    transform: rotateZ(-45deg);\n}\n\n.refresh-icon.animate {\n    animation: rotate 2s linear infinite;\n}\n\n.splash {\n    background-color: #ff9912;\n    height: 100%;\n    position: fixed;\n    top: 0;\n    transition: opacity 0.4s ease;\n    width: 100%;\n    will-change: opacity;\n    z-index: 3;\n}\n\n.splash i {\n    background: #ff9912 url(" + __webpack_require__(328) + ") center no-repeat;\n    background-size: 100px 100px;\n    height: 100px;\n    left: 50%;\n    margin: -50px 0 0 -50px;\n    position: absolute;\n    top: 50%;\n    width: 100px;\n}\n\n.splash.animate i {\n    animation: jump 2s ease infinite;\n}\n\n.splash.hidden {\n    opacity: 0;\n    pointer-events: none;\n}\n\n.cards {\n    background: #fafafa;\n    overflow: scroll;\n    position: relative;\n    width: 100%;\n}\n\n.card {\n    background-color: #fff;\n    border: 1px solid #ddd;\n    border-bottom-width: 2px;\n    cursor: pointer;\n    margin: 10px;\n    padding: 8px 10px;\n    position: relative;\n    transition: background-color 0.1s ease-out;\n    z-index: 2;\n}\n\n.card:active {\n    background-color: #fafafa;\n}\n\n.card::after {\n    background: url(" + __webpack_require__(327) + ") center no-repeat;\n    background-size: 100%;\n    content: '';\n    height: 1em;\n    opacity: 0;\n    position: absolute;\n    right: 10px;\n    top: 10px;\n    width: 1em;\n}\n\n.card.expendable::after {\n    opacity: 1;\n}\n\n.card.expanded::after {\n    transform: rotate(180deg);\n}\n\n.card .timetable tr:nth-child(n+5) {\n    display: none;\n}\n\n.card.expanded .timetable tr:nth-child(n+5) {\n    display: table-row;\n}\n\n.card h2 {\n    font-size: 1.5em;\n    font-weight: 300;\n    margin: 0 0 2px 0;\n    padding-right: 1em;\n    text-align: left;\n}\n\n.timetable {\n    color: #666;\n    text-align: left;\n    width: 100%;\n}\n\n.timetable td {\n    padding: 2px 1px;\n}\n\n.timetable td:first-child {\n    text-align: left;\n    width: 40px;\n}\n\n.timetable td:last-child {\n    text-align: right;\n    width: 50px;\n}\n\n.container {\n    width: 100%;\n    height: 100%;\n    box-sizing: border-box;\n}\n\n.container.boards {\n    padding: 10px;\n}\n\n.home {\n    background: #ff9912;\n    display: flex;\n    flex-direction: column;\n    align-content: center;\n    justify-content: center;\n    color: #fff;\n    padding: 20px;\n    transform: translate3d(0,0,0);\n}\n\n.home h1 {\n    font-weight: normal;\n}\n\nbutton {\n    border: 0;\n    background: #ff9912;\n    color: #fff;\n    margin: 10px;\n    padding: 10px 20px;\n}\n\nbutton:active {\n    background: #583608;\n}\n\nbutton:focus {\n    outline: 0;\n}\n\n@keyframes rotate {\n\t0% { transform: rotate(-45deg); }\n\t100% { transform: rotate(-405deg); }\n}\n\n@keyframes jump {\n    0% { transform: translateY(0px); }\n    50% { transform: translateY(-20px); }\n    100% { transform: translateY(0px); }\n}\n", ""]);
+exports.push([module.i, "* {\n    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */\n}\n\nhtml, body {\n    height: 100%;\n    width: 100%;\n    margin: 0;\n    display: flex;\n    align-content: center;\n    justify-content: center;\n}\n\nbody {\n    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */\n    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */\n    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */\n    box-sizing: border-box;\n    font-family:'Roboto', 'Open Sans', 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;\n    font-size: 0.9em;\n    line-height: 1.333;\n    padding-top: 60px;\n    text-align: center;\n}\n\n[hidden] {\n    display: none;\n}\n\n/* Portrait layout (default) */\n\n\n/* Landscape layout (with min-width) */\n@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {\n \n}\n\n.menu {\n    background: #ff9912;\n    height: 60px;\n    left: 0;\n    position: fixed;\n    right: 0;\n    text-align: right;\n    top: 0;\n    z-index: 3;\n}\n\n.menu img {\n    cursor: pointer;\n    height: 32px;\n    margin: 14px;\n    transition: opacity 0.1s ease-out;\n    width: 32px;\n}\n\n.menu img+img {\n    margin-left: 0;\n}\n\n.menu img:active {\n    opacity: 0.5;\n}\n\n.refresh-icon {\n    transform: rotateZ(-45deg);\n}\n\n.refresh-icon.animate {\n    animation: rotate 2s linear infinite;\n}\n\n.splash {\n    background-color: #ff9912;\n    height: 100%;\n    position: fixed;\n    top: 0;\n    transition: opacity 0.4s ease;\n    width: 100%;\n    will-change: opacity;\n    z-index: 3;\n}\n\n.splash i {\n    background: #ff9912 url(" + __webpack_require__(328) + ") center no-repeat;\n    background-size: 100px 100px;\n    height: 100px;\n    left: 50%;\n    margin: -50px 0 0 -50px;\n    position: absolute;\n    top: 50%;\n    width: 100px;\n}\n\n.splash.animate i {\n    animation: jump 2s ease infinite;\n}\n\n.splash.hidden {\n    opacity: 0;\n    pointer-events: none;\n}\n\n.cards {\n    background: #fafafa;\n    overflow: scroll;\n    position: relative;\n    width: 100%;\n}\n\n.card {\n    background-color: #fff;\n    border: 1px solid #ddd;\n    border-bottom-width: 2px;\n    cursor: pointer;\n    margin: 10px;\n    padding: 8px 10px;\n    position: relative;\n    transition: background-color 0.1s ease-out;\n    z-index: 2;\n}\n\n.card:active {\n    background-color: #fafafa;\n}\n\n.card::after {\n    background: url(" + __webpack_require__(327) + ") center no-repeat;\n    background-size: 100%;\n    content: '';\n    height: 1em;\n    opacity: 0;\n    position: absolute;\n    right: 10px;\n    top: 10px;\n    width: 1em;\n}\n\n.card.expendable::after {\n    opacity: 1;\n}\n\n.card.expanded::after {\n    transform: rotate(180deg);\n}\n\n.card .timetable tr:nth-child(n+5) {\n    display: none;\n}\n\n.card.expanded .timetable tr:nth-child(n+5) {\n    display: table-row;\n}\n\n.card h2 {\n    font-size: 1.5em;\n    font-weight: 300;\n    margin: 0 0 2px 0;\n    padding-right: 1em;\n    text-align: left;\n}\n\n.timetable {\n    color: #666;\n    text-align: left;\n    width: 100%;\n}\n\n.timetable td {\n    padding: 2px 1px;\n}\n\n.timetable td:first-child {\n    text-align: left;\n    width: 40px;\n}\n\n.timetable td:last-child {\n    text-align: right;\n    width: 50px;\n}\n\n.debug-console {\n    background: #222;\n    bottom: 0;\n    box-sizing: border-box;\n    color: #eee;\n    font-family: monospace;\n    height: 50vh;\n    overflow: scroll;\n    padding: 4px;\n    position: absolute;\n    text-align: left;\n    width: 100%;\n    white-space: pre;\n    z-index: 3;\n}\n\nbutton {\n    border: 0;\n    background: #ff9912;\n    color: #fff;\n    margin: 10px;\n    padding: 10px 20px;\n}\n\nbutton:active {\n    background: #583608;\n}\n\nbutton:focus {\n    outline: 0;\n}\n\n@keyframes rotate {\n\t0% { transform: rotate(-45deg); }\n\t100% { transform: rotate(-405deg); }\n}\n\n@keyframes jump {\n    0% { transform: translateY(0px); }\n    50% { transform: translateY(-20px); }\n    100% { transform: translateY(0px); }\n}\n", ""]);
 
 // exports
 
@@ -14829,6 +14861,174 @@ var fetchNearbyTimetables = function fetchNearbyTimetables() {
 var DummyTimetables = exports.DummyTimetables = {
     fetchNearbyTimetables: fetchNearbyTimetables
 };
+
+/***/ }),
+/* 330 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Gestures; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return addToQueue; });
+const mirrorObject = (o) => Object.keys(o).forEach((key) => o[o[key]] = key);
+
+const Gestures = {
+    Up: 1,
+    Down: 2,
+    Left: 3,
+    Right: 4,
+    A: 5,
+    B: 6,
+    None: null
+};
+mirrorObject(Gestures);
+
+const konamiCodeEvent = new Event('konamiCode');
+
+const konamiCode = [
+    Gestures.Up, Gestures.Up, Gestures.Down, Gestures.Down,
+    Gestures.Left, Gestures.Right, Gestures.Left, Gestures.Right,
+    Gestures.B, Gestures.A
+];
+
+const queue = [
+    Gestures.None, Gestures.None, Gestures.None, Gestures.None,
+    Gestures.None, Gestures.None, Gestures.None, Gestures.None,
+    Gestures.None, Gestures.None
+];
+
+const queueEqualsKonamiCode = () => {
+    let result = true;
+    for (let i = 0; i < konamiCode.length; i++) {
+        if (konamiCode[i] !== queue[i]) {
+            result = false;
+            break;
+        }
+    }
+    return result;
+};
+
+const addToQueue = (gesture) => {
+    queue.shift();
+    queue.push(gesture);
+
+    const gestureEvent = new CustomEvent('konamiCodeGesture', {
+        detail: {
+            code: gesture,
+            name: Gestures[gesture]
+        }
+    });
+    document.dispatchEvent(gestureEvent);
+    
+    if (queueEqualsKonamiCode()) {
+        document.dispatchEvent(konamiCodeEvent);
+    }
+};
+
+
+
+/***/ }),
+/* 331 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src__ = __webpack_require__(332);
+
+
+/***/ }),
+/* 332 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shared__ = __webpack_require__(330);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__touch__ = __webpack_require__(334);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__keyboard__ = __webpack_require__(333);
+
+
+
+
+
+/***/ }),
+/* 333 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shared__ = __webpack_require__(330);
+
+
+const keyGestureMap = {
+    ArrowLeft: __WEBPACK_IMPORTED_MODULE_0__shared__["a" /* Gestures */].Left,
+    ArrowRight: __WEBPACK_IMPORTED_MODULE_0__shared__["a" /* Gestures */].Right,
+    ArrowUp: __WEBPACK_IMPORTED_MODULE_0__shared__["a" /* Gestures */].Up,
+    ArrowDown: __WEBPACK_IMPORTED_MODULE_0__shared__["a" /* Gestures */].Down,
+    a: __WEBPACK_IMPORTED_MODULE_0__shared__["a" /* Gestures */].A,
+    b: __WEBPACK_IMPORTED_MODULE_0__shared__["a" /* Gestures */].B
+};
+
+const onKeyUp = (event) => {
+    const gesture = keyGestureMap[event.key] || __WEBPACK_IMPORTED_MODULE_0__shared__["a" /* Gestures */].Invalid;
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__shared__["b" /* addToQueue */])(gesture);
+};
+
+document.addEventListener('keyup', onKeyUp);
+
+/***/ }),
+/* 334 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shared__ = __webpack_require__(330);
+
+
+let dragging = false;
+let endX = null;
+let endY = null;
+let startX = null;
+let startY = null;
+const viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+
+const onTouchStart = (event) => {
+    dragging = false;
+    startX = event.touches[0].clientX;
+    startY = event.touches[0].clientY;
+};
+
+const onTouchMove = (event) => {
+    if (!startX || !startY) {
+        return;
+    }
+    dragging = true;
+    endX = event.touches[0].clientX;
+    endY = event.touches[0].clientY;
+};
+
+const onTouchEnd = (event) => {
+    if (dragging) {
+        const xDiff = startX - endX ;
+        const yDiff = startY - endY;
+        const isHorizontal = Math.abs(xDiff) > Math.abs(yDiff);
+
+        if (isHorizontal) {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__shared__["b" /* addToQueue */])(xDiff > 0 ? __WEBPACK_IMPORTED_MODULE_0__shared__["a" /* Gestures */].Left : __WEBPACK_IMPORTED_MODULE_0__shared__["a" /* Gestures */].Right);
+        } else {
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__shared__["b" /* addToQueue */])(yDiff > 0 ? __WEBPACK_IMPORTED_MODULE_0__shared__["a" /* Gestures */].Up : __WEBPACK_IMPORTED_MODULE_0__shared__["a" /* Gestures */].Down);
+        }
+
+        dragging = false;
+    }
+    else {
+        const isLeftHalf = startX < (viewportWidth / 2);
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__shared__["b" /* addToQueue */])(isLeftHalf ? __WEBPACK_IMPORTED_MODULE_0__shared__["a" /* Gestures */].A : __WEBPACK_IMPORTED_MODULE_0__shared__["a" /* Gestures */].B);
+    }
+
+    startX = null;
+    startY = null;
+};
+
+document.addEventListener('touchstart', onTouchStart, false);
+document.addEventListener('touchmove', onTouchMove, false);
+document.addEventListener('touchend', onTouchEnd, false);
+
 
 /***/ })
 /******/ ]);

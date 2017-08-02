@@ -2,6 +2,7 @@ import reset from '../css/reset.css';
 import style from '../css/style.css'
 
 import 'core-js';
+import 'konami-code-js';
 import { DOMHelper } from './dom';
 import { DummyTimetables as Timetables } from './timetables.dummy';
 // import { Timetables } from './timetables';
@@ -14,12 +15,14 @@ Promise.config({
 
 const card = Object.create(Card);
 const dom = Object.create(DOMHelper);
+const debugModeKey = 'debug';
 const pendingPromises = new Set();
 const refreshIntervalInSeconds = 30;
 const timetables = Object.create(Timetables);
 
 let cardsContainer;
 let cardsHandles;
+let debugConsole;
 let lastRefreshTime;
 let menuRefresh;
 let splashElement;
@@ -29,6 +32,12 @@ const cleanupHandles = () => {
     clearInterval(refreshHandle);
     pendingPromises.forEach((p) => p.cancel());
     pendingPromises.clear();
+};
+
+const log = (message) => {
+    const line = dom.create('div', message);
+    debugConsole.appendChild(line);
+    console.log(message);
 };
 
 const onError = (e) => {
@@ -45,6 +54,7 @@ const onError = (e) => {
     }
     navigator.notification. alert(information, null, '¯\\_(ツ)_/¯');
     console.error(e);
+    log(errorMessage);
 
     cleanupHandles();
 
@@ -53,6 +63,14 @@ const onError = (e) => {
     }
     if(menuRefresh) {
         menuRefresh.classList.remove('animate');
+    }
+};
+
+const updateConsoleVisibility = () => {
+    if(localStorage.getItem(debugModeKey)) {
+        debugConsole.removeAttribute('hidden');
+    } else {
+        debugConsole.setAttribute('hidden', 'true');
     }
 };
 
@@ -75,10 +93,10 @@ const updateRefreshState = () => {
 };
 
 const refreshView = (onRefresh) => {
-    console.log('refreshView');
+    log('refreshView');
     const promise = timetables.fetchNearbyTimetables()
         .then((boardsData) => {
-            console.log('rendering boards');
+            log('rendering boards');
             pendingPromises.delete(promise);
             updateRefreshState();
 
@@ -139,7 +157,7 @@ const waitAndHideSplash = () => {
     const splash = dom.$('#splash');
     if (splash) {
         splash.addEventListener('transitionend', () => {
-            console.log('splash.transitionend');
+            log('splash.transitionend');
             splash.parentNode.removeChild(splash);
         });
         splash.classList.add('hidden');
@@ -171,32 +189,45 @@ const onInfo = (e) => {
 };
 
 const onPause = () => {
-    console.log('device.pause');
+    log('device.pause');
     cleanupHandles();
 };
 
 const onResume = () => {
-    console.log('device.resume');
+    log('device.resume');
     cleanupHandles();
     refreshView(waitAndHideSplash);
 };
 
+const onKonamiCode = () => {
+    if(localStorage.getItem(debugModeKey)) {
+        localStorage.removeItem(debugModeKey);
+    } else {
+        localStorage.setItem(debugModeKey, true);
+    }
+    
+    updateConsoleVisibility();
+};
+
 const onDeviceReady = () => {
-    console.log('document.deviceready');
     if (cordova.platformId == 'android') {
         StatusBar.backgroundColorByHexString('ee8801');
     }
 
     cardsContainer = dom.$('.cards');
+    debugConsole = dom.$('.debug-console');
     menuRefresh = dom.$('#menu-refresh');
     splashElement = dom.$('#splash');
 
     dom.$('#menu-info').addEventListener('click', onInfo);
     menuRefresh.addEventListener('click', onRefresh);
+    document.addEventListener('konamiCode', onKonamiCode);
     document.addEventListener('pause', onPause);
     document.addEventListener('resume', onResume);
 
+    log('document.deviceready');
     refreshView(waitAndHideSplash);
+    updateConsoleVisibility();
 };
 
 document.addEventListener('deviceready', onDeviceReady);
