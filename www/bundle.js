@@ -10162,136 +10162,18 @@ __webpack_require__(129);
 
 __webpack_require__(130);
 
-var _ui = __webpack_require__(334);
-
-var _timetables = __webpack_require__(128);
-
 var _bluebird = __webpack_require__(46);
+
+var _app = __webpack_require__(335);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// import { DummyTimetables as Timetables } from './timetables.dummy';
 _bluebird.Promise.config({
     cancellation: true
 });
 
-var noop = function noop() {};
-var pendingPromises = new Set();
-var refreshIntervalInSeconds = 30;
-var ui = Object.create(_ui.UI);
-var timetables = Object.create(_timetables.Timetables);
-
-var lastRefreshTime = void 0;
-var refreshHandle = void 0;
-
-var cleanupHandles = function cleanupHandles() {
-    clearInterval(refreshHandle);
-    pendingPromises.forEach(function (p) {
-        return p.cancel();
-    });
-    pendingPromises.clear();
-};
-
-var onError = function onError(e) {
-    ui.showErrorMessage(e);
-    cleanupHandles();
-};
-
-var isPending = function isPending() {
-    return pendingPromises.size > 0;
-};
-
-var timeout = function timeout(data, _timeout) {
-    return new _bluebird.Promise(function (resolve) {
-        return setTimeout(function () {
-            return resolve(data);
-        }, _timeout);
-    });
-};
-
-var refresh = function refresh() {
-    var onRefresh = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : noop;
-
-    ui.log('refresh');
-    var promise = timetables.fetchNearbyTimetables(ui.onFetchUpdate).then(function (boardsData) {
-        return timeout(boardsData, 100);
-    }).then(function (boardsData) {
-        if (!refreshHandle) {
-            refreshHandle = setupRefreshInterval(ui.elements.cards);
-        }
-        pendingPromises.delete(promise);
-        ui.renderBoards(boardsData);
-        lastRefreshTime = new Date();
-        onRefresh();
-    }).catch(function (error) {
-        pendingPromises.delete(promise);
-        onError(error);
-    });
-    pendingPromises.add(promise);
-    ui.updateRefreshState(lastRefreshTime, isPending());
-};
-
-var setupRefreshInterval = function setupRefreshInterval(cardsHandles) {
-    var refreshInterval = refreshIntervalInSeconds * 1000;
-
-    return setInterval(function () {
-        if (!isPending()) {
-            refresh();
-        }
-    }, refreshInterval);
-};
-
-var onRefreshButton = function onRefreshButton(e) {
-    if (!isPending()) {
-        refresh();
-    }
-};
-
-var onInfoButton = function onInfoButton(e) {
-    ui.showInfoMessage(lastRefreshTime, refreshIntervalInSeconds);
-};
-
-var onDevicePause = function onDevicePause() {
-    ui.log('device.pause');
-    cleanupHandles();
-};
-
-var onDeviceResume = function onDeviceResume() {
-    ui.log('device.resume');
-    cleanupHandles();
-    refresh(ui.waitAndHideSplash);
-};
-
-var onKonamiCode = function onKonamiCode() {
-    if (localStorage.getItem(debugModeKey)) {
-        localStorage.removeItem(debugModeKey);
-    } else {
-        localStorage.setItem(debugModeKey, true);
-    }
-
-    ui.updateConsoleVisibility();
-};
-
-var onRetryButton = function onRetryButton() {
-    return ui.reload();
-};
-
-var onDeviceReady = function onDeviceReady() {
-    ui.init();
-
-    ui.elements.menuInfo.addEventListener('click', onInfoButton);
-    ui.elements.menuRefresh.addEventListener('click', onRefreshButton);
-    ui.elements.retryButton.addEventListener('click', onRetryButton);
-    ui.addEventListener('konamiCode', onKonamiCode);
-    ui.addEventListener('pause', onDevicePause);
-    ui.addEventListener('resume', onDeviceResume);
-
-    ui.log('document.deviceready');
-    refresh(ui.waitAndHideSplash);
-    ui.updateConsoleVisibility();
-};
-
-ui.addEventListener('deviceready', onDeviceReady);
+var app = Object.create(_app.App);
+app.init();
 
 /***/ }),
 /* 136 */
@@ -15374,6 +15256,146 @@ var UI = exports.UI = {
     updateConsoleVisibility: updateConsoleVisibility,
     updateRefreshState: updateRefreshState,
     waitAndHideSplash: waitAndHideSplash
+};
+
+/***/ }),
+/* 335 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.App = undefined;
+
+var _ui = __webpack_require__(334);
+
+var _timetables = __webpack_require__(128);
+
+var noop = function noop() {};
+// import { DummyTimetables as Timetables } from './timetables.dummy';
+
+var pendingPromises = new Set();
+var refreshIntervalInSeconds = 30;
+var ui = Object.create(_ui.UI);
+var timetables = Object.create(_timetables.Timetables);
+
+var lastRefreshTime = void 0;
+var refreshHandle = void 0;
+
+var cleanupHandles = function cleanupHandles() {
+    clearInterval(refreshHandle);
+    pendingPromises.forEach(function (p) {
+        return p.cancel();
+    });
+    pendingPromises.clear();
+};
+
+var onError = function onError(e) {
+    ui.showErrorMessage(e);
+    cleanupHandles();
+};
+
+var isPending = function isPending() {
+    return pendingPromises.size > 0;
+};
+
+var timeout = function timeout(data, _timeout) {
+    return new Promise(function (resolve) {
+        return setTimeout(function () {
+            return resolve(data);
+        }, _timeout);
+    });
+};
+
+var refresh = function refresh() {
+    var onRefresh = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : noop;
+
+    ui.log('refresh');
+    var promise = timetables.fetchNearbyTimetables(ui.onFetchUpdate).then(function (boardsData) {
+        return timeout(boardsData, 100);
+    }).then(function (boardsData) {
+        if (!refreshHandle) {
+            refreshHandle = setupRefreshInterval(ui.elements.cards);
+        }
+        pendingPromises.delete(promise);
+        ui.renderBoards(boardsData);
+        lastRefreshTime = new Date();
+        onRefresh();
+    }).catch(function (error) {
+        pendingPromises.delete(promise);
+        onError(error);
+    });
+    pendingPromises.add(promise);
+    ui.updateRefreshState(lastRefreshTime, isPending());
+};
+
+var setupRefreshInterval = function setupRefreshInterval(cardsHandles) {
+    var refreshInterval = refreshIntervalInSeconds * 1000;
+
+    return setInterval(function () {
+        if (!isPending()) {
+            refresh();
+        }
+    }, refreshInterval);
+};
+
+var onRefreshButton = function onRefreshButton(e) {
+    if (!isPending()) {
+        refresh();
+    }
+};
+
+var onInfoButton = function onInfoButton(e) {
+    ui.showInfoMessage(lastRefreshTime, refreshIntervalInSeconds);
+};
+
+var onDevicePause = function onDevicePause() {
+    ui.log('device.pause');
+    cleanupHandles();
+};
+
+var onDeviceResume = function onDeviceResume() {
+    ui.log('device.resume');
+    cleanupHandles();
+    refresh(ui.waitAndHideSplash);
+};
+
+var onKonamiCode = function onKonamiCode() {
+    if (localStorage.getItem(debugModeKey)) {
+        localStorage.removeItem(debugModeKey);
+    } else {
+        localStorage.setItem(debugModeKey, true);
+    }
+
+    ui.updateConsoleVisibility();
+};
+
+var onRetryButton = function onRetryButton() {
+    return ui.reload();
+};
+
+var onDeviceReady = function onDeviceReady() {
+    ui.init();
+
+    ui.elements.menuInfo.addEventListener('click', onInfoButton);
+    ui.elements.menuRefresh.addEventListener('click', onRefreshButton);
+    ui.elements.retryButton.addEventListener('click', onRetryButton);
+    ui.addEventListener('konamiCode', onKonamiCode);
+    ui.addEventListener('pause', onDevicePause);
+    ui.addEventListener('resume', onDeviceResume);
+
+    ui.log('document.deviceready');
+    refresh(ui.waitAndHideSplash);
+    ui.updateConsoleVisibility();
+};
+
+var init = ui.addEventListener('deviceready', onDeviceReady);
+
+var App = exports.App = {
+    init: init
 };
 
 /***/ })
