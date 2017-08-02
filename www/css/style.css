@@ -41,7 +41,7 @@ body {
     color: #fff;
     height: 60px;
     left: 0;
-    padding: 14px 12px;
+    padding: 14px 15px 14px 21px;
     position: fixed;
     right: 0;
     text-align: left;
@@ -52,14 +52,14 @@ body {
 .menu img {
     cursor: pointer;
     float: right;
-    height: 32px;
-    margin: 0;
+    height: 24px;
+    margin: 4px 0;
     transition: opacity 0.1s ease-out;
-    width: 32px;
+    width: 24px;
 }
 
 .menu img+img {
-    margin-right: 14px;
+    margin-right: 16px;
 }
 
 .menu img:active {
