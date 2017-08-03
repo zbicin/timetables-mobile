@@ -100,7 +100,7 @@ export class App {
     }
 
     _timeoutPromise(data, timeout) {
-        const isJasmine = !!jasmine;
+        const isJasmine = !!window.jasmine;
 
         return isJasmine 
             ? Promise.resolve(data)

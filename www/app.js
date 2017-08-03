@@ -8040,7 +8040,7 @@ var App = exports.App = function () {
     }, {
         key: '_timeoutPromise',
         value: function _timeoutPromise(data, timeout) {
-            var isJasmine = !!jasmine;
+            var isJasmine = !!window.jasmine;
 
             return isJasmine ? Promise.resolve(data) : new Promise(function (resolve) {
                 return setTimeout(function () {
