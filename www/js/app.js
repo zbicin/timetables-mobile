@@ -1,11 +1,11 @@
-import { Events, UI } from './ui/ui';
+import { Events } from './ui/ui';
 // import { DummyTimetables as Timetables } from './services/timetables.dummy';
 import { Timetables } from './services/timetables';
 
 const noop = () => { };
 
 export class App {
-    constructor() {
+    constructor(UI) {
         this.lastRefreshTime = null;
         this.pendingPromises = new Set();
         this.refreshHandle = null;

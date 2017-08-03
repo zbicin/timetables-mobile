@@ -22,6 +22,7 @@ export class UI {
         this.menuRefreshElement = DOMHelper.$('#menu-refresh');
         this.menuRefreshElement.addEventListener('click', (e) => this._dispatchEvent(Events.RefreshClick));
 
+
         this.cardList = new CardList();
         this.debugConsole = new DebugConsole();
         this.splash = new Splash(this.debugConsole);

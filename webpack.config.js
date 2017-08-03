@@ -2,9 +2,12 @@ const path = require('path');
 
 module.exports = {
     watch: true,
-    entry: path.join(__dirname, 'www', 'js', 'index.js'),
+    entry: {
+        app: path.join(__dirname, 'www', 'js', 'index.js'),
+        test: path.join(__dirname, 'www', 'spec', 'index.js')
+    },
     output: {
-        filename: 'bundle.js',
+        filename: '[name].js',
         path: path.join(__dirname, 'www')
     },
     module: {
