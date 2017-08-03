@@ -1,11 +1,10 @@
 import { Events } from './ui/ui';
 // import { DummyTimetables as Timetables } from './services/timetables.dummy';
-import { Timetables } from './services/timetables';
 
 const noop = () => { };
 
 export class App {
-    constructor(UI) {
+    constructor(Timetables, UI) {
         this.lastRefreshTime = null;
         this.pendingPromises = new Set();
         this.refreshHandle = null;
@@ -101,6 +100,10 @@ export class App {
     }
 
     _timeoutPromise(data, timeout) {
-        return new Promise((resolve) => setTimeout(() => resolve(data), timeout));
+        const isJasmine = !!jasmine;
+
+        return isJasmine 
+            ? Promise.resolve(data)
+            : new Promise((resolve) => setTimeout(() => resolve(data), timeout));
     }
 };

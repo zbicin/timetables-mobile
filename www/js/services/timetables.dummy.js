@@ -4,6 +4,7 @@ const noop = () => { };
 
 export class DummyTimetables {
     fetchNearbyTimetables(updateCallback = noop, limit = 10) {
+        const isJasmine = !!jasmine;
         const result = [];
 
         for (let i = 0; i < limit; i++) {
@@ -15,12 +16,17 @@ export class DummyTimetables {
         setTimeout(() => updateCallback(0.5), 250);
         setTimeout(() => updateCallback(0.75), 375);
 
-        return new Promise((resolve) => {
-            setTimeout(() => {
-                updateCallback(1);
-                resolve(result)
-            }, 500);
-        });
+        if (isJasmine) {
+            updateCallback(1);
+            return Promise.resolve(result);
+        } else {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    updateCallback(1);
+                    resolve(result)
+                }, 500);
+            });
+        }
     }
 
     _formatTime(date) {

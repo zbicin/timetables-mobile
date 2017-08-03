@@ -7,10 +7,11 @@ import 'konami-code-js';
 import { Promise } from 'bluebird';
 
 import { App } from './app';
+import { Timetables } from './services/timetables';
 import { UI } from './ui/ui';
 
 Promise.config({
     cancellation: true
 });
 
-const app = new App(UI);
+const app = new App(Timetables, UI);
