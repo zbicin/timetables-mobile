@@ -12,5 +12,4 @@ Promise.config({
     cancellation: true
 });
 
-const app = Object.create(App);
-app.init();
+const app = new App();

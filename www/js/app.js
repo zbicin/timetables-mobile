@@ -1,111 +1,103 @@
-import { UI } from './ui';
-// import { DummyTimetables as Timetables } from './timetables.dummy';
-import { Timetables } from './timetables';
+import { Events, UI } from './ui/ui';
+// import { DummyTimetables as Timetables } from './services/timetables.dummy';
+import { Timetables } from './services/timetables';
 
-const noop = () => {};
-const pendingPromises = new Set();
-const refreshIntervalInSeconds = 30;
-const ui = Object.create(UI);
-const timetables = Object.create(Timetables);
+const noop = () => { };
 
-let lastRefreshTime;
-let refreshHandle;
+export class App {
+    constructor() {
+        this.lastRefreshTime = null;
+        this.pendingPromises = new Set();
+        this.refreshHandle = null;
+        this.refreshIntervalInSeconds = 30;
+        this.timetables = new Timetables();
 
-const cleanupHandles = () => {
-    clearInterval(refreshHandle);
-    pendingPromises.forEach((p) => p.cancel());
-    pendingPromises.clear();
-};
+        this.ui = new UI();
+        this.ui.on(Events.DevicePause, (e) => this._onDevicePause(e));
+        this.ui.on(Events.DeviceReady, (e) => this._onDeviceReady(e));
+        this.ui.on(Events.DeviceResume, (e) => this._onDeviceResume(e));
+        this.ui.on(Events.InfoClick, (e) => this._onInfoClick(e));
+        this.ui.on(Events.RefreshClick, (e) => this._onRefreshClick(e));
+        this.ui.on(Events.RetryClick, (e) => this._onRetryClick(e));
+    }
 
-const onError = (e) => {
-    ui.showErrorMessage(e);
-    cleanupHandles();
-};
+    _cleanupHandles() {
+        clearInterval(this.refreshHandle);
+        this.pendingPromises.forEach((p) => p.cancel());
+        this.pendingPromises.clear();
+    }
 
-const isPending = () => pendingPromises.size > 0;
+    _isPending() {
+        return this.pendingPromises.size > 0;
+    }
 
-const timeout = (data, timeout) => new Promise((resolve) => setTimeout(() => resolve(data), timeout));
+    _onDevicePause() {
+        this.ui.debugConsole.log('device.pause');
+        this._cleanupHandles();
+    }
 
-const refresh = (onRefresh = noop) => {
-    ui.log('refresh');
-    const promise = timetables.fetchNearbyTimetables(ui.onFetchUpdate)
-        .then((boardsData) => timeout(boardsData, 100))
-        .then((boardsData) => {
-            if (!refreshHandle) {
-                refreshHandle = setupRefreshInterval(ui.elements.cards);
-            }
-            pendingPromises.delete(promise);
-            ui.renderBoards(boardsData);
-            lastRefreshTime = new Date();
-            onRefresh();
-        }).catch((error) => {
-            pendingPromises.delete(promise);
-            onError(error);
-        });
-    pendingPromises.add(promise);
-    ui.updateRefreshState(lastRefreshTime, isPending());
-};
+    _onDeviceReady() {
+        this.ui.debugConsole.log('document.deviceready');
+        this._refresh(() => this.ui.splash.waitAndHide());
+    }
 
-const setupRefreshInterval = (cardsHandles) => {
-    const refreshInterval = refreshIntervalInSeconds * 1000;
+    _onDeviceResume() {
+        this.ui.debugConsole.log('device.resume');
+        this._cleanupHandles();
+        this._refresh(() => this.ui.splash.waitAndHide());
+    }
 
-    return setInterval(() => {
-        if (!isPending()) {
-            refresh();
+    _onError(e) {
+        this.ui.handleErrorMessage(e);
+        this._cleanupHandles();
+    }
+
+    _onInfoClick() {
+        this.ui.showInfoModal(this.lastRefreshTime, this.refreshIntervalInSeconds);
+    }
+
+    _onRefreshClick() {
+        if (!this._isPending()) {
+            this._refresh();
         }
-    }, refreshInterval);
-};
-
-const onRefreshButton = (e) => {
-    if (!isPending()) {
-        refresh();
-    }
-};
-
-const onInfoButton = (e) => {
-    ui.showInfoMessage(lastRefreshTime, refreshIntervalInSeconds);
-};
-
-const onDevicePause = () => {
-    ui.log('device.pause');
-    cleanupHandles();
-};
-
-const onDeviceResume = () => {
-    ui.log('device.resume');
-    cleanupHandles();
-    refresh(ui.waitAndHideSplash);
-};
-
-const onKonamiCode = () => {
-    if (localStorage.getItem(debugModeKey)) {
-        localStorage.removeItem(debugModeKey);
-    } else {
-        localStorage.setItem(debugModeKey, true);
     }
 
-    ui.updateConsoleVisibility();
-};
+    _onRetryClick() {
+        location.reload();
+    }
 
-const onRetryButton = () => ui.reload();
+    _refresh(onRefresh = noop) {
+        this.ui.debugConsole.log('refresh');
+        const promise = this.timetables.fetchNearbyTimetables((p) => this.ui.updateProgress(p))
+            .then((boardsData) => this._timeoutPromise(boardsData, 100))
+            .then((boardsData) => {
+                if (!this.refreshHandle) {
+                    this.refreshHandle = this._setupRefreshInterval();
+                }
+                this.pendingPromises.delete(promise);
+                this.ui.cardList.update(boardsData);
+                this.lastRefreshTime = new Date();
+                this.ui.updateRefreshState(this.lastRefreshTime, this._isPending());
+                onRefresh();
+            }).catch((error) => {
+                this.pendingPromises.delete(promise);
+                this._onError(error);
+            });
+        this.pendingPromises.add(promise);
+        this.ui.updateRefreshState(this.lastRefreshTime, this._isPending());
+    }
 
-const onDeviceReady = () => {
-    ui.init();
-    
-    ui.elements.menuInfo.addEventListener('click', onInfoButton);
-    ui.elements.menuRefresh.addEventListener('click', onRefreshButton);
-    ui.elements.retryButton.addEventListener('click', onRetryButton);
-    ui.addEventListener('konamiCode', onKonamiCode);
-    ui.addEventListener('pause', onDevicePause);
-    ui.addEventListener('resume', onDeviceResume);
+    _setupRefreshInterval() {
+        const refreshInterval = this.refreshIntervalInSeconds * 1000;
 
-    ui.log('document.deviceready');
-    refresh(ui.waitAndHideSplash);
-    ui.updateConsoleVisibility();
-};
+        return setInterval(() => {
+            if (!this._isPending()) {
+                this._refresh();
+            }
+        }, refreshInterval);
+    }
 
-const init = () => ui.addEventListener('deviceready', onDeviceReady);
-
-export const App = {
-    init
+    _timeoutPromise(data, timeout) {
+        return new Promise((resolve) => setTimeout(() => resolve(data), timeout));
+    }
 };
