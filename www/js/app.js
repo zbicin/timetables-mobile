@@ -22,7 +22,9 @@ export class App {
     }
 
     _cleanupHandles() {
+        this.ui.debugConsole.log('app.cleanupHandles');
         clearInterval(this.refreshHandle);
+        this.refreshHandle = null;
         this.pendingPromises.forEach((p) => p.cancel());
         this.pendingPromises.clear();
     }
@@ -37,7 +39,7 @@ export class App {
     }
 
     _onDeviceReady() {
-        this.ui.debugConsole.log('document.deviceready');
+        this.ui.debugConsole.log('device.ready');
         this._refresh(() => this.ui.splash.waitAndHide());
     }
 
@@ -67,7 +69,7 @@ export class App {
     }
 
     _refresh(onRefresh = noop) {
-        this.ui.debugConsole.log('refresh');
+        this.ui.debugConsole.log('app.refresh');
         const promise = this.timetables.fetchNearbyTimetables((p) => this.ui.updateProgress(p))
             .then((boardsData) => this._timeoutPromise(boardsData, 100))
             .then((boardsData) => {
@@ -88,6 +90,7 @@ export class App {
     }
 
     _setupRefreshInterval() {
+        this.ui.debugConsole.log('app.setupRefreshInteval');
         const refreshInterval = this.refreshIntervalInSeconds * 1000;
 
         return setInterval(() => {

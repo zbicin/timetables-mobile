@@ -4112,7 +4112,9 @@ var App = exports.App = function () {
     _createClass(App, [{
         key: '_cleanupHandles',
         value: function _cleanupHandles() {
+            this.ui.debugConsole.log('app.cleanupHandles');
             clearInterval(this.refreshHandle);
+            this.refreshHandle = null;
             this.pendingPromises.forEach(function (p) {
                 return p.cancel();
             });
@@ -4134,7 +4136,7 @@ var App = exports.App = function () {
         value: function _onDeviceReady() {
             var _this2 = this;
 
-            this.ui.debugConsole.log('document.deviceready');
+            this.ui.debugConsole.log('device.ready');
             this._refresh(function () {
                 return _this2.ui.splash.waitAndHide();
             });
@@ -4180,7 +4182,7 @@ var App = exports.App = function () {
 
             var onRefresh = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : noop;
 
-            this.ui.debugConsole.log('refresh');
+            this.ui.debugConsole.log('app.refresh');
             var promise = this.timetables.fetchNearbyTimetables(function (p) {
                 return _this4.ui.updateProgress(p);
             }).then(function (boardsData) {
@@ -4206,6 +4208,7 @@ var App = exports.App = function () {
         value: function _setupRefreshInterval() {
             var _this5 = this;
 
+            this.ui.debugConsole.log('app.setupRefreshInteval');
             var refreshInterval = this.refreshIntervalInSeconds * 1000;
 
             return setInterval(function () {
