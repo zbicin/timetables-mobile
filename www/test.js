@@ -63,1395 +63,12 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 143);
+/******/ 	return __webpack_require__(__webpack_require__.s = 149);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 123:
-/***/ (function(module, exports) {
-
-// shim for using process in browser
-var process = module.exports = {};
-
-// cached from whatever global is present so that test runners that stub it
-// don't break things.  But we need to wrap it in a try catch in case it is
-// wrapped in strict mode code which doesn't define any globals.  It's inside a
-// function because try/catches deoptimize in certain engines.
-
-var cachedSetTimeout;
-var cachedClearTimeout;
-
-function defaultSetTimout() {
-    throw new Error('setTimeout has not been defined');
-}
-function defaultClearTimeout () {
-    throw new Error('clearTimeout has not been defined');
-}
-(function () {
-    try {
-        if (typeof setTimeout === 'function') {
-            cachedSetTimeout = setTimeout;
-        } else {
-            cachedSetTimeout = defaultSetTimout;
-        }
-    } catch (e) {
-        cachedSetTimeout = defaultSetTimout;
-    }
-    try {
-        if (typeof clearTimeout === 'function') {
-            cachedClearTimeout = clearTimeout;
-        } else {
-            cachedClearTimeout = defaultClearTimeout;
-        }
-    } catch (e) {
-        cachedClearTimeout = defaultClearTimeout;
-    }
-} ())
-function runTimeout(fun) {
-    if (cachedSetTimeout === setTimeout) {
-        //normal enviroments in sane situations
-        return setTimeout(fun, 0);
-    }
-    // if setTimeout wasn't available but was latter defined
-    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
-        cachedSetTimeout = setTimeout;
-        return setTimeout(fun, 0);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedSetTimeout(fun, 0);
-    } catch(e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
-            return cachedSetTimeout.call(null, fun, 0);
-        } catch(e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
-            return cachedSetTimeout.call(this, fun, 0);
-        }
-    }
-
-
-}
-function runClearTimeout(marker) {
-    if (cachedClearTimeout === clearTimeout) {
-        //normal enviroments in sane situations
-        return clearTimeout(marker);
-    }
-    // if clearTimeout wasn't available but was latter defined
-    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
-        cachedClearTimeout = clearTimeout;
-        return clearTimeout(marker);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedClearTimeout(marker);
-    } catch (e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
-            return cachedClearTimeout.call(null, marker);
-        } catch (e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
-            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
-            return cachedClearTimeout.call(this, marker);
-        }
-    }
-
-
-
-}
-var queue = [];
-var draining = false;
-var currentQueue;
-var queueIndex = -1;
-
-function cleanUpNextTick() {
-    if (!draining || !currentQueue) {
-        return;
-    }
-    draining = false;
-    if (currentQueue.length) {
-        queue = currentQueue.concat(queue);
-    } else {
-        queueIndex = -1;
-    }
-    if (queue.length) {
-        drainQueue();
-    }
-}
-
-function drainQueue() {
-    if (draining) {
-        return;
-    }
-    var timeout = runTimeout(cleanUpNextTick);
-    draining = true;
-
-    var len = queue.length;
-    while(len) {
-        currentQueue = queue;
-        queue = [];
-        while (++queueIndex < len) {
-            if (currentQueue) {
-                currentQueue[queueIndex].run();
-            }
-        }
-        queueIndex = -1;
-        len = queue.length;
-    }
-    currentQueue = null;
-    draining = false;
-    runClearTimeout(timeout);
-}
-
-process.nextTick = function (fun) {
-    var args = new Array(arguments.length - 1);
-    if (arguments.length > 1) {
-        for (var i = 1; i < arguments.length; i++) {
-            args[i - 1] = arguments[i];
-        }
-    }
-    queue.push(new Item(fun, args));
-    if (queue.length === 1 && !draining) {
-        runTimeout(drainQueue);
-    }
-};
-
-// v8 likes predictible objects
-function Item(fun, array) {
-    this.fun = fun;
-    this.array = array;
-}
-Item.prototype.run = function () {
-    this.fun.apply(null, this.array);
-};
-process.title = 'browser';
-process.browser = true;
-process.env = {};
-process.argv = [];
-process.version = ''; // empty string to avoid regexp issues
-process.versions = {};
-
-function noop() {}
-
-process.on = noop;
-process.addListener = noop;
-process.once = noop;
-process.off = noop;
-process.removeListener = noop;
-process.removeAllListeners = noop;
-process.emit = noop;
-process.prependListener = noop;
-process.prependOnceListener = noop;
-
-process.listeners = function (name) { return [] }
-
-process.binding = function (name) {
-    throw new Error('process.binding is not supported');
-};
-
-process.cwd = function () { return '/' };
-process.chdir = function (dir) {
-    throw new Error('process.chdir is not supported');
-};
-process.umask = function() { return 0; };
-
-
-/***/ }),
-
-/***/ 125:
-/***/ (function(module, exports) {
-
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1,eval)("this");
-} catch(e) {
-	// This works if the window reference is available
-	if(typeof window === "object")
-		g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
-
-/***/ 126:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.App = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-// import { DummyTimetables as Timetables } from './services/timetables.dummy';
-
-
-var _ui = __webpack_require__(142);
-
-var _timetables = __webpack_require__(136);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var noop = function noop() {};
-
-var App = exports.App = function () {
-    function App(UI) {
-        var _this = this;
-
-        _classCallCheck(this, App);
-
-        this.lastRefreshTime = null;
-        this.pendingPromises = new Set();
-        this.refreshHandle = null;
-        this.refreshIntervalInSeconds = 30;
-        this.timetables = new _timetables.Timetables();
-
-        this.ui = new UI();
-        this.ui.on(_ui.Events.DevicePause, function (e) {
-            return _this._onDevicePause(e);
-        });
-        this.ui.on(_ui.Events.DeviceReady, function (e) {
-            return _this._onDeviceReady(e);
-        });
-        this.ui.on(_ui.Events.DeviceResume, function (e) {
-            return _this._onDeviceResume(e);
-        });
-        this.ui.on(_ui.Events.InfoClick, function (e) {
-            return _this._onInfoClick(e);
-        });
-        this.ui.on(_ui.Events.RefreshClick, function (e) {
-            return _this._onRefreshClick(e);
-        });
-        this.ui.on(_ui.Events.RetryClick, function (e) {
-            return _this._onRetryClick(e);
-        });
-    }
-
-    _createClass(App, [{
-        key: '_cleanupHandles',
-        value: function _cleanupHandles() {
-            this.ui.debugConsole.log('app.cleanupHandles');
-            clearInterval(this.refreshHandle);
-            this.refreshHandle = null;
-            this.pendingPromises.forEach(function (p) {
-                return p.cancel();
-            });
-            this.pendingPromises.clear();
-        }
-    }, {
-        key: '_isPending',
-        value: function _isPending() {
-            return this.pendingPromises.size > 0;
-        }
-    }, {
-        key: '_onDevicePause',
-        value: function _onDevicePause() {
-            this.ui.debugConsole.log('device.pause');
-            this._cleanupHandles();
-        }
-    }, {
-        key: '_onDeviceReady',
-        value: function _onDeviceReady() {
-            var _this2 = this;
-
-            this.ui.debugConsole.log('device.ready');
-            this._refresh(function () {
-                return _this2.ui.splash.waitAndHide();
-            });
-        }
-    }, {
-        key: '_onDeviceResume',
-        value: function _onDeviceResume() {
-            var _this3 = this;
-
-            this.ui.debugConsole.log('device.resume');
-            this._cleanupHandles();
-            this._refresh(function () {
-                return _this3.ui.splash.waitAndHide();
-            });
-        }
-    }, {
-        key: '_onError',
-        value: function _onError(e) {
-            this.ui.handleErrorMessage(e);
-            this._cleanupHandles();
-        }
-    }, {
-        key: '_onInfoClick',
-        value: function _onInfoClick() {
-            this.ui.showInfoModal(this.lastRefreshTime, this.refreshIntervalInSeconds);
-        }
-    }, {
-        key: '_onRefreshClick',
-        value: function _onRefreshClick() {
-            if (!this._isPending()) {
-                this._refresh();
-            }
-        }
-    }, {
-        key: '_onRetryClick',
-        value: function _onRetryClick() {
-            location.reload();
-        }
-    }, {
-        key: '_refresh',
-        value: function _refresh() {
-            var _this4 = this;
-
-            var onRefresh = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : noop;
-
-            this.ui.debugConsole.log('app.refresh');
-            var promise = this.timetables.fetchNearbyTimetables(function (p) {
-                return _this4.ui.updateProgress(p);
-            }).then(function (boardsData) {
-                return _this4._timeoutPromise(boardsData, 100);
-            }).then(function (boardsData) {
-                if (!_this4.refreshHandle) {
-                    _this4.refreshHandle = _this4._setupRefreshInterval();
-                }
-                _this4.pendingPromises.delete(promise);
-                _this4.ui.cardList.update(boardsData);
-                _this4.lastRefreshTime = new Date();
-                _this4.ui.updateRefreshState(_this4.lastRefreshTime, _this4._isPending());
-                onRefresh();
-            }).catch(function (error) {
-                _this4.pendingPromises.delete(promise);
-                _this4._onError(error);
-            });
-            this.pendingPromises.add(promise);
-            this.ui.updateRefreshState(this.lastRefreshTime, this._isPending());
-        }
-    }, {
-        key: '_setupRefreshInterval',
-        value: function _setupRefreshInterval() {
-            var _this5 = this;
-
-            this.ui.debugConsole.log('app.setupRefreshInteval');
-            var refreshInterval = this.refreshIntervalInSeconds * 1000;
-
-            return setInterval(function () {
-                if (!_this5._isPending()) {
-                    _this5._refresh();
-                }
-            }, refreshInterval);
-        }
-    }, {
-        key: '_timeoutPromise',
-        value: function _timeoutPromise(data, timeout) {
-            return new Promise(function (resolve) {
-                return setTimeout(function () {
-                    return resolve(data);
-                }, timeout);
-            });
-        }
-    }]);
-
-    return App;
-}();
-
-;
-
-/***/ }),
-
-/***/ 131:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.Api = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _http = __webpack_require__(132);
-
-var _bluebird = __webpack_require__(47);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var apiUrlBase = 'http://rozklady.lodz.pl';
-var noop = function noop() {};
-
-var Api = exports.Api = function () {
-    function Api() {
-        _classCallCheck(this, Api);
-
-        this.hasCookie = false;
-        this.http = new _http.Http();
-    }
-
-    _createClass(Api, [{
-        key: 'fetchStopsData',
-        value: function fetchStopsData() {
-            var _this = this;
-
-            return this._fetchCookie().then(function () {
-                return _this.http.post(apiUrlBase + '/Home/GetMapBusStopList');
-            }).then(function (response) {
-                return response.responseText;
-            });
-        }
-    }, {
-        key: 'fetchTimetablesByStopsIds',
-        value: function fetchTimetablesByStopsIds(stopIds) {
-            var _this2 = this;
-
-            var updateCallback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : noop;
-
-            var completedStepsCount = 0;
-            var totalStepsCount = stopIds + 1; // +1 because of fetchCookie
-            var promises = stopIds.map(function (stopId) {
-                return _this2.http.get(apiUrlBase + '/Home/GetTimetableReal?busStopId=' + stopId).tap(function () {
-                    return updateCallback(++completedStepsCount / totalStepsCount);
-                });
-            });
-
-            return this._fetchCookie().tap(function () {
-                return updateCallback(++completedStepsCount / totalStepsCount);
-            }).then(function () {
-                return _bluebird.Promise.all(promises);
-            }).then(function (responses) {
-                return responses.map(function (r) {
-                    return r.responseText;
-                });
-            });
-        }
-    }, {
-        key: '_fetchCookie',
-        value: function _fetchCookie() {
-            var _this3 = this;
-
-            if (this.hasCookie) {
-                return _bluebird.Promise.resolve();
-            } else {
-                return this.http.head(apiUrlBase).tap(function () {
-                    return _this3.hasCookie = true;
-                });
-            }
-        }
-    }]);
-
-    return Api;
-}();
-
-;
-
-/***/ }),
-
-/***/ 132:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.Http = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _bluebird = __webpack_require__(47);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var localProxyAddress = 'http://localhost:1337/';
-
-var Methods = {
-    Get: 'GET',
-    Head: 'HEAD',
-    Post: 'POST'
-};
-
-var Http = exports.Http = function () {
-    function Http() {
-        _classCallCheck(this, Http);
-
-        this.isLocalBrowser = location.protocol.indexOf('http') > -1;
-    }
-
-    _createClass(Http, [{
-        key: 'get',
-        value: function get(url, headers) {
-            return this._doRequest(url, Methods.Get, headers, null);
-        }
-    }, {
-        key: 'head',
-        value: function head(url, headers) {
-            return this._doRequest(url, Methods.Head, headers, null);
-        }
-    }, {
-        key: 'post',
-        value: function post(url, headers, data) {
-            return this._doRequest(url, Methods.Post, headers, data);
-        }
-    }, {
-        key: '_doRequest',
-        value: function _doRequest(url) {
-            var method = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : Methods.Get;
-
-            var _this = this;
-
-            var headers = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-            var data = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
-
-            return new _bluebird.Promise(function (resolve, reject) {
-                var isAsync = true;
-                var request = new XMLHttpRequest();
-                request.withCredentials = true;
-
-                if (_this.isLocalBrowser) {
-                    url = url.replace('https://', '').replace('http://', '');
-                    url = localProxyAddress + url;
-                }
-
-                request.onreadystatechange = function (event) {
-                    var isSuccessful = request.readyState === XMLHttpRequest.DONE;
-                    if (isSuccessful) {
-                        var isHttpOk = request.status === 200;
-                        if (isHttpOk) {
-                            resolve(request);
-                        } else {
-                            reject(request);
-                        }
-                    }
-                };
-
-                request.open(method, url, isAsync);
-                Object.keys(headers).forEach(function (key) {
-                    return request.setRequestHeader(key, headers[key]);
-                });
-                request.send(data);
-            });
-        }
-    }]);
-
-    return Http;
-}();
-
-;
-
-/***/ }),
-
-/***/ 134:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.Geolocation = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _bluebird = __webpack_require__(47);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Geolocation = exports.Geolocation = function () {
-    function Geolocation() {
-        _classCallCheck(this, Geolocation);
-    }
-
-    _createClass(Geolocation, null, [{
-        key: 'getCurrentPosition',
-        value: function getCurrentPosition() {
-            return new _bluebird.Promise(function (resolve, reject) {
-                var timeout = 10000;
-                navigator.geolocation.getCurrentPosition(resolve, reject, { timeout: timeout });
-            });
-        }
-    }]);
-
-    return Geolocation;
-}();
-
-;
-
-/***/ }),
-
-/***/ 135:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var cacheLifespanMs = 7 * 24 * 60 * 60 * 1000;
-var fetchTimestampKey = 'stopsFetchTimestamp';
-var rawDataKey = 'stopsRawData';
-
-var Stop = exports.Stop = function () {
-    function Stop(api) {
-        _classCallCheck(this, Stop);
-
-        this.api = api;
-    }
-
-    _createClass(Stop, [{
-        key: 'getNearest',
-        value: function getNearest(latitude, longitude, limit) {
-            var _this = this;
-
-            return this._fetchOrRestoreStopsData().then(function (rawStopsData) {
-                var vectorStopsData = JSON.parse(rawStopsData);
-                var stopsDistance = vectorStopsData.map(function (v) {
-                    return _this._parseStops(v, latitude, longitude);
-                }).sort(function (a, b) {
-                    return a.distance - b.distance;
-                });
-
-                return stopsDistance.slice(0, limit);
-            });
-        }
-    }, {
-        key: '_deg2rad',
-        value: function _deg2rad(deg) {
-            return deg * (Math.PI / 180);
-        }
-    }, {
-        key: '_fetchOrRestoreStopsData',
-        value: function _fetchOrRestoreStopsData() {
-            var _this2 = this;
-
-            var now = +new Date();
-
-            var fetchPromise = void 0;
-            if (this._lastFetchTimestamp && now - this._lastFetchTimestamp < cacheLifespanMs) {
-                fetchPromise = Promise.resolve(this._stopsData);
-            } else {
-                fetchPromise = this.api.fetchStopsData().tap(function (rawStopsData) {
-                    _this2._lastFetchTimestamp = now;
-                    _this2._stopsData = rawStopsData;
-                });
-            }
-
-            return fetchPromise;
-        }
-    }, {
-        key: '_getDistanceInMeters',
-        value: function _getDistanceInMeters(lat1, lon1, lat2, lon2) {
-            var R = 6371; // Radius of the earth in km
-            var dLat = this._deg2rad(lat2 - lat1);
-            var dLon = this._deg2rad(lon2 - lon1);
-            var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(this._deg2rad(lat1)) * Math.cos(this._deg2rad(lat2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
-            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-            var d = R * c * 1000; // Distance in m
-            return d;
-        }
-    }, {
-        key: '_parseStops',
-        value: function _parseStops(vectorStop, latitude, longitude) {
-            var stop = {
-                id: vectorStop[0],
-                name: vectorStop[1],
-                latitude: vectorStop[5],
-                longitude: vectorStop[4]
-            };
-
-            return {
-                id: stop.id,
-                name: stop.name,
-                distance: this._getDistanceInMeters(latitude, longitude, stop.latitude, stop.longitude).toFixed(2)
-            };
-        }
-    }, {
-        key: '_stopsData',
-        get: function get() {
-            return localStorage.getItem(rawDataKey);
-        },
-        set: function set(rawStopsData) {
-            localStorage.setItem(rawDataKey, rawStopsData);
-        }
-    }, {
-        key: '_lastFetchTimestamp',
-        get: function get() {
-            return parseInt(localStorage.getItem(fetchTimestampKey), 10);
-        },
-        set: function set(timestamp) {
-            localStorage.setItem(fetchTimestampKey, timestamp);
-        }
-    }]);
-
-    return Stop;
-}();
-
-/***/ }),
-
-/***/ 136:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.Timetables = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _api = __webpack_require__(131);
-
-var _geolocation = __webpack_require__(134);
-
-var _stop = __webpack_require__(135);
-
-var _bluebird = __webpack_require__(47);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var noop = function noop() {};
-
-var Timetables = exports.Timetables = function () {
-    function Timetables() {
-        _classCallCheck(this, Timetables);
-
-        this.api = new _api.Api();
-        this.stop = new _stop.Stop(this.api);
-    }
-
-    _createClass(Timetables, [{
-        key: 'fetchNearbyTimetables',
-        value: function fetchNearbyTimetables() {
-            var _this = this;
-
-            var updateProgressCallback = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : noop;
-            var limit = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 10;
-
-            var completedStepsCount = 0;
-            var totalStepsCount = 1 + 1 + 1 + (limit + 1) + 1;
-            return _geolocation.Geolocation.getCurrentPosition().then(function (position) {
-                updateProgressCallback(++completedStepsCount / totalStepsCount);
-                return _this.stop.getNearest(position.coords.latitude, position.coords.longitude, limit);
-            }).then(function (nearestStopsDistances) {
-                updateProgressCallback(++completedStepsCount / totalStepsCount);
-                return nearestStopsDistances.map(function (s) {
-                    return s.id;
-                });
-            }).then(function (stopsIds) {
-                updateProgressCallback(++completedStepsCount / totalStepsCount);
-                return _this.api.fetchTimetablesByStopsIds(stopsIds, function () {
-                    return updateProgressCallback(++completedStepsCount / totalStepsCount);
-                });
-            }).then(function (responses) {
-                updateProgressCallback(++completedStepsCount / totalStepsCount);
-                return responses.map(_this._parseXmlDepartures);
-            });
-        }
-    }, {
-        key: '_parseXmlDepartures',
-        value: function _parseXmlDepartures(rawXml) {
-            var parser = new DOMParser();
-            var doc = parser.parseFromString(rawXml, 'application/xml');
-            var stop = doc.getElementsByTagName('Stop')[0];
-            var result = {
-                currentTime: doc.firstElementChild.attributes.time.value,
-                departures: [],
-                stopId: stop.attributes['id'].value,
-                stopName: stop.attributes['name'].value
-            };
-
-            var rows = doc.getElementsByTagName('R');
-
-            for (var i = 0; i < rows.length; i++) {
-                var row = rows[i];
-                var departure = {
-                    direction: row.attributes.dir.value,
-                    number: row.attributes.nr.value,
-                    time: row.firstElementChild.attributes.t.value
-                };
-                result.departures.push(departure);
-            }
-
-            return result;
-        }
-    }]);
-
-    return Timetables;
-}();
-
-/***/ }),
-
-/***/ 137:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.Card = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _dom = __webpack_require__(43);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var expandedClassName = 'expanded';
-var expendableClassName = 'expendable';
-
-var Card = exports.Card = function () {
-    function Card(boardData) {
-        _classCallCheck(this, Card);
-
-        this.boardData = boardData;
-        this.element = this._buildFullCard();
-    }
-
-    _createClass(Card, [{
-        key: 'update',
-        value: function update(boardData) {
-            var contents = this._buildContents(boardData);
-
-            if (this.element.dataset.stopId !== boardData.stopId) {
-                this.element.dataset.stopId = boardData.stopId;
-                this.element.classList.remove(expandedClassName);
-            }
-
-            boardData.departures.length > 4 ? this.element.classList.add(expendableClassName) : this.element.classList.remove(expendableClassName);
-
-            boardData.departures.length === 0 ? this.element.setAttribute('hidden', true) : this.element.removeAttribute('hidden');
-
-            while (this.element.firstChild) {
-                this.element.removeChild(this.element.firstChild);
-            }
-
-            this.element.appendChild(contents);
-        }
-    }, {
-        key: '_buildBody',
-        value: function _buildBody() {
-            var table = _dom.DOMHelper.create('table');
-            table.classList.add('timetable');
-            var body = _dom.DOMHelper.create('tbody');
-
-            this.boardData.departures.map(function (departure) {
-                var row = _dom.DOMHelper.create('tr');
-                var numberCell = _dom.DOMHelper.create('td', departure.number);
-                var directionCell = _dom.DOMHelper.create('td', departure.direction);
-                var timeCell = _dom.DOMHelper.create('td', departure.time);
-
-                row.appendChild(numberCell);
-                row.appendChild(directionCell);
-                row.appendChild(timeCell);
-
-                return row;
-            }).forEach(function (row) {
-                body.appendChild(row);
-            });
-
-            table.appendChild(body);
-            return table;
-        }
-    }, {
-        key: '_buildContents',
-        value: function _buildContents() {
-            var boardData = this.boardData;
-            var contents = document.createDocumentFragment();
-
-            contents.appendChild(this._buildHeader(boardData));
-            contents.appendChild(this._buildBody(boardData));
-
-            return contents;
-        }
-    }, {
-        key: '_buildFullCard',
-        value: function _buildFullCard() {
-            var _this = this;
-
-            var boardData = this.boardData;
-            var card = _dom.DOMHelper.create('div');
-            var contents = this._buildContents();
-
-            if (boardData.departures.length > 4) {
-                card.classList.add(expendableClassName);
-            }
-
-            card.dataset.stopId = boardData.stopId;
-            card.classList.add('card');
-            card.addEventListener('click', function () {
-                return _this._toggleExpand();
-            });
-            card.appendChild(contents);
-
-            return card;
-        }
-    }, {
-        key: '_buildHeader',
-        value: function _buildHeader() {
-            return _dom.DOMHelper.create('h2', this.boardData.stopName);
-        }
-    }, {
-        key: '_toggleExpand',
-        value: function _toggleExpand() {
-            if (this.element.classList.contains(expandedClassName)) {
-                this.element.classList.remove(expandedClassName);
-            } else {
-                this.element.classList.add(expandedClassName);
-            }
-        }
-    }]);
-
-    return Card;
-}();
-
-/***/ }),
-
-/***/ 138:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.CardList = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _card = __webpack_require__(137);
-
-var _dom = __webpack_require__(43);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var CardList = exports.CardList = function () {
-    function CardList() {
-        var boardsData = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-
-        _classCallCheck(this, CardList);
-
-        this.cards = [];
-        this.element = _dom.DOMHelper.$('.cards');
-
-        this.update(boardsData);
-    }
-
-    _createClass(CardList, [{
-        key: 'update',
-        value: function update(boardsData) {
-            this.cards = this._buildCards(boardsData);
-        }
-    }, {
-        key: '_buildCards',
-        value: function _buildCards(boardsData) {
-            var fragment = document.createDocumentFragment();
-            var cards = boardsData.map(function (b) {
-                return new _card.Card(b);
-            });
-
-            while (this.element.firstChild) {
-                this.element.removeChild(this.element.firstChild);
-            }
-
-            cards.forEach(function (card) {
-                return fragment.appendChild(card.element);
-            });
-            this.element.appendChild(fragment);
-
-            return cards;
-        }
-    }]);
-
-    return CardList;
-}();
-
-/***/ }),
-
-/***/ 139:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.DebugConsole = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _dom = __webpack_require__(43);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var debugModeStorageKey = 'debug';
-
-var DebugConsole = exports.DebugConsole = function () {
-    function DebugConsole() {
-        _classCallCheck(this, DebugConsole);
-
-        this.element = _dom.DOMHelper.$('.debug-console');
-
-        this.updateVisibility();
-    }
-
-    _createClass(DebugConsole, [{
-        key: 'isVisible',
-        value: function isVisible() {
-            return localStorage.getItem(debugModeStorageKey);
-        }
-    }, {
-        key: 'log',
-        value: function log(message) {
-            console.log(message);
-            var line = _dom.DOMHelper.create('div', message);
-            this.element.appendChild(line);
-            this.element.scrollTop = this.element.scrollHeight;
-        }
-    }, {
-        key: 'toggleVisibilityStatus',
-        value: function toggleVisibilityStatus() {
-            if (this.isVisible()) {
-                localStorage.removeItem(debugModeStorageKey);
-            } else {
-                localStorage.setItem(debugModeStorageKey, true);
-            }
-        }
-    }, {
-        key: 'updateVisibility',
-        value: function updateVisibility() {
-            if (this.isVisible()) {
-                this.element.removeAttribute('hidden');
-            } else {
-                this.element.setAttribute('hidden', 'true');
-            }
-        }
-    }]);
-
-    return DebugConsole;
-}();
-
-;
-
-/***/ }),
-
-/***/ 140:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.ProgressBar = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _dom = __webpack_require__(43);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var ProgressBar = exports.ProgressBar = function () {
-    function ProgressBar() {
-        _classCallCheck(this, ProgressBar);
-
-        this.element = _dom.DOMHelper.$('.progress-bar');
-        this.elementInner = _dom.DOMHelper.$('.progress-bar-inner');
-    }
-
-    _createClass(ProgressBar, [{
-        key: 'hide',
-        value: function hide() {
-            this.element.setAttribute('hidden', true);
-        }
-    }, {
-        key: 'update',
-        value: function update(progress) {
-            this.elementInner.style.width = progress * 100 + '%';
-        }
-    }]);
-
-    return ProgressBar;
-}();
-
-/***/ }),
-
-/***/ 141:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.Splash = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _dom = __webpack_require__(43);
-
-var _progressBar = __webpack_require__(140);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Splash = exports.Splash = function () {
-    function Splash(debugConsole) {
-        _classCallCheck(this, Splash);
-
-        this.debugConsole = debugConsole;
-
-        this.element = _dom.DOMHelper.$('#splash');
-        this.progressBar = new _progressBar.ProgressBar();
-        this.retryButton = _dom.DOMHelper.$('#retry-button');
-    }
-
-    _createClass(Splash, [{
-        key: 'showRetryButton',
-        value: function showRetryButton() {
-            this.progressBar.hide();
-            this.retryButton.removeAttribute('hidden');
-            this.element.classList.remove('animate');
-        }
-    }, {
-        key: 'waitAndHide',
-        value: function waitAndHide() {
-            var _this = this;
-
-            this.element.addEventListener('transitionend', function () {
-                _this.debugConsole.log('splash.transitionend');
-                _this.element.parentNode.removeChild(splash);
-            });
-            this.element.classList.add('hidden');
-        }
-    }]);
-
-    return Splash;
-}();
-
-/***/ }),
-
-/***/ 142:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.UI = exports.Events = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _cardList = __webpack_require__(138);
-
-var _debugConsole = __webpack_require__(139);
-
-var _dom = __webpack_require__(43);
-
-var _splash = __webpack_require__(141);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Events = exports.Events = {
-    DevicePause: 0,
-    DeviceReady: 1,
-    DeviceResume: 2,
-    InfoClick: 3,
-    RefreshClick: 4,
-    RetryClick: 5
-};
-
-var UI = exports.UI = function () {
-    function UI() {
-        var _this = this;
-
-        _classCallCheck(this, UI);
-
-        this.eventHandlers = {};
-
-        this.menuInfoElement = _dom.DOMHelper.$('#menu-info');
-        this.menuInfoElement.addEventListener('click', function (e) {
-            return _this._dispatchEvent(Events.InfoClick);
-        });
-
-        this.menuRefreshElement = _dom.DOMHelper.$('#menu-refresh');
-        this.menuRefreshElement.addEventListener('click', function (e) {
-            return _this._dispatchEvent(Events.RefreshClick);
-        });
-
-        this.cardList = new _cardList.CardList();
-        this.debugConsole = new _debugConsole.DebugConsole();
-        this.splash = new _splash.Splash(this.debugConsole);
-        this.splash.retryButton.addEventListener('click', function (e) {
-            return _this._dispatchEvent(Events.RetryClick, e);
-        });
-
-        document.addEventListener('pause', function (e) {
-            return _this._dispatchEvent(Events.DevicePause, e);
-        });
-        document.addEventListener('ready', function (e) {
-            return _this._dispatchEvent(Events.DeviceReady, e);
-        });
-        document.addEventListener('resume', function (e) {
-            return _this._dispatchEvent(Events.DeviceResume, e);
-        });
-        document.addEventListener('konamiCode', function () {
-            return _this._onKonamiCode();
-        });
-        document.addEventListener('deviceready', function (e) {
-            if (cordova.platformId == 'android') {
-                StatusBar.backgroundColorByHexString('ee8801');
-            }
-
-            _this._dispatchEvent(Events.DeviceReady, e);
-            _this.debugConsole.updateVisibility();
-        });
-    }
-
-    _createClass(UI, [{
-        key: 'handleErrorMessage',
-        value: function handleErrorMessage(e) {
-            var errorMessage = void 0;
-            var information = void 0;
-
-            if (e instanceof XMLHttpRequest) {
-                errorMessage = e.statusText || e.status;
-                information = 'Wyst\u0105pi\u0142 problem z po\u0142\u0105czeniem internetowym. Sprawd\u017A ustawienia telefonu i spr\xF3buj ponownie (' + errorMessage + ').';
-            } else if (e.toString().indexOf('PositionError') > -1) {
-                errorMessage = e.code;
-                information = 'Nie uda\u0142o si\u0119 ustali\u0107 Twojego po\u0142o\u017Cenia. Sprawd\u017A ustawienia lokalizacji w swoim urz\u0105dzeniu i spr\xF3buj ponownie (kod b\u0142\u0119du: ' + errorMessage + ').';
-            } else {
-                errorMessage = e.message || e.code || e;
-                information = 'Nie uda\u0142o si\u0119 pobra\u0107 danych przystank\xF3w w okolicy. Upewnij si\u0119, \u017Ce masz w\u0142\u0105czone us\u0142ugi lokalizacji oraz dost\u0119p do Internetu, a nast\u0119pnie uruchom ponownie aplikacj\u0119. (' + errorMessage + ')';
-            }
-            navigator.notification.alert(information, null, '¯\\_(ツ)_/¯');
-            console.error(e);
-            this.debugConsole.log(errorMessage);
-
-            if (this.splash) {
-                this.splash.showRetryButton();
-            }
-            if (this.menuRefreshElement) {
-                this.menuRefreshElement.classList.remove('animate');
-            }
-        }
-    }, {
-        key: 'on',
-        value: function on(name, callback) {
-            this.eventHandlers[name] = callback;
-        }
-    }, {
-        key: 'showInfoModal',
-        value: function showInfoModal(lastRefreshTime, refreshIntervalInSeconds) {
-            var _this2 = this;
-
-            var version = void 0;
-
-            cordova.getAppVersion().catch(function () {
-                return version = 'N/A';
-            }).then(function (v) {
-                version = version || v;
-                var information = 'Aplikacja wy\u015Bwietla na \u017Cywo tablice rozk\u0142adowe przystank\xF3w znajduj\u0105cych si\u0119 w okolicy. Pobiera informacje z serwisu rozklady.lodz.pl i przedstawia je w wygodnej formie.\n\nDane od\u015Bwie\u017Cane s\u0105 automatycznie co ' + refreshIntervalInSeconds + ' sekund.';
-                if (lastRefreshTime) {
-                    information += ' Ostatnia aktualizacja danych: ' + _this2._formatTime(lastRefreshTime) + '.';
-                }
-                information += '\n\nWersja aplikacji: ' + version + '\n';
-                information += 'Kontakt: tabliceprzystankowe@gmail.com\n\nAutorem ikony "Bus" udostępnionej na bazie licencji CC 3.0 BY US jest Nikita Kozin.\nhttps://creativecommons.org/licenses/by/3.0/us/';
-
-                navigator.notification.alert(information, null, 'Tablice Przystankowe');
-            });
-        }
-    }, {
-        key: 'updateProgress',
-        value: function updateProgress(progress) {
-            this.debugConsole.log(progress);
-            this.splash.progressBar.update(progress);
-        }
-    }, {
-        key: 'updateRefreshState',
-        value: function updateRefreshState(lastRefreshTime, isPending) {
-            if (lastRefreshTime && isPending) {
-                this.menuRefreshElement.classList.add('animate');
-            } else {
-                this.menuRefreshElement.classList.remove('animate');
-            }
-        }
-    }, {
-        key: '_createEvent',
-        value: function _createEvent(name, data) {
-            return new CustomEvent(name, { details: data });
-        }
-    }, {
-        key: '_dispatchEvent',
-        value: function _dispatchEvent(name, data) {
-            if (this.eventHandlers[name]) {
-                this.eventHandlers[name](data);
-            }
-        }
-    }, {
-        key: '_formatTime',
-        value: function _formatTime(date) {
-            var twoDigits = function twoDigits(input) {
-                return input < 10 ? '0' + input : '' + input;
-            };
-            return [date.getHours(), date.getMinutes(), date.getSeconds()].map(function (segment) {
-                return segment < 10 ? '0' + segment : '' + segment;
-            }).join(':');
-        }
-    }, {
-        key: '_onKonamiCode',
-        value: function _onKonamiCode() {
-            this.debugConsole.toggleVisibilityStatus();
-            this.debugConsole.updateVisibility();
-        }
-    }]);
-
-    return UI;
-}();
-
-/***/ }),
-
-/***/ 143:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _helper = __webpack_require__(341);
-
-__webpack_require__(343);
-
-afterEach(_helper.Helper.clearStage);
-
-/***/ }),
-
-/***/ 336:
+/***/ 102:
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -1641,11 +258,11 @@ afterEach(_helper.Helper.clearStage);
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(125), __webpack_require__(123)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(53), __webpack_require__(52)))
 
 /***/ }),
 
-/***/ 338:
+/***/ 103:
 /***/ (function(module, exports, __webpack_require__) {
 
 var apply = Function.prototype.apply;
@@ -1698,156 +315,14 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(336);
+__webpack_require__(102);
 exports.setImmediate = setImmediate;
 exports.clearImmediate = clearImmediate;
 
 
 /***/ }),
 
-/***/ 341:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Helper = exports.Helper = function () {
-    function Helper() {
-        _classCallCheck(this, Helper);
-    }
-
-    _createClass(Helper, [{
-        key: 'getComputedStyle',
-        value: function getComputedStyle(querySelector, property) {
-            var element = document.querySelector(querySelector);
-            return window.getComputedStyle(element).getPropertyValue(property);
-        }
-    }], [{
-        key: 'clearStage',
-        value: function clearStage() {
-            document.getElementById('stage').innerHTML = '';
-        }
-    }, {
-        key: 'trigger',
-        value: function trigger(obj, name) {
-            var e = document.createEvent('Event');
-            e.initEvent(name, true, true);
-            obj.dispatchEvent(e);
-        }
-    }]);
-
-    return Helper;
-}();
-
-;
-
-/***/ }),
-
-/***/ 342:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _ui = __webpack_require__(142);
-
-Object.defineProperty(exports, 'Events', {
-    enumerable: true,
-    get: function get() {
-        return _ui.Events;
-    }
-});
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var DummyUI = exports.DummyUI = function () {
-    function DummyUI() {
-        _classCallCheck(this, DummyUI);
-
-        this.eventHandlers = {};
-    }
-
-    _createClass(DummyUI, [{
-        key: 'handleErrorMessage',
-        value: function handleErrorMessage(e) {}
-    }, {
-        key: 'on',
-        value: function on(name, callback) {
-            this.eventHandlers[name] = callback;
-        }
-    }, {
-        key: 'showInfoModal',
-        value: function showInfoModal(lastRefreshTime, refreshIntervalInSeconds) {}
-    }, {
-        key: 'trigger',
-        value: function trigger(name, data) {
-            if (this.eventHandlers[name]) {
-                this.eventHandlers[name](data);
-            }
-        }
-    }, {
-        key: 'updateProgress',
-        value: function updateProgress(progress) {}
-    }, {
-        key: 'updateRefreshState',
-        value: function updateRefreshState(lastRefreshTime, isPending) {}
-    }]);
-
-    return DummyUI;
-}();
-
-;
-
-/***/ }),
-
-/***/ 343:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _app = __webpack_require__(126);
-
-var _ui = __webpack_require__(342);
-
-describe('app', function () {
-    describe('initialize', function () {
-        it('should bind deviceready', function () {
-            var app = void 0;
-            runs(function () {
-                app = new _app.App(_ui.DummyUI);
-                spyOn(app, '_onDeviceReady');
-                app.ui.trigger(_ui.Events.DeviceReady);
-            });
-
-            waitsFor(function () {
-                return app._onDeviceReady.calls.length > 0;
-            }, 'onDeviceReady should be called once', 500);
-
-            runs(function () {
-                expect(app._onDeviceReady).toHaveBeenCalled();
-            });
-        });
-    });
-});
-
-/***/ }),
-
-/***/ 43:
+/***/ 13:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1894,7 +369,283 @@ var DOMHelper = exports.DOMHelper = function () {
 
 /***/ }),
 
-/***/ 47:
+/***/ 135:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _app = __webpack_require__(67);
+
+var _ui = __webpack_require__(148);
+
+var _timetables = __webpack_require__(147);
+
+describe('app', function () {
+    var app = void 0;
+
+    beforeEach(function () {
+        app = new _app.App(_timetables.DummyTimetables, _ui.DummyUI);
+    });
+
+    it('binds deviceready', function () {
+        spyOn(app, '_onDeviceReady');
+        app.ui.trigger(_ui.Events.DeviceReady);
+
+        expect(app._onDeviceReady).toHaveBeenCalled();
+    });
+
+    it('sets new periodical refresh after resume', function (done) {
+        var oldRefreshHandle = app.refreshHandle;
+        spyOn(app, '_onDevicePause').and.callThrough();
+        spyOn(app, '_onDeviceResume').and.callThrough();
+        spyOn(app, '_setupRefreshInterval').and.callThrough();
+
+        app.ui.trigger(_ui.Events.DevicePause);
+        app.ui.trigger(_ui.Events.DeviceResume);
+
+        setTimeout(function () {
+            expect(app._onDevicePause).toHaveBeenCalled();
+            expect(app._onDeviceResume).toHaveBeenCalled();
+            expect(app._setupRefreshInterval).toHaveBeenCalled();
+            expect(app.refreshHandle).not.toEqual(oldRefreshHandle);
+            done();
+        }, 100);
+    });
+});
+
+/***/ }),
+
+/***/ 137:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Helper = exports.Helper = function () {
+    function Helper() {
+        _classCallCheck(this, Helper);
+    }
+
+    _createClass(Helper, [{
+        key: 'getComputedStyle',
+        value: function getComputedStyle(querySelector, property) {
+            var element = document.querySelector(querySelector);
+            return window.getComputedStyle(element).getPropertyValue(property);
+        }
+    }], [{
+        key: 'clearStage',
+        value: function clearStage() {
+            document.getElementById('stage').innerHTML = '';
+        }
+    }, {
+        key: 'trigger',
+        value: function trigger(obj, name) {
+            var e = document.createEvent('Event');
+            e.initEvent(name, true, true);
+            obj.dispatchEvent(e);
+        }
+    }]);
+
+    return Helper;
+}();
+
+;
+
+/***/ }),
+
+/***/ 147:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.DummyTimetables = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _bluebird = __webpack_require__(34);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var noop = function noop() {};
+
+var DummyTimetables = exports.DummyTimetables = function () {
+    function DummyTimetables() {
+        _classCallCheck(this, DummyTimetables);
+    }
+
+    _createClass(DummyTimetables, [{
+        key: 'fetchNearbyTimetables',
+        value: function fetchNearbyTimetables() {
+            var updateCallback = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : noop;
+            var limit = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 10;
+
+            var isJasmine = !!jasmine;
+            var result = [];
+
+            for (var i = 0; i < limit; i++) {
+                var dummyBoard = this._generateDummyBoard(i);
+                result.push(dummyBoard);
+            }
+
+            setTimeout(function () {
+                return updateCallback(0.25);
+            }, 125);
+            setTimeout(function () {
+                return updateCallback(0.5);
+            }, 250);
+            setTimeout(function () {
+                return updateCallback(0.75);
+            }, 375);
+
+            if (isJasmine) {
+                updateCallback(1);
+                return _bluebird.Promise.resolve(result);
+            } else {
+                return new _bluebird.Promise(function (resolve) {
+                    setTimeout(function () {
+                        updateCallback(1);
+                        resolve(result);
+                    }, 500);
+                });
+            }
+        }
+    }, {
+        key: '_formatTime',
+        value: function _formatTime(date) {
+            return date.toISOString().split('T')[1].substr(0, 5);
+        }
+    }, {
+        key: '_generateDummyBoard',
+        value: function _generateDummyBoard(index) {
+            var now = new Date();
+            var formattedNow = this._formatTime(now);
+
+            var departures = [];
+            var departuresCount = 10;
+
+            for (var i = 0; i < departuresCount; i++) {
+                var departure = {
+                    direction: 'Direction #' + index,
+                    number: index.toString(),
+                    time: i + 1 + ' min'
+                };
+
+                departures.push(departure);
+            }
+
+            return {
+                currentTime: formattedNow,
+                stopId: index.toString(),
+                stopName: 'Dummy stop #' + index,
+                departures: departures
+            };
+        }
+    }]);
+
+    return DummyTimetables;
+}();
+
+;
+
+/***/ }),
+
+/***/ 148:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _ui = __webpack_require__(48);
+
+Object.defineProperty(exports, 'Events', {
+    enumerable: true,
+    get: function get() {
+        return _ui.Events;
+    }
+});
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var noop = function noop() {};
+
+var DummyUI = exports.DummyUI = function () {
+    function DummyUI() {
+        _classCallCheck(this, DummyUI);
+
+        this.eventHandlers = {};
+
+        this.cardList = { update: noop };
+        this.debugConsole = { log: noop };
+        this.splash = { waitAndHide: noop };
+    }
+
+    _createClass(DummyUI, [{
+        key: 'handleErrorMessage',
+        value: function handleErrorMessage(e) {}
+    }, {
+        key: 'on',
+        value: function on(name, callback) {
+            this.eventHandlers[name] = callback;
+        }
+    }, {
+        key: 'showInfoModal',
+        value: function showInfoModal(lastRefreshTime, refreshIntervalInSeconds) {}
+    }, {
+        key: 'trigger',
+        value: function trigger(name, data) {
+            if (this.eventHandlers[name]) {
+                this.eventHandlers[name](data);
+            }
+        }
+    }, {
+        key: 'updateProgress',
+        value: function updateProgress(progress) {}
+    }, {
+        key: 'updateRefreshState',
+        value: function updateRefreshState(lastRefreshTime, isPending) {}
+    }]);
+
+    return DummyUI;
+}();
+
+;
+
+/***/ }),
+
+/***/ 149:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _helper = __webpack_require__(137);
+
+__webpack_require__(135);
+
+afterEach(_helper.Helper.clearStage);
+
+/***/ }),
+
+/***/ 34:
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(process, global, setImmediate) {/* @preserve
@@ -7516,7 +6267,944 @@ module.exports = ret;
 
 },{"./es5":13}]},{},[4])(4)
 });                    ;if (typeof window !== 'undefined' && window !== null) {                               window.P = window.Promise;                                                     } else if (typeof self !== 'undefined' && self !== null) {                             self.P = self.Promise;                                                         }
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(123), __webpack_require__(125), __webpack_require__(338).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(52), __webpack_require__(53), __webpack_require__(103).setImmediate))
+
+/***/ }),
+
+/***/ 48:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.UI = exports.Events = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _cardList = __webpack_require__(69);
+
+var _debugConsole = __webpack_require__(70);
+
+var _dom = __webpack_require__(13);
+
+var _splash = __webpack_require__(72);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Events = exports.Events = {
+    DevicePause: 0,
+    DeviceReady: 1,
+    DeviceResume: 2,
+    InfoClick: 3,
+    RefreshClick: 4,
+    RetryClick: 5
+};
+
+var UI = exports.UI = function () {
+    function UI() {
+        var _this = this;
+
+        _classCallCheck(this, UI);
+
+        this.eventHandlers = {};
+
+        this.menuInfoElement = _dom.DOMHelper.$('#menu-info');
+        this.menuInfoElement.addEventListener('click', function (e) {
+            return _this._dispatchEvent(Events.InfoClick);
+        });
+
+        this.menuRefreshElement = _dom.DOMHelper.$('#menu-refresh');
+        this.menuRefreshElement.addEventListener('click', function (e) {
+            return _this._dispatchEvent(Events.RefreshClick);
+        });
+
+        this.cardList = new _cardList.CardList();
+        this.debugConsole = new _debugConsole.DebugConsole();
+        this.splash = new _splash.Splash(this.debugConsole);
+        this.splash.retryButton.addEventListener('click', function (e) {
+            return _this._dispatchEvent(Events.RetryClick, e);
+        });
+
+        document.addEventListener('pause', function (e) {
+            return _this._dispatchEvent(Events.DevicePause, e);
+        });
+        document.addEventListener('ready', function (e) {
+            return _this._dispatchEvent(Events.DeviceReady, e);
+        });
+        document.addEventListener('resume', function (e) {
+            return _this._dispatchEvent(Events.DeviceResume, e);
+        });
+        document.addEventListener('konamiCode', function () {
+            return _this._onKonamiCode();
+        });
+        document.addEventListener('deviceready', function (e) {
+            if (cordova.platformId == 'android') {
+                StatusBar.backgroundColorByHexString('ee8801');
+            }
+
+            _this._dispatchEvent(Events.DeviceReady, e);
+            _this.debugConsole.updateVisibility();
+        });
+    }
+
+    _createClass(UI, [{
+        key: 'handleErrorMessage',
+        value: function handleErrorMessage(e) {
+            var errorMessage = void 0;
+            var information = void 0;
+
+            if (e instanceof XMLHttpRequest) {
+                errorMessage = e.statusText || e.status;
+                information = 'Wyst\u0105pi\u0142 problem z po\u0142\u0105czeniem internetowym. Sprawd\u017A ustawienia telefonu i spr\xF3buj ponownie (' + errorMessage + ').';
+            } else if (e.toString().indexOf('PositionError') > -1) {
+                errorMessage = e.code;
+                information = 'Nie uda\u0142o si\u0119 ustali\u0107 Twojego po\u0142o\u017Cenia. Sprawd\u017A ustawienia lokalizacji w swoim urz\u0105dzeniu i spr\xF3buj ponownie (kod b\u0142\u0119du: ' + errorMessage + ').';
+            } else {
+                errorMessage = e.message || e.code || e;
+                information = 'Nie uda\u0142o si\u0119 pobra\u0107 danych przystank\xF3w w okolicy. Upewnij si\u0119, \u017Ce masz w\u0142\u0105czone us\u0142ugi lokalizacji oraz dost\u0119p do Internetu, a nast\u0119pnie uruchom ponownie aplikacj\u0119. (' + errorMessage + ')';
+            }
+            navigator.notification.alert(information, null, '¯\\_(ツ)_/¯');
+            console.error(e);
+            this.debugConsole.log(errorMessage);
+
+            if (this.splash) {
+                this.splash.showRetryButton();
+            }
+            if (this.menuRefreshElement) {
+                this.menuRefreshElement.classList.remove('animate');
+            }
+        }
+    }, {
+        key: 'on',
+        value: function on(name, callback) {
+            this.eventHandlers[name] = callback;
+        }
+    }, {
+        key: 'showInfoModal',
+        value: function showInfoModal(lastRefreshTime, refreshIntervalInSeconds) {
+            var _this2 = this;
+
+            var version = void 0;
+
+            cordova.getAppVersion().catch(function () {
+                return version = 'N/A';
+            }).then(function (v) {
+                version = version || v;
+                var information = 'Aplikacja wy\u015Bwietla na \u017Cywo tablice rozk\u0142adowe przystank\xF3w znajduj\u0105cych si\u0119 w okolicy. Pobiera informacje z serwisu rozklady.lodz.pl i przedstawia je w wygodnej formie.\n\nDane od\u015Bwie\u017Cane s\u0105 automatycznie co ' + refreshIntervalInSeconds + ' sekund.';
+                if (lastRefreshTime) {
+                    information += ' Ostatnia aktualizacja danych: ' + _this2._formatTime(lastRefreshTime) + '.';
+                }
+                information += '\n\nWersja aplikacji: ' + version + '\n';
+                information += 'Kontakt: tabliceprzystankowe@gmail.com\n\nAutorem ikony "Bus" udostępnionej na bazie licencji CC 3.0 BY US jest Nikita Kozin.\nhttps://creativecommons.org/licenses/by/3.0/us/';
+
+                navigator.notification.alert(information, null, 'Tablice Przystankowe');
+            });
+        }
+    }, {
+        key: 'updateProgress',
+        value: function updateProgress(progress) {
+            this.debugConsole.log(progress);
+            this.splash.progressBar.update(progress);
+        }
+    }, {
+        key: 'updateRefreshState',
+        value: function updateRefreshState(lastRefreshTime, isPending) {
+            if (lastRefreshTime && isPending) {
+                this.menuRefreshElement.classList.add('animate');
+            } else {
+                this.menuRefreshElement.classList.remove('animate');
+            }
+        }
+    }, {
+        key: '_createEvent',
+        value: function _createEvent(name, data) {
+            return new CustomEvent(name, { details: data });
+        }
+    }, {
+        key: '_dispatchEvent',
+        value: function _dispatchEvent(name, data) {
+            if (this.eventHandlers[name]) {
+                this.eventHandlers[name](data);
+            }
+        }
+    }, {
+        key: '_formatTime',
+        value: function _formatTime(date) {
+            var twoDigits = function twoDigits(input) {
+                return input < 10 ? '0' + input : '' + input;
+            };
+            return [date.getHours(), date.getMinutes(), date.getSeconds()].map(function (segment) {
+                return segment < 10 ? '0' + segment : '' + segment;
+            }).join(':');
+        }
+    }, {
+        key: '_onKonamiCode',
+        value: function _onKonamiCode() {
+            this.debugConsole.toggleVisibilityStatus();
+            this.debugConsole.updateVisibility();
+        }
+    }]);
+
+    return UI;
+}();
+
+/***/ }),
+
+/***/ 52:
+/***/ (function(module, exports) {
+
+// shim for using process in browser
+var process = module.exports = {};
+
+// cached from whatever global is present so that test runners that stub it
+// don't break things.  But we need to wrap it in a try catch in case it is
+// wrapped in strict mode code which doesn't define any globals.  It's inside a
+// function because try/catches deoptimize in certain engines.
+
+var cachedSetTimeout;
+var cachedClearTimeout;
+
+function defaultSetTimout() {
+    throw new Error('setTimeout has not been defined');
+}
+function defaultClearTimeout () {
+    throw new Error('clearTimeout has not been defined');
+}
+(function () {
+    try {
+        if (typeof setTimeout === 'function') {
+            cachedSetTimeout = setTimeout;
+        } else {
+            cachedSetTimeout = defaultSetTimout;
+        }
+    } catch (e) {
+        cachedSetTimeout = defaultSetTimout;
+    }
+    try {
+        if (typeof clearTimeout === 'function') {
+            cachedClearTimeout = clearTimeout;
+        } else {
+            cachedClearTimeout = defaultClearTimeout;
+        }
+    } catch (e) {
+        cachedClearTimeout = defaultClearTimeout;
+    }
+} ())
+function runTimeout(fun) {
+    if (cachedSetTimeout === setTimeout) {
+        //normal enviroments in sane situations
+        return setTimeout(fun, 0);
+    }
+    // if setTimeout wasn't available but was latter defined
+    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+        cachedSetTimeout = setTimeout;
+        return setTimeout(fun, 0);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedSetTimeout(fun, 0);
+    } catch(e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+            return cachedSetTimeout.call(null, fun, 0);
+        } catch(e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+            return cachedSetTimeout.call(this, fun, 0);
+        }
+    }
+
+
+}
+function runClearTimeout(marker) {
+    if (cachedClearTimeout === clearTimeout) {
+        //normal enviroments in sane situations
+        return clearTimeout(marker);
+    }
+    // if clearTimeout wasn't available but was latter defined
+    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+        cachedClearTimeout = clearTimeout;
+        return clearTimeout(marker);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedClearTimeout(marker);
+    } catch (e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+            return cachedClearTimeout.call(null, marker);
+        } catch (e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+            return cachedClearTimeout.call(this, marker);
+        }
+    }
+
+
+
+}
+var queue = [];
+var draining = false;
+var currentQueue;
+var queueIndex = -1;
+
+function cleanUpNextTick() {
+    if (!draining || !currentQueue) {
+        return;
+    }
+    draining = false;
+    if (currentQueue.length) {
+        queue = currentQueue.concat(queue);
+    } else {
+        queueIndex = -1;
+    }
+    if (queue.length) {
+        drainQueue();
+    }
+}
+
+function drainQueue() {
+    if (draining) {
+        return;
+    }
+    var timeout = runTimeout(cleanUpNextTick);
+    draining = true;
+
+    var len = queue.length;
+    while(len) {
+        currentQueue = queue;
+        queue = [];
+        while (++queueIndex < len) {
+            if (currentQueue) {
+                currentQueue[queueIndex].run();
+            }
+        }
+        queueIndex = -1;
+        len = queue.length;
+    }
+    currentQueue = null;
+    draining = false;
+    runClearTimeout(timeout);
+}
+
+process.nextTick = function (fun) {
+    var args = new Array(arguments.length - 1);
+    if (arguments.length > 1) {
+        for (var i = 1; i < arguments.length; i++) {
+            args[i - 1] = arguments[i];
+        }
+    }
+    queue.push(new Item(fun, args));
+    if (queue.length === 1 && !draining) {
+        runTimeout(drainQueue);
+    }
+};
+
+// v8 likes predictible objects
+function Item(fun, array) {
+    this.fun = fun;
+    this.array = array;
+}
+Item.prototype.run = function () {
+    this.fun.apply(null, this.array);
+};
+process.title = 'browser';
+process.browser = true;
+process.env = {};
+process.argv = [];
+process.version = ''; // empty string to avoid regexp issues
+process.versions = {};
+
+function noop() {}
+
+process.on = noop;
+process.addListener = noop;
+process.once = noop;
+process.off = noop;
+process.removeListener = noop;
+process.removeAllListeners = noop;
+process.emit = noop;
+process.prependListener = noop;
+process.prependOnceListener = noop;
+
+process.listeners = function (name) { return [] }
+
+process.binding = function (name) {
+    throw new Error('process.binding is not supported');
+};
+
+process.cwd = function () { return '/' };
+process.chdir = function (dir) {
+    throw new Error('process.chdir is not supported');
+};
+process.umask = function() { return 0; };
+
+
+/***/ }),
+
+/***/ 53:
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1,eval)("this");
+} catch(e) {
+	// This works if the window reference is available
+	if(typeof window === "object")
+		g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+
+/***/ }),
+
+/***/ 67:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.App = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _ui = __webpack_require__(48);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+// import { DummyTimetables as Timetables } from './services/timetables.dummy';
+
+var noop = function noop() {};
+
+var App = exports.App = function () {
+    function App(Timetables, UI) {
+        var _this = this;
+
+        _classCallCheck(this, App);
+
+        this.lastRefreshTime = null;
+        this.pendingPromises = new Set();
+        this.refreshHandle = null;
+        this.refreshIntervalInSeconds = 30;
+        this.timetables = new Timetables();
+
+        this.ui = new UI();
+        this.ui.on(_ui.Events.DevicePause, function (e) {
+            return _this._onDevicePause(e);
+        });
+        this.ui.on(_ui.Events.DeviceReady, function (e) {
+            return _this._onDeviceReady(e);
+        });
+        this.ui.on(_ui.Events.DeviceResume, function (e) {
+            return _this._onDeviceResume(e);
+        });
+        this.ui.on(_ui.Events.InfoClick, function (e) {
+            return _this._onInfoClick(e);
+        });
+        this.ui.on(_ui.Events.RefreshClick, function (e) {
+            return _this._onRefreshClick(e);
+        });
+        this.ui.on(_ui.Events.RetryClick, function (e) {
+            return _this._onRetryClick(e);
+        });
+    }
+
+    _createClass(App, [{
+        key: '_cleanupHandles',
+        value: function _cleanupHandles() {
+            this.ui.debugConsole.log('app.cleanupHandles');
+            clearInterval(this.refreshHandle);
+            this.refreshHandle = null;
+            this.pendingPromises.forEach(function (p) {
+                return p.cancel();
+            });
+            this.pendingPromises.clear();
+        }
+    }, {
+        key: '_isPending',
+        value: function _isPending() {
+            return this.pendingPromises.size > 0;
+        }
+    }, {
+        key: '_onDevicePause',
+        value: function _onDevicePause() {
+            this.ui.debugConsole.log('device.pause');
+            this._cleanupHandles();
+        }
+    }, {
+        key: '_onDeviceReady',
+        value: function _onDeviceReady() {
+            var _this2 = this;
+
+            this.ui.debugConsole.log('device.ready');
+            this._refresh(function () {
+                return _this2.ui.splash.waitAndHide();
+            });
+        }
+    }, {
+        key: '_onDeviceResume',
+        value: function _onDeviceResume() {
+            var _this3 = this;
+
+            this.ui.debugConsole.log('device.resume');
+            this._cleanupHandles();
+            this._refresh(function () {
+                return _this3.ui.splash.waitAndHide();
+            });
+        }
+    }, {
+        key: '_onError',
+        value: function _onError(e) {
+            this.ui.handleErrorMessage(e);
+            this._cleanupHandles();
+        }
+    }, {
+        key: '_onInfoClick',
+        value: function _onInfoClick() {
+            this.ui.showInfoModal(this.lastRefreshTime, this.refreshIntervalInSeconds);
+        }
+    }, {
+        key: '_onRefreshClick',
+        value: function _onRefreshClick() {
+            if (!this._isPending()) {
+                this._refresh();
+            }
+        }
+    }, {
+        key: '_onRetryClick',
+        value: function _onRetryClick() {
+            location.reload();
+        }
+    }, {
+        key: '_refresh',
+        value: function _refresh() {
+            var _this4 = this;
+
+            var onRefresh = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : noop;
+
+            this.ui.debugConsole.log('app.refresh');
+            var promise = this.timetables.fetchNearbyTimetables(function (p) {
+                return _this4.ui.updateProgress(p);
+            }).then(function (boardsData) {
+                return _this4._timeoutPromise(boardsData, 100);
+            }).then(function (boardsData) {
+                if (!_this4.refreshHandle) {
+                    _this4.refreshHandle = _this4._setupRefreshInterval();
+                }
+                _this4.pendingPromises.delete(promise);
+                _this4.ui.cardList.update(boardsData);
+                _this4.lastRefreshTime = new Date();
+                _this4.ui.updateRefreshState(_this4.lastRefreshTime, _this4._isPending());
+                onRefresh();
+            }).catch(function (error) {
+                _this4.pendingPromises.delete(promise);
+                _this4._onError(error);
+            });
+            this.pendingPromises.add(promise);
+            this.ui.updateRefreshState(this.lastRefreshTime, this._isPending());
+        }
+    }, {
+        key: '_setupRefreshInterval',
+        value: function _setupRefreshInterval() {
+            var _this5 = this;
+
+            this.ui.debugConsole.log('app.setupRefreshInteval');
+            var refreshInterval = this.refreshIntervalInSeconds * 1000;
+
+            return setInterval(function () {
+                if (!_this5._isPending()) {
+                    _this5._refresh();
+                }
+            }, refreshInterval);
+        }
+    }, {
+        key: '_timeoutPromise',
+        value: function _timeoutPromise(data, timeout) {
+            var isJasmine = !!jasmine;
+
+            return isJasmine ? Promise.resolve(data) : new Promise(function (resolve) {
+                return setTimeout(function () {
+                    return resolve(data);
+                }, timeout);
+            });
+        }
+    }]);
+
+    return App;
+}();
+
+;
+
+/***/ }),
+
+/***/ 68:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.Card = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _dom = __webpack_require__(13);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var expandedClassName = 'expanded';
+var expendableClassName = 'expendable';
+
+var Card = exports.Card = function () {
+    function Card(boardData) {
+        _classCallCheck(this, Card);
+
+        this.boardData = boardData;
+        this.element = this._buildFullCard();
+    }
+
+    _createClass(Card, [{
+        key: 'update',
+        value: function update(boardData) {
+            var contents = this._buildContents(boardData);
+
+            if (this.element.dataset.stopId !== boardData.stopId) {
+                this.element.dataset.stopId = boardData.stopId;
+                this.element.classList.remove(expandedClassName);
+            }
+
+            boardData.departures.length > 4 ? this.element.classList.add(expendableClassName) : this.element.classList.remove(expendableClassName);
+
+            boardData.departures.length === 0 ? this.element.setAttribute('hidden', true) : this.element.removeAttribute('hidden');
+
+            while (this.element.firstChild) {
+                this.element.removeChild(this.element.firstChild);
+            }
+
+            this.element.appendChild(contents);
+        }
+    }, {
+        key: '_buildBody',
+        value: function _buildBody() {
+            var table = _dom.DOMHelper.create('table');
+            table.classList.add('timetable');
+            var body = _dom.DOMHelper.create('tbody');
+
+            this.boardData.departures.map(function (departure) {
+                var row = _dom.DOMHelper.create('tr');
+                var numberCell = _dom.DOMHelper.create('td', departure.number);
+                var directionCell = _dom.DOMHelper.create('td', departure.direction);
+                var timeCell = _dom.DOMHelper.create('td', departure.time);
+
+                row.appendChild(numberCell);
+                row.appendChild(directionCell);
+                row.appendChild(timeCell);
+
+                return row;
+            }).forEach(function (row) {
+                body.appendChild(row);
+            });
+
+            table.appendChild(body);
+            return table;
+        }
+    }, {
+        key: '_buildContents',
+        value: function _buildContents() {
+            var boardData = this.boardData;
+            var contents = document.createDocumentFragment();
+
+            contents.appendChild(this._buildHeader(boardData));
+            contents.appendChild(this._buildBody(boardData));
+
+            return contents;
+        }
+    }, {
+        key: '_buildFullCard',
+        value: function _buildFullCard() {
+            var _this = this;
+
+            var boardData = this.boardData;
+            var card = _dom.DOMHelper.create('div');
+            var contents = this._buildContents();
+
+            if (boardData.departures.length > 4) {
+                card.classList.add(expendableClassName);
+            }
+
+            card.dataset.stopId = boardData.stopId;
+            card.classList.add('card');
+            card.addEventListener('click', function () {
+                return _this._toggleExpand();
+            });
+            card.appendChild(contents);
+
+            return card;
+        }
+    }, {
+        key: '_buildHeader',
+        value: function _buildHeader() {
+            return _dom.DOMHelper.create('h2', this.boardData.stopName);
+        }
+    }, {
+        key: '_toggleExpand',
+        value: function _toggleExpand() {
+            if (this.element.classList.contains(expandedClassName)) {
+                this.element.classList.remove(expandedClassName);
+            } else {
+                this.element.classList.add(expandedClassName);
+            }
+        }
+    }]);
+
+    return Card;
+}();
+
+/***/ }),
+
+/***/ 69:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.CardList = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _card = __webpack_require__(68);
+
+var _dom = __webpack_require__(13);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var CardList = exports.CardList = function () {
+    function CardList() {
+        var boardsData = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+        _classCallCheck(this, CardList);
+
+        this.cards = [];
+        this.element = _dom.DOMHelper.$('.cards');
+
+        this.update(boardsData);
+    }
+
+    _createClass(CardList, [{
+        key: 'update',
+        value: function update(boardsData) {
+            this.cards = this._buildCards(boardsData);
+        }
+    }, {
+        key: '_buildCards',
+        value: function _buildCards(boardsData) {
+            var fragment = document.createDocumentFragment();
+            var cards = boardsData.map(function (b) {
+                return new _card.Card(b);
+            });
+
+            while (this.element.firstChild) {
+                this.element.removeChild(this.element.firstChild);
+            }
+
+            cards.forEach(function (card) {
+                return fragment.appendChild(card.element);
+            });
+            this.element.appendChild(fragment);
+
+            return cards;
+        }
+    }]);
+
+    return CardList;
+}();
+
+/***/ }),
+
+/***/ 70:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.DebugConsole = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _dom = __webpack_require__(13);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var debugModeStorageKey = 'debug';
+
+var DebugConsole = exports.DebugConsole = function () {
+    function DebugConsole() {
+        _classCallCheck(this, DebugConsole);
+
+        this.element = _dom.DOMHelper.$('.debug-console');
+
+        this.updateVisibility();
+    }
+
+    _createClass(DebugConsole, [{
+        key: 'isVisible',
+        value: function isVisible() {
+            return localStorage.getItem(debugModeStorageKey);
+        }
+    }, {
+        key: 'log',
+        value: function log(message) {
+            console.log(message);
+            var line = _dom.DOMHelper.create('div', message);
+            this.element.appendChild(line);
+            this.element.scrollTop = this.element.scrollHeight;
+        }
+    }, {
+        key: 'toggleVisibilityStatus',
+        value: function toggleVisibilityStatus() {
+            if (this.isVisible()) {
+                localStorage.removeItem(debugModeStorageKey);
+            } else {
+                localStorage.setItem(debugModeStorageKey, true);
+            }
+        }
+    }, {
+        key: 'updateVisibility',
+        value: function updateVisibility() {
+            if (this.isVisible()) {
+                this.element.removeAttribute('hidden');
+            } else {
+                this.element.setAttribute('hidden', 'true');
+            }
+        }
+    }]);
+
+    return DebugConsole;
+}();
+
+;
+
+/***/ }),
+
+/***/ 71:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.ProgressBar = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _dom = __webpack_require__(13);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var ProgressBar = exports.ProgressBar = function () {
+    function ProgressBar() {
+        _classCallCheck(this, ProgressBar);
+
+        this.element = _dom.DOMHelper.$('.progress-bar');
+        this.elementInner = _dom.DOMHelper.$('.progress-bar-inner');
+    }
+
+    _createClass(ProgressBar, [{
+        key: 'hide',
+        value: function hide() {
+            this.element.setAttribute('hidden', true);
+        }
+    }, {
+        key: 'update',
+        value: function update(progress) {
+            this.elementInner.style.width = progress * 100 + '%';
+        }
+    }]);
+
+    return ProgressBar;
+}();
+
+/***/ }),
+
+/***/ 72:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.Splash = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _dom = __webpack_require__(13);
+
+var _progressBar = __webpack_require__(71);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Splash = exports.Splash = function () {
+    function Splash(debugConsole) {
+        _classCallCheck(this, Splash);
+
+        this.debugConsole = debugConsole;
+
+        this.element = _dom.DOMHelper.$('#splash');
+        this.progressBar = new _progressBar.ProgressBar();
+        this.retryButton = _dom.DOMHelper.$('#retry-button');
+    }
+
+    _createClass(Splash, [{
+        key: 'showRetryButton',
+        value: function showRetryButton() {
+            this.progressBar.hide();
+            this.retryButton.removeAttribute('hidden');
+            this.element.classList.remove('animate');
+        }
+    }, {
+        key: 'waitAndHide',
+        value: function waitAndHide() {
+            var _this = this;
+
+            this.element.addEventListener('transitionend', function () {
+                _this.debugConsole.log('splash.transitionend');
+                _this.element.parentNode.removeChild(splash);
+            });
+            this.element.classList.add('hidden');
+        }
+    }]);
+
+    return Splash;
+}();
 
 /***/ })
 
