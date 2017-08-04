@@ -11,17 +11,15 @@ export class DummyUI {
         this.splash = { waitAndHide: noop };
     }
 
-    handleErrorMessage(e) {
-
-    }
+    handleErrorMessage(e) {}
 
     on(name, callback) {
         this.eventHandlers[name] = callback;
     }
 
-    showInfoModal(lastRefreshTime, refreshIntervalInSeconds) {
+    showInfoModal(lastRefreshTime, refreshIntervalInSeconds) {}
 
-    }
+    showRefreshButton() {}
 
     trigger(name, data) {
         if (this.eventHandlers[name]) {
@@ -29,11 +27,7 @@ export class DummyUI {
         }
     }
 
-    updateProgress(progress) {
+    updateProgress(progress) {}
 
-    }
-
-    updateRefreshState(lastRefreshTime, isPending) {
-
-    }
+    updateRefreshState(lastRefreshTime, isPending) {}
 };

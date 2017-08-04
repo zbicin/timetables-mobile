@@ -610,6 +610,9 @@ var DummyUI = exports.DummyUI = function () {
         key: 'showInfoModal',
         value: function showInfoModal(lastRefreshTime, refreshIntervalInSeconds) {}
     }, {
+        key: 'showRefreshButton',
+        value: function showRefreshButton() {}
+    }, {
         key: 'trigger',
         value: function trigger(name, data) {
             if (this.eventHandlers[name]) {
@@ -6321,6 +6324,8 @@ var UI = exports.UI = function () {
             return _this._dispatchEvent(Events.RefreshClick);
         });
 
+        this.menuTitle = _dom.DOMHelper.$('#menu-title');
+
         this.cardList = new _cardList.CardList();
         this.debugConsole = new _debugConsole.DebugConsole();
         this.splash = new _splash.Splash(this.debugConsole);
@@ -6402,6 +6407,16 @@ var UI = exports.UI = function () {
 
                 navigator.notification.alert(information, null, 'Tablice Przystankowe');
             });
+        }
+    }, {
+        key: 'showRefreshButton',
+        value: function showRefreshButton() {
+            this.menuRefreshElement.removeAttribute('hidden');
+        }
+    }, {
+        key: 'showTitle',
+        value: function showTitle() {
+            this.menuTitle.removeAttribute('hidden');
         }
     }, {
         key: 'updateProgress',
@@ -6755,7 +6770,10 @@ var App = exports.App = function () {
 
             this.ui.debugConsole.log('device.ready');
             this._refresh(function () {
-                return _this2.ui.splash.waitAndHide();
+                _this2.ui.splash.waitAndHide(function () {
+                    _this2.ui.showRefreshButton();
+                    _this2.ui.showTitle();
+                });
             });
         }
     }, {
@@ -6766,7 +6784,10 @@ var App = exports.App = function () {
             this.ui.debugConsole.log('device.resume');
             this._cleanupHandles();
             this._refresh(function () {
-                return _this3.ui.splash.waitAndHide();
+                _this3.ui.splash.waitAndHide(function () {
+                    _this3.ui.showRefreshButton();
+                    _this3.ui.showTitle();
+                });
             });
         }
     }, {
@@ -7172,6 +7193,8 @@ var _progressBar = __webpack_require__(71);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+var noop = function noop() {};
+
 var Splash = exports.Splash = function () {
     function Splash(debugConsole) {
         _classCallCheck(this, Splash);
@@ -7195,9 +7218,12 @@ var Splash = exports.Splash = function () {
         value: function waitAndHide() {
             var _this = this;
 
+            var callback = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : noop;
+
             this.element.addEventListener('transitionend', function () {
                 _this.debugConsole.log('splash.transitionend');
                 _this.element.parentNode.removeChild(splash);
+                callback();
             });
             this.element.classList.add('hidden');
         }

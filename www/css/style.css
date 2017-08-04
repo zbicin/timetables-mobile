@@ -46,7 +46,7 @@ body {
     right: 0;
     text-align: left;
     top: 0;
-    z-index: 3;
+    z-index: 4;
 }
 
 .menu img {
@@ -161,6 +161,7 @@ body {
     border-bottom-width: 2px;
     cursor: pointer;
     margin: 10px;
+    overflow: auto;
     padding: 8px 10px;
     position: relative;
     transition: background-color 0.1s ease-out;
@@ -203,8 +204,14 @@ body {
     font-size: 1.5em;
     font-weight: 300;
     margin: 0 0 2px 0;
+    overflow: hidden;
     padding-right: 1em;
     text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.card.expanded h2 {
+    white-space: normal;
 }
 
 .timetable {
@@ -214,7 +221,14 @@ body {
 }
 
 .timetable td {
+    overflow: hidden;
     padding: 2px 1px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.card.expanded .timetable td {
+    white-space: normal;
 }
 
 .timetable td:first-child {

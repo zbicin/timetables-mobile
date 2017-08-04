@@ -39,13 +39,23 @@ export class App {
 
     _onDeviceReady() {
         this.ui.debugConsole.log('device.ready');
-        this._refresh(() => this.ui.splash.waitAndHide());
+        this._refresh(() => {
+            this.ui.splash.waitAndHide(() => {
+                this.ui.showRefreshButton();
+                this.ui.showTitle();
+            });
+        });
     }
 
     _onDeviceResume() {
         this.ui.debugConsole.log('device.resume');
         this._cleanupHandles();
-        this._refresh(() => this.ui.splash.waitAndHide());
+        this._refresh(() => {
+            this.ui.splash.waitAndHide(() => {
+                this.ui.showRefreshButton();
+                this.ui.showTitle();
+            });
+        });
     }
 
     _onError(e) {

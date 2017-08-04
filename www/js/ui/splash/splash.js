@@ -1,6 +1,8 @@
 import { DOMHelper } from '../dom';
 import { ProgressBar } from './progress-bar';
 
+const noop = () => {};
+
 export class Splash {
     constructor(debugConsole) {
         this.debugConsole = debugConsole;
@@ -16,10 +18,11 @@ export class Splash {
         this.element.classList.remove('animate');
     }
 
-    waitAndHide() {
+    waitAndHide(callback = noop) {
         this.element.addEventListener('transitionend', () => {
             this.debugConsole.log('splash.transitionend');
             this.element.parentNode.removeChild(splash);
+            callback();
         });
         this.element.classList.add('hidden');
     }

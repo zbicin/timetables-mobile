@@ -22,6 +22,7 @@ export class UI {
         this.menuRefreshElement = DOMHelper.$('#menu-refresh');
         this.menuRefreshElement.addEventListener('click', (e) => this._dispatchEvent(Events.RefreshClick));
 
+        this.menuTitle = DOMHelper.$('#menu-title');
 
         this.cardList = new CardList();
         this.debugConsole = new DebugConsole();
@@ -88,6 +89,14 @@ export class UI {
 
                 navigator.notification.alert(information, null, 'Tablice Przystankowe');
             });
+    }
+
+    showRefreshButton() {
+        this.menuRefreshElement.removeAttribute('hidden');
+    }
+
+    showTitle() {
+        this.menuTitle.removeAttribute('hidden');
     }
 
     updateProgress(progress) {
