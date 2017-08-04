@@ -6714,6 +6714,7 @@ var App = exports.App = function () {
 
         _classCallCheck(this, App);
 
+        this.hasCrashed = false;
         this.lastRefreshTime = null;
         this.pendingPromises = new Set();
         this.refreshHandle = null;
@@ -6782,15 +6783,19 @@ var App = exports.App = function () {
 
             this.ui.debugConsole.log('device.resume');
             this._cleanupHandles();
-            this._refresh(function () {
-                _this3.ui.splash.waitAndHide();
-                _this3.ui.showRefreshButton();
-                _this3.ui.showTitle();
-            });
+
+            if (!this.hasCrashed) {
+                this._refresh(function () {
+                    _this3.ui.splash.waitAndHide();
+                    _this3.ui.showRefreshButton();
+                    _this3.ui.showTitle();
+                });
+            }
         }
     }, {
         key: '_onError',
         value: function _onError(e) {
+            this.hasCrashed = true;
             this.ui.handleErrorMessage(e);
             this._cleanupHandles();
         }

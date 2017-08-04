@@ -5,6 +5,7 @@ const noop = () => { };
 
 export class App {
     constructor(Timetables, UI) {
+        this.hasCrashed = false;
         this.lastRefreshTime = null;
         this.pendingPromises = new Set();
         this.refreshHandle = null;
@@ -49,14 +50,18 @@ export class App {
     _onDeviceResume() {
         this.ui.debugConsole.log('device.resume');
         this._cleanupHandles();
-        this._refresh(() => {
-            this.ui.splash.waitAndHide();
-            this.ui.showRefreshButton();
-            this.ui.showTitle();
-        });
+
+        if (!this.hasCrashed) {
+            this._refresh(() => {
+                this.ui.splash.waitAndHide();
+                this.ui.showRefreshButton();
+                this.ui.showTitle();
+            });
+        }
     }
 
     _onError(e) {
+        this.hasCrashed = true;
         this.ui.handleErrorMessage(e);
         this._cleanupHandles();
     }
