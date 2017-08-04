@@ -40,10 +40,9 @@ export class App {
     _onDeviceReady() {
         this.ui.debugConsole.log('device.ready');
         this._refresh(() => {
-            this.ui.splash.waitAndHide(() => {
-                this.ui.showRefreshButton();
-                this.ui.showTitle();
-            });
+            this.ui.splash.waitAndHide();
+            this.ui.showRefreshButton();
+            this.ui.showTitle();
         });
     }
 
@@ -51,10 +50,9 @@ export class App {
         this.ui.debugConsole.log('device.resume');
         this._cleanupHandles();
         this._refresh(() => {
-            this.ui.splash.waitAndHide(() => {
-                this.ui.showRefreshButton();
-                this.ui.showTitle();
-            });
+            this.ui.splash.waitAndHide();
+            this.ui.showRefreshButton();
+            this.ui.showTitle();
         });
     }
 
@@ -112,7 +110,7 @@ export class App {
     _timeoutPromise(data, timeout) {
         const isJasmine = !!window.jasmine;
 
-        return isJasmine 
+        return isJasmine
             ? Promise.resolve(data)
             : new Promise((resolve) => setTimeout(() => resolve(data), timeout));
     }

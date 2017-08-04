@@ -6411,12 +6411,12 @@ var UI = exports.UI = function () {
     }, {
         key: 'showRefreshButton',
         value: function showRefreshButton() {
-            this.menuRefreshElement.removeAttribute('hidden');
+            this.menuRefreshElement.classList.remove('hidden');
         }
     }, {
         key: 'showTitle',
         value: function showTitle() {
-            this.menuTitle.removeAttribute('hidden');
+            this.menuTitle.classList.remove('hidden');
         }
     }, {
         key: 'updateProgress',
@@ -6770,10 +6770,9 @@ var App = exports.App = function () {
 
             this.ui.debugConsole.log('device.ready');
             this._refresh(function () {
-                _this2.ui.splash.waitAndHide(function () {
-                    _this2.ui.showRefreshButton();
-                    _this2.ui.showTitle();
-                });
+                _this2.ui.splash.waitAndHide();
+                _this2.ui.showRefreshButton();
+                _this2.ui.showTitle();
             });
         }
     }, {
@@ -6784,10 +6783,9 @@ var App = exports.App = function () {
             this.ui.debugConsole.log('device.resume');
             this._cleanupHandles();
             this._refresh(function () {
-                _this3.ui.splash.waitAndHide(function () {
-                    _this3.ui.showRefreshButton();
-                    _this3.ui.showTitle();
-                });
+                _this3.ui.splash.waitAndHide();
+                _this3.ui.showRefreshButton();
+                _this3.ui.showTitle();
             });
         }
     }, {

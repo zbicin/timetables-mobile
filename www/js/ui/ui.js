@@ -92,11 +92,11 @@ export class UI {
     }
 
     showRefreshButton() {
-        this.menuRefreshElement.removeAttribute('hidden');
+        this.menuRefreshElement.classList.remove('hidden');
     }
 
     showTitle() {
-        this.menuTitle.removeAttribute('hidden');
+        this.menuTitle.classList.remove('hidden');
     }
 
     updateProgress(progress) {
