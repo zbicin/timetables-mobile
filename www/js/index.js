@@ -2,7 +2,7 @@ import reset from '../css/reset.css';
 import style from '../css/style.css'
 
 import 'core-js';
-import 'konami-code-js';
+import 'konami-code-js/lib/konami-code.min.js';
 
 import { Promise } from 'bluebird';
 

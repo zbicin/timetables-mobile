@@ -63,12 +63,12 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 149);
+/******/ 	return __webpack_require__(__webpack_require__.s = 148);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 102:
+/***/ 101:
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -262,7 +262,7 @@
 
 /***/ }),
 
-/***/ 103:
+/***/ 102:
 /***/ (function(module, exports, __webpack_require__) {
 
 var apply = Function.prototype.apply;
@@ -315,7 +315,7 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(102);
+__webpack_require__(101);
 exports.setImmediate = setImmediate;
 exports.clearImmediate = clearImmediate;
 
@@ -369,7 +369,7 @@ var DOMHelper = exports.DOMHelper = function () {
 
 /***/ }),
 
-/***/ 135:
+/***/ 134:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -377,9 +377,9 @@ var DOMHelper = exports.DOMHelper = function () {
 
 var _app = __webpack_require__(67);
 
-var _ui = __webpack_require__(148);
+var _ui = __webpack_require__(147);
 
-var _timetables = __webpack_require__(147);
+var _timetables = __webpack_require__(146);
 
 describe('app', function () {
     var app = void 0;
@@ -416,7 +416,7 @@ describe('app', function () {
 
 /***/ }),
 
-/***/ 137:
+/***/ 136:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -462,7 +462,7 @@ var Helper = exports.Helper = function () {
 
 /***/ }),
 
-/***/ 147:
+/***/ 146:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -562,7 +562,7 @@ var DummyTimetables = exports.DummyTimetables = function () {
 
 /***/ }),
 
-/***/ 148:
+/***/ 147:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -634,15 +634,15 @@ var DummyUI = exports.DummyUI = function () {
 
 /***/ }),
 
-/***/ 149:
+/***/ 148:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _helper = __webpack_require__(137);
+var _helper = __webpack_require__(136);
 
-__webpack_require__(135);
+__webpack_require__(134);
 
 afterEach(_helper.Helper.clearStage);
 
@@ -6270,7 +6270,7 @@ module.exports = ret;
 
 },{"./es5":13}]},{},[4])(4)
 });                    ;if (typeof window !== 'undefined' && window !== null) {                               window.P = window.Promise;                                                     } else if (typeof self !== 'undefined' && self !== null) {                             self.P = self.Promise;                                                         }
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(52), __webpack_require__(53), __webpack_require__(103).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(52), __webpack_require__(53), __webpack_require__(102).setImmediate))
 
 /***/ }),
 
