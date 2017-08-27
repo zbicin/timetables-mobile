@@ -1,7 +1,6 @@
 const path = require('path');
 
 module.exports = {
-    watch: true,
     entry: {
         app: path.join(__dirname, 'www', 'js', 'index.js'),
         test: path.join(__dirname, 'www', 'spec', 'index.js')

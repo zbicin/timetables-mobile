@@ -35,8 +35,9 @@ export class Timetables {
         const parser = new DOMParser();
         const doc = parser.parseFromString(rawXml, 'application/xml');
         const stop = doc.getElementsByTagName('Stop')[0];
+        const nowTimeString = new Date().toISOString().split('T')[1].split(':').slice(0,2).join(':');
         const result = {
-            currentTime: doc.firstElementChild.attributes.time.value,
+            currentTime: doc.firstElementChild ? doc.firstElementChild.attributes.time.value : nowTimeString,
             departures: [],
             stopId: stop.attributes['id'].value,
             stopName: stop.attributes['name'].value

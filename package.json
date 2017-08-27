@@ -4,8 +4,9 @@
   "description": "A PhoneGap Hello World template",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently -p name -n webpack,proxy,serve \"webpack\" \"corsproxy\" \"phonegap serve\"",
+    "start": "concurrently -p name -n webpack,proxy,serve \"webpack --watch\" \"corsproxy\" \"phonegap serve\"",
     "android": "phonegap run android",
+    "build": "webpack",
     "bumpVersion": "node scripts/bump-version.js",
     "generateIcons": "node scripts/generate-icons.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -21,6 +22,7 @@
     "core-js": "^2.4.1",
     "corsproxy": "^1.5.0",
     "css-loader": "^0.28.1",
+    "js-polyfills": "github:inexorabletash/polyfill",
     "konami-code-js": "zbicin/konami-code-js",
     "request-promise-native": "^1.0.4",
     "style-loader": "^0.17.0",

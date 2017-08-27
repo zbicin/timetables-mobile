@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 148);
+/******/ 	return __webpack_require__(__webpack_require__.s = 150);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -377,9 +377,9 @@ var DOMHelper = exports.DOMHelper = function () {
 
 var _app = __webpack_require__(67);
 
-var _ui = __webpack_require__(147);
+var _ui = __webpack_require__(149);
 
-var _timetables = __webpack_require__(146);
+var _timetables = __webpack_require__(148);
 
 describe('app', function () {
     var app = void 0;
@@ -416,7 +416,7 @@ describe('app', function () {
 
 /***/ }),
 
-/***/ 136:
+/***/ 137:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -462,7 +462,7 @@ var Helper = exports.Helper = function () {
 
 /***/ }),
 
-/***/ 146:
+/***/ 148:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -562,7 +562,7 @@ var DummyTimetables = exports.DummyTimetables = function () {
 
 /***/ }),
 
-/***/ 147:
+/***/ 149:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -634,13 +634,13 @@ var DummyUI = exports.DummyUI = function () {
 
 /***/ }),
 
-/***/ 148:
+/***/ 150:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _helper = __webpack_require__(136);
+var _helper = __webpack_require__(137);
 
 __webpack_require__(134);
 
