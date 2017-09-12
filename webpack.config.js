@@ -2,8 +2,8 @@ const path = require('path');
 
 module.exports = {
     entry: {
-        app: path.join(__dirname, 'www', 'js', 'index.js'),
-        test: path.join(__dirname, 'www', 'spec', 'index.js')
+        app: path.join(__dirname, 'www', 'js', 'index.ts'),
+        test: path.join(__dirname, 'www', 'spec', 'index.ts')
     },
     output: {
         filename: '[name].js',
@@ -12,15 +12,20 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.ts$/,
                 exclude: /(node_modules|bower_components)/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['es2015'],
-                        plugins: []
+                use: [
+                    {
+                        loader: 'babel-loader',
+                        options: {
+                            presets: ['es2015'],
+                            plugins: []
+                        }
+                    },
+                    {
+                        loader: 'ts-loader'
                     }
-                }
+                ]
             },
             {
                 test: /\.css$/, use: [

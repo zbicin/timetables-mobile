@@ -63,348 +63,162 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 150);
+/******/ 	return __webpack_require__(__webpack_require__.s = 144);
 /******/ })
 /************************************************************************/
 /******/ ({
 
+/***/ 100:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dom__ = __webpack_require__(19);
+
+
+const debugModeStorageKey = 'debug';
+
+class DebugConsole {
+    constructor() {
+        this.element = __WEBPACK_IMPORTED_MODULE_0__dom__["a" /* DOMHelper */].$('.debug-console');
+
+        this.updateVisibility();
+    }
+
+    isVisible() {
+        return localStorage.getItem(debugModeStorageKey); 
+    }
+
+    log(message) {
+        console.log(message);
+        const line = __WEBPACK_IMPORTED_MODULE_0__dom__["a" /* DOMHelper */].create('div', message);
+        this.element.appendChild(line);
+        this.element.scrollTop = this.element.scrollHeight;
+    }
+
+    toggleVisibilityStatus() {
+        if (this.isVisible()) {
+            localStorage.removeItem(debugModeStorageKey);
+        } else {
+            localStorage.setItem(debugModeStorageKey, true);
+        }
+    }
+
+    updateVisibility() {
+        if (this.isVisible()) {
+            this.element.removeAttribute('hidden');
+        } else {
+            this.element.setAttribute('hidden', 'true');
+        }
+    }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = DebugConsole;
+;
+
+
+/***/ }),
+
 /***/ 101:
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
-    "use strict";
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dom__ = __webpack_require__(19);
 
-    if (global.setImmediate) {
-        return;
+
+class ProgressBar {
+    constructor() {
+        this.element = __WEBPACK_IMPORTED_MODULE_0__dom__["a" /* DOMHelper */].$('.progress-bar');
+        this.elementInner = __WEBPACK_IMPORTED_MODULE_0__dom__["a" /* DOMHelper */].$('.progress-bar-inner');
     }
 
-    var nextHandle = 1; // Spec says greater than zero
-    var tasksByHandle = {};
-    var currentlyRunningATask = false;
-    var doc = global.document;
-    var registerImmediate;
-
-    function setImmediate(callback) {
-      // Callback can either be a function or a string
-      if (typeof callback !== "function") {
-        callback = new Function("" + callback);
-      }
-      // Copy function arguments
-      var args = new Array(arguments.length - 1);
-      for (var i = 0; i < args.length; i++) {
-          args[i] = arguments[i + 1];
-      }
-      // Store and register the task
-      var task = { callback: callback, args: args };
-      tasksByHandle[nextHandle] = task;
-      registerImmediate(nextHandle);
-      return nextHandle++;
+    hide() {
+        this.element.setAttribute('hidden', true);
     }
 
-    function clearImmediate(handle) {
-        delete tasksByHandle[handle];
+    update(progress) {
+        this.elementInner.style.width = `${progress * 100}%`;
     }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = ProgressBar;
 
-    function run(task) {
-        var callback = task.callback;
-        var args = task.args;
-        switch (args.length) {
-        case 0:
-            callback();
-            break;
-        case 1:
-            callback(args[0]);
-            break;
-        case 2:
-            callback(args[0], args[1]);
-            break;
-        case 3:
-            callback(args[0], args[1], args[2]);
-            break;
-        default:
-            callback.apply(undefined, args);
-            break;
-        }
-    }
-
-    function runIfPresent(handle) {
-        // From the spec: "Wait until any invocations of this algorithm started before this one have completed."
-        // So if we're currently running a task, we'll need to delay this invocation.
-        if (currentlyRunningATask) {
-            // Delay by doing a setTimeout. setImmediate was tried instead, but in Firefox 7 it generated a
-            // "too much recursion" error.
-            setTimeout(runIfPresent, 0, handle);
-        } else {
-            var task = tasksByHandle[handle];
-            if (task) {
-                currentlyRunningATask = true;
-                try {
-                    run(task);
-                } finally {
-                    clearImmediate(handle);
-                    currentlyRunningATask = false;
-                }
-            }
-        }
-    }
-
-    function installNextTickImplementation() {
-        registerImmediate = function(handle) {
-            process.nextTick(function () { runIfPresent(handle); });
-        };
-    }
-
-    function canUsePostMessage() {
-        // The test against `importScripts` prevents this implementation from being installed inside a web worker,
-        // where `global.postMessage` means something completely different and can't be used for this purpose.
-        if (global.postMessage && !global.importScripts) {
-            var postMessageIsAsynchronous = true;
-            var oldOnMessage = global.onmessage;
-            global.onmessage = function() {
-                postMessageIsAsynchronous = false;
-            };
-            global.postMessage("", "*");
-            global.onmessage = oldOnMessage;
-            return postMessageIsAsynchronous;
-        }
-    }
-
-    function installPostMessageImplementation() {
-        // Installs an event handler on `global` for the `message` event: see
-        // * https://developer.mozilla.org/en/DOM/window.postMessage
-        // * http://www.whatwg.org/specs/web-apps/current-work/multipage/comms.html#crossDocumentMessages
-
-        var messagePrefix = "setImmediate$" + Math.random() + "$";
-        var onGlobalMessage = function(event) {
-            if (event.source === global &&
-                typeof event.data === "string" &&
-                event.data.indexOf(messagePrefix) === 0) {
-                runIfPresent(+event.data.slice(messagePrefix.length));
-            }
-        };
-
-        if (global.addEventListener) {
-            global.addEventListener("message", onGlobalMessage, false);
-        } else {
-            global.attachEvent("onmessage", onGlobalMessage);
-        }
-
-        registerImmediate = function(handle) {
-            global.postMessage(messagePrefix + handle, "*");
-        };
-    }
-
-    function installMessageChannelImplementation() {
-        var channel = new MessageChannel();
-        channel.port1.onmessage = function(event) {
-            var handle = event.data;
-            runIfPresent(handle);
-        };
-
-        registerImmediate = function(handle) {
-            channel.port2.postMessage(handle);
-        };
-    }
-
-    function installReadyStateChangeImplementation() {
-        var html = doc.documentElement;
-        registerImmediate = function(handle) {
-            // Create a <script> element; its readystatechange event will be fired asynchronously once it is inserted
-            // into the document. Do so, thus queuing up the task. Remember to clean up once it's been called.
-            var script = doc.createElement("script");
-            script.onreadystatechange = function () {
-                runIfPresent(handle);
-                script.onreadystatechange = null;
-                html.removeChild(script);
-                script = null;
-            };
-            html.appendChild(script);
-        };
-    }
-
-    function installSetTimeoutImplementation() {
-        registerImmediate = function(handle) {
-            setTimeout(runIfPresent, 0, handle);
-        };
-    }
-
-    // If supported, we should attach to the prototype of global, since that is where setTimeout et al. live.
-    var attachTo = Object.getPrototypeOf && Object.getPrototypeOf(global);
-    attachTo = attachTo && attachTo.setTimeout ? attachTo : global;
-
-    // Don't get fooled by e.g. browserify environments.
-    if ({}.toString.call(global.process) === "[object process]") {
-        // For Node.js before 0.9
-        installNextTickImplementation();
-
-    } else if (canUsePostMessage()) {
-        // For non-IE10 modern browsers
-        installPostMessageImplementation();
-
-    } else if (global.MessageChannel) {
-        // For web workers, where supported
-        installMessageChannelImplementation();
-
-    } else if (doc && "onreadystatechange" in doc.createElement("script")) {
-        // For IE 6–8
-        installReadyStateChangeImplementation();
-
-    } else {
-        // For older browsers
-        installSetTimeoutImplementation();
-    }
-
-    attachTo.setImmediate = setImmediate;
-    attachTo.clearImmediate = clearImmediate;
-}(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(53), __webpack_require__(52)))
 
 /***/ }),
 
 /***/ 102:
-/***/ (function(module, exports, __webpack_require__) {
-
-var apply = Function.prototype.apply;
-
-// DOM APIs, for completeness
-
-exports.setTimeout = function() {
-  return new Timeout(apply.call(setTimeout, window, arguments), clearTimeout);
-};
-exports.setInterval = function() {
-  return new Timeout(apply.call(setInterval, window, arguments), clearInterval);
-};
-exports.clearTimeout =
-exports.clearInterval = function(timeout) {
-  if (timeout) {
-    timeout.close();
-  }
-};
-
-function Timeout(id, clearFn) {
-  this._id = id;
-  this._clearFn = clearFn;
-}
-Timeout.prototype.unref = Timeout.prototype.ref = function() {};
-Timeout.prototype.close = function() {
-  this._clearFn.call(window, this._id);
-};
-
-// Does not start the time, just sets up the members needed.
-exports.enroll = function(item, msecs) {
-  clearTimeout(item._idleTimeoutId);
-  item._idleTimeout = msecs;
-};
-
-exports.unenroll = function(item) {
-  clearTimeout(item._idleTimeoutId);
-  item._idleTimeout = -1;
-};
-
-exports._unrefActive = exports.active = function(item) {
-  clearTimeout(item._idleTimeoutId);
-
-  var msecs = item._idleTimeout;
-  if (msecs >= 0) {
-    item._idleTimeoutId = setTimeout(function onTimeout() {
-      if (item._onTimeout)
-        item._onTimeout();
-    }, msecs);
-  }
-};
-
-// setimmediate attaches itself to the global object
-__webpack_require__(101);
-exports.setImmediate = setImmediate;
-exports.clearImmediate = clearImmediate;
-
-
-/***/ }),
-
-/***/ 13:
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dom__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__progress_bar__ = __webpack_require__(101);
 
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+const noop = () => {};
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+class Splash {
+    constructor(debugConsole) {
+        this.debugConsole = debugConsole;
 
-var DOMHelper = exports.DOMHelper = function () {
-    function DOMHelper() {
-        _classCallCheck(this, DOMHelper);
+        this.element = __WEBPACK_IMPORTED_MODULE_0__dom__["a" /* DOMHelper */].$('#splash');
+        this.progressBar = new __WEBPACK_IMPORTED_MODULE_1__progress_bar__["a" /* ProgressBar */]();
+        this.retryButton = __WEBPACK_IMPORTED_MODULE_0__dom__["a" /* DOMHelper */].$('#retry-button');
     }
 
-    _createClass(DOMHelper, null, [{
-        key: "$",
-        value: function $(selector) {
-            return document.querySelector(selector);
-        }
-    }, {
-        key: "$all",
-        value: function $all(selector) {
-            return document.querySelectorAll(selector);
-        }
-    }, {
-        key: "create",
-        value: function create(tagName, text) {
-            var element = document.createElement(tagName);
-            if (text) {
-                element.innerHTML = text;
-            }
-            return element;
-        }
-    }]);
+    showRetryButton() {
+        this.progressBar.hide();
+        this.retryButton.removeAttribute('hidden');
+        this.element.classList.remove('animate');
+    }
 
-    return DOMHelper;
-}();
+    waitAndHide(callback = noop) {
+        this.element.addEventListener('transitionend', () => {
+            this.debugConsole.log('splash.transitionend');
+            this.element.parentNode.removeChild(splash);
+            callback();
+        });
+        this.element.classList.add('hidden');
+    }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = Splash;
 
-;
 
 /***/ }),
 
-/***/ 134:
-/***/ (function(module, exports, __webpack_require__) {
+/***/ 139:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_app__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__js_ui_ui_dummy__ = __webpack_require__(342);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__js_services_timetables_dummy__ = __webpack_require__(341);
 
 
-var _app = __webpack_require__(67);
 
-var _ui = __webpack_require__(149);
-
-var _timetables = __webpack_require__(148);
 
 describe('app', function () {
-    var app = void 0;
+    let app;
 
-    beforeEach(function () {
-        app = new _app.App(_timetables.DummyTimetables, _ui.DummyUI);
+    beforeEach(() => {
+        app = new __WEBPACK_IMPORTED_MODULE_0__js_app__["App"](__WEBPACK_IMPORTED_MODULE_2__js_services_timetables_dummy__["a" /* DummyTimetables */], __WEBPACK_IMPORTED_MODULE_1__js_ui_ui_dummy__["a" /* DummyUI */]);
     });
 
     it('binds deviceready', function () {
         spyOn(app, '_onDeviceReady');
-        app.ui.trigger(_ui.Events.DeviceReady);
+        app.ui.trigger(__WEBPACK_IMPORTED_MODULE_1__js_ui_ui_dummy__["b" /* Events */].DeviceReady);
 
         expect(app._onDeviceReady).toHaveBeenCalled();
     });
 
-    it('sets new periodical refresh after resume', function (done) {
-        var oldRefreshHandle = app.refreshHandle;
+    it('sets new periodical refresh after resume', (done) => {
+        let oldRefreshHandle = app.refreshHandle;
         spyOn(app, '_onDevicePause').and.callThrough();
         spyOn(app, '_onDeviceResume').and.callThrough();
         spyOn(app, '_setupRefreshInterval').and.callThrough();
 
-        app.ui.trigger(_ui.Events.DevicePause);
-        app.ui.trigger(_ui.Events.DeviceResume);
+        app.ui.trigger(__WEBPACK_IMPORTED_MODULE_1__js_ui_ui_dummy__["b" /* Events */].DevicePause);
+        app.ui.trigger(__WEBPACK_IMPORTED_MODULE_1__js_ui_ui_dummy__["b" /* Events */].DeviceResume);
 
-        setTimeout(function () {
+        setTimeout(() => {
             expect(app._onDevicePause).toHaveBeenCalled();
             expect(app._onDeviceResume).toHaveBeenCalled();
             expect(app._setupRefreshInterval).toHaveBeenCalled();
@@ -414,237 +228,73 @@ describe('app', function () {
     });
 });
 
+
 /***/ }),
 
-/***/ 137:
-/***/ (function(module, exports, __webpack_require__) {
+/***/ 142:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Helper = exports.Helper = function () {
-    function Helper() {
-        _classCallCheck(this, Helper);
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+class Helper {
+    static clearStage() {
+        document.getElementById('stage').innerHTML = '';
     }
 
-    _createClass(Helper, [{
-        key: 'getComputedStyle',
-        value: function getComputedStyle(querySelector, property) {
-            var element = document.querySelector(querySelector);
-            return window.getComputedStyle(element).getPropertyValue(property);
-        }
-    }], [{
-        key: 'clearStage',
-        value: function clearStage() {
-            document.getElementById('stage').innerHTML = '';
-        }
-    }, {
-        key: 'trigger',
-        value: function trigger(obj, name) {
-            var e = document.createEvent('Event');
-            e.initEvent(name, true, true);
-            obj.dispatchEvent(e);
-        }
-    }]);
+    static trigger(obj, name) {
+        var e = document.createEvent('Event');
+        e.initEvent(name, true, true);
+        obj.dispatchEvent(e);
+    }
 
-    return Helper;
-}();
-
+    getComputedStyle(querySelector, property) {
+        var element = document.querySelector(querySelector);
+        return window.getComputedStyle(element).getPropertyValue(property);
+    }
+}
+/* harmony export (immutable) */ __webpack_exports__["Helper"] = Helper;
 ;
 
 /***/ }),
 
-/***/ 148:
+/***/ 144:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.DummyTimetables = undefined;
+var _helper = __webpack_require__(142);
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _bluebird = __webpack_require__(34);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var noop = function noop() {};
-
-var DummyTimetables = exports.DummyTimetables = function () {
-    function DummyTimetables() {
-        _classCallCheck(this, DummyTimetables);
-    }
-
-    _createClass(DummyTimetables, [{
-        key: 'fetchNearbyTimetables',
-        value: function fetchNearbyTimetables() {
-            var updateCallback = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : noop;
-            var limit = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 10;
-
-            var isJasmine = !!jasmine;
-            var result = [];
-
-            for (var i = 0; i < limit; i++) {
-                var dummyBoard = this._generateDummyBoard(i);
-                result.push(dummyBoard);
-            }
-
-            setTimeout(function () {
-                return updateCallback(0.25);
-            }, 125);
-            setTimeout(function () {
-                return updateCallback(0.5);
-            }, 250);
-            setTimeout(function () {
-                return updateCallback(0.75);
-            }, 375);
-
-            if (isJasmine) {
-                updateCallback(1);
-                return _bluebird.Promise.resolve(result);
-            } else {
-                return new _bluebird.Promise(function (resolve) {
-                    setTimeout(function () {
-                        updateCallback(1);
-                        resolve(result);
-                    }, 500);
-                });
-            }
-        }
-    }, {
-        key: '_formatTime',
-        value: function _formatTime(date) {
-            return date.toISOString().split('T')[1].substr(0, 5);
-        }
-    }, {
-        key: '_generateDummyBoard',
-        value: function _generateDummyBoard(index) {
-            var now = new Date();
-            var formattedNow = this._formatTime(now);
-
-            var departures = [];
-            var departuresCount = 10;
-
-            for (var i = 0; i < departuresCount; i++) {
-                var departure = {
-                    direction: 'Direction #' + index,
-                    number: index.toString(),
-                    time: i + 1 + ' min'
-                };
-
-                departures.push(departure);
-            }
-
-            return {
-                currentTime: formattedNow,
-                stopId: index.toString(),
-                stopName: 'Dummy stop #' + index,
-                departures: departures
-            };
-        }
-    }]);
-
-    return DummyTimetables;
-}();
-
-;
-
-/***/ }),
-
-/***/ 149:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _ui = __webpack_require__(48);
-
-Object.defineProperty(exports, 'Events', {
-    enumerable: true,
-    get: function get() {
-        return _ui.Events;
-    }
-});
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var noop = function noop() {};
-
-var DummyUI = exports.DummyUI = function () {
-    function DummyUI() {
-        _classCallCheck(this, DummyUI);
-
-        this.eventHandlers = {};
-
-        this.cardList = { update: noop };
-        this.debugConsole = { log: noop };
-        this.splash = { waitAndHide: noop };
-    }
-
-    _createClass(DummyUI, [{
-        key: 'handleErrorMessage',
-        value: function handleErrorMessage(e) {}
-    }, {
-        key: 'on',
-        value: function on(name, callback) {
-            this.eventHandlers[name] = callback;
-        }
-    }, {
-        key: 'showInfoModal',
-        value: function showInfoModal(lastRefreshTime, refreshIntervalInSeconds) {}
-    }, {
-        key: 'showRefreshButton',
-        value: function showRefreshButton() {}
-    }, {
-        key: 'trigger',
-        value: function trigger(name, data) {
-            if (this.eventHandlers[name]) {
-                this.eventHandlers[name](data);
-            }
-        }
-    }, {
-        key: 'updateProgress',
-        value: function updateProgress(progress) {}
-    }, {
-        key: 'updateRefreshState',
-        value: function updateRefreshState(lastRefreshTime, isPending) {}
-    }]);
-
-    return DummyUI;
-}();
-
-;
-
-/***/ }),
-
-/***/ 150:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _helper = __webpack_require__(137);
-
-__webpack_require__(134);
+__webpack_require__(139);
 
 afterEach(_helper.Helper.clearStage);
+
+/***/ }),
+
+/***/ 19:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+class DOMHelper {
+    static $(selector) {
+        return document.querySelector(selector);
+    }
+
+    static $all(selector) {
+        return document.querySelectorAll(selector);
+    }
+
+    static create(tagName, text) {
+        const element = document.createElement(tagName);
+        if (text) {
+            element.innerHTML = text;
+        }
+        return element;
+    }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = DOMHelper;
+;
+
 
 /***/ }),
 
@@ -6270,34 +5920,140 @@ module.exports = ret;
 
 },{"./es5":13}]},{},[4])(4)
 });                    ;if (typeof window !== 'undefined' && window !== null) {                               window.P = window.Promise;                                                     } else if (typeof self !== 'undefined' && self !== null) {                             self.P = self.Promise;                                                         }
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(52), __webpack_require__(53), __webpack_require__(102).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(52), __webpack_require__(53), __webpack_require__(97).setImmediate))
+
+/***/ }),
+
+/***/ 341:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_bluebird__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_bluebird___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_bluebird__);
+
+
+const noop = () => { };
+
+class DummyTimetables {
+    fetchNearbyTimetables(updateCallback = noop, limit = 10) {
+        const isJasmine = !!jasmine;
+        const result = [];
+
+        for (let i = 0; i < limit; i++) {
+            const dummyBoard = this._generateDummyBoard(i);
+            result.push(dummyBoard);
+        }
+
+        setTimeout(() => updateCallback(0.25), 125);
+        setTimeout(() => updateCallback(0.5), 250);
+        setTimeout(() => updateCallback(0.75), 375);
+
+        if (isJasmine) {
+            updateCallback(1);
+            return __WEBPACK_IMPORTED_MODULE_0_bluebird__["Promise"].resolve(result);
+        } else {
+            return new __WEBPACK_IMPORTED_MODULE_0_bluebird__["Promise"]((resolve) => {
+                setTimeout(() => {
+                    updateCallback(1);
+                    resolve(result)
+                }, 500);
+            });
+        }
+    }
+
+    _formatTime(date) {
+        return date.toISOString().split('T')[1].substr(0, 5);
+    }
+
+    _generateDummyBoard(index) {
+        const now = new Date();
+        const formattedNow = this._formatTime(now);
+
+        const departures = [];
+        const departuresCount = 10;
+
+        for (let i = 0; i < departuresCount; i++) {
+            const departure = {
+                direction: `Direction #${index}`,
+                number: index.toString(),
+                time: `${i + 1} min`
+            };
+
+            departures.push(departure);
+        }
+
+        return {
+            currentTime: formattedNow,
+            stopId: index.toString(),
+            stopName: `Dummy stop #${index}`,
+            departures: departures
+        };
+    }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = DummyTimetables;
+;
+
+/***/ }),
+
+/***/ 342:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ui__ = __webpack_require__(48);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_0__ui__["Events"]; });
+
+
+const noop = () => { };
+
+class DummyUI {
+    constructor() {
+        this.eventHandlers = {};
+
+        this.cardList = { update: noop };
+        this.debugConsole = { log: noop };
+        this.splash = { waitAndHide: noop };
+    }
+
+    handleErrorMessage(e) {}
+
+    on(name, callback) {
+        this.eventHandlers[name] = callback;
+    }
+
+    showInfoModal(lastRefreshTime, refreshIntervalInSeconds) {}
+
+    showRefreshButton() {}
+
+    trigger(name, data) {
+        if (this.eventHandlers[name]) {
+            this.eventHandlers[name](data);
+        }
+    }
+
+    updateProgress(progress) {}
+
+    updateRefreshState(lastRefreshTime, isPending) {}
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = DummyUI;
+;
 
 /***/ }),
 
 /***/ 48:
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__card_cardList__ = __webpack_require__(99);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__debugConsole__ = __webpack_require__(100);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__dom__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__splash_splash__ = __webpack_require__(102);
 
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.UI = exports.Events = undefined;
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _cardList = __webpack_require__(69);
 
-var _debugConsole = __webpack_require__(70);
-
-var _dom = __webpack_require__(13);
-
-var _splash = __webpack_require__(72);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Events = exports.Events = {
+const Events = {
     DevicePause: 0,
     DeviceReady: 1,
     DeviceResume: 2,
@@ -6305,166 +6061,134 @@ var Events = exports.Events = {
     RefreshClick: 4,
     RetryClick: 5
 };
+/* harmony export (immutable) */ __webpack_exports__["Events"] = Events;
 
-var UI = exports.UI = function () {
-    function UI() {
-        var _this = this;
 
-        _classCallCheck(this, UI);
-
+class UI {
+    constructor() {
         this.eventHandlers = {};
 
-        this.menuInfoElement = _dom.DOMHelper.$('#menu-info');
-        this.menuInfoElement.addEventListener('click', function (e) {
-            return _this._dispatchEvent(Events.InfoClick);
-        });
+        this.menuInfoElement = __WEBPACK_IMPORTED_MODULE_2__dom__["a" /* DOMHelper */].$('#menu-info');
+        this.menuInfoElement.addEventListener('click', (e) => this._dispatchEvent(Events.InfoClick));
 
-        this.menuRefreshElement = _dom.DOMHelper.$('#menu-refresh');
-        this.menuRefreshElement.addEventListener('click', function (e) {
-            return _this._dispatchEvent(Events.RefreshClick);
-        });
+        this.menuRefreshElement = __WEBPACK_IMPORTED_MODULE_2__dom__["a" /* DOMHelper */].$('#menu-refresh');
+        this.menuRefreshElement.addEventListener('click', (e) => this._dispatchEvent(Events.RefreshClick));
 
-        this.menuTitle = _dom.DOMHelper.$('#menu-title');
+        this.menuTitle = __WEBPACK_IMPORTED_MODULE_2__dom__["a" /* DOMHelper */].$('#menu-title');
 
-        this.cardList = new _cardList.CardList();
-        this.debugConsole = new _debugConsole.DebugConsole();
-        this.splash = new _splash.Splash(this.debugConsole);
-        this.splash.retryButton.addEventListener('click', function (e) {
-            return _this._dispatchEvent(Events.RetryClick, e);
-        });
+        this.cardList = new __WEBPACK_IMPORTED_MODULE_0__card_cardList__["a" /* CardList */]();
+        this.debugConsole = new __WEBPACK_IMPORTED_MODULE_1__debugConsole__["a" /* DebugConsole */]();
+        this.splash = new __WEBPACK_IMPORTED_MODULE_3__splash_splash__["a" /* Splash */](this.debugConsole);
+        this.splash.retryButton.addEventListener('click', (e) => this._dispatchEvent(Events.RetryClick, e));
 
-        document.addEventListener('pause', function (e) {
-            return _this._dispatchEvent(Events.DevicePause, e);
-        });
-        document.addEventListener('ready', function (e) {
-            return _this._dispatchEvent(Events.DeviceReady, e);
-        });
-        document.addEventListener('resume', function (e) {
-            return _this._dispatchEvent(Events.DeviceResume, e);
-        });
-        document.addEventListener('konamiCode', function () {
-            return _this._onKonamiCode();
-        });
-        document.addEventListener('deviceready', function (e) {
+        document.addEventListener('pause', (e) => this._dispatchEvent(Events.DevicePause, e));
+        document.addEventListener('ready', (e) => this._dispatchEvent(Events.DeviceReady, e));
+        document.addEventListener('resume', (e) => this._dispatchEvent(Events.DeviceResume, e));
+        document.addEventListener('konamiCode', () => this._onKonamiCode());
+        document.addEventListener('deviceready', (e) => {
             if (cordova.platformId == 'android') {
                 StatusBar.backgroundColorByHexString('ee8801');
             }
 
-            _this._dispatchEvent(Events.DeviceReady, e);
-            _this.debugConsole.updateVisibility();
+            this._dispatchEvent(Events.DeviceReady, e);
+            this.debugConsole.updateVisibility();
         });
     }
 
-    _createClass(UI, [{
-        key: 'handleErrorMessage',
-        value: function handleErrorMessage(e) {
-            var errorMessage = void 0;
-            var information = void 0;
+    handleErrorMessage(e) {
+        let errorMessage;
+        let information;
 
-            if (e instanceof XMLHttpRequest) {
-                errorMessage = e.statusText || e.status;
-                information = 'Wyst\u0105pi\u0142 problem z po\u0142\u0105czeniem internetowym. Sprawd\u017A ustawienia telefonu i spr\xF3buj ponownie (' + errorMessage + ').';
-            } else if (e.toString().indexOf('PositionError') > -1) {
-                errorMessage = e.code;
-                information = 'Nie uda\u0142o si\u0119 ustali\u0107 Twojego po\u0142o\u017Cenia. Sprawd\u017A ustawienia lokalizacji w swoim urz\u0105dzeniu i spr\xF3buj ponownie (kod b\u0142\u0119du: ' + errorMessage + ').';
-            } else {
-                errorMessage = e.message || e.code || e;
-                information = 'Nie uda\u0142o si\u0119 pobra\u0107 danych przystank\xF3w w okolicy. Upewnij si\u0119, \u017Ce masz w\u0142\u0105czone us\u0142ugi lokalizacji oraz dost\u0119p do Internetu, a nast\u0119pnie uruchom ponownie aplikacj\u0119. (' + errorMessage + ')';
-            }
-            navigator.notification.alert(information, null, '¯\\_(ツ)_/¯');
-            console.error(e);
-            this.debugConsole.log(errorMessage);
-
-            if (this.splash) {
-                this.splash.showRetryButton();
-            }
-            if (this.menuRefreshElement) {
-                this.menuRefreshElement.classList.remove('animate');
-            }
+        if (e instanceof XMLHttpRequest) {
+            errorMessage = e.statusText || e.status;
+            information = `Wystąpił problem z połączeniem internetowym. Sprawdź ustawienia telefonu i spróbuj ponownie (${errorMessage}).`;
+        } else if (e.toString().indexOf('PositionError') > -1) {
+            errorMessage = e.code;
+            information = `Nie udało się ustalić Twojego położenia. Sprawdź ustawienia lokalizacji w swoim urządzeniu i spróbuj ponownie (kod błędu: ${errorMessage}).`;
+        } else {
+            errorMessage = e.message || e.code || e;
+            information = `Nie udało się pobrać danych przystanków w okolicy. Upewnij się, że masz włączone usługi lokalizacji oraz dostęp do Internetu, a następnie uruchom ponownie aplikację. (${errorMessage})`;
         }
-    }, {
-        key: 'on',
-        value: function on(name, callback) {
-            this.eventHandlers[name] = callback;
+        navigator.notification.alert(information, null, '¯\\_(ツ)_/¯');
+        console.error(e);
+        this.debugConsole.log(errorMessage);
+
+        if (this.splash) {
+            this.splash.showRetryButton();
         }
-    }, {
-        key: 'showInfoModal',
-        value: function showInfoModal(lastRefreshTime, refreshIntervalInSeconds) {
-            var _this2 = this;
+        if (this.menuRefreshElement) {
+            this.menuRefreshElement.classList.remove('animate');
+        }
+    }
 
-            var version = void 0;
+    on(name, callback) {
+        this.eventHandlers[name] = callback;
+    }
 
-            cordova.getAppVersion().catch(function () {
-                return version = 'N/A';
-            }).then(function (v) {
+    showInfoModal(lastRefreshTime, refreshIntervalInSeconds) {
+        let version;
+
+        cordova.getAppVersion()
+            .catch(() => version = 'N/A')
+            .then((v) => {
                 version = version || v;
-                var information = 'Aplikacja wy\u015Bwietla na \u017Cywo tablice rozk\u0142adowe przystank\xF3w znajduj\u0105cych si\u0119 w okolicy. Pobiera informacje z serwisu rozklady.lodz.pl i przedstawia je w wygodnej formie.\n\nDane od\u015Bwie\u017Cane s\u0105 automatycznie co ' + refreshIntervalInSeconds + ' sekund.';
+                let information = `Aplikacja wyświetla na żywo tablice rozkładowe przystanków znajdujących się w okolicy. Pobiera informacje z serwisu rozklady.lodz.pl i przedstawia je w wygodnej formie.\n\nDane odświeżane są automatycznie co ${refreshIntervalInSeconds} sekund.`;
                 if (lastRefreshTime) {
-                    information += ' Ostatnia aktualizacja danych: ' + _this2._formatTime(lastRefreshTime) + '.';
+                    information += ` Ostatnia aktualizacja danych: ${this._formatTime(lastRefreshTime)}.`;
                 }
-                information += '\n\nWersja aplikacji: ' + version + '\n';
+                information += `\n\nWersja aplikacji: ${version}\n`;
                 information += 'Kontakt: tabliceprzystankowe@gmail.com\n\nAutorem ikony "Bus" udostępnionej na bazie licencji CC 3.0 BY US jest Nikita Kozin.\nhttps://creativecommons.org/licenses/by/3.0/us/';
 
                 navigator.notification.alert(information, null, 'Tablice Przystankowe');
             });
-        }
-    }, {
-        key: 'showRefreshButton',
-        value: function showRefreshButton() {
-            this.menuRefreshElement.classList.remove('hidden');
-        }
-    }, {
-        key: 'showTitle',
-        value: function showTitle() {
-            this.menuTitle.classList.remove('hidden');
-        }
-    }, {
-        key: 'updateProgress',
-        value: function updateProgress(progress) {
-            this.debugConsole.log(progress);
-            this.splash.progressBar.update(progress);
-        }
-    }, {
-        key: 'updateRefreshState',
-        value: function updateRefreshState(lastRefreshTime, isPending) {
-            if (lastRefreshTime && isPending) {
-                this.menuRefreshElement.classList.add('animate');
-            } else {
-                this.menuRefreshElement.classList.remove('animate');
-            }
-        }
-    }, {
-        key: '_createEvent',
-        value: function _createEvent(name, data) {
-            return new CustomEvent(name, { details: data });
-        }
-    }, {
-        key: '_dispatchEvent',
-        value: function _dispatchEvent(name, data) {
-            if (this.eventHandlers[name]) {
-                this.eventHandlers[name](data);
-            }
-        }
-    }, {
-        key: '_formatTime',
-        value: function _formatTime(date) {
-            var twoDigits = function twoDigits(input) {
-                return input < 10 ? '0' + input : '' + input;
-            };
-            return [date.getHours(), date.getMinutes(), date.getSeconds()].map(function (segment) {
-                return segment < 10 ? '0' + segment : '' + segment;
-            }).join(':');
-        }
-    }, {
-        key: '_onKonamiCode',
-        value: function _onKonamiCode() {
-            this.debugConsole.toggleVisibilityStatus();
-            this.debugConsole.updateVisibility();
-        }
-    }]);
+    }
 
-    return UI;
-}();
+    showRefreshButton() {
+        this.menuRefreshElement.classList.remove('hidden');
+    }
+
+    showTitle() {
+        this.menuTitle.classList.remove('hidden');
+    }
+
+    updateProgress(progress) {
+        this.debugConsole.log(progress);
+        this.splash.progressBar.update(progress);
+    }
+
+    updateRefreshState(lastRefreshTime, isPending) {
+        if (lastRefreshTime && isPending) {
+            this.menuRefreshElement.classList.add('animate');
+        }
+        else {
+            this.menuRefreshElement.classList.remove('animate');
+        }
+    };
+
+    _createEvent(name, data) {
+        return new CustomEvent(name, { details: data });
+    }
+
+    _dispatchEvent(name, data) {
+        if (this.eventHandlers[name]) {
+            this.eventHandlers[name](data);
+        }
+    }
+
+    _formatTime(date) {
+        const twoDigits = (input) => input < 10 ? '0' + input : '' + input;
+        return [date.getHours(), date.getMinutes(), date.getSeconds()]
+            .map((segment) => segment < 10 ? '0' + segment : '' + segment)
+            .join(':');
+    }
+
+    _onKonamiCode() {
+        this.debugConsole.toggleVisibilityStatus();
+        this.debugConsole.updateVisibility();
+    }
+}
+/* harmony export (immutable) */ __webpack_exports__["UI"] = UI;
+
 
 /***/ }),
 
@@ -6688,32 +6412,17 @@ module.exports = g;
 /***/ }),
 
 /***/ 67:
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.App = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _ui = __webpack_require__(48);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ui_ui__ = __webpack_require__(48);
 
 // import { DummyTimetables as Timetables } from './services/timetables.dummy';
+const noop = () => { };
 
-var noop = function noop() {};
-
-var App = exports.App = function () {
-    function App(Timetables, UI) {
-        var _this = this;
-
-        _classCallCheck(this, App);
-
+class App {
+    constructor(Timetables, UI) {
         this.hasCrashed = false;
         this.lastRefreshTime = null;
         this.pendingPromises = new Set();
@@ -6722,518 +6431,522 @@ var App = exports.App = function () {
         this.timetables = new Timetables();
 
         this.ui = new UI();
-        this.ui.on(_ui.Events.DevicePause, function (e) {
-            return _this._onDevicePause(e);
-        });
-        this.ui.on(_ui.Events.DeviceReady, function (e) {
-            return _this._onDeviceReady(e);
-        });
-        this.ui.on(_ui.Events.DeviceResume, function (e) {
-            return _this._onDeviceResume(e);
-        });
-        this.ui.on(_ui.Events.InfoClick, function (e) {
-            return _this._onInfoClick(e);
-        });
-        this.ui.on(_ui.Events.RefreshClick, function (e) {
-            return _this._onRefreshClick(e);
-        });
-        this.ui.on(_ui.Events.RetryClick, function (e) {
-            return _this._onRetryClick(e);
+        this.ui.on(__WEBPACK_IMPORTED_MODULE_0__ui_ui__["Events"].DevicePause, (e) => this._onDevicePause(e));
+        this.ui.on(__WEBPACK_IMPORTED_MODULE_0__ui_ui__["Events"].DeviceReady, (e) => this._onDeviceReady(e));
+        this.ui.on(__WEBPACK_IMPORTED_MODULE_0__ui_ui__["Events"].DeviceResume, (e) => this._onDeviceResume(e));
+        this.ui.on(__WEBPACK_IMPORTED_MODULE_0__ui_ui__["Events"].InfoClick, (e) => this._onInfoClick(e));
+        this.ui.on(__WEBPACK_IMPORTED_MODULE_0__ui_ui__["Events"].RefreshClick, (e) => this._onRefreshClick(e));
+        this.ui.on(__WEBPACK_IMPORTED_MODULE_0__ui_ui__["Events"].RetryClick, (e) => this._onRetryClick(e));
+    }
+
+    _cleanupHandles() {
+        this.ui.debugConsole.log('app.cleanupHandles');
+        clearInterval(this.refreshHandle);
+        this.refreshHandle = null;
+        this.pendingPromises.forEach((p) => p.cancel());
+        this.pendingPromises.clear();
+    }
+
+    _isPending() {
+        return this.pendingPromises.size > 0;
+    }
+
+    _onDevicePause() {
+        this.ui.debugConsole.log('device.pause');
+        this._cleanupHandles();
+    }
+
+    _onDeviceReady() {
+        this.ui.debugConsole.log('device.ready');
+        this._refresh(() => {
+            this.ui.splash.waitAndHide();
+            this.ui.showRefreshButton();
+            this.ui.showTitle();
         });
     }
 
-    _createClass(App, [{
-        key: '_cleanupHandles',
-        value: function _cleanupHandles() {
-            this.ui.debugConsole.log('app.cleanupHandles');
-            clearInterval(this.refreshHandle);
-            this.refreshHandle = null;
-            this.pendingPromises.forEach(function (p) {
-                return p.cancel();
-            });
-            this.pendingPromises.clear();
-        }
-    }, {
-        key: '_isPending',
-        value: function _isPending() {
-            return this.pendingPromises.size > 0;
-        }
-    }, {
-        key: '_onDevicePause',
-        value: function _onDevicePause() {
-            this.ui.debugConsole.log('device.pause');
-            this._cleanupHandles();
-        }
-    }, {
-        key: '_onDeviceReady',
-        value: function _onDeviceReady() {
-            var _this2 = this;
+    _onDeviceResume() {
+        this.ui.debugConsole.log('device.resume');
+        this._cleanupHandles();
 
-            this.ui.debugConsole.log('device.ready');
-            this._refresh(function () {
-                _this2.ui.splash.waitAndHide();
-                _this2.ui.showRefreshButton();
-                _this2.ui.showTitle();
+        if (!this.hasCrashed) {
+            this._refresh(() => {
+                this.ui.splash.waitAndHide();
+                this.ui.showRefreshButton();
+                this.ui.showTitle();
             });
         }
-    }, {
-        key: '_onDeviceResume',
-        value: function _onDeviceResume() {
-            var _this3 = this;
+    }
 
-            this.ui.debugConsole.log('device.resume');
-            this._cleanupHandles();
+    _onError(e) {
+        this.hasCrashed = true;
+        this.ui.handleErrorMessage(e);
+        this._cleanupHandles();
+    }
 
-            if (!this.hasCrashed) {
-                this._refresh(function () {
-                    _this3.ui.splash.waitAndHide();
-                    _this3.ui.showRefreshButton();
-                    _this3.ui.showTitle();
-                });
-            }
+    _onInfoClick() {
+        this.ui.showInfoModal(this.lastRefreshTime, this.refreshIntervalInSeconds);
+    }
+
+    _onRefreshClick() {
+        if (!this._isPending()) {
+            this._refresh();
         }
-    }, {
-        key: '_onError',
-        value: function _onError(e) {
-            this.hasCrashed = true;
-            this.ui.handleErrorMessage(e);
-            this._cleanupHandles();
-        }
-    }, {
-        key: '_onInfoClick',
-        value: function _onInfoClick() {
-            this.ui.showInfoModal(this.lastRefreshTime, this.refreshIntervalInSeconds);
-        }
-    }, {
-        key: '_onRefreshClick',
-        value: function _onRefreshClick() {
+    }
+
+    _onRetryClick() {
+        location.reload();
+    }
+
+    _refresh(onRefresh = noop) {
+        this.ui.debugConsole.log('app.refresh');
+        const promise = this.timetables.fetchNearbyTimetables((p) => this.ui.updateProgress(p))
+            .then((boardsData) => this._timeoutPromise(boardsData, 100))
+            .then((boardsData) => {
+                if (!this.refreshHandle) {
+                    this.refreshHandle = this._setupRefreshInterval();
+                }
+                this.pendingPromises.delete(promise);
+                this.ui.cardList.update(boardsData);
+                this.lastRefreshTime = new Date();
+                this.ui.updateRefreshState(this.lastRefreshTime, this._isPending());
+                onRefresh();
+            }).catch((error) => {
+                this.pendingPromises.delete(promise);
+                this._onError(error);
+            });
+        this.pendingPromises.add(promise);
+        this.ui.updateRefreshState(this.lastRefreshTime, this._isPending());
+    }
+
+    _setupRefreshInterval() {
+        this.ui.debugConsole.log('app.setupRefreshInteval');
+        const refreshInterval = this.refreshIntervalInSeconds * 1000;
+
+        return setInterval(() => {
             if (!this._isPending()) {
                 this._refresh();
             }
-        }
-    }, {
-        key: '_onRetryClick',
-        value: function _onRetryClick() {
-            location.reload();
-        }
-    }, {
-        key: '_refresh',
-        value: function _refresh() {
-            var _this4 = this;
+        }, refreshInterval);
+    }
 
-            var onRefresh = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : noop;
+    _timeoutPromise(data, timeout) {
+        const isJasmine = !!window.jasmine;
 
-            this.ui.debugConsole.log('app.refresh');
-            var promise = this.timetables.fetchNearbyTimetables(function (p) {
-                return _this4.ui.updateProgress(p);
-            }).then(function (boardsData) {
-                return _this4._timeoutPromise(boardsData, 100);
-            }).then(function (boardsData) {
-                if (!_this4.refreshHandle) {
-                    _this4.refreshHandle = _this4._setupRefreshInterval();
-                }
-                _this4.pendingPromises.delete(promise);
-                _this4.ui.cardList.update(boardsData);
-                _this4.lastRefreshTime = new Date();
-                _this4.ui.updateRefreshState(_this4.lastRefreshTime, _this4._isPending());
-                onRefresh();
-            }).catch(function (error) {
-                _this4.pendingPromises.delete(promise);
-                _this4._onError(error);
-            });
-            this.pendingPromises.add(promise);
-            this.ui.updateRefreshState(this.lastRefreshTime, this._isPending());
-        }
-    }, {
-        key: '_setupRefreshInterval',
-        value: function _setupRefreshInterval() {
-            var _this5 = this;
-
-            this.ui.debugConsole.log('app.setupRefreshInteval');
-            var refreshInterval = this.refreshIntervalInSeconds * 1000;
-
-            return setInterval(function () {
-                if (!_this5._isPending()) {
-                    _this5._refresh();
-                }
-            }, refreshInterval);
-        }
-    }, {
-        key: '_timeoutPromise',
-        value: function _timeoutPromise(data, timeout) {
-            var isJasmine = !!window.jasmine;
-
-            return isJasmine ? Promise.resolve(data) : new Promise(function (resolve) {
-                return setTimeout(function () {
-                    return resolve(data);
-                }, timeout);
-            });
-        }
-    }]);
-
-    return App;
-}();
-
+        return isJasmine
+            ? Promise.resolve(data)
+            : new Promise((resolve) => setTimeout(() => resolve(data), timeout));
+    }
+}
+/* harmony export (immutable) */ __webpack_exports__["App"] = App;
 ;
+
 
 /***/ }),
 
-/***/ 68:
+/***/ 96:
 /***/ (function(module, exports, __webpack_require__) {
 
+/* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
+    "use strict";
+
+    if (global.setImmediate) {
+        return;
+    }
+
+    var nextHandle = 1; // Spec says greater than zero
+    var tasksByHandle = {};
+    var currentlyRunningATask = false;
+    var doc = global.document;
+    var registerImmediate;
+
+    function setImmediate(callback) {
+      // Callback can either be a function or a string
+      if (typeof callback !== "function") {
+        callback = new Function("" + callback);
+      }
+      // Copy function arguments
+      var args = new Array(arguments.length - 1);
+      for (var i = 0; i < args.length; i++) {
+          args[i] = arguments[i + 1];
+      }
+      // Store and register the task
+      var task = { callback: callback, args: args };
+      tasksByHandle[nextHandle] = task;
+      registerImmediate(nextHandle);
+      return nextHandle++;
+    }
+
+    function clearImmediate(handle) {
+        delete tasksByHandle[handle];
+    }
+
+    function run(task) {
+        var callback = task.callback;
+        var args = task.args;
+        switch (args.length) {
+        case 0:
+            callback();
+            break;
+        case 1:
+            callback(args[0]);
+            break;
+        case 2:
+            callback(args[0], args[1]);
+            break;
+        case 3:
+            callback(args[0], args[1], args[2]);
+            break;
+        default:
+            callback.apply(undefined, args);
+            break;
+        }
+    }
+
+    function runIfPresent(handle) {
+        // From the spec: "Wait until any invocations of this algorithm started before this one have completed."
+        // So if we're currently running a task, we'll need to delay this invocation.
+        if (currentlyRunningATask) {
+            // Delay by doing a setTimeout. setImmediate was tried instead, but in Firefox 7 it generated a
+            // "too much recursion" error.
+            setTimeout(runIfPresent, 0, handle);
+        } else {
+            var task = tasksByHandle[handle];
+            if (task) {
+                currentlyRunningATask = true;
+                try {
+                    run(task);
+                } finally {
+                    clearImmediate(handle);
+                    currentlyRunningATask = false;
+                }
+            }
+        }
+    }
+
+    function installNextTickImplementation() {
+        registerImmediate = function(handle) {
+            process.nextTick(function () { runIfPresent(handle); });
+        };
+    }
+
+    function canUsePostMessage() {
+        // The test against `importScripts` prevents this implementation from being installed inside a web worker,
+        // where `global.postMessage` means something completely different and can't be used for this purpose.
+        if (global.postMessage && !global.importScripts) {
+            var postMessageIsAsynchronous = true;
+            var oldOnMessage = global.onmessage;
+            global.onmessage = function() {
+                postMessageIsAsynchronous = false;
+            };
+            global.postMessage("", "*");
+            global.onmessage = oldOnMessage;
+            return postMessageIsAsynchronous;
+        }
+    }
+
+    function installPostMessageImplementation() {
+        // Installs an event handler on `global` for the `message` event: see
+        // * https://developer.mozilla.org/en/DOM/window.postMessage
+        // * http://www.whatwg.org/specs/web-apps/current-work/multipage/comms.html#crossDocumentMessages
+
+        var messagePrefix = "setImmediate$" + Math.random() + "$";
+        var onGlobalMessage = function(event) {
+            if (event.source === global &&
+                typeof event.data === "string" &&
+                event.data.indexOf(messagePrefix) === 0) {
+                runIfPresent(+event.data.slice(messagePrefix.length));
+            }
+        };
+
+        if (global.addEventListener) {
+            global.addEventListener("message", onGlobalMessage, false);
+        } else {
+            global.attachEvent("onmessage", onGlobalMessage);
+        }
+
+        registerImmediate = function(handle) {
+            global.postMessage(messagePrefix + handle, "*");
+        };
+    }
+
+    function installMessageChannelImplementation() {
+        var channel = new MessageChannel();
+        channel.port1.onmessage = function(event) {
+            var handle = event.data;
+            runIfPresent(handle);
+        };
+
+        registerImmediate = function(handle) {
+            channel.port2.postMessage(handle);
+        };
+    }
+
+    function installReadyStateChangeImplementation() {
+        var html = doc.documentElement;
+        registerImmediate = function(handle) {
+            // Create a <script> element; its readystatechange event will be fired asynchronously once it is inserted
+            // into the document. Do so, thus queuing up the task. Remember to clean up once it's been called.
+            var script = doc.createElement("script");
+            script.onreadystatechange = function () {
+                runIfPresent(handle);
+                script.onreadystatechange = null;
+                html.removeChild(script);
+                script = null;
+            };
+            html.appendChild(script);
+        };
+    }
+
+    function installSetTimeoutImplementation() {
+        registerImmediate = function(handle) {
+            setTimeout(runIfPresent, 0, handle);
+        };
+    }
+
+    // If supported, we should attach to the prototype of global, since that is where setTimeout et al. live.
+    var attachTo = Object.getPrototypeOf && Object.getPrototypeOf(global);
+    attachTo = attachTo && attachTo.setTimeout ? attachTo : global;
+
+    // Don't get fooled by e.g. browserify environments.
+    if ({}.toString.call(global.process) === "[object process]") {
+        // For Node.js before 0.9
+        installNextTickImplementation();
+
+    } else if (canUsePostMessage()) {
+        // For non-IE10 modern browsers
+        installPostMessageImplementation();
+
+    } else if (global.MessageChannel) {
+        // For web workers, where supported
+        installMessageChannelImplementation();
+
+    } else if (doc && "onreadystatechange" in doc.createElement("script")) {
+        // For IE 6–8
+        installReadyStateChangeImplementation();
+
+    } else {
+        // For older browsers
+        installSetTimeoutImplementation();
+    }
+
+    attachTo.setImmediate = setImmediate;
+    attachTo.clearImmediate = clearImmediate;
+}(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(53), __webpack_require__(52)))
+
+/***/ }),
+
+/***/ 97:
+/***/ (function(module, exports, __webpack_require__) {
+
+var apply = Function.prototype.apply;
+
+// DOM APIs, for completeness
+
+exports.setTimeout = function() {
+  return new Timeout(apply.call(setTimeout, window, arguments), clearTimeout);
+};
+exports.setInterval = function() {
+  return new Timeout(apply.call(setInterval, window, arguments), clearInterval);
+};
+exports.clearTimeout =
+exports.clearInterval = function(timeout) {
+  if (timeout) {
+    timeout.close();
+  }
+};
+
+function Timeout(id, clearFn) {
+  this._id = id;
+  this._clearFn = clearFn;
+}
+Timeout.prototype.unref = Timeout.prototype.ref = function() {};
+Timeout.prototype.close = function() {
+  this._clearFn.call(window, this._id);
+};
+
+// Does not start the time, just sets up the members needed.
+exports.enroll = function(item, msecs) {
+  clearTimeout(item._idleTimeoutId);
+  item._idleTimeout = msecs;
+};
+
+exports.unenroll = function(item) {
+  clearTimeout(item._idleTimeoutId);
+  item._idleTimeout = -1;
+};
+
+exports._unrefActive = exports.active = function(item) {
+  clearTimeout(item._idleTimeoutId);
+
+  var msecs = item._idleTimeout;
+  if (msecs >= 0) {
+    item._idleTimeoutId = setTimeout(function onTimeout() {
+      if (item._onTimeout)
+        item._onTimeout();
+    }, msecs);
+  }
+};
+
+// setimmediate attaches itself to the global object
+__webpack_require__(96);
+exports.setImmediate = setImmediate;
+exports.clearImmediate = clearImmediate;
+
+
+/***/ }),
+
+/***/ 98:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dom__ = __webpack_require__(19);
 
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.Card = undefined;
+const expandedClassName = 'expanded';
+const expendableClassName = 'expendable';
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _dom = __webpack_require__(13);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var expandedClassName = 'expanded';
-var expendableClassName = 'expendable';
-
-var Card = exports.Card = function () {
-    function Card(boardData) {
-        _classCallCheck(this, Card);
-
+class Card {
+    constructor(boardData) {
         this.boardData = boardData;
         this.element = this._buildFullCard();
     }
 
-    _createClass(Card, [{
-        key: 'update',
-        value: function update(boardData) {
-            var contents = this._buildContents(boardData);
+    update(boardData) {
+        const contents = this._buildContents(boardData);
 
-            if (this.element.dataset.stopId !== boardData.stopId) {
-                this.element.dataset.stopId = boardData.stopId;
-                this.element.classList.remove(expandedClassName);
-            }
-
-            boardData.departures.length > 4 ? this.element.classList.add(expendableClassName) : this.element.classList.remove(expendableClassName);
-
-            boardData.departures.length === 0 ? this.element.setAttribute('hidden', true) : this.element.removeAttribute('hidden');
-
-            while (this.element.firstChild) {
-                this.element.removeChild(this.element.firstChild);
-            }
-
-            this.element.appendChild(contents);
+        if (this.element.dataset.stopId !== boardData.stopId) {
+            this.element.dataset.stopId = boardData.stopId;
+            this.element.classList.remove(expandedClassName);
         }
-    }, {
-        key: '_buildBody',
-        value: function _buildBody() {
-            var table = _dom.DOMHelper.create('table');
-            table.classList.add('timetable');
-            var body = _dom.DOMHelper.create('tbody');
 
-            this.boardData.departures.map(function (departure) {
-                var row = _dom.DOMHelper.create('tr');
-                var numberCell = _dom.DOMHelper.create('td', departure.number);
-                var directionCell = _dom.DOMHelper.create('td', departure.direction);
-                var timeCell = _dom.DOMHelper.create('td', departure.time);
+        boardData.departures.length > 4
+            ? this.element.classList.add(expendableClassName)
+            : this.element.classList.remove(expendableClassName);
 
-                row.appendChild(numberCell);
-                row.appendChild(directionCell);
-                row.appendChild(timeCell);
+        boardData.departures.length === 0
+            ? this.element.setAttribute('hidden', true)
+            : this.element.removeAttribute('hidden');
 
-                return row;
-            }).forEach(function (row) {
-                body.appendChild(row);
-            });
-
-            table.appendChild(body);
-            return table;
+        while (this.element.firstChild) {
+            this.element.removeChild(this.element.firstChild);
         }
-    }, {
-        key: '_buildContents',
-        value: function _buildContents() {
-            var boardData = this.boardData;
-            var contents = document.createDocumentFragment();
 
-            contents.appendChild(this._buildHeader(boardData));
-            contents.appendChild(this._buildBody(boardData));
+        this.element.appendChild(contents);
+    };
 
-            return contents;
+    _buildBody() {
+        const table = __WEBPACK_IMPORTED_MODULE_0__dom__["a" /* DOMHelper */].create('table');
+        table.classList.add('timetable');
+        const body = __WEBPACK_IMPORTED_MODULE_0__dom__["a" /* DOMHelper */].create('tbody');
+
+        this.boardData.departures.map((departure) => {
+            const row = __WEBPACK_IMPORTED_MODULE_0__dom__["a" /* DOMHelper */].create('tr');
+            const numberCell = __WEBPACK_IMPORTED_MODULE_0__dom__["a" /* DOMHelper */].create('td', departure.number);
+            const directionCell = __WEBPACK_IMPORTED_MODULE_0__dom__["a" /* DOMHelper */].create('td', departure.direction);
+            const timeCell = __WEBPACK_IMPORTED_MODULE_0__dom__["a" /* DOMHelper */].create('td', departure.time);
+
+            row.appendChild(numberCell);
+            row.appendChild(directionCell);
+            row.appendChild(timeCell);
+
+            return row;
+        }).forEach((row) => {
+            body.appendChild(row);
+        });
+
+        table.appendChild(body);
+        return table;
+    }
+
+
+    _buildContents() {
+        const boardData = this.boardData;
+        const contents = document.createDocumentFragment();
+
+        contents.appendChild(this._buildHeader(boardData));
+        contents.appendChild(this._buildBody(boardData));
+
+        return contents;
+    }
+
+    _buildFullCard() {
+        const boardData = this.boardData;
+        const card = __WEBPACK_IMPORTED_MODULE_0__dom__["a" /* DOMHelper */].create('div');
+        const contents = this._buildContents();
+
+        if (boardData.departures.length > 4) {
+            card.classList.add(expendableClassName);
         }
-    }, {
-        key: '_buildFullCard',
-        value: function _buildFullCard() {
-            var _this = this;
 
-            var boardData = this.boardData;
-            var card = _dom.DOMHelper.create('div');
-            var contents = this._buildContents();
+        card.dataset.stopId = boardData.stopId;
+        card.classList.add('card');
+        card.addEventListener('click', () => this._toggleExpand());
+        card.appendChild(contents);
 
-            if (boardData.departures.length > 4) {
-                card.classList.add(expendableClassName);
-            }
+        return card;
+    }
 
-            card.dataset.stopId = boardData.stopId;
-            card.classList.add('card');
-            card.addEventListener('click', function () {
-                return _this._toggleExpand();
-            });
-            card.appendChild(contents);
+    _buildHeader() {
+        return __WEBPACK_IMPORTED_MODULE_0__dom__["a" /* DOMHelper */].create('h2', this.boardData.stopName);
+    }
 
-            return card;
+    _toggleExpand() {
+        if (this.element.classList.contains(expandedClassName)) {
+            this.element.classList.remove(expandedClassName);
         }
-    }, {
-        key: '_buildHeader',
-        value: function _buildHeader() {
-            return _dom.DOMHelper.create('h2', this.boardData.stopName);
+        else {
+            this.element.classList.add(expandedClassName);
         }
-    }, {
-        key: '_toggleExpand',
-        value: function _toggleExpand() {
-            if (this.element.classList.contains(expandedClassName)) {
-                this.element.classList.remove(expandedClassName);
-            } else {
-                this.element.classList.add(expandedClassName);
-            }
-        }
-    }]);
+    }
 
-    return Card;
-}();
+    
+
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = Card;
+
 
 /***/ }),
 
-/***/ 69:
-/***/ (function(module, exports, __webpack_require__) {
+/***/ 99:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__card__ = __webpack_require__(98);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dom__ = __webpack_require__(19);
 
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.CardList = undefined;
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _card = __webpack_require__(68);
-
-var _dom = __webpack_require__(13);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var CardList = exports.CardList = function () {
-    function CardList() {
-        var boardsData = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-
-        _classCallCheck(this, CardList);
-
+class CardList {
+    constructor(boardsData = []) {
         this.cards = [];
-        this.element = _dom.DOMHelper.$('.cards');
+        this.element = __WEBPACK_IMPORTED_MODULE_1__dom__["a" /* DOMHelper */].$('.cards');
 
         this.update(boardsData);
     }
 
-    _createClass(CardList, [{
-        key: 'update',
-        value: function update(boardsData) {
-            this.cards = this._buildCards(boardsData);
-        }
-    }, {
-        key: '_buildCards',
-        value: function _buildCards(boardsData) {
-            var fragment = document.createDocumentFragment();
-            var cards = boardsData.map(function (b) {
-                return new _card.Card(b);
-            });
-
-            while (this.element.firstChild) {
-                this.element.removeChild(this.element.firstChild);
-            }
-
-            cards.forEach(function (card) {
-                return fragment.appendChild(card.element);
-            });
-            this.element.appendChild(fragment);
-
-            return cards;
-        }
-    }]);
-
-    return CardList;
-}();
-
-/***/ }),
-
-/***/ 70:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.DebugConsole = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _dom = __webpack_require__(13);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var debugModeStorageKey = 'debug';
-
-var DebugConsole = exports.DebugConsole = function () {
-    function DebugConsole() {
-        _classCallCheck(this, DebugConsole);
-
-        this.element = _dom.DOMHelper.$('.debug-console');
-
-        this.updateVisibility();
+    update(boardsData) {
+        this.cards = this._buildCards(boardsData);
     }
 
-    _createClass(DebugConsole, [{
-        key: 'isVisible',
-        value: function isVisible() {
-            return localStorage.getItem(debugModeStorageKey);
+    _buildCards(boardsData) {
+        const fragment = document.createDocumentFragment();
+        const cards = boardsData.map((b) => new __WEBPACK_IMPORTED_MODULE_0__card__["a" /* Card */](b));
+
+        while (this.element.firstChild) {
+            this.element.removeChild(this.element.firstChild);
         }
-    }, {
-        key: 'log',
-        value: function log(message) {
-            console.log(message);
-            var line = _dom.DOMHelper.create('div', message);
-            this.element.appendChild(line);
-            this.element.scrollTop = this.element.scrollHeight;
-        }
-    }, {
-        key: 'toggleVisibilityStatus',
-        value: function toggleVisibilityStatus() {
-            if (this.isVisible()) {
-                localStorage.removeItem(debugModeStorageKey);
-            } else {
-                localStorage.setItem(debugModeStorageKey, true);
-            }
-        }
-    }, {
-        key: 'updateVisibility',
-        value: function updateVisibility() {
-            if (this.isVisible()) {
-                this.element.removeAttribute('hidden');
-            } else {
-                this.element.setAttribute('hidden', 'true');
-            }
-        }
-    }]);
 
-    return DebugConsole;
-}();
+        cards.forEach((card) => fragment.appendChild(card.element));
+        this.element.appendChild(fragment);
 
-;
-
-/***/ }),
-
-/***/ 71:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.ProgressBar = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _dom = __webpack_require__(13);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var ProgressBar = exports.ProgressBar = function () {
-    function ProgressBar() {
-        _classCallCheck(this, ProgressBar);
-
-        this.element = _dom.DOMHelper.$('.progress-bar');
-        this.elementInner = _dom.DOMHelper.$('.progress-bar-inner');
+        return cards;
     }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = CardList;
 
-    _createClass(ProgressBar, [{
-        key: 'hide',
-        value: function hide() {
-            this.element.setAttribute('hidden', true);
-        }
-    }, {
-        key: 'update',
-        value: function update(progress) {
-            this.elementInner.style.width = progress * 100 + '%';
-        }
-    }]);
-
-    return ProgressBar;
-}();
-
-/***/ }),
-
-/***/ 72:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.Splash = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _dom = __webpack_require__(13);
-
-var _progressBar = __webpack_require__(71);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var noop = function noop() {};
-
-var Splash = exports.Splash = function () {
-    function Splash(debugConsole) {
-        _classCallCheck(this, Splash);
-
-        this.debugConsole = debugConsole;
-
-        this.element = _dom.DOMHelper.$('#splash');
-        this.progressBar = new _progressBar.ProgressBar();
-        this.retryButton = _dom.DOMHelper.$('#retry-button');
-    }
-
-    _createClass(Splash, [{
-        key: 'showRetryButton',
-        value: function showRetryButton() {
-            this.progressBar.hide();
-            this.retryButton.removeAttribute('hidden');
-            this.element.classList.remove('animate');
-        }
-    }, {
-        key: 'waitAndHide',
-        value: function waitAndHide() {
-            var _this = this;
-
-            var callback = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : noop;
-
-            this.element.addEventListener('transitionend', function () {
-                _this.debugConsole.log('splash.transitionend');
-                _this.element.parentNode.removeChild(splash);
-                callback();
-            });
-            this.element.classList.add('hidden');
-        }
-    }]);
-
-    return Splash;
-}();
 
 /***/ })
 

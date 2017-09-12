@@ -1,6 +1,5 @@
 import { Events } from './ui/ui';
 // import { DummyTimetables as Timetables } from './services/timetables.dummy';
-
 const noop = () => { };
 
 export class App {
