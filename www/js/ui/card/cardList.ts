@@ -1,7 +1,10 @@
 import { Card } from './card';
-import { DOMHelper } from '../dom';
+import { DOMHelper } from '../index';
 
 export class CardList {
+    private cards: Card[];
+    private element: HTMLElement;
+
     constructor(boardsData = []) {
         this.cards = [];
         this.element = DOMHelper.$('.cards');
@@ -9,7 +12,7 @@ export class CardList {
         this.update(boardsData);
     }
 
-    update(boardsData) {
+    public update(boardsData) {
         this.cards = this._buildCards(boardsData);
     }
 

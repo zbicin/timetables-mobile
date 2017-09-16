@@ -1,8 +1,18 @@
-import { Events } from './ui/ui';
+import { Events, UI } from './ui/index';
+import { StopDepartures } from './interfaces/index';
+import { Timetables } from './services/index';
 // import { DummyTimetables as Timetables } from './services/timetables.dummy';
 const noop = () => { };
 
 export class App {
+    private hasCrashed: boolean;
+    private lastRefreshTime: Date;
+    private pendingPromises: Set<Promise<any>>;
+    private refreshHandle: number;
+    private refreshIntervalInSeconds: number;
+    private timetables: Timetables;
+    private ui: UI;
+    
     constructor(Timetables, UI) {
         this.hasCrashed = false;
         this.lastRefreshTime = null;
@@ -12,46 +22,46 @@ export class App {
         this.timetables = new Timetables();
 
         this.ui = new UI();
-        this.ui.on(Events.DevicePause, (e) => this._onDevicePause(e));
-        this.ui.on(Events.DeviceReady, (e) => this._onDeviceReady(e));
-        this.ui.on(Events.DeviceResume, (e) => this._onDeviceResume(e));
-        this.ui.on(Events.InfoClick, (e) => this._onInfoClick(e));
-        this.ui.on(Events.RefreshClick, (e) => this._onRefreshClick(e));
-        this.ui.on(Events.RetryClick, (e) => this._onRetryClick(e));
+        this.ui.on(Events.DevicePause, (e) => this.onDevicePause(e));
+        this.ui.on(Events.DeviceReady, (e) => this.onDeviceReady(e));
+        this.ui.on(Events.DeviceResume, (e) => this.onDeviceResume(e));
+        this.ui.on(Events.InfoClick, (e) => this.onInfoClick(e));
+        this.ui.on(Events.RefreshClick, (e) => this.onRefreshClick(e));
+        this.ui.on(Events.RetryClick, (e) => this.onRetryClick(e));
     }
 
-    _cleanupHandles() {
+    private cleanupHandles(): void {
         this.ui.debugConsole.log('app.cleanupHandles');
         clearInterval(this.refreshHandle);
         this.refreshHandle = null;
-        this.pendingPromises.forEach((p) => p.cancel());
+        // this.pendingPromises.forEach((p) => p.cancel());
         this.pendingPromises.clear();
     }
 
-    _isPending() {
+    private isPending(): boolean {
         return this.pendingPromises.size > 0;
     }
 
-    _onDevicePause() {
+    private onDevicePause(e: any): void {
         this.ui.debugConsole.log('device.pause');
-        this._cleanupHandles();
+        this.cleanupHandles();
     }
 
-    _onDeviceReady() {
+    private onDeviceReady(e: any): void {
         this.ui.debugConsole.log('device.ready');
-        this._refresh(() => {
+        this.refresh(() => {
             this.ui.splash.waitAndHide();
             this.ui.showRefreshButton();
             this.ui.showTitle();
         });
     }
 
-    _onDeviceResume() {
+    onDeviceResume(e: any): void {
         this.ui.debugConsole.log('device.resume');
-        this._cleanupHandles();
+        this.cleanupHandles();
 
         if (!this.hasCrashed) {
-            this._refresh(() => {
+            this.refresh(() => {
                 this.ui.splash.waitAndHide();
                 this.ui.showRefreshButton();
                 this.ui.showTitle();
@@ -59,60 +69,60 @@ export class App {
         }
     }
 
-    _onError(e) {
+    private onError(e: any): void {
         this.hasCrashed = true;
         this.ui.handleErrorMessage(e);
-        this._cleanupHandles();
+        this.cleanupHandles();
     }
 
-    _onInfoClick() {
+    private onInfoClick(e: any): void {
         this.ui.showInfoModal(this.lastRefreshTime, this.refreshIntervalInSeconds);
     }
 
-    _onRefreshClick() {
-        if (!this._isPending()) {
-            this._refresh();
+    private onRefreshClick(e: any): void {
+        if (!this.isPending()) {
+            this.refresh();
         }
     }
 
-    _onRetryClick() {
+    private onRetryClick(e: any): void {
         location.reload();
     }
 
-    _refresh(onRefresh = noop) {
+    private refresh(onRefresh = noop): void {
         this.ui.debugConsole.log('app.refresh');
         const promise = this.timetables.fetchNearbyTimetables((p) => this.ui.updateProgress(p))
-            .then((boardsData) => this._timeoutPromise(boardsData, 100))
+            .then((boardsData) => this.timeoutPromise<StopDepartures[]>(boardsData, 100))
             .then((boardsData) => {
                 if (!this.refreshHandle) {
-                    this.refreshHandle = this._setupRefreshInterval();
+                    this.refreshHandle = this.setupRefreshInterval();
                 }
                 this.pendingPromises.delete(promise);
                 this.ui.cardList.update(boardsData);
                 this.lastRefreshTime = new Date();
-                this.ui.updateRefreshState(this.lastRefreshTime, this._isPending());
+                this.ui.updateRefreshState(this.lastRefreshTime, this.isPending());
                 onRefresh();
             }).catch((error) => {
                 this.pendingPromises.delete(promise);
-                this._onError(error);
+                this.onError(error);
             });
         this.pendingPromises.add(promise);
-        this.ui.updateRefreshState(this.lastRefreshTime, this._isPending());
+        this.ui.updateRefreshState(this.lastRefreshTime, this.isPending());
     }
 
-    _setupRefreshInterval() {
+    private setupRefreshInterval(): number {
         this.ui.debugConsole.log('app.setupRefreshInteval');
         const refreshInterval = this.refreshIntervalInSeconds * 1000;
 
         return setInterval(() => {
-            if (!this._isPending()) {
-                this._refresh();
+            if (!this.isPending()) {
+                this.refresh();
             }
         }, refreshInterval);
     }
 
-    _timeoutPromise(data, timeout) {
-        const isJasmine = !!window.jasmine;
+    private timeoutPromise<T>(data: T, timeout: number): Promise<T> {
+        const isJasmine = !!(window as any).jasmine;
 
         return isJasmine
             ? Promise.resolve(data)

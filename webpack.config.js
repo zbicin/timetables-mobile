@@ -1,13 +1,18 @@
 const path = require('path');
+const webpack = require('webpack');
+const WebpackGenerateIndexes = require('./scripts/webpack-generate-indexes');
 
 module.exports = {
     entry: {
-        app: path.join(__dirname, 'www', 'js', 'index.ts'),
-        test: path.join(__dirname, 'www', 'spec', 'index.ts')
+        app: path.join(__dirname, 'www', 'js', 'bootstrap.ts')
+        //test: path.join(__dirname, 'www', 'spec', 'index.ts')
     },
     output: {
         filename: '[name].js',
         path: path.join(__dirname, 'www')
+    },
+    resolve: {
+        extensions: ['.js', '.json', '.ts']
     },
     module: {
         rules: [
@@ -35,7 +40,15 @@ module.exports = {
             },
             { test: /\.png$/, use: 'url-loader' }
         ]
-    }
+    },
+    plugins: [
+        new webpack.WatchIgnorePlugin([
+            path.join(__dirname, 'www', 'app.js'),
+            path.join(__dirname, 'www', 'test.js'),
+            'index.ts'
+        ]),
+        new WebpackGenerateIndexes(path.join(__dirname, 'www', 'js'))
+    ]
     // module: {
     //     rules: [
     //         {

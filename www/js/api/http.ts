@@ -1,29 +1,29 @@
-import { Promise } from 'bluebird';
-
 const localProxyAddress = 'http://localhost:1337/';
 
-const Methods = {
-    Get: 'GET',
-    Head: 'HEAD',
-    Post: 'POST'
+enum Methods {
+    Get = 'GET',
+    Head = 'HEAD',
+    Post = 'POST'
 };
 
 export class Http {
+    private isLocalBrowser: boolean;
+
     constructor() {
         this.isLocalBrowser = location.protocol.indexOf('http') > -1;
     }
 
-    get(url, headers) {
-        return this._doRequest(url, Methods.Get, headers, null);
+    public get(url: string, headers?: object): Promise<XMLHttpRequest> {
+        return this.doRequest(url, Methods.Get, headers, null);
     }
-    head(url, headers) {
-        return this._doRequest(url, Methods.Head, headers, null);
+    public head(url: string, headers?: object): Promise<XMLHttpRequest> {
+        return this.doRequest(url, Methods.Head, headers, null);
     }
-    post(url, headers, data) {
-        return this._doRequest(url, Methods.Post, headers, data);
+    public post(url: string, headers?: object, data?: object): Promise<XMLHttpRequest> {
+        return this.doRequest(url, Methods.Post, headers, data);
     }
 
-    _doRequest(url, method = Methods.Get, headers = {}, data = null) {
+    private doRequest(url: string, method: Methods = Methods.Get, headers = {}, data = null): Promise<XMLHttpRequest> {
         return new Promise((resolve, reject) => {
             const isAsync = true;
             const request = new XMLHttpRequest();

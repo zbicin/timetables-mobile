@@ -1,14 +1,14 @@
-import { Promise } from 'bluebird';
+import { Departure, StopDepartures } from '../interfaces/index';
 
-const noop = () => { };
+const noop = (atg: number) => { };
 
 export class DummyTimetables {
-    fetchNearbyTimetables(updateCallback = noop, limit = 10) {
+    public fetchNearbyTimetables(updateCallback = noop, limit = 10) {
         const isJasmine = !!jasmine;
         const result = [];
 
         for (let i = 0; i < limit; i++) {
-            const dummyBoard = this._generateDummyBoard(i);
+            const dummyBoard = this.generateDummyBoard(i);
             result.push(dummyBoard);
         }
 
@@ -29,19 +29,19 @@ export class DummyTimetables {
         }
     }
 
-    _formatTime(date) {
+    private formatTime(date: Date): string {
         return date.toISOString().split('T')[1].substr(0, 5);
     }
 
-    _generateDummyBoard(index) {
+    private generateDummyBoard(index: number): StopDepartures {
         const now = new Date();
-        const formattedNow = this._formatTime(now);
+        const formattedNow = this.formatTime(now);
 
         const departures = [];
         const departuresCount = 10;
 
         for (let i = 0; i < departuresCount; i++) {
-            const departure = {
+            const departure: Departure = {
                 direction: `Direction #${index}`,
                 number: index.toString(),
                 time: `${i + 1} min`
@@ -52,9 +52,9 @@ export class DummyTimetables {
 
         return {
             currentTime: formattedNow,
-            stopId: index.toString(),
-            stopName: `Dummy stop #${index}`,
-            departures: departures
+            departures: departures,
+            id: index.toString(),
+            name: `Dummy stop #${index}`
         };
     }
 };

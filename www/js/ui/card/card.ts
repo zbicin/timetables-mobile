@@ -1,19 +1,25 @@
-import { DOMHelper } from '../dom';
+import { DOMHelper } from '../index';
+import { StopDepartures } from '../../interfaces/index';
 
 const expandedClassName = 'expanded';
-const expendableClassName = 'expendable';
+const expendableClassName = 'expendable'; 
 
 export class Card {
-    constructor(boardData) {
-        this.boardData = boardData;
-        this.element = this._buildFullCard();
+    private boardData: StopDepartures;
+    private element: HTMLElement;
+
+    constructor(boardData: StopDepartures) {
+        this.boardData = boardData; 
+        this.element = this.buildFullCard(boardData);
     }
 
-    update(boardData) {
-        const contents = this._buildContents(boardData);
+    public update(boardData: StopDepartures): void { 
+        this.boardData = boardData;
 
-        if (this.element.dataset.stopId !== boardData.stopId) {
-            this.element.dataset.stopId = boardData.stopId;
+        const contents = this.buildContents(boardData);
+
+        if (this.element.dataset.stopId !== boardData.id) {
+            this.element.dataset.stopId = boardData.id;
             this.element.classList.remove(expandedClassName);
         }
 
@@ -22,7 +28,7 @@ export class Card {
             : this.element.classList.remove(expendableClassName);
 
         boardData.departures.length === 0
-            ? this.element.setAttribute('hidden', true)
+            ? this.element.setAttribute('hidden', 'hidden')
             : this.element.removeAttribute('hidden');
 
         while (this.element.firstChild) {
@@ -32,12 +38,12 @@ export class Card {
         this.element.appendChild(contents);
     };
 
-    _buildBody() {
+    private buildBody(boardData: StopDepartures): HTMLElement {
         const table = DOMHelper.create('table');
         table.classList.add('timetable');
         const body = DOMHelper.create('tbody');
 
-        this.boardData.departures.map((departure) => {
+        boardData.departures.map((departure) => {
             const row = DOMHelper.create('tr');
             const numberCell = DOMHelper.create('td', departure.number);
             const directionCell = DOMHelper.create('td', departure.direction);
@@ -56,47 +62,41 @@ export class Card {
         return table;
     }
 
-
-    _buildContents() {
-        const boardData = this.boardData;
+    private buildContents(boardData: StopDepartures): DocumentFragment {
         const contents = document.createDocumentFragment();
 
-        contents.appendChild(this._buildHeader(boardData));
-        contents.appendChild(this._buildBody(boardData));
+        contents.appendChild(this.buildHeader(boardData.name));
+        contents.appendChild(this.buildBody(boardData));
 
         return contents;
     }
 
-    _buildFullCard() {
-        const boardData = this.boardData;
+    private buildFullCard(boardData: StopDepartures): HTMLElement {
         const card = DOMHelper.create('div');
-        const contents = this._buildContents();
+        const contents = this.buildContents(boardData);
 
         if (boardData.departures.length > 4) {
             card.classList.add(expendableClassName);
         }
 
-        card.dataset.stopId = boardData.stopId;
+        card.dataset.stopId = boardData.id;
         card.classList.add('card');
-        card.addEventListener('click', () => this._toggleExpand());
+        card.addEventListener('click', () => this.toggleExpand());
         card.appendChild(contents);
 
         return card;
     }
 
-    _buildHeader() {
-        return DOMHelper.create('h2', this.boardData.stopName);
+    private buildHeader(stopName: string): HTMLElement {
+        return DOMHelper.create('h2', stopName);
     }
 
-    _toggleExpand() {
+    private toggleExpand(): void {
         if (this.element.classList.contains(expandedClassName)) {
             this.element.classList.remove(expandedClassName);
         }
         else {
             this.element.classList.add(expandedClassName);
         }
-    }
-
-    
-
+    }  
 }
