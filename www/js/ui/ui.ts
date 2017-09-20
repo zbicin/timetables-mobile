@@ -48,7 +48,7 @@ export class UI {
         document.addEventListener('konamiCode', () => this.onKonamiCode());
         document.addEventListener('deviceready', (e) => {
             if (cordova.platformId === 'android') {
-                StatusBar.backgroundColorByHexString('ee8801');
+                (window as any).StatusBar.backgroundColorByHexString('ee8801');
             }
 
             this.dispatchEvent(Events.DeviceReady, e);
@@ -70,7 +70,7 @@ export class UI {
             errorMessage = e.message || e.code || e;
             information = `Nie udało się pobrać danych przystanków w okolicy. Upewnij się, że masz włączone usługi lokalizacji oraz dostęp do Internetu, a następnie uruchom ponownie aplikację. (${errorMessage})`;
         }
-        navigator.notification.alert(information, null, '¯\\_(ツ)_/¯');
+        (navigator as any).notification.alert(information, null, '¯\\_(ツ)_/¯');
         console.error(e);
         this.debugConsole.log(errorMessage);
 
@@ -100,7 +100,7 @@ export class UI {
                 information += `\n\nWersja aplikacji: ${version}\n`;
                 information += 'Kontakt: tabliceprzystankowe@gmail.com\n\nAutorem ikony "Bus" udostępnionej na bazie licencji CC 3.0 BY US jest Nikita Kozin.\nhttps://creativecommons.org/licenses/by/3.0/us/';
 
-                navigator.notification.alert(information, null, 'Tablice Przystankowe');
+                (navigator as any).notification.alert(information, null, 'Tablice Przystankowe');
             });
     }
 

@@ -5,7 +5,7 @@ const generateIndexes = require('./generate-indexes');
 const isDirectory = (source) => fs.lstatSync(source).isDirectory();
 const flatten = (a, b) => a.concat(b);
 
-function getDirectoriesFromWatcher(watcher) {
+function getDirectoriesFromWatcher(watcher, ignorePaths) {
     const files = Object.keys(watcher.mtimes);
     const result = files
         .map((f) => path.dirname(f))
@@ -14,12 +14,13 @@ function getDirectoriesFromWatcher(watcher) {
     return result;
 }
 
-function getDirectoriesFromPath(p) {
+function getDirectoriesFromPath(p, ignorePaths) {
     const mainResult = fs.readdirSync(p)
-        .map(name => p.join(p, name))
-        .filter(isDirectory);
+        .map(name => path.join(p, name))
+        .filter(isDirectory)
+        .filter((d) => ignorePaths.indexOf(d) === -1);
     const subResult = mainResult
-        .map((path) => getDirectoriesFromPath(path))
+        .map((path) => getDirectoriesFromPath(path, ignorePaths))
         .reduce(flatten, [])
         .filter((a) => a.length > 0);
         
@@ -34,10 +35,10 @@ function WebpackGenerateIndexes(ignorePaths = []) {
             const watcher = watching.compiler.watchFileSystem.wfs.watcher;
             let uniqueDirectories = [];
             if(watcher) {
-                uniqueDirectories = getDirectoriesFromWatcher(watcher);
+                uniqueDirectories = getDirectoriesFromWatcher(watcher, ignorePaths);
             } else {
                 let rootPath = path.dirname(compiler.options.entry.app);
-                uniqueDirectories = getDirectoriesFromPath(rootPath);
+                uniqueDirectories = getDirectoriesFromPath(rootPath, ignorePaths);
             }
             
             if(uniqueDirectories.length) {
@@ -51,7 +52,7 @@ function WebpackGenerateIndexes(ignorePaths = []) {
         compiler.plugin('run', (watching, cb) => {
             console.log('run');
             let rootPath = path.dirname(compiler.options.entry.app);
-            let uniqueDirectories = getDirectoriesFromPath(rootPath);
+            let uniqueDirectories = getDirectoriesFromPath(rootPath, ignorePaths);
             
             if(uniqueDirectories.length) {
                 console.log('Generating indexes for: ');

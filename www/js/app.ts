@@ -1,6 +1,7 @@
+import { Map } from './ui/map/index';
 import { Events, UI } from './ui/index';
 import { StopDepartures } from './interfaces/index';
-import { Timetables } from './services/index';
+import { DummyGeolocation as Geolocation, Timetables } from './services/index';
 // import { DummyTimetables as Timetables } from './services/timetables.dummy';
 const noop = () => { };
 
@@ -49,14 +50,20 @@ export class App {
 
     private onDeviceReady(e: any): void {
         this.ui.debugConsole.log('device.ready');
-        this.refresh(() => {
+        Map.init().then((map: Map) => {
             this.ui.splash.waitAndHide();
             this.ui.showRefreshButton();
             this.ui.showTitle();
         });
+
+        // this.refresh(() => {
+        //     this.ui.splash.waitAndHide();
+        //     this.ui.showRefreshButton();
+        //     this.ui.showTitle();
+        // });
     }
 
-    onDeviceResume(e: any): void {
+    private onDeviceResume(e: any): void {
         this.ui.debugConsole.log('device.resume');
         this.cleanupHandles();
 
@@ -91,6 +98,7 @@ export class App {
 
     private refresh(onRefresh = noop): void {
         this.ui.debugConsole.log('app.refresh');
+
         const promise = this.timetables.fetchNearbyTimetables((p) => this.ui.updateProgress(p))
             .then((boardsData) => this.timeoutPromise<StopDepartures[]>(boardsData, 100))
             .then((boardsData) => {

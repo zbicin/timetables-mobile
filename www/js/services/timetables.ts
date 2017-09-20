@@ -2,7 +2,7 @@ import { Api } from '../api/api';
 import { Departure } from '../interfaces/departure';
 import { StopPosition } from '../interfaces/stopPosition';
 import { StopDepartures } from '../interfaces/stopDepartures';
-import { Geolocation } from './geolocation';
+import { DummyGeolocation as Geolocation } from './geolocation.dummy';
 import { Stop } from './stop';
 
 const noop = (arg: number) => { };

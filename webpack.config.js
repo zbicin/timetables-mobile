@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const WebpackGenerateIndexes = require('./scripts/webpack-generate-indexes');
 
 module.exports = {
+    devtool: 'source-map',
     entry: {
         app: path.join(__dirname, 'www', 'js', 'bootstrap.ts')
         //test: path.join(__dirname, 'www', 'spec', 'index.ts')
@@ -43,11 +44,15 @@ module.exports = {
     },
     plugins: [
         new webpack.WatchIgnorePlugin([
-            path.join(__dirname, 'www', 'app.js'),
-            path.join(__dirname, 'www', 'test.js'),
+            //path.join(__dirname, 'www', 'app.js'),
+            //path.join(__dirname, 'www', 'test.js'),
+            path.join(__dirname, 'types'),
             'index.ts'
-        ]),
-        new WebpackGenerateIndexes(path.join(__dirname, 'www', 'js'))
+         ])//,
+        // new WebpackGenerateIndexes([
+        //     path.join(__dirname, 'types'),
+        //     path.join(__dirname, 'www', 'js')
+        // ])
     ]
     // module: {
     //     rules: [

@@ -157,6 +157,10 @@ body {
     width: 0%;
 }
 
+.map {
+    width: 100%;
+}
+
 .cards {
     background: #fafafa;
     overflow: scroll;

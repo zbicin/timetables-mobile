@@ -15,6 +15,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/googlemaps": "^3.26.20",
     "@types/jasmine": "^2.5.54",
     "babel-core": "^6.25.0",
     "babel-loader": "^7.0.0",
@@ -60,6 +61,7 @@
     "cordova-plugin-geolocation": "~2.1.0",
     "cordova-plugin-splashscreen": "~4.0.3",
     "cordova-plugin-statusbar": "~2.2.3",
-    "cordova-plugin-whitelist": "~1.2.1"
+    "cordova-plugin-whitelist": "~1.2.1",
+    "google-maps": "^3.2.1"
   }
 }

@@ -14,5 +14,4 @@ import { UI } from './ui/ui';
 if(!(window as any).Promise) {
     (window as any).Promise = Promise;
 }
-
 const app = new App(Timetables, UI); 
