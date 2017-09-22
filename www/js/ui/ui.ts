@@ -2,32 +2,30 @@ import { CardList } from './card/index';
 import { DebugConsole } from './debugConsole';
 import { DOMHelper } from './dom';
 import { Splash } from './splash/index';
+import { Emitter } from '../services/index';
 
 export enum Events {
-    DevicePause,
-    DeviceReady,
-    DeviceResume,
-    InfoClick,
-    RefreshClick,
-    RetryClick
+    DevicePause = 'DevicePause',
+    DeviceReady = 'DeviceReady',
+    DeviceResume = 'DeviceResume',
+    InfoClick = 'InfoClick',
+    RefreshClick = 'RefreshClick',
+    RetryClick = 'RetryClick'
 }
 
 const cordova = (window as any).cordova;
 
-export class UI {
+export class UI extends Emitter {
     public cardList: CardList;
     public debugConsole: DebugConsole;
     public splash: Splash;
     
-    private eventHandlers: Object;
-
     private menuInfoElement: HTMLElement;
     private menuRefreshElement: HTMLElement;
     private menuTitle: HTMLElement;
 
-
     constructor() {
-        this.eventHandlers = {};
+        super();
 
         this.menuInfoElement = DOMHelper.$('#menu-info');
         this.menuInfoElement.addEventListener('click', (e) => this.dispatchEvent(Events.InfoClick));
@@ -82,10 +80,6 @@ export class UI {
         }
     }
 
-    public on(name: Events, callback: Function): void {
-        this.eventHandlers[name] = callback;
-    }
-
     public showInfoModal(lastRefreshTime: Date, refreshIntervalInSeconds: number): void {
         let version;
 
@@ -123,16 +117,6 @@ export class UI {
         }
         else {
             this.menuRefreshElement.classList.remove('animate');
-        }
-    }
-
-    private createEvent(name: string, data: any): CustomEvent {
-        return new CustomEvent(name, { detail: data });
-    }
-
-    private dispatchEvent(name: Events, data?: any): void {
-        if (this.eventHandlers[name]) {
-            this.eventHandlers[name](data);
         }
     }
 
