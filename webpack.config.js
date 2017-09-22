@@ -43,11 +43,11 @@ module.exports = {
     },
     plugins: [
         new webpack.WatchIgnorePlugin([
+            path.join(__dirname, 'platforms'),
             path.join(__dirname, 'www', 'app.js'),
             path.join(__dirname, 'www', 'test.js'),
             'index.ts'
-        ]),
-        new WebpackGenerateIndexes(path.join(__dirname, 'www', 'js'))
+        ])
     ]
     // module: {
     //     rules: [

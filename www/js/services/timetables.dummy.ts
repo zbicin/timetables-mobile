@@ -4,7 +4,7 @@ const noop = (atg: number) => { };
 
 export class DummyTimetables {
     public fetchNearbyTimetables(updateCallback = noop, limit = 10) {
-        const isJasmine = !!jasmine;
+        const isJasmine = !!window['jasmine'];
         const result = [];
 
         for (let i = 0; i < limit; i++) {
