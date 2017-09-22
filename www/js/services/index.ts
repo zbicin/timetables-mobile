@@ -1,4 +1,4 @@
-// Auto-generated @ 2017-09-16T18:56:50.061Z
+// Auto-generated @ 2017-09-22T20:42:21.947Z
 export * from './emitter'
 export * from './geolocation.dummy'
 export * from './geolocation'
