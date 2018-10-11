@@ -8,10 +8,10 @@ import './services/domParser.polyfill';
 import 'promise-polyfill/promise.js';
 
 import { App } from './app';
-import { DummyTimetables as Timetables } from './services/index';
+import { Timetables } from './services/index';
 import { UI } from './ui/ui';
 
-if(!(window as any).Promise) {
+if (!(window as any).Promise) {
     (window as any).Promise = Promise;
 }
 
